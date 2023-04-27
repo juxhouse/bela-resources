@@ -1,4 +1,4 @@
-# BELA API
+# BELA Web API
 
 ## Host
 
