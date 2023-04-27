@@ -20,7 +20,7 @@ Any HTTP verb can be used with any endpoint. The verb is ignored by the server.
 
 ## Return Codes
 
-Endpoints return either 200 for success or an error code with a helpful error message String in the body.
+Endpoints return either 200 for success or an error code with a helpful message in the body.
 
 ## Endpoints
 
