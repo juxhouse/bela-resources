@@ -30,9 +30,9 @@ There is a single endpoint.
 
 Replaces all built elements.
 
-Replaces modeled elements with built elements that have the same path. See "ElementPath" below.
+Replaces modeled elements with built elements that have the same path. See "ElementPath" below. All other modeled elements are preserved. Modeled dependencies to replaced modeled elements are also preserved.
 
-All other modeled elements are preserved. Modeled dependencies to replaced modeled elements are also preserved.
+This endpoint returns immediately but it can take a few seconds to process, depending on the size of the architecture. When done processing, the entire new architecture will be available atomically.
 
 #### Argument
 ```
