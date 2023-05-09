@@ -110,7 +110,7 @@ This endpoint returns immediately but it can take a few seconds to process, depe
 
 Any non-empty String. It uniquely identifies the element.
 
-Paths are case-sensitive: "Person" and "person" are NOT the same path.
+Paths are case-sensitive: "getName" and "getname" are NOT the same path.
 
 You can optionally use the pipe character "|" to indicate segments in the path. If an element has a path that starts with the segments of the path of another element, BELA will implicitly create a containment relationship between both elements.
 
