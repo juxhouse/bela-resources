@@ -114,7 +114,7 @@ Paths are case-sensitive: "Person" and "person" are NOT the same path.
 
 You can optionally use the pipe character "|" to indicate segments in the path. If an element has a path that starts with the segments of the path of another element, BELA will implicitly create a containment relationship between both elements.
 
-The paths of modeled elements are composed of their type and name: `type|name`. Modeled element are replaced by built elements with the same name.
+The paths of modeled elements are composed of their type and name: `type|name`. Modeled element are replaced by built elements with the same path.
 
 **Examples**
 ```
