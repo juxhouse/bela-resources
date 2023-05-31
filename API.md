@@ -14,9 +14,9 @@ Just the token, without a "Bearer" or "Token" prefix.
 
 Endpoints take either no argument or a single JSON value in the request body.
 
-## HTTP Verbs
+## HTTP Methods (Verbs)
 
-Any HTTP verb can be used with any endpoint. The verb is ignored by the server.
+Any HTTP method can be used with any endpoint. The method is ignored by the server.
 
 ## Return Codes
 
