@@ -2,13 +2,15 @@
 
 ## Host
 
-`https://bela-api.jux.house`
+Your BELA API host address is provided to you when you sign-up for a BELA account. Each account has its own exclusive host.
 
 ## Authorization Header
 
 `Authorization: token`
 
 Just the token, without a "Bearer" or "Token" prefix.
+
+An API token is provided to you when you sign-up for a BELA account.
 
 ## Argument
 
@@ -24,19 +26,33 @@ Endpoints return either 200 for success or an error code with a helpful message 
 
 ## Endpoints
 
-There is a single endpoint.
-
 ### upsert-architecture
 
-Replaces all built elements.
+Replaces all built elements, all built dependencies and all built containments.
 
-Replaces modeled elements with built elements that have the same path. See "ElementPath" below. All other modeled elements are preserved. Modeled dependencies to replaced modeled elements are also preserved.
+All built elements that are not marked as "third-party" and that do not have a container will be contained by the implicit top-level organization container.
 
-This endpoint returns immediately but it can take a few seconds to process, depending on the size of the architecture. When done processing, the entire new architecture will be available atomically.
+Modeled elements, modeled dependencies and modeled containments are preserved. Modeled elements that have the same path (see "ElementPath" below) as a new built element, will have `(Model)` appended to their name.
+
+This endpoint returns immediately but it can take a few seconds to process, depending on the size of the payload. When done processing, the entire new built architecture will be available atomically.
 
 #### Argument
 ```
 {
+  elements: Element[]
+  dependencies: Dependency[]
+  containments: Containment[]
+}
+```
+
+### upsert-element
+
+Same as the `upsert-architecture` endpoint above, but restricted to the contents of a single container element. Replaces all built elements, all built dependencies and all built containments within that container element.
+
+#### Argument
+```
+{
+  container: ElementPath
   elements: Element[]
   dependencies: Dependency[]
   containments: Containment[]
@@ -114,7 +130,7 @@ Paths are case-sensitive: "getName" and "getname" are NOT the same path.
 
 You can optionally use the pipe character "|" to indicate segments in the path. If an element has a path that starts with the segments of the path of another element, BELA will implicitly create a containment relationship between both elements.
 
-The paths of modeled elements are composed of their type and name: `type|name`. Modeled element are replaced by built elements with the same path.
+The paths of modeled elements are composed of their type and name: `type|name`. Modeled elements that have the same path as a new built element, will have `(Model)` appended to their name.
 
 **Examples**
 ```
@@ -143,16 +159,16 @@ The paths of modeled elements are composed of their type and name: `type|name`. 
 
 ### Containment
 
-Containment relationships are created implicitly between child and parent Elements that share the same initial path segments, as seen above.
+Containment relationships are created implicitly between elements that share the same initial path segments, as seen above.
 
-They can also be created explicitly between elements that don't have such a strong and permanent containment relationship implied by their path. A microservice deployed to a AWS account is an example.
+They can also be created explicitly between elements that don't have a containment relationship implied by their path. A microservice inside a business domain is an example.
 
-An Element can NOT be contained by more than one parent.
+An element can NOT be contained by more than one container.
 
 ```
 {
-  container: ElementPath.  // Example: "aws-account|acme"
-  contained: ElementPath.  // Example: "service|billing"
+  container: ElementPath.  // Example: "domain|billing"
+  contained: ElementPath.  // Example: "service|payments"
 }
 ```
 
