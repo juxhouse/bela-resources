@@ -36,7 +36,7 @@ Modeled elements, modeled dependencies and modeled containments are preserved. M
 
 This endpoint returns immediately but it can take a few seconds to process, depending on the size of the payload. When done processing, the entire new built architecture will be available atomically.
 
-#### Argument
+Argument:
 ```
 {
   elements: Element[]
@@ -49,7 +49,7 @@ This endpoint returns immediately but it can take a few seconds to process, depe
 
 Same as the `upsert-architecture` endpoint above, but restricted to the contents of a single container element. Replaces all built elements, all built dependencies and all built containments within that container element.
 
-#### Argument
+Argument:
 ```
 {
   container: ElementPath
