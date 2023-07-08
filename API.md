@@ -6,27 +6,49 @@ Your BELA API host address is provided to you when you sign-up for a BELA accoun
 
 ## Authorization Header
 
-`Authorization: token`
-
-Just the token, without a "Bearer" or "Token" prefix.
+`Authorization: Token <your-token>`
 
 An API token is provided to you when you sign-up for a BELA account.
 
-## Argument
+## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/architecture`
 
-Endpoints take either no argument or a single JSON value in the request body.
+The server accepts an array of operations. Operations are carried out one after the other in the order they are provided. However, the overall combined effect of all operations is applied atomically, as a single transaction.
 
-## HTTP Methods (Verbs)
+`Content-Type: application/json`
 
-Any HTTP method can be used with any endpoint. The method is ignored by the server.
+### Body
+`{transaction: [Operation]}`
 
-## Return Codes
+### Reply Success Code: `202`
+The server replies immediately but can take a few seconds to process the request, depending on the size of the transaction.
 
-Endpoints return either 200 for success or an error code with a helpful message in the body.
+### Reply Error Code
+Errors will be returned as some HTTP error code with a helpful message in the reply body.
 
-## Endpoints
+## Operations
 
-### upsert-architecture
+All elements that are not `third-party` and that are not contained by any other will be implicitly contained by the element that represents your entire organization.
+
+
+Repo pipeline
+	Upsert only repo contents without deleting other elements in the org
+	3rd party elements detected?
+	Other elements detected? Monorepo with multiple elements (projects) inside.
+
+Big Picture outside-in (Definition)
+	Subdomain A contains Service 1
+
+Inside-out (Repo has info instead of definition (Heroku))
+	Service 1 is contained by Subdomain A
+
+	"Add containment" (not upsert all containments)
+		Delete old?
+			Upsert full contents of element
+			Delete all elements of type T not in this list.
+
+
+
+
 
 Replaces all built elements, all built dependencies and all built containments.
 
