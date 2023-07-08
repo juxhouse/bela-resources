@@ -1,31 +1,88 @@
+(Under construction)
+
 # BELA Web API
 
 ## Host
 
 Your BELA API host address is provided to you when you sign-up for a BELA account. Each account has its own exclusive host.
 
-## Authorization Header
+## Headers
 
 `Authorization: Token <your-token>`
-
 An API token is provided to you when you sign-up for a BELA account.
+
+`Content-Type: application/json`
 
 ## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/architecture`
 
 The server accepts an array of operations. Operations are carried out one after the other in the order they are provided. However, the overall combined effect of all operations is applied atomically, as a single transaction.
 
-`Content-Type: application/json`
+**Body**
+```
+{
+  "transaction": [Operation]
+}
+```
 
-### Body
-`{transaction: [Operation]}`
+**Reply Success Code** `202`
 
-### Reply Success Code: `202`
 The server replies immediately but can take a few seconds to process the request, depending on the size of the transaction.
 
-### Reply Error Code
+**Reply Error Codes**
+
 Errors will be returned as some HTTP error code with a helpful message in the reply body.
 
 ## Operations
+
+### `upsert-element`
+
+Ensures the existence of an element.
+
+```
+{
+  "op": "upsert-element"
+  "path": ElementPath
+  "name": String             // Optional. Defaults to last segment in the path.
+  "type": Identifier         // Optional. Defaults to the first segment in the path.
+                             // Examples: "domain", "subdomain", "person",  "package", "class", "function",
+                             //           "service", "endpoint", "topic", "queue", "bucket", "table", etc.
+  "technology": Identifier   // Optional. Examples: "java", "php", "clojure", "python", "kafka", "http", etc.
+  "third-party": boolean     // Optional. Defaults to false.
+  "description": String      // Optional.
+  "metadata": Object         // Optional. Any extra, useful information.
+}
+```
+
+### `enumerate-elements`
+
+Deletes elements of the given type that are not enumerated. In other words: performs garbage collection on elements of a given type.
+
+Creates elements that are enumerated, but do not yet exist, as `missing` elements. This `missing` element status will be resolved by a subsequent `upsert-element` operation for that element.
+
+```
+{
+  "op": "enumerate-elements"
+  "type": Identifier              // Examples: "domain", "subdomain", "service", "person",  etc.
+  "elements": [ElementPath]
+}
+```
+
+### `enumerate-dependencies`
+
+Deletes dependencies of the given type that are not enumerated. In other words: performs garbage collection on elements of a given type.
+
+Also, elements that are enumerated but do not yet exist, will be created as `missing` elements. This `missing` element status is resolved by the `upsert-element` operation.
+
+```
+{
+  "op": "enumerate-elements"
+  "type": Identifier              // Examples: "domain", "subdomain", "service", "person",  etc.
+  "elements": [ElementPath]
+}
+```
+
+
+
 
 All elements that are not `third-party` and that are not contained by any other will be implicitly contained by the element that represents your entire organization.
 
@@ -67,19 +124,7 @@ Argument:
 }
 ```
 
-### upsert-element
 
-Same as the `upsert-architecture` endpoint above, but restricted to the contents of a single container element. Replaces all built elements, all built dependencies and all built containments within that container element.
-
-Argument:
-```
-{
-  container: ElementPath
-  elements: Element[]
-  dependencies: Dependency[]
-  containments: Containment[]
-}
-```
 
 ## JSON Schemas
 
