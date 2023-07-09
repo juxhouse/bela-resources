@@ -15,11 +15,11 @@ An API token is provided to you when you sign-up for a BELA account.
 
 ## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/architecture`
 
-This endpoint allows you to assert the existence of things (elements, dependencies and containments) that form the entirety of your architecture or just a part of it.
+This endpoint allows you to upload your architecture or just a part of it to BELA.
 
-This endpoint does not expect you to inform the deletion or renaming of things in your architecture. Instead, it allows you to assert the things that do exist and BELA will garbage collect the rest.
+This endpoint does not expect you to inform the deletion or renaming of things (elements, dependencies and containments) in your architecture. Instead, it allows you to assert the things that do exist and BELA will garbage collect the rest.
 
-This endpoint receives an array of operations. Operations are carried out one after the other in the order they are provided. However, the overall combined effect of all operations is applied atomically, as a single transaction.
+This endpoint receives an array of operations. You can think of operations as being executed one after the other in the order they are provided. However, the overall combined effect of all operations happens atomically, as a single transaction.
 
 **Body**
 ```
@@ -45,28 +45,34 @@ Creates/updates an element with the given attributes.
 ```
 {
   "op": "upsert-element"
-  "path": ElementPath        // Primary key.
-  "name": String             // Optional. Defaults to last segment in the path.
-  "type": Identifier         // Optional. Defaults to the first segment in the path.
-                             // Examples: "domain", "subdomain", "person",  "package", "class", "function",
-                             //           "service", "endpoint", "topic", "queue", "bucket", "table", etc.
-  "technology": Identifier   // Optional. Examples: "java", "php", "clojure", "python", "kafka", "http", etc.
-  "third-party": boolean     // Optional. Defaults to false.
-  "description": String      // Optional.
-  "metadata": Object         // Optional. Any extra, useful information.
+  "path": ElementPath           // Primary key.
+  "name": String                // Optional. Defaults to last segment in the path.
+  "type": Identifier            // Optional. Defaults to the first segment in the path.
+                                // Examples: "domain", "subdomain", "person",  "package", "class", "function",
+                                //           "service", "endpoint", "topic", "queue", "bucket", "table", etc.
+  "technology": Identifier      // Optional. Examples: "java", "php", "clojure", "python", "kafka", "http", etc.
+  "third-party": boolean        // Optional. Defaults to false.
+  "description": String         // Optional.
+  "extra": Object               // Optional. Any extra, useful information.
 
-  "dependencies": [Dependency]
+  "dependencies": [Dependency]  // Optional.
 }
 ```
 
-### `garbage-collect-elements`
+### `garbage-collect`
 
-Receives an array of `elements-to-keep` and deletes the elements of the given type that are not contained in that array. In other words: performs garbage collection on elements of a given type.
+Receives an array of paths of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element type and a container to restrict the scope of elements to be deleted.
+
+In other words: performs garbage collection on elements of a given type contained in a given container element.
+
+Performing this operation with no `container`, no `type` and no `elements-to-keep` will delete your entire architecture. This can be used as the first operation in a transaction that uploads your entire architecture, for example.
 
 ```
 {
-  "op": "enumerate-elements"
-  "type": Identifier                  // Examples: "domain", "subdomain", "service", "person",  etc.
+  "op": "garbage-collect"
+  "container": ElementPath            // Optional. Restricts deletions to contents of this container.
+  "type": Identifier                  // Optional. Restricts deletions to elements of this type.
+                                      // Examples: "domain", "subdomain", "service", "person",  etc.
   "elements-to-keep": [ElementPath]
 }
 ```
@@ -74,12 +80,7 @@ Receives an array of `elements-to-keep` and deletes the elements of the given ty
 
 
 
-All elements that are not `third-party` and that are not contained by any other will be implicitly contained by the element that represents your entire organization.
-
-Repo pipeline
-	Upsert only repo contents without deleting other elements in the org
-	3rd party elements detected?
-	Other elements detected? Monorepo with multiple elements (projects) inside.
+All elements that are not `third-party` and that are not contained by any other will be contained by the implicit top-level `organization` container.
 
 Big Picture outside-in (Definition)
 	Subdomain A contains Service 1
@@ -95,10 +96,6 @@ Inside-out (Repo has info instead of definition (Heroku))
 
 
 
-
-Replaces all built elements, all built dependencies and all built containments.
-
-All built elements that are not marked as "third-party" and that do not have a container will be contained by the implicit top-level organization container.
 
 Modeled elements, modeled dependencies and modeled containments are preserved. Modeled elements that have the same path (see "ElementPath" below) as a new built element, will have `(Model)` appended to their name.
 
