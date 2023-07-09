@@ -4,7 +4,7 @@
 
 ## Host
 
-Your BELA API host address is provided to you when you sign-up for a BELA account. Each account has its own exclusive host.
+Your BELA API host address is provided to you when you sign-up for a BELA account. Each account has an exclusive host.
 
 ## Headers
 
@@ -15,7 +15,11 @@ An API token is provided to you when you sign-up for a BELA account.
 
 ## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/architecture`
 
-The server accepts an array of operations. Operations are carried out one after the other in the order they are provided. However, the overall combined effect of all operations is applied atomically, as a single transaction.
+This endpoint allows you to assert the existence of things (elements, dependencies and containments) that form the entirety of your architecture or just a part of it.
+
+This endpoint does not expect you to inform the deletion or renaming of things in your architecture. Instead, it allows you to assert the things that do exist and BELA will garbage collect the rest.
+
+This endpoint receives an array of operations. Operations are carried out one after the other in the order they are provided. However, the overall combined effect of all operations is applied atomically, as a single transaction.
 
 **Body**
 ```
@@ -36,12 +40,12 @@ Errors will be returned as some HTTP error code with a helpful message in the re
 
 ### `upsert-element`
 
-Ensures the existence of an element.
+Creates/updates an element with the given attributes.
 
 ```
 {
   "op": "upsert-element"
-  "path": ElementPath
+  "path": ElementPath        // Primary key.
   "name": String             // Optional. Defaults to last segment in the path.
   "type": Identifier         // Optional. Defaults to the first segment in the path.
                              // Examples: "domain", "subdomain", "person",  "package", "class", "function",
@@ -50,34 +54,20 @@ Ensures the existence of an element.
   "third-party": boolean     // Optional. Defaults to false.
   "description": String      // Optional.
   "metadata": Object         // Optional. Any extra, useful information.
+
+  "dependencies": [Dependency]
 }
 ```
 
-### `enumerate-elements`
+### `garbage-collect-elements`
 
-Deletes elements of the given type that are not enumerated. In other words: performs garbage collection on elements of a given type.
-
-Creates elements that are enumerated, but do not yet exist, as `missing` elements. This `missing` element status will be resolved by a subsequent `upsert-element` operation for that element.
+Receives an array of `elements-to-keep` and deletes the elements of the given type that are not contained in that array. In other words: performs garbage collection on elements of a given type.
 
 ```
 {
   "op": "enumerate-elements"
-  "type": Identifier              // Examples: "domain", "subdomain", "service", "person",  etc.
-  "elements": [ElementPath]
-}
-```
-
-### `enumerate-dependencies`
-
-Deletes dependencies of the given type that are not enumerated. In other words: performs garbage collection on elements of a given type.
-
-Also, elements that are enumerated but do not yet exist, will be created as `missing` elements. This `missing` element status is resolved by the `upsert-element` operation.
-
-```
-{
-  "op": "enumerate-elements"
-  "type": Identifier              // Examples: "domain", "subdomain", "service", "person",  etc.
-  "elements": [ElementPath]
+  "type": Identifier                  // Examples: "domain", "subdomain", "service", "person",  etc.
+  "elements-to-keep": [ElementPath]
 }
 ```
 
@@ -85,7 +75,6 @@ Also, elements that are enumerated but do not yet exist, will be created as `mis
 
 
 All elements that are not `third-party` and that are not contained by any other will be implicitly contained by the element that represents your entire organization.
-
 
 Repo pipeline
 	Upsert only repo contents without deleting other elements in the org
