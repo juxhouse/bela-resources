@@ -1,5 +1,3 @@
-(Under construction)
-
 # BELA Web API
 
 ## Host
@@ -40,93 +38,77 @@ Errors will be returned as some HTTP error code with a helpful message in the re
 
 ### `upsert-element`
 
-Creates/updates an element with the given attributes.
+Creates/updates a built element with the given attributes.
+
+Modeled elements that have the same path (see "ElementPath" below) as a new built element, will have `(Model)` appended to their name.
 
 ```
 {
   "op": "upsert-element"
   "path": ElementPath           // Primary key.
   "name": String                // Optional. Defaults to last segment in the path.
-  "type": Identifier            // Optional. Defaults to the first segment in the path.
-                                // Examples: "domain", "subdomain", "person",  "package", "class", "function",
-                                //           "service", "endpoint", "topic", "queue", "bucket", "table", etc.
-  "technology": Identifier      // Optional. Examples: "java", "php", "clojure", "python", "kafka", "http", etc.
+  "type": Type                  // Optional. Defaults to the first segment in the path.
+  "technology": Technology      // Optional.
   "third-party": boolean        // Optional. Defaults to false.
   "description": String         // Optional.
-  "extra": Object               // Optional. Any extra, useful information.
+  "extra": Object               // Optional. Any extra information you want to store. It is opaque to BELA.
 
-  "dependencies": [Dependency]  // Optional.
+  "dependencies": [Dependency]  // Optional. All this element's dependencies.
+                                // Deletes any dependencies that this element had and that are not in this array.
 }
 ```
+
+### `add-contents`
+
+Receives an array of element paths and adds them as direct `contents` of the given `container`.
+
+Does not delete old contents, so that multiple different uploads from different sources can contribute to the contents of a same container. To delete old contents, use the `garbage-collect` operation.
+
+```
+{
+  "op": "add-contents"
+  "container": ElementPath
+  "contents": [ElementPath]
+}
+```
+
 
 ### `garbage-collect`
 
 Receives an array of paths of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element type and a container to restrict the scope of elements to be deleted.
 
-In other words: performs garbage collection on elements of a given type contained in a given container element.
+In other words: performs garbage collection on elements of a given `type`, contained in a given element.
 
-Performing this operation with no `container`, no `type` and no `elements-to-keep` will delete your entire architecture. This can be used as the first operation in a transaction that uploads your entire architecture, for example.
+Performing this operation with no `container`, no `type` and no `elements-to-keep` will delete your entire architecture. This can be used, for example, as the first operation in a transaction that uploads a small architecture entirely.
+
+Modeled elements are not affected by this operation, only built elements are. Deleted built elements will be displayed as `missing` if it they have any containment or dependency relationship with a modeled element.
 
 ```
 {
   "op": "garbage-collect"
   "container": ElementPath            // Optional. Restricts deletions to contents of this container.
-  "type": Identifier                  // Optional. Restricts deletions to elements of this type.
-                                      // Examples: "domain", "subdomain", "service", "person",  etc.
+  "depth": Identifier                 // Optional. "direct-contents" or "all-contents". Must be provided if and only if container is provided.
+                                      // "direct-contents" means only the elements that are directly contained by the container.
+                                      // "all-contents" means all elements directly or indirectly contained by the container.
+  "type": Type                        // Optional. Restricts deletions to elements of this type.
   "elements-to-keep": [ElementPath]
 }
 ```
 
+## Schemas
 
+### Type
 
+Identifier. The type of an element.
 
-All elements that are not `third-party` and that are not contained by any other will be contained by the implicit top-level `organization` container.
+Examples: domain, subdomain, person, package, class, function, service, endpoint, topic, queue, bucket, table, etc.
 
-Big Picture outside-in (Definition)
-	Subdomain A contains Service 1
+### Technology
 
-Inside-out (Repo has info instead of definition (Heroku))
-	Service 1 is contained by Subdomain A
+Identifier. The technology of an element or depedency.
 
-	"Add containment" (not upsert all containments)
-		Delete old?
-			Upsert full contents of element
-			Delete all elements of type T not in this list.
+Examples: java, php, clojure, python, kafka, http, etc.
 
-
-
-
-
-Modeled elements, modeled dependencies and modeled containments are preserved. Modeled elements that have the same path (see "ElementPath" below) as a new built element, will have `(Model)` appended to their name.
-
-This endpoint returns immediately but it can take a few seconds to process, depending on the size of the payload. When done processing, the entire new built architecture will be available atomically.
-
-Argument:
-```
-{
-  elements: Element[]
-  dependencies: Dependency[]
-  containments: Containment[]
-}
-```
-
-
-
-## JSON Schemas
-
-### Element
-```
-{
-  path: ElementPath
-  name: String             // Optional. Defaults to last segment in the path.
-  type: Identifier         // Optional. Defaults to the first segment in the path.
-                           // Examples: "package", "class", "function", "service", "endpoint", "topic", "queue", "bucket", "table", etc.
-  technology: Identifier   // Optional. Examples: "java", "php", "clojure", "python", "kafka", "http", etc.
-  third-party: boolean     // Optional. Defaults to false.
-  description: String      // Optional.
-  metadata: Object         // Optional. Any extra, useful information. Ignored for now (2023-04)
-}
-```
 
 **Examples**
 ```
@@ -157,23 +139,29 @@ Argument:
 
 {
   :path "maven-group|house.jux|bela|bela"
-  :type "namespace"
-  :technology "clojure"
+  :type "package"
+  :technology "java"
 }
 
 {
-  :path "maven-group|house.jux|bela|bela|biz"
-  :type "namespace"
-  :technology "clojure"
+  :path "maven-group|house.jux|bela|bela|Biz"
+  :type "class"
+  :technology "java"
 }
 
 {
-  :path "maven-group|house.jux|bela|bela|biz|diagram-get"
-  :type "function"
-  :technology "clojure"
+  :path "maven-group|house.jux|bela|bela|Biz|getDiagram()"
+  :type "method"
+  :technology "java"
 }
 
 ```
+
+
+
+
+
+
 
 ### ElementPath
 
