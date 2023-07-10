@@ -4,6 +4,7 @@
 
 Your BELA API host address is provided to you when you sign-up for a BELA account. Each account has an exclusive host.
 
+
 ## Headers
 
 `Authorization: Token <your-token>`
@@ -11,11 +12,12 @@ An API token is provided to you when you sign-up for a BELA account.
 
 `Content-Type: application/json`
 
+
 ## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/architecture`
 
 This endpoint allows you to upload your architecture or just a part of it to BELA.
 
-This endpoint does not expect you to inform the deletion or renaming of things (elements, dependencies and containments) in your architecture. Instead, it allows you to assert the things that do exist and BELA will garbage collect the rest.
+This API does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the built elements, dependencies and containments that do exist and BELA will garbage collect the rest.
 
 This endpoint receives an array of operations. You can think of operations as being executed one after the other in the order they are provided. However, the overall combined effect of all operations happens atomically, as a single transaction.
 
@@ -33,6 +35,7 @@ The server replies immediately but can take a few seconds to process the request
 **Reply Error Codes**
 
 Errors will be returned as some HTTP error code with a helpful message in the reply body.
+
 
 ## Operations
 
@@ -95,6 +98,7 @@ Modeled elements are not affected by this operation, only built elements are. De
 }
 ```
 
+
 ## Schemas
 
 ### Type
@@ -108,56 +112,6 @@ Examples: domain, subdomain, person, package, class, function, service, endpoint
 Identifier. The technology of an element or depedency.
 
 Examples: java, php, clojure, python, kafka, http, etc.
-
-
-**Examples**
-```
-{
-  :path "domain|Credit"
-}
-
-{
-  :path "domain|Credit|CreditCard"
-  :type "subdomain"
-}
-
-{
-  :path "domain|Credit|CreditCard|Mastercard"
-  :type "subdomain"
-}
-
-{
-  :path "maven-group|house.jux"
-  :technology "maven"
-}
-
-{
-  :path "maven-group|house.jux|bela"
-  :type "artifact"
-  :technology "maven"
-}
-
-{
-  :path "maven-group|house.jux|bela|bela"
-  :type "package"
-  :technology "java"
-}
-
-{
-  :path "maven-group|house.jux|bela|bela|Biz"
-  :type "class"
-  :technology "java"
-}
-
-{
-  :path "maven-group|house.jux|bela|bela|Biz|getDiagram()"
-  :type "method"
-  :technology "java"
-}
-
-```
-
-
 
 
 
@@ -175,14 +129,14 @@ The paths of modeled elements are composed of their type and name: `type|name`. 
 
 **Examples**
 ```
-- "service|billing" (type service)
-- "service|billing|billing" (type package)
-- "service|billing|billing|core" (type package)
-- "service|billing|billing|core|Bill" (type class)
-- "service|billing|billing|core|Bill|isDue" (type method)
+- "service|billing" (Type: service)
+- "service|billing|billing" (Type: package)
+- "service|billing|billing|core" (Type: package)
+- "service|billing|billing|core|Bill" (Type: class)
+- "service|billing|billing|core|Bill|isDue()" (Type: method)
 
-- "team|billing" (type team)
-- "team|billing|backend" (type squad)
+- "team|billing" (Type: tribe)
+- "team|billing|backend" (Type: squad)
 ```
 
 ### Dependency
