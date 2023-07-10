@@ -49,8 +49,8 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
 {
   "op": "upsert-element"
   "path": ElementPath           // Primary key.
+  "type": ElementType           // Optional. Defaults to the first segment in the path.
   "name": String                // Optional. Defaults to last segment in the path.
-  "type": Type                  // Optional. Defaults to the first segment in the path.
   "technology": Technology      // Optional.
   "third-party": boolean        // Optional. Defaults to false.
   "description": String         // Optional.
@@ -78,9 +78,9 @@ Does not delete old contents, so that multiple different uploads from different 
 
 ### `garbage-collect`
 
-Receives an array of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element type and a container to restrict the scope of the deletion.
+Receives an array of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element `type` and a `container` to restrict the scope of the deletion.
 
-In other words: performs garbage collection on elements of a given `type`, contained in a given element.
+In other words: performs garbage collection on elements of a given type, contained in a given element.
 
 Performing this operation with no `container`, no `type` and no `elements-to-keep` will delete your entire architecture. This can be used, for example, as the first operation in a transaction that uploads a small architecture entirely.
 
@@ -93,7 +93,7 @@ Modeled elements are not affected by this operation, only built elements are. De
   "depth": Identifier                 // Optional. "direct-contents" or "all-contents". Must be provided if and only if container is provided.
                                       // "direct-contents" restricts the deletion only to elements that are directly contained by the container.
                                       // "all-contents" restricts the deletion to elements directly or indirectly contained by the container.
-  "type": Type                        // Optional. Restricts deletions to elements of this type.
+  "type": ElementType                 // Optional. Restricts deletions to elements of this type.
   "elements-to-keep": [ElementPath]
 }
 ```
@@ -101,9 +101,9 @@ Modeled elements are not affected by this operation, only built elements are. De
 
 ## Schemas
 
-### Type
+### ElementType
 
-Identifier. The type of an element.
+Identifier.
 
 Examples: domain, subdomain, person, package, class, function, service, endpoint, topic, queue, bucket, table, etc.
 
@@ -113,57 +113,43 @@ Identifier. The technology of an element or depedency.
 
 Examples: java, php, clojure, python, kafka, http, etc.
 
-
-
-
-
 ### ElementPath
 
-Any non-empty String. It uniquely identifies the element.
+String. A primary key for elements.
 
-Paths are case-sensitive: "getName" and "getname" are NOT the same path.
+A path is composed of two or more segments separated by the pipe character "|". The pipe character is used instead of the more common slash "/" character so that you can use slashes as part of your segments without having to escape them.
 
-You can optionally use the pipe character "|" to indicate segments in the path. If an element has a path that starts with the segments of the path of another element, BELA will implicitly create a containment relationship between both elements.
+Path segments are case-sensitive: "getName()" and "getname()" are NOT the same.
 
-The paths of modeled elements are composed of their type and name: `type|name`. Modeled elements that have the same path as a new built element, will have `(Model)` appended to their name.
-
-**Examples**
+The first segment is always an `ElementType`. You can think of it as a namespace, so that you can have elements with the same name if they have different types, for example:
 ```
-- "service|billing" (Type: service)
-- "service|billing|billing" (Type: package)
-- "service|billing|billing|core" (Type: package)
-- "service|billing|billing|core|Bill" (Type: class)
-- "service|billing|billing|core|Bill|isDue()" (Type: method)
-
-- "team|billing" (Type: tribe)
-- "team|billing|backend" (Type: squad)
+- service|Billing
+- tribe|Billing
 ```
+
+Elements with only 2 segments in their path, such as the examples above, can be added as contents to other elements.
+
+Elements with 3 or more path segments, however, have their containment predefined by their path, much like folders and files in a filesystem. They cannot be added as contents to other elements. In this example, each elements is contained by the element above it:
+```
+- service|Billing (type: service)
+- service|Billing|billing (type: package)
+- service|Billing|billing|core (type: package)
+- service|Billing|billing|core|Bill (type: class)
+- service|Billing|billing|core|Bill|isDue() (type: method)
+```
+
+The paths of modeled elements are composed of their type and name: `type|name`. Modeled elements that have the same path as a new uploaded built element, will have `(Model)` appended to their name.
 
 ### Dependency
 ```
 {
-  from: ElementPath
   to:   ElementPath
   name: String                    // Optional. Case-sensitive. Required when more than one dependency exists between the same elements.
   description: String             // Optional.
-  technology: Identifier          // Optional. Examples: "http", "kafka", "method-call", "function-call"
-  async: boolean                  // Optional. Defaults to false. Displayed as a dashed line in the diagrams.
-  dataflow-direction: Identifier  // Optional. "read", "write", "read-write", "unknown". Defaults to "unknown". Displayed with one, two or no arrowheads.
-}
-```
-
-### Containment
-
-Containment relationships are created implicitly between elements that share the same initial path segments, as seen above.
-
-They can also be created explicitly between elements that don't have a containment relationship implied by their path. A microservice inside a business domain is an example.
-
-An element can NOT be contained by more than one container.
-
-```
-{
-  container: ElementPath.  // Example: "domain|billing"
-  contained: ElementPath.  // Example: "service|payments"
+  technology: Technology          // Optional.
+  async: boolean                  // Optional. Defaults to false.
+  dataflow-direction: Identifier  // Optional. "read", "write", "read-write", "none".
+                                  // Defaults to "none". Displayed with one, two or no arrowheads.
 }
 ```
 
