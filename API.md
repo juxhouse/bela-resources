@@ -17,9 +17,9 @@ An API token is provided to you when you sign-up for a BELA account.
 
 This endpoint allows you to upload your architecture or a part of it to BELA.
 
-This API does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that do exist and BELA will garbage collect the rest.
+This API does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-This endpoint receives an array of operations. You can think of operations as being executed one after the other in the order they are provided. However, the overall combined effect of all operations happens atomically, as a single transaction.
+This endpoint receives an array of operations. You can think of operations as being executed one after the other, in order. However, the overall combined effect of all operations happens atomically, as a single transaction.
 
 **Body**
 ```
