@@ -78,7 +78,7 @@ Does not delete old contents, so that multiple different uploads from different 
 
 ### `garbage-collect`
 
-Receives an array of paths of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element type and a container to restrict the scope of elements to be deleted.
+Receives an array of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element type and a container to restrict the scope of the deletion.
 
 In other words: performs garbage collection on elements of a given `type`, contained in a given element.
 
@@ -91,8 +91,8 @@ Modeled elements are not affected by this operation, only built elements are. De
   "op": "garbage-collect"
   "container": ElementPath            // Optional. Restricts deletions to contents of this container.
   "depth": Identifier                 // Optional. "direct-contents" or "all-contents". Must be provided if and only if container is provided.
-                                      // "direct-contents" means only the elements that are directly contained by the container.
-                                      // "all-contents" means all elements directly or indirectly contained by the container.
+                                      // "direct-contents" restricts the deletion only to elements that are directly contained by the container.
+                                      // "all-contents" restricts the deletion to elements directly or indirectly contained by the container.
   "type": Type                        // Optional. Restricts deletions to elements of this type.
   "elements-to-keep": [ElementPath]
 }
