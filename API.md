@@ -84,7 +84,7 @@ In other words: performs garbage collection on elements of a given type, contain
 
 Performing this operation with no `container`, no `type` and no `elements-to-keep` will delete your entire architecture. This can be used, for example, as the first operation in a transaction that uploads a small architecture entirely.
 
-Modeled elements are not affected by this operation, only built elements are. Deleted built elements will be displayed as `missing` if it they have any containment or dependency relationship with a modeled element.
+Modeled elements are not affected by this operation, only built elements are. Deleted built elements will be displayed as `missing` if they have any containment or dependency relationship with a modeled element.
 
 ```
 {
