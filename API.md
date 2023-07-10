@@ -103,15 +103,11 @@ Modeled elements are not affected by this operation, only built elements are. De
 
 ### ElementType
 
-Identifier.
-
-Examples: domain, subdomain, person, package, class, function, service, endpoint, topic, queue, bucket, table, etc.
+Identifier. Examples: domain, subdomain, person, package, class, function, service, endpoint, topic, queue, bucket, table, etc.
 
 ### Technology
 
-Identifier. The technology of an element or depedency.
-
-Examples: java, php, clojure, python, kafka, http, etc.
+Identifier. Examples: java, php, clojure, python, kafka, http, etc.
 
 ### ElementPath
 
