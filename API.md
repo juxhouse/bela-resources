@@ -15,7 +15,7 @@ An API token is provided to you when you sign-up for a BELA account.
 
 ## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/architecture`
 
-This endpoint allows you to upload your architecture or just a part of it to BELA.
+This endpoint allows you to upload your architecture or a part of it to BELA.
 
 This API does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that do exist and BELA will garbage collect the rest.
 
