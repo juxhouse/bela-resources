@@ -30,7 +30,7 @@ This endpoint receives an array of operations. You can think of operations as be
 
 **Reply Success Code** `202`
 
-The server replies immediately but can take a few seconds to process the request, depending on the size of the transaction.
+The server replies immediately but can take a few seconds to process the request, depending on its size.
 
 **Reply Error Codes**
 
