@@ -129,7 +129,7 @@ The first segment is always an `ElementType`. You can think of it as a namespace
 
 Elements with only 2 segments in their path, such as the examples above, can be added as contents to other elements.
 
-Elements with 3 or more path segments, however, have their containment predefined by their path, much like folders and files in a filesystem. They cannot be added as contents to other elements. In this example, each elements is contained by the element above it:
+Elements with 3 or more path segments, however, have their containment predefined by their path, much like folders and files in a filesystem. They cannot be added as contents to other elements. In this example, each element is contained by the element above it:
 ```
 - service|Billing (type: service)
 - service|Billing|billing (type: package)
@@ -143,8 +143,8 @@ The paths of modeled elements are composed of their type and name: `type|name`. 
 ### Dependency
 ```
 {
-  to:   ElementPath
-  name: String                    // Optional. Case-sensitive. Required when more than one dependency exists between the same elements.
+  to: ElementPath
+  name: String                    // Optional. Case-sensitive. Required when more than one dependency exists between the same two elements.
   description: String             // Optional.
   technology: Technology          // Optional.
   async: boolean                  // Optional. Defaults to false.
