@@ -65,7 +65,9 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
 
 Receives an array of element paths and adds them as direct `contents` of the given `container`.
 
-Does not delete old contents, so that multiple different uploads from different sources can contribute to the contents of a same container. To delete old contents, use the `garbage-collect` operation.
+This operation:
+  - Removes `contents` from their old containers, if any.
+  - DOES NOT remove old contents from `container`, so that multiple different uploads from different sources can contribute contents to a same `container`. To delete old contents, use the `garbage-collect` operation.
 
 ```
 {
