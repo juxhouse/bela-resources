@@ -49,7 +49,7 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
 {
   "op": "upsert-element"
   "path": ElementPath           // Primary key.
-  "type": ElementType           // Optional. Defaults to the first segment in the path.
+  "type": ElementType           // See ElementType below.
   "name": String                // Optional. Defaults to last segment in the path.
   "technology": Technology      // Optional.
   "third-party": boolean        // Optional. Defaults to false.
@@ -105,6 +105,8 @@ Modeled elements are not affected by this operation, only built elements are. De
 
 Identifier. Examples: domain, subdomain, person, package, class, function, service, endpoint, topic, queue, bucket, table, etc.
 
+See also: ElementPath.
+
 ### Technology
 
 Identifier. Examples: java, php, clojure, python, kafka, http, etc.
@@ -119,22 +121,24 @@ Path segments are case-sensitive: "getName()" and "getname()" are NOT the same.
 
 The first segment is always an `ElementType`. You can think of it as a namespace, so that you can have elements with the same name if they have different types, for example:
 ```
-- service|Billing
-- tribe|Billing
+- service/Billing
+- squad/Billing
 ```
 
-Elements with only 2 segments in their path, such as the examples above, can be added as contents to other elements.
+Elements with only 2 segments in their path, such as the examples above:
+  - Have their ElementType defined by the first segment.
+  - Can be added as contents to other elements.
 
-Elements with 3 or more path segments, however, have their containment predefined by their path, much like folders and files in a filesystem. They cannot be added as contents to other elements. In this example, each element is contained by the element above it:
+Elements with 3 or more path segments have their containment predefined by their path, much like folders and files in a filesystem. They cannot be added as contents to other elements. In this example, each element is contained by the element above it:
 ```
-- service|Billing (type: service)
-- service|Billing|billing (type: package)
-- service|Billing|billing|core (type: package)
-- service|Billing|billing|core|Bill (type: class)
-- service|Billing|billing|core|Bill|isDue() (type: method)
+- service/Billing (ElementType: service)
+- service/Billing/billing (ElementType: package)
+- service/Billing/billing/core (ElementType: package)
+- service/Billing/billing/core/Bill (ElementType: class)
+- service/Billing/billing/core/Bill/isDue() (ElementType: method)
 ```
 
-The paths of modeled elements are composed of their type and name: `type|name`. Modeled elements that have the same path as a new uploaded built element, will have `(Model)` appended to their name.
+The paths of modeled elements are composed of their type and name: `type/name`. Modeled elements that have the same path as a new uploaded built element, will have `(Model)` appended to their name.
 
 ### Dependency
 ```
