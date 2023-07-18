@@ -28,9 +28,7 @@ This endpoint receives an array of operations. You can think of operations as be
 }
 ```
 
-**Reply Success Code** `202`
-
-The server replies immediately but can take a few seconds to process the request, depending on its size.
+**Reply Success Code** `200`
 
 **Reply Error Codes**
 
