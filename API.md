@@ -113,7 +113,7 @@ Identifier. Examples: java, php, clojure, python, kafka, http, etc.
 
 String. A primary key for elements.
 
-A path is composed of two or more segments separated by the pipe character "|". The pipe character is used instead of the more common slash "/" character so that you can use slashes as part of your segments without having to escape them.
+A path is composed of two or more segments separated by slash. You cannot have slash as a character in a path segment.
 
 Path segments are case-sensitive: "getName()" and "getname()" are NOT the same.
 
