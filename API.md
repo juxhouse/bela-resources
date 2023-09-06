@@ -1,5 +1,8 @@
 # BELA Web API
 
+This API is composed of a single endpoint that allows you to upload your architecture or a part of it to BELA. It is called typically by repository actions (Github actions, for example) everytime the main branch is updated with new commits.
+
+
 ## Host
 
 Your BELA API host address is provided to you when you sign-up for a BELA account. Each account has an exclusive host.
@@ -17,9 +20,9 @@ An API token is provided to you when you sign-up for a BELA account.
 
 This endpoint allows you to upload your architecture or a part of it to BELA.
 
-This API does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
+It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-This endpoint receives an array of operations. You can think of operations as being executed one after the other, in order. However, the overall combined effect of all operations happens atomically, as a single transaction.
+This endpoint receives an array of operations. You can think of operations as being executed one after the other, in order. However, the overall combined effect of all operations takes effect atomically, as a single transaction.
 
 **Body**
 ```
