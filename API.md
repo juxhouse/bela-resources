@@ -59,22 +59,22 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
 }
 ```
 
-### `upsert-dependencies`
+### `add-dependencies`
 
 Receives an array of element paths and adds them as direct dependencies `to` of the given `from`.
 
 This operation:
-  - DOES NOT remove old dependecies `to` from `from`, so that multiple different uploads from different sources can contribute depdencies `to` to a same `from`. To delete old dependencies, use the `garbage-collect` operation.
+  - DOES NOT remove old dependencies `to` from `from`, so that multiple different uploads from different sources can contribute dependencies `to` to a same `from`. To delete old dependencies, use the `garbage-collect` operation.
 
 ```
 {
-  "op": "upsert-dependencies"
+  "op": "add-dependencies"
   "from": ElementPath
   "to": [ElementPath]
 }
 ```
 
-### `upsert-containments`
+### `add-containments`
 
 Receives an array of element paths and adds them as direct `contents` of the given `container`.
 
@@ -84,7 +84,7 @@ This operation:
 
 ```
 {
-  "op": "upsert-containments"
+  "op": "add-containments"
   "container": ElementPath
   "contents": [ElementPath]
 }
