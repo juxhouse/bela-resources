@@ -61,7 +61,7 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
 
 ### `add-dependencies`
 
-Receives an array of element paths and adds them as direct dependencies `to` of the given `from`.
+Receives an array of dependencies and adds them as direct dependencies `to` of the given `from`.
 
 This operation:
   - DOES NOT remove old dependencies `to` from `from`, so that multiple different uploads from different sources can contribute dependencies `to` to a same `from`. To delete old dependencies, use the `garbage-collect` operation.
