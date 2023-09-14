@@ -63,7 +63,7 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
 
 Receives an array of dependencies and adds them as dependencies `from` the given element.
 
-This operation DOES NOT delete old dependencies. To delete old dependencies, use the `garbage-collect` operation.
+This operation DOES NOT delete any dependencies. To delete old dependencies, use the `garbage-collect` operation.
 
 
 ```
@@ -80,7 +80,7 @@ Receives an array of element paths and adds them as direct `contents` of the giv
 
 This operation:
   - Removes `contents` from their old containers, if any.
-  - DOES NOT delete old contents from `container`. To delete old contents, use the `garbage-collect` operation.
+  - DOES NOT delete other contents from `container`. To delete old contents, use the `garbage-collect` operation.
 
 ```
 {
