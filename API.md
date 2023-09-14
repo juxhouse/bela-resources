@@ -70,7 +70,7 @@ This operation:
 {
   "op": "add-dependencies"
   "from": ElementPath
-  "to": [ElementPath]
+  "dependencies": [Dependency]  // See Dependency below.
 }
 ```
 
