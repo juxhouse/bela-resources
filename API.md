@@ -56,13 +56,25 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
   "third-party": boolean        // Optional. Defaults to false.
   "description": String         // Optional.
   "extra": Object               // Optional. Any extra information you want to store. It is opaque to BELA.
-
-  "dependencies": [Dependency]  // Optional. All this element's dependencies.
-                                // Deletes any dependencies that this element had and that are not in this array.
 }
 ```
 
-### `add-contents`
+### `add-dependencies`
+
+Receives an array of dependencies and adds them as direct dependencies `to` of the given `from`.
+
+This operation:
+  - DOES NOT remove old dependencies `to` from `from`, so that multiple different uploads from different sources can contribute dependencies `to` to a same `from`. To delete old dependencies, use the `garbage-collect` operation.
+
+```
+{
+  "op": "add-dependencies"
+  "from": ElementPath
+  "dependencies": [Dependency]  // See Dependency below.
+}
+```
+
+### `add-containments`
 
 Receives an array of element paths and adds them as direct `contents` of the given `container`.
 
@@ -72,7 +84,7 @@ This operation:
 
 ```
 {
-  "op": "add-contents"
+  "op": "add-containments"
   "container": ElementPath
   "contents": [ElementPath]
 }
