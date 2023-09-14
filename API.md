@@ -154,15 +154,23 @@ Elements with 3 or more path segments have their containment predefined by their
 The paths of modeled elements are composed of their type and name: `type/name`. Modeled elements that have the same path as a new uploaded built element, will have `(Model)` appended to their name.
 
 ### Dependency
+
+Dependencies are uniquely identified by the combination of `from` element, `to` element, `type` and `name`.
+
+An element can have more than one dependency on another element as long as these dependencies have different types or names.
+
 ```
 {
   to: ElementPath
-  name: String                    // Optional. Case-sensitive. Required when more than one dependency exists between the same two elements.
+  name: String                    // Optional. Case sensitive.
+  type: Identifier                // Optional.
   description: String             // Optional.
-  technology: Technology          // Optional.
-  async: boolean                  // Optional. Defaults to false.
-  dataflow-direction: Identifier  // Optional. "read", "write", "read-write", "none".
-                                  // Defaults to "none". Displayed with one, two or no arrowheads.
+  tags: [Identifier]              // Optional. You can have any tags you want.
+                                  // BELA displays the following tags in special ways:
+                                  //   read: Displayed as an arrowhead
+                                  //   write: Displayed as an arrowhead
+                                  //   async: Displayed as a dashed line
+                                  //   implements: Displayed as a big, hollow arrowhead.
 }
 ```
 
