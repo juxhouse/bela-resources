@@ -1,6 +1,10 @@
 # BELA Web API
 
-This API is composed of a single endpoint that allows you to upload your architecture or a part of it to BELA. It is called typically by repository actions (Github actions, for example) everytime the main branch is updated with new commits.
+This API is composed of a single endpoint that allows you to upload your architecture or a part of it to BELA.
+
+It is called typically by repository actions (Github actions, for example) everytime the main branch is updated with new commits.
+
+It can also be called daily, for example, by processes that read architecture information from production monitoring tools such as Dynatrace and Datadog.
 
 
 ## Host
@@ -22,11 +26,14 @@ This endpoint allows you to upload your architecture or a part of it to BELA.
 
 It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-This endpoint receives an array of operations. You can think of operations as being executed one after the other, in order. However, the overall combined effect of all operations takes effect atomically, as a single transaction.
+You can upload elements from different `sources`. See "Source" section below.
+
+This endpoint receives a `transaction` as an array of `operations`. The effect of all operations is applied to BELA atomically.
 
 **Body**
 ```
 {
+  "source": Source
   "transaction": [Operation]
 }
 ```
@@ -44,7 +51,7 @@ Errors will be returned as some HTTP error code with a helpful message in the re
 
 Creates/updates a built element with the given attributes.
 
-Modeled elements that have the same path (see "ElementPath" below) as a new built element, will have `(Model)` appended to their name.
+Modeled elements that have the same path (see "ElementPath" section below) as a new built element, will have `(Model)` appended to their name.
 
 ```
 {
@@ -63,7 +70,7 @@ Modeled elements that have the same path (see "ElementPath" below) as a new buil
 
 Receives an array of dependencies and adds them as dependencies `from` the given element.
 
-This operation DOES NOT delete any dependencies. To delete old dependencies, use the `garbage-collect` operation.
+This operation DOES NOT delete any other existing dependencies.
 
 
 ```
@@ -79,8 +86,8 @@ This operation DOES NOT delete any dependencies. To delete old dependencies, use
 Receives an array of element paths and adds them as direct `contents` of the given `container`.
 
 This operation:
-  - Removes `contents` from their old containers, if any.
-  - DOES NOT delete other contents from `container`. To delete old contents, use the `garbage-collect` operation.
+  - Removes `contents` from their old containers, if any, since elements can only be contained by a single container.
+  - DOES NOT delete other contents from `container`.
 
 ```
 {
@@ -90,33 +97,22 @@ This operation:
 }
 ```
 
-
-### `garbage-collect`
-
-Receives an array of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element `type` and/or a `container` to restrict the scope of the deletion. Must receive a `type` or a `container` or both.
-
-In other words: performs garbage collection on elements of a given type, contained in a given element.
-
-Modeled elements are not affected by this operation, only built elements are. Deleted built elements will be displayed as `missing` if they have any containment or dependency relationship with a modeled element.
-
-```
-{
-  "op": "garbage-collect"
-  "container": ElementPath            // Optional. Restricts deletions to contents of this container.
-  "depth": Identifier                 // Optional. "direct-contents" or "all-contents". Must be provided if and only if container is provided.
-                                      // "direct-contents" restricts the deletion only to elements that are directly contained by the container.
-                                      // "all-contents" restricts the deletion to elements directly or indirectly contained by the container.
-  "type": ElementType                 // Optional. Restricts deletions to elements of this type.
-  "elements-to-keep": [ElementPath]
-}
-```
-
-
 ## Schemas
+
+### Source
+
+String. This is the source of the elements being uploaded. BELA will garbage collect elements and containments that are longer present in the latest upload of any of your sources.
+
+Examples:
+  - "https://github.com/my-company/my-repo"
+  - "my-service-postman-catalog"
+  - "my-company-dynatrace-logs"
+  - "my-teams-datadog-logs"
+  - etc
 
 ### ElementType
 
-Identifier. Examples: domain, subdomain, person, package, class, function, service, endpoint, topic, queue, bucket, table, etc.
+Identifier. Examples: domain, subdomain, person, package, class, function, method, service, endpoint, topic, queue, bucket, table, etc.
 
 See also: ElementPath.
 
