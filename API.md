@@ -22,12 +22,14 @@ This endpoint allows you to upload your architecture or a part of it to BELA.
 
 It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-This endpoint receives a `transaction` as an array of operations. The effect of all operations is applied to BELA atomically.
+You can upload elements from different `sources`.
+
+This endpoint receives a `transaction` as an array of `operations`. The effect of all operations is applied to BELA atomically.
 
 **Body**
 ```
 {
-  "source": String
+  "source": Source
   "transaction": [Operation]
 }
 ```
@@ -93,9 +95,20 @@ This operation:
 
 ## Schemas
 
+### Source
+
+String. This is the source of the elements being uploaded. BELA will garbage collect elements that are longer present in the latest upload of any of your sources.
+
+Examples:
+  - "https://github.com/my-company/my-repo"
+  - "my-service-postman-catalog"
+  - "my-company-dynatrace-logs"
+  - "my-teams-datadog-logs"
+  - etc
+
 ### ElementType
 
-Identifier. Examples: domain, subdomain, person, package, class, function, service, endpoint, topic, queue, bucket, table, etc.
+Identifier. Examples: domain, subdomain, person, package, class, function, method, service, endpoint, topic, queue, bucket, table, etc.
 
 See also: ElementPath.
 
