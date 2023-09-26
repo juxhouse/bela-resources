@@ -1,6 +1,10 @@
 # BELA Web API
 
-This API is composed of a single endpoint that allows you to upload your architecture or a part of it to BELA. It is called typically by repository actions (Github actions, for example) everytime the main branch is updated with new commits.
+This API is composed of a single endpoint that allows you to upload your architecture or a part of it to BELA.
+
+It is called typically by repository actions (Github actions, for example) everytime the main branch is updated with new commits.
+
+It can also be called daily, for example, by processes that read architecture information from production monitoring tools such as Dynatrace and Datadog.
 
 
 ## Host
@@ -22,7 +26,7 @@ This endpoint allows you to upload your architecture or a part of it to BELA.
 
 It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-You can upload elements from different `sources`.
+You can upload elements from different `sources`. See "Source" section below.
 
 This endpoint receives a `transaction` as an array of `operations`. The effect of all operations is applied to BELA atomically.
 
@@ -47,7 +51,7 @@ Errors will be returned as some HTTP error code with a helpful message in the re
 
 Creates/updates a built element with the given attributes.
 
-Modeled elements that have the same path (see "ElementPath" below) as a new built element, will have `(Model)` appended to their name.
+Modeled elements that have the same path (see "ElementPath" section below) as a new built element, will have `(Model)` appended to their name.
 
 ```
 {
