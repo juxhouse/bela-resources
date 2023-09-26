@@ -22,11 +22,12 @@ This endpoint allows you to upload your architecture or a part of it to BELA.
 
 It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-This endpoint receives an array of operations. You can think of operations as being executed one after the other, in order. However, the overall combined effect of all operations takes effect atomically, as a single transaction.
+This endpoint receives a `transaction` as an array of operations. The effect of all operations is applied to BELA atomically.
 
 **Body**
 ```
 {
+  "source": String
   "transaction": [Operation]
 }
 ```
@@ -89,28 +90,6 @@ This operation:
   "contents": [ElementPath]
 }
 ```
-
-
-### `garbage-collect`
-
-Receives an array of `elements-to-keep` and deletes elements that are not listed in that array. Can also receive an element `type` and/or a `container` to restrict the scope of the deletion. Must receive a `type` or a `container` or both.
-
-In other words: performs garbage collection on elements of a given type, contained in a given element.
-
-Modeled elements are not affected by this operation, only built elements are. Deleted built elements will be displayed as `missing` if they have any containment or dependency relationship with a modeled element.
-
-```
-{
-  "op": "garbage-collect"
-  "container": ElementPath            // Optional. Restricts deletions to contents of this container.
-  "depth": Identifier                 // Optional. "direct-contents" or "all-contents". Must be provided if and only if container is provided.
-                                      // "direct-contents" restricts the deletion only to elements that are directly contained by the container.
-                                      // "all-contents" restricts the deletion to elements directly or indirectly contained by the container.
-  "type": ElementType                 // Optional. Restricts deletions to elements of this type.
-  "elements-to-keep": [ElementPath]
-}
-```
-
 
 ## Schemas
 
