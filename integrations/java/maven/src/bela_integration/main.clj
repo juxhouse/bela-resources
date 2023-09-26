@@ -1,32 +1,34 @@
-(ns integration.main
+(ns bela-integration.main
   (:gen-class)
   (:import (java.io File FileReader)
            (org.apache.maven.model.io.xpp3 MavenXpp3Reader)))
 
 (def elements     (atom #{}))
 (def dependencies (atom #{}))
-(def cotainments  (atom #{}))
+(def container->contents (atom {}))
 
+;; TODO: Create element that represents the group-id (it will have the "maven-group" type)
+;; TODO: set as env var: bela-host, bela-token. set as str args: source, path-to-pom
 (defn- model-info->path [{:keys [artifact-id group-id]}]
-  (str group-id "/" artifact-id))
+  (str "maven/" group-id "/" artifact-id))
 
 (defn- create-element [element-info]
   (swap! elements conj {:path (model-info->path element-info)
                         :type ""
                         :technology "java"}))
 
-(defn- create-dependency-if-necessary [from-element-info dependencies-info]
-  (when (seq dependencies-info)
-    (swap! dependencies conj {:from (model-info->path from-element-info)
-                              :dependencies (map (fn [dependency-info]
-                                                   {:to (model-info->path dependency-info)})
-                                                 dependencies-info)})))
+(defn- create-dependency [from-element-info dependencies-info]
+  (swap! dependencies conj {:from (model-info->path from-element-info)
+                            :dependencies (map (fn [dependency-info]
+                                                 {:to (model-info->path dependency-info)})
+                                               dependencies-info)}))
 
-(defn- create-cotainment [container-info contents-info]
-  (swap! cotainments conj {:container (model-info->path container-info)
-                           :contents  (map (fn [content-info]
-                                             (model-info->path content-info))
-                                           contents-info)}))
+(defn- add-containment [container->contents {:keys [container content]}]
+  (update container->contents container (fnil conj #{}) content))
+
+(defn- create-containment [container-info content-info]
+  (swap! container->contents add-containment {:container (model-info->path container-info)
+                                              :content   (model-info->path content-info)}))
 
 (defn- get-model-info [model]
   {:artifact-id (.getArtifactId model)
@@ -36,7 +38,7 @@
 (defn- get-dependencies-info [model]
   (map get-model-info (.getDependencies model)))
 
-(defn- navigate-modules [pom-path]
+(defn- navigate-modules [pom-path parent-model-info]
   (let [pom-file (File. pom-path)]
     (if (not (.exists pom-file))
       (println "POM file does not exist:" pom-path)
@@ -47,23 +49,20 @@
                 model-info (get-model-info model)
                 deps-info  (get-dependencies-info model)]
             (create-element model-info)
-            (create-dependency-if-necessary model-info deps-info)
-            (prn @elements)
-            (prn @dependencies)
+            (when (seq deps-info)
+              (create-dependency model-info deps-info))
+            (when (seq parent-model-info)
+              (create-containment parent-model-info model-info))
             (let [modules (.getModules model)]
               (when (and modules (not (.isEmpty modules)))
-                #_(println "Modules:")
-                (run! 
+                (run!
                  (fn [module-name]
-                   (println "-" module-name)
-                   ;; Construct the path to the module's POM file
                    (let [module-dir (File. (.getParent pom-file) module-name)
                          module-pom (File. module-dir "pom.xml")]
-                     ;; Navigate to this module recursively
-                     (navigate-modules (.getAbsolutePath module-pom))))
+                     (navigate-modules (.getAbsolutePath module-pom) model-info)))
                  modules))))
           (catch Exception e
             (.printStackTrace e)))))))
 
 (defn -main [pom-path]
-  (navigate-modules pom-path))
+  (navigate-modules pom-path nil))
