@@ -3,12 +3,37 @@
   (:import (java.io File FileReader)
            (org.apache.maven.model.io.xpp3 MavenXpp3Reader)))
 
+(def elements     (atom #{}))
+(def dependencies (atom #{}))
+(def cotainments  (atom #{}))
+
+(defn- model-info->path [{:keys [artifact-id group-id]}]
+  (str group-id "/" artifact-id))
+
+(defn- create-element [element-info]
+  (swap! elements conj {:path (model-info->path element-info)
+                        :type ""
+                        :technology "java"}))
+
+(defn- create-dependency-if-necessary [from-element-info dependencies-info]
+  (when (seq dependencies-info)
+    (swap! dependencies conj {:from (model-info->path from-element-info)
+                              :dependencies (map (fn [dependency-info]
+                                                   {:to (model-info->path dependency-info)})
+                                                 dependencies-info)})))
+
+(defn- create-cotainment [container-info contents-info]
+  (swap! cotainments conj {:container (model-info->path container-info)
+                           :contents  (map (fn [content-info]
+                                             (model-info->path content-info))
+                                           contents-info)}))
+
 (defn- get-model-info [model]
   {:artifact-id (.getArtifactId model)
    :group-id    (.getGroupId    model)
    :version     (.getVersion    model)})
 
-(defn- get-dependencies [model]
+(defn- get-dependencies-info [model]
   (map get-model-info (.getDependencies model)))
 
 (defn- navigate-modules [pom-path]
@@ -19,15 +44,15 @@
         (try
           (let [file-reader (FileReader. pom-file)
                 model (.read reader file-reader)
-                model-info (-> model
-                               get-model-info
-                               (assoc :dependencies (get-dependencies model)))]
-            (println "Current POM:")
-            (println model-info)
+                model-info (get-model-info model)
+                deps-info  (get-dependencies-info model)]
+            (create-element model-info)
+            (create-dependency-if-necessary model-info deps-info)
+            (prn @elements)
+            (prn @dependencies)
             (let [modules (.getModules model)]
-              (when (and modules
-                         (not (.isEmpty modules)))
-                (println "Modules:")
+              (when (and modules (not (.isEmpty modules)))
+                #_(println "Modules:")
                 (run! 
                  (fn [module-name]
                    (println "-" module-name)
