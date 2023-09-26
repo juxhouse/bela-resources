@@ -70,7 +70,7 @@ Modeled elements that have the same path (see "ElementPath" section below) as a 
 
 Receives an array of dependencies and adds them as dependencies `from` the given element.
 
-This operation DOES NOT delete any dependencies. To delete old dependencies, use the `garbage-collect` operation.
+This operation DOES NOT delete any other existing dependencies.
 
 
 ```
@@ -86,8 +86,8 @@ This operation DOES NOT delete any dependencies. To delete old dependencies, use
 Receives an array of element paths and adds them as direct `contents` of the given `container`.
 
 This operation:
-  - Removes `contents` from their old containers, if any.
-  - DOES NOT delete other contents from `container`. To delete old contents, use the `garbage-collect` operation.
+  - Removes `contents` from their old containers, if any, since elements can only be contained by a single container.
+  - DOES NOT delete other contents from `container`.
 
 ```
 {
@@ -101,7 +101,7 @@ This operation:
 
 ### Source
 
-String. This is the source of the elements being uploaded. BELA will garbage collect elements that are longer present in the latest upload of any of your sources.
+String. This is the source of the elements being uploaded. BELA will garbage collect elements and containments that are longer present in the latest upload of any of your sources.
 
 Examples:
   - "https://github.com/my-company/my-repo"
