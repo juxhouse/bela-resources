@@ -3,42 +3,59 @@
   (:import (java.io File FileReader)
            (org.apache.maven.model.io.xpp3 MavenXpp3Reader)))
 
-(def elements     (atom #{}))
-(def dependencies (atom #{}))
-(def container->contents (atom {}))
+(def maven-group "maven-group")
 
-;; TODO: Create element that represents the group-id (it will have the "maven-group" type)
 ;; TODO: set as env var: bela-host, bela-token. set as str args: source, path-to-pom
-(defn- model-info->path [{:keys [artifact-id group-id]}]
-  (str "maven/" group-id "/" artifact-id))
+;; TODO: export exceptions to BELA or create missing elements
+(defn- project-info->path [{:keys [artifact-id group-id type]}]
+  (cond-> 
+   (str type "/" group-id)
+   artifact-id (str ":" artifact-id)))
 
-(defn- create-element [element-info]
-  (swap! elements conj {:path (model-info->path element-info)
-                        :type ""
-                        :technology "java"}))
+(defn- add-element [arch project-info]
+  (update arch :elements conj {:path (project-info->path project-info)
+                               :technology "java"}))
 
-(defn- create-dependency [from-element-info dependencies-info]
-  (swap! dependencies conj {:from (model-info->path from-element-info)
-                            :dependencies (map (fn [dependency-info]
-                                                 {:to (model-info->path dependency-info)})
-                                               dependencies-info)}))
+(defn- add-dependencies [arch project-info deps-info]
+  (update arch :dependencies conj {:from (project-info->path project-info)
+                                   :dependencies (map (fn [dependency-info]
+                                                        {:to (project-info->path dependency-info)})
+                                                      deps-info)}))
 
-(defn- add-containment [container->contents {:keys [container content]}]
-  (update container->contents container (fnil conj #{}) content))
+(defn- add-containment [arch container-info content-info]
+  (let [container (project-info->path container-info)
+        content   (project-info->path content-info)]
+   (update-in arch [:container->contents container] (fnil #{} conj) content)))
 
-(defn- create-containment [container-info content-info]
-  (swap! container->contents add-containment {:container (model-info->path container-info)
-                                              :content   (model-info->path content-info)}))
+(defn- project-info->group-info [project-info]
+  {:type     maven-group
+   :group-id (:group-id project-info)})
 
-(defn- get-model-info [model]
+(defn- add-group-and-project [arch project-info]
+  (let [group-info (project-info->group-info project-info)]
+    (-> arch
+        (add-element group-info)
+        (add-element project-info)
+        (add-containment group-info project-info))))
+
+(defn- add-entities [arch parent-info project-info deps-info]
+  (let [arch (add-group-and-project arch project-info)])
+  (when (seq deps-info)
+    (run! add-group-and-project deps-info)
+    (add-dependencies arch project-info deps-info))
+  (when (seq parent-info)
+    (add-containment arch parent-info project-info)))
+
+(defn- get-project-info [model]
   {:artifact-id (.getArtifactId model)
    :group-id    (.getGroupId    model)
-   :version     (.getVersion    model)})
+   :version     (.getVersion    model)
+   :type        "maven-project"})
 
 (defn- get-dependencies-info [model]
-  (map get-model-info (.getDependencies model)))
+  (map get-project-info (.getDependencies model)))
 
-(defn- navigate-modules [pom-path parent-model-info]
+(defn- extract-arch [pom-path parent-info arch]
   (let [pom-file (File. pom-path)]
     (if (not (.exists pom-file))
       (println "POM file does not exist:" pom-path)
@@ -46,23 +63,57 @@
         (try
           (let [file-reader (FileReader. pom-file)
                 model (.read reader file-reader)
-                model-info (get-model-info model)
-                deps-info  (get-dependencies-info model)]
-            (create-element model-info)
-            (when (seq deps-info)
-              (create-dependency model-info deps-info))
-            (when (seq parent-model-info)
-              (create-containment parent-model-info model-info))
-            (let [modules (.getModules model)]
-              (when (and modules (not (.isEmpty modules)))
-                (run!
-                 (fn [module-name]
-                   (let [module-dir (File. (.getParent pom-file) module-name)
-                         module-pom (File. module-dir "pom.xml")]
-                     (navigate-modules (.getAbsolutePath module-pom) model-info)))
-                 modules))))
-          (catch Exception e
+                project-info (get-project-info model)
+                deps-info (get-dependencies-info model)
+                arch (add-entities arch parent-info project-info deps-info)]
+            (reduce (fn [arch module-name]
+                      (let [module-dir (File. (.getParent pom-file) module-name)
+                            module-pom (File. module-dir "pom.xml")]
+                        (extract-arch (.getAbsolutePath module-pom) project-info arch)))
+                    arch
+                    (.getModules model)))
+          (catch Exception e 
             (.printStackTrace e)))))))
 
+(defn- upsert-elements' []
+  (map #(assoc % :op "upsert-element")  @elements))
+
+(defn- add-dependencies' []
+  (map #(assoc % :op "add-dependencies") @dependencies))
+
+(defn- remove-group-containment-if-necessary [container->contents]
+  (prn "@@@@ container->contents" container->contents)
+  (let [all-contained-elements (->> container->contents
+                                    (remove (fn [[k _v]]
+                                              (.startsWith k maven-group)))
+                                    (into {})
+                                    vals
+                                    (apply concat))]
+    (prn "@@@ all-contained-elements" all-contained-elements)
+    (reduce (fn [container->contents contained-element]
+              (update container->contents :bla disj contained-element))
+            container->contents
+            all-contained-elements)))
+
+(defn- add-containments' []
+  (->> @container->contents
+       remove-group-containment-if-necessary
+       (map (fn [[k v]]
+              {:op "add-containments"
+               :container k
+               :contents  v}))))
+
+(defn- patch-architecure [source architecture]
+  (let [operations (concat (upsert-elements)
+                           (add-dependencies)
+                           (add-containments))
+        payload    {:source      source
+                    :transaction operations}]
+    payload))
+
 (defn -main [pom-path]
-  (navigate-modules pom-path nil))
+  (->>
+   (extract-arch pom-path nil {:elements #{}
+                               :dependencies #{}
+                               :container->contents {}})
+   (patch-architecure "source")))
