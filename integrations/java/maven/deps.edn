@@ -1,7 +1,9 @@
 {:paths ["src"]
 
  :deps {org.clojure/clojure {:mvn/version "1.10.3"}
-        org.apache.maven/maven-model {:mvn/version "3.8.6"}}
+        org.apache.maven/maven-model {:mvn/version "3.8.6"}
+        
+        http-kit/http-kit            {:mvn/version "2.5.0"}}
 
  :aliases {:dev {:extra-paths ["test"]}}
 

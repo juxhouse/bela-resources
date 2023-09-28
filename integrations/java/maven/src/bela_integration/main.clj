@@ -1,16 +1,12 @@
 (ns bela-integration.main
   (:gen-class)
+  (:require [bela-integration.api-interaction :refer [upload-architecture]])
   (:import (java.io File FileReader)
            (org.apache.maven.model.io.xpp3 MavenXpp3Reader)))
 
-(def maven-group "maven-group")
-
-;; TODO: set as env var: bela-host, bela-token. set as str args: source, path-to-pom
 ;; TODO: export exceptions to BELA or create missing elements
-(defn- project-info->path [{:keys [artifact-id group-id type]}]
-  (cond-> 
-   (str type "/" group-id)
-   artifact-id (str ":" artifact-id)))
+(defn- project-info->path [{:keys [artifact-id group-id]}]
+  (str "maven-project/" group-id ":" artifact-id))
 
 (defn- add-element [arch project-info]
   (update arch :elements conj {:path (project-info->path project-info)
@@ -25,32 +21,18 @@
 (defn- add-containment [arch container-info content-info]
   (let [container (project-info->path container-info)
         content   (project-info->path content-info)]
-   (update-in arch [:container->contents container] (fnil #{} conj) content)))
-
-(defn- project-info->group-info [project-info]
-  {:type     maven-group
-   :group-id (:group-id project-info)})
-
-(defn- add-group-and-project [arch project-info]
-  (let [group-info (project-info->group-info project-info)]
-    (-> arch
-        (add-element group-info)
-        (add-element project-info)
-        (add-containment group-info project-info))))
+   (update-in arch [:container->contents container] (fnil conj #{}) content)))
 
 (defn- add-entities [arch parent-info project-info deps-info]
-  (let [arch (add-group-and-project arch project-info)])
-  (when (seq deps-info)
-    (run! add-group-and-project deps-info)
-    (add-dependencies arch project-info deps-info))
-  (when (seq parent-info)
-    (add-containment arch parent-info project-info)))
+  (let [arch (reduce add-element arch (conj deps-info project-info))]
+    (cond-> arch
+      (seq deps-info)   (add-dependencies project-info deps-info)
+      (seq parent-info) (add-containment parent-info project-info))))
 
 (defn- get-project-info [model]
   {:artifact-id (.getArtifactId model)
    :group-id    (.getGroupId    model)
-   :version     (.getVersion    model)
-   :type        "maven-project"})
+   :version     (.getVersion    model)})
 
 (defn- get-dependencies-info [model]
   (map get-project-info (.getDependencies model)))
@@ -75,45 +57,29 @@
           (catch Exception e 
             (.printStackTrace e)))))))
 
-(defn- upsert-elements' []
-  (map #(assoc % :op "upsert-element")  @elements))
+(defn- upsert-elements' [arch]
+  (map #(assoc % :op "upsert-element")   (:elements arch)))
 
-(defn- add-dependencies' []
-  (map #(assoc % :op "add-dependencies") @dependencies))
+(defn- add-dependencies' [arch]
+  (map #(assoc % :op "add-dependencies") (:dependencies arch)))
 
-(defn- remove-group-containment-if-necessary [container->contents]
-  (prn "@@@@ container->contents" container->contents)
-  (let [all-contained-elements (->> container->contents
-                                    (remove (fn [[k _v]]
-                                              (.startsWith k maven-group)))
-                                    (into {})
-                                    vals
-                                    (apply concat))]
-    (prn "@@@ all-contained-elements" all-contained-elements)
-    (reduce (fn [container->contents contained-element]
-              (update container->contents :bla disj contained-element))
-            container->contents
-            all-contained-elements)))
+(defn- add-containments' [arch]
+  (map (fn [[k v]]
+         {:op "add-containments"
+          :container k
+          :contents  v}) (:container->contents arch)))
 
-(defn- add-containments' []
-  (->> @container->contents
-       remove-group-containment-if-necessary
-       (map (fn [[k v]]
-              {:op "add-containments"
-               :container k
-               :contents  v}))))
-
-(defn- patch-architecure [source architecture]
-  (let [operations (concat (upsert-elements)
-                           (add-dependencies)
-                           (add-containments))
+(defn- patch-architecure [source arch]
+  (let [operations (concat (upsert-elements'  arch)
+                           (add-dependencies' arch)
+                           (add-containments' arch))
         payload    {:source      source
                     :transaction operations}]
-    payload))
+    (upload-architecture payload)))
 
-(defn -main [pom-path]
+(defn -main [pom-path source]
   (->>
    (extract-arch pom-path nil {:elements #{}
                                :dependencies #{}
                                :container->contents {}})
-   (patch-architecure "source")))
+   (patch-architecure source)))
