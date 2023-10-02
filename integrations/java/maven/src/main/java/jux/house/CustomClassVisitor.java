@@ -5,8 +5,17 @@ import org.objectweb.asm.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CustomClassVisitor extends ClassVisitor {
+
+    private ClassInfo classInfo = new ClassInfo();
+
+    public ClassInfo getClassInfo() {
+        return classInfo;
+    }
     
     public CustomClassVisitor(int api) {
         super(api);
@@ -20,12 +29,16 @@ public class CustomClassVisitor extends ClassVisitor {
         for (String iface : interfaces) {
             System.out.println("Implements: " + iface);
         }
+        classInfo.className = name;
+        classInfo.superClass = superName;
+        classInfo.interfaces.addAll(Arrays.asList(interfaces));
     }
 
     // Capture field references
     @Override
     public FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
         System.out.println("Field: " + name + ", Type: " + descriptor);
+        classInfo.fields.add(name + ", Type: " + descriptor);
         return new CustomFieldVisitor(api);
     }
 
@@ -33,6 +46,7 @@ public class CustomClassVisitor extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
         System.out.println("Method: " + name + ", Signature: " + descriptor);
+        classInfo.methods.add(name + ", Signature: " + descriptor);
         return new CustomMethodVisitor(api);
     }
 
@@ -40,6 +54,7 @@ public class CustomClassVisitor extends ClassVisitor {
     @Override
     public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
         System.out.println("Class Annotation: " + descriptor);
+        classInfo.annotations.add("Annotation: " + descriptor);
         return new CustomAnnotationVisitor(api);
     }
 
@@ -103,7 +118,9 @@ public class CustomClassVisitor extends ClassVisitor {
         Path path = Paths.get("src/example-project/target/single-directory/io/jitpack/SayBye.class");
         byte[] classBytes = Files.readAllBytes(path);
         ClassReader classReader = new ClassReader(classBytes);
-        ClassVisitor classVisitor = new CustomClassVisitor(Opcodes.ASM9);
+        CustomClassVisitor classVisitor = new CustomClassVisitor(Opcodes.ASM9);
         classReader.accept(classVisitor, 0);
+        ClassInfo info = classVisitor.getClassInfo();
+        System.out.println(info.toString());
     }
 }
