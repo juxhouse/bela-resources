@@ -4,7 +4,7 @@ This API has a single endpoint that allows you to upload your architecture or a 
 
 It is called typically by repository actions (Github actions, for example) every time new commits are pushed to the main branch.
 
-It can also be called hourly, for example, by processes that read architecture information from production monitoring tools such as Dynatrace and Datadog.
+It can also be called hourly, for example, by processes that read architecture information from call monitoring tools such as Dynatrace, Datadog and OpenTelemetry.
 
 
 ## Host
@@ -26,14 +26,14 @@ This endpoint allows you to upload your architecture or a part of it to BELA.
 
 It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-You can upload elements from different `sources`. See "Source" section below.
+You can upload elements from different [sources](#source).
 
-This endpoint receives a `transaction` as an array of `operations`. The effect of all operations is applied to BELA atomically.
+This endpoint receives a `transaction` as an array of [operations](#operations). The effect of all operations is applied to BELA atomically.
 
 **Body**
 ```
 {
-  "source": Source
+  "source": [Source]
   "transaction": [Operation]
 }
 ```
@@ -51,39 +51,36 @@ Errors will be returned as some 4XX or 5XX HTTP error code with a helpful messag
 
 Creates/updates a built element with the given attributes.
 
-Modeled elements that have the same path (see "ElementPath" section below) as a new built element, will have `(Model)` appended to their name.
+Modeled elements that have the same [path](#elementpath) as a new built element, will have `(Model)` appended to their name.
 
 ```
 {
   "op": "upsert-element"
   "path": ElementPath           // Primary key.
-  "type": ElementType           // See ElementType below.
+  "type": ElementType           // See ElementType schema below.
   "name": String                // Optional. Defaults to last segment in the path.
-  "technology": Technology      // Optional.
+  "technology": Technology      // Optional. See Technology schema below.
   "third-party": boolean        // Optional. Defaults to false.
-  "description": String         // Optional.
+  "description": String         // Optional. 1000 characters max.
   "extra": Object               // Optional. Any extra information you want to store. It is opaque to BELA.
 }
 ```
 
 ### `add-dependencies`
 
-Receives an array of dependencies and adds them as dependencies `from` the given element.
-
-This operation DOES NOT delete any other existing dependencies.
-
+Receives an array of [dependencies](#dependency) and adds them as dependencies `from` the given element.
 
 ```
 {
   "op": "add-dependencies"
   "from": ElementPath
-  "dependencies": [Dependency]  // See Dependency below.
+  "dependencies": [Dependency]  // See Dependency schema below.
 }
 ```
 
 ### `add-containments`
 
-Receives an array of element paths and adds them as direct `contents` of the given `container`.
+Receives an array of element [paths](#elementpath) and adds them as direct `contents` of the given `container`.
 
 This operation:
   - Removes `contents` from their old containers, if any, since elements can only be contained by a single container.
