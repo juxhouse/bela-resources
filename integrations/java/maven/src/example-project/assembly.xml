@@ -6,21 +6,21 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>
-      <directory>${project.basedir}/module1/target/classes</directory>
+      <directory>${parent.basedir}/module1/target/classes</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/*.class</include>
       </includes>
     </fileSet>
     <fileSet>
-      <directory>${project.basedir}/module2/target/classes</directory>
+      <directory>${parent.basedir}/module2/target/classes</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/*.class</include>
       </includes>
     </fileSet>
     <fileSet>
-      <directory>${project.basedir}/module3/target/classes</directory>
+      <directory>${parent.basedir}/module3/target/classes</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/*.class</include>
