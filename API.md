@@ -1,6 +1,6 @@
 # BELA Web API
 
-This API is composed of a single endpoint that allows you to upload your architecture or a part of it to BELA.
+This API has a single endpoint that allows you to upload your architecture or a part of it to BELA.
 
 It is called typically by repository actions (Github actions, for example) every time new commits are pushed to the main branch.
 
