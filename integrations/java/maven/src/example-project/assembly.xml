@@ -6,21 +6,21 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>
-      <directory>/home/kauwai/projetos/jux/bela-resources/integrations2/java/maven/src/example-project/module1/target/classes</directory>
+      <directory>${project.basedir}/module1/target/classes</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/*.class</include>
       </includes>
     </fileSet>
     <fileSet>
-      <directory>/home/kauwai/projetos/jux/bela-resources/integrations2/java/maven/src/example-project/module2/target/classes</directory>
+      <directory>${project.basedir}/module2/target/classes</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/*.class</include>
       </includes>
     </fileSet>
     <fileSet>
-      <directory>/home/kauwai/projetos/jux/bela-resources/integrations2/java/maven/src/example-project/module3/target/classes</directory>
+      <directory>${project.basedir}/module3/target/classes</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/*.class</include>

@@ -30,7 +30,7 @@
         <version>3.3.0</version>
         <executions>
           <execution>
-            <phase>verify</phase>
+            <phase>install</phase>
             <goals>
               <goal>single</goal>
             </goals>
