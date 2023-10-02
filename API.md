@@ -2,9 +2,9 @@
 
 This API is composed of a single endpoint that allows you to upload your architecture or a part of it to BELA.
 
-It is called typically by repository actions (Github actions, for example) everytime the main branch is updated with new commits.
+It is called typically by repository actions (Github actions, for example) every time new commits are pushed to the main branch.
 
-It can also be called daily, for example, by processes that read architecture information from production monitoring tools such as Dynatrace and Datadog.
+It can also be called hourly, for example, by processes that read architecture information from production monitoring tools such as Dynatrace and Datadog.
 
 
 ## Host
