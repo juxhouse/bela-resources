@@ -42,7 +42,7 @@ This endpoint receives a `transaction` as an array of `operations`. The effect o
 
 **Reply Error Codes**
 
-Errors will be returned as some HTTP error code with a helpful message in the reply body.
+Errors will be returned as some 4XX or 5XX HTTP error code with a helpful message in the reply body.
 
 
 ## Operations
