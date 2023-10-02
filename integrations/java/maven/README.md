@@ -1,2 +1,7 @@
 ## Running
-  `clojure -M -m bela-integration.main ./src/example-project/pom.xml`
+- Create the Uber JAR:
+
+  ```mvn package```
+- Run the Uber JAR:
+
+  ```java -jar target/bela.integrations.java.maven-1.0-SNAPSHOT.jar```

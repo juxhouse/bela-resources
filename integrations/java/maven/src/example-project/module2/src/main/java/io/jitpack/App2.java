@@ -4,9 +4,9 @@ package io.jitpack;
  * Hello world!
  *
  */
-public class App 
+public class App2 
 {
-    public static String GREETING = "Hello World!";
+    public static String GREETING = "Hello World!!!";
     
     public static void main( String[] args )
     {

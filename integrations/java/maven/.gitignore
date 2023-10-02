@@ -1,3 +1,2 @@
-/.calva/
-/.cpcache/
-.nrepl-port
+/target/
+dependency-reduced-pom.xml
