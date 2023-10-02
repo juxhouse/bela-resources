@@ -101,7 +101,7 @@ This operation:
 String. This is the source of the elements being uploaded. BELA will garbage collect elements and containments that are no longer present in the latest upload of any of your sources.
 
 Examples:
-  - "https://github.com/my-company/my-repo"
+  - "my-company/my-repo"
   - "my-service-postman-catalog"
   - "my-company-dynatrace-logs"
   - "my-teams-datadog-logs"
