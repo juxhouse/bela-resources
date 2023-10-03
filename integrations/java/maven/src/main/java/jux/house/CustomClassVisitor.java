@@ -2,9 +2,6 @@ package jux.house;
 
 import org.objectweb.asm.*;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class CustomClassVisitor extends ClassVisitor {
@@ -14,11 +11,19 @@ public class CustomClassVisitor extends ClassVisitor {
     public ClassInfo getClassInfo() {
         return classInfo;
     }
-    
+
     public CustomClassVisitor(int api) {
         super(api);
     }
 
+    public static ClassInfo init(byte[] classBytes) {
+        ClassReader classReader = new ClassReader(classBytes);
+        CustomClassVisitor classVisitor = new CustomClassVisitor(Opcodes.ASM9);
+        classReader.accept(classVisitor, 0);
+        ClassInfo info = classVisitor.getClassInfo();
+        return info;
+    }
+    
     // Capture class-level details
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
@@ -110,15 +115,5 @@ public class CustomClassVisitor extends ClassVisitor {
             System.out.println("Nested Annotation: " + descriptor);
             return this;
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        Path path = Paths.get("src/example-project/target/single-directory/io/jitpack/SayBye.class");
-        byte[] classBytes = Files.readAllBytes(path);
-        ClassReader classReader = new ClassReader(classBytes);
-        CustomClassVisitor classVisitor = new CustomClassVisitor(Opcodes.ASM9);
-        classReader.accept(classVisitor, 0);
-        ClassInfo info = classVisitor.getClassInfo();
-        System.out.println(info.toString());
     }
 }

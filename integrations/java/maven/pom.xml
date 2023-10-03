@@ -31,7 +31,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>jux.house.CustomClassVisitor</mainClass>
+                            <mainClass>jux.house.Integrator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
