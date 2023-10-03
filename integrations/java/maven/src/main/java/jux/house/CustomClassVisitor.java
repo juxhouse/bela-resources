@@ -35,15 +35,17 @@ public class CustomClassVisitor extends ClassVisitor {
     // Capture field references
     @Override
     public FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
-        classInfo.fields.add(name + ", Type: " + descriptor);
+        Field field = new Field(name);
+        classInfo.fields.add(field);
         return new CustomFieldVisitor(api);
     }
 
     // Capture method references
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-        classInfo.methods.add(name + ", Signature: " + descriptor);
-        return new CustomMethodVisitor(api);
+        Method method = new Method(name);
+        classInfo.methods.add(method);
+        return new CustomMethodVisitor(api, method);
     }
 
     // Capture annotations at the class level
@@ -67,19 +69,24 @@ public class CustomClassVisitor extends ClassVisitor {
     }
 
     public static class CustomMethodVisitor extends MethodVisitor {
-        public CustomMethodVisitor(int api) {
+        public Method method;
+
+        public CustomMethodVisitor(int api, Method method) {
             super(api);
+            this.method = method;
         }
 
         // Capture opcode-based references
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
-            System.out.println("Method Reference: " + owner + "." + name + descriptor);
+            this.method.setOwner(owner);
         }
 
         @Override
         public void visitFieldInsn(int opcode, String owner, String name, String descriptor) {
-            System.out.println("Field Reference: " + owner + "." + name);
+            Field field = new Field(name);
+            field.setOwner(owner);
+            this.method.setField(field);
         }
 
         // Capture annotations on method

@@ -9,8 +9,8 @@ public class ClassInfo {
     public String className;
     public String superClass;
     public List<String> interfaces = new ArrayList<>();
-    public List<String> fields = new ArrayList<>();
-    public List<String> methods = new ArrayList<>();
+    public List<Field> fields = new ArrayList<>();
+    public List<Method> methods = new ArrayList<>();
     public List<String> annotations = new ArrayList<>();
 
    public Map<String, Object> toMap() {
