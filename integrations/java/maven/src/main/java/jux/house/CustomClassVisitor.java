@@ -27,11 +27,6 @@ public class CustomClassVisitor extends ClassVisitor {
     // Capture class-level details
     @Override
     public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
-        System.out.println("Class: " + name);
-        System.out.println("SuperClass: " + superName);
-        for (String iface : interfaces) {
-            System.out.println("Implements: " + iface);
-        }
         classInfo.className = name;
         classInfo.superClass = superName;
         classInfo.interfaces.addAll(Arrays.asList(interfaces));
@@ -40,7 +35,6 @@ public class CustomClassVisitor extends ClassVisitor {
     // Capture field references
     @Override
     public FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
-        System.out.println("Field: " + name + ", Type: " + descriptor);
         classInfo.fields.add(name + ", Type: " + descriptor);
         return new CustomFieldVisitor(api);
     }
@@ -48,7 +42,6 @@ public class CustomClassVisitor extends ClassVisitor {
     // Capture method references
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-        System.out.println("Method: " + name + ", Signature: " + descriptor);
         classInfo.methods.add(name + ", Signature: " + descriptor);
         return new CustomMethodVisitor(api);
     }
@@ -56,7 +49,6 @@ public class CustomClassVisitor extends ClassVisitor {
     // Capture annotations at the class level
     @Override
     public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
-        System.out.println("Class Annotation: " + descriptor);
         classInfo.annotations.add("Annotation: " + descriptor);
         return new CustomAnnotationVisitor(api);
     }

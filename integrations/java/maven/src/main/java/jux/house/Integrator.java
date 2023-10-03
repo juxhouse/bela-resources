@@ -54,6 +54,6 @@ public class Integrator {
         Integrator integrator = new Integrator();
         integrator.processDirectory("src/example-project/target/single-directory"); // Adjust this path as needed
         List<ClassInfo> infoList = integrator.getClassInfoList();
-        // Do something with infoList
+        infoList.forEach(info -> System.out.println(info.toMap()));
     }
 }
