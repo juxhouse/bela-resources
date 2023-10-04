@@ -33,7 +33,7 @@ This endpoint receives a `transaction` as an array of [operations](#operations).
 **Body**
 ```
 {
-  "source": [Source]
+  "source": Source
   "transaction": [Operation]
 }
 ```
