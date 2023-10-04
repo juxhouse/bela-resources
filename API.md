@@ -163,7 +163,7 @@ An element can have more than one dependency on another element as long as these
                                   //   read: Displayed as an arrowhead
                                   //   write: Displayed as an arrowhead
                                   //   async: Displayed as a dashed line
-                                  //   implements: Displayed as a big, hollow arrowhead.
+                                  //   implements: Will be displayed as a big, hollow arrowhead in the future.
 }
 ```
 
