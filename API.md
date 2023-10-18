@@ -4,7 +4,7 @@ This API has a single endpoint that allows you to upload your architecture or a 
 
 It is called typically by repository actions (Github actions, for example) every time new commits are pushed to the main branch.
 
-It can also be called hourly, for example, by processes that read architecture information from call monitoring tools such as Dynatrace, Datadog and OpenTelemetry.
+It can also be called daily, for example, by processes that read architecture information from call monitoring tools such as Dynatrace, Datadog and OpenTelemetry.
 
 
 ## Host
@@ -33,7 +33,7 @@ This endpoint receives a `transaction` as an array of [operations](#operations).
 **Body**
 ```
 {
-  "source": [Source]
+  "source": Source
   "transaction": [Operation]
 }
 ```
@@ -163,7 +163,7 @@ An element can have more than one dependency on another element as long as these
                                   //   read: Displayed as an arrowhead
                                   //   write: Displayed as an arrowhead
                                   //   async: Displayed as a dashed line
-                                  //   implements: Displayed as a big, hollow arrowhead.
+                                  //   implements: Will be displayed as a big, hollow arrowhead in the future.
 }
 ```
 
