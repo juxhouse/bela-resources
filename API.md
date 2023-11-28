@@ -155,8 +155,8 @@ An element can have more than one dependency on another element as long as these
 ```
 {
   to: ElementPath
-  name: String                    // Optional. Case sensitive.
   type: Identifier                // Optional.
+  name: String                    // Optional. Case sensitive.
   description: String             // Optional.
   tags: [Identifier]              // Optional. You can have any tags you want.
                                   // BELA displays the following tags in special ways:
