@@ -16,7 +16,7 @@ npm install -g @sourcegraph/scip-typescript
 Navigate to the project root, that contains the tsconfig.json file. Install its dependencies and run the scip-typescript command:
 ```sh
 npm install # or yarn install
-scip-typescript
+scip-typescript index
 ```
 ## Uploading to BELA
   Now that you've created your index.scip file, you may upload it to BELA. It can be done with a curl request like the following one:
