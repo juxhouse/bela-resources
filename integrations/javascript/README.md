@@ -1,3 +1,1 @@
-# Javascript BELA Integration
-
-See Typescript
+See [Typescript and Javascript BELA Integration](/integrations/typescript)
