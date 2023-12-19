@@ -1,30 +1,28 @@
-import requests
 import json
+import requests
+import time
+
 
 # Datadog params:
 API_KEY="YOUR_API_KEY"
 APP_KEY="YOUR_APP_KEY"
 ENV="YOUR_ENVIRONMENT"
-START_TS="START_TS_STRING"  # UNIX time (seconds since 1970)
-END_TS="END_TS_STRING"      # UNIX time (seconds since 1970)
 
 # BELA params:
-BELA_KEY="YOUR_BELA_KEY"
-API_URL="https://bela-client-domain.jux.house/architecture"  # Change client-domain to actual domain provided by BELA
+BELA_TOKEN="YOUR-BELA-TOKEN"
+BELA_HOST="https://your.bela.host"
 
 
-def fetch_datadog_dependencies(api_key, app_key, env, start, end):
+def fetch_datadog_dependencies():
     headers = {
-        "DD-API-KEY": f"{api_key}",
-        "DD-APPLICATION-KEY": f"{app_key}"
+        "DD-API-KEY": API_KEY,
+        "DD-APPLICATION-KEY": APP_KEY
     }
     params = {
-        "env": env,
-        "start": start,
-        "end": end
+        "env": ENV,
+        "start": int(time.time()) - (60 * 60 * 24 * 31 * 2) # Two months ago
     }
     url = "https://api.datadoghq.com/api/v1/service_dependencies"
-    
     response = requests.get(url, headers=headers, params=params)
     
     if response.status_code != 200:
@@ -32,7 +30,6 @@ def fetch_datadog_dependencies(api_key, app_key, env, start, end):
     
     return json.loads(response.content)
 
-datadog_data = fetch_datadog_dependencies(API_KEY, APP_KEY, ENV, START_TS, END_TS)
 
 def transform_to_target_format(datadog_data):
     transaction = []
@@ -74,19 +71,20 @@ def transform_to_target_format(datadog_data):
         "transaction": transaction
     }
 
-transformed_data = transform_to_target_format(datadog_data)
 
-def send_to_target_api(api_key, data):
-    url = API_URL
+def send_to_target_api(body):
+    url = BELA_HOST + "/architecture"
     headers = {
-        "Authorization": f"{api_key}"
+        "Authorization": BELA_TOKEN
     }
-    response = requests.patch(url, headers=headers, json=data)
+    response = requests.patch(url, headers=headers, json=body)
     
     if response.status_code != 200:
         raise Exception(f"Failed to send data: {response.content}")
 
     return response.content
 
-# Send the data
-send_to_target_api(BELA_KEY, transformed_data)
+
+datadog_data = fetch_datadog_dependencies()
+bela_transaction = transform_to_target_format(datadog_data)
+send_to_target_api(bela_transaction)
