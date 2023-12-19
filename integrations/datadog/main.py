@@ -1,13 +1,17 @@
 import requests
 import json
 
+# Datadog params:
 API_KEY="YOUR_API_KEY"
 APP_KEY="YOUR_APP_KEY"
-BELA_KEY="YOUR_BELA_KEY"
 ENV="YOUR_ENVIRONMENT"
-START_TS="START_TS_STRING"
-END_TS="END_TS_STRING"
-API_URL="https://bela-client-domain.jux.house/architecture" # Change client-domain to actual domain provided by BELA
+START_TS="START_TS_STRING"  # UNIX time (seconds since 1970)
+END_TS="END_TS_STRING"      # UNIX time (seconds since 1970)
+
+# BELA params:
+BELA_KEY="YOUR_BELA_KEY"
+API_URL="https://bela-client-domain.jux.house/architecture"  # Change client-domain to actual domain provided by BELA
+
 
 def fetch_datadog_dependencies(api_key, app_key, env, start, end):
     headers = {
@@ -34,14 +38,14 @@ def transform_to_target_format(datadog_data):
     transaction = []
     service_dependencies = {}
     
-    # Add services as elements
+    # Add services as elements to transaction
     for service in datadog_data.keys():
         transaction.append({
             "op": "upsert-element",
             "path": f"service/{service}"
         })
         
-    # Add dependencies
+    # Collect dependencies
     for service, details in datadog_data.items():
         for call in details.get("calls", []):
             if service not in service_dependencies:
@@ -75,7 +79,7 @@ transformed_data = transform_to_target_format(datadog_data)
 def send_to_target_api(api_key, data):
     url = API_URL
     headers = {
-        "Authentication": f"{api_key}"
+        "Authorization": f"{api_key}"
     }
     response = requests.patch(url, headers=headers, json=data)
     
