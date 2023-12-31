@@ -2,9 +2,9 @@
 
 This API has a single endpoint that allows you to upload your architecture or a part of it to BELA.
 
-It is called typically by repository actions (Github actions, for example) every time new commits are pushed to the main branch.
+It is called by pipeline steps or repository actions (Github actions, for example) every time new commits are pushed or merged to the main branch.
 
-It can also be called daily, for example, by processes that read architecture information from call monitoring tools such as Dynatrace, Datadog and OpenTelemetry.
+It can also be called daily, for example, by processes that read architecture information from APM tools such as Dynatrace, Datadog and OpenTelemetry.
 
 
 ## Host
@@ -15,7 +15,7 @@ Your BELA API host address is provided to you when you sign-up for a BELA accoun
 ## Headers
 
 `Authorization: Token <your-token>`
-An API token is provided to you when you sign-up for a BELA account.
+Obtain you BELA API token from the BELA web app.
 
 `Content-Type: application/json`
 
