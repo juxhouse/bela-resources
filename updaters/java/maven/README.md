@@ -5,7 +5,7 @@
 
   ```
   cd src/example-project
-  mvn clean compile
+  mvn clean compile -Dparent.basedir=$(pwd)
   mvn clean install -Dparent.basedir=$(pwd)
   ```
 
