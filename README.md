@@ -31,7 +31,7 @@ Set up these two commands as a repository action or as an optional pipeline step
  
 #### 2. Upload the update to BELA.
 
-   Upload the `bela-update.json` file, produced above, to BELA. See below.
+   Upload the `bela-update.json` file, produced above, to BELA.
    
    For example:
    ```
@@ -45,12 +45,21 @@ Set up these two commands as a repository action or as an optional pipeline step
 
 ## Synchronizing your APM Tools
 
-You can obtain your services and the dependencies among them from your Application Performance Monitoring (APM) data.
+If you use a services architecture, you can obtain your service names and the dependencies among them from your Application Performance Monitoring (APM) data.
 
-Set up a script, to be executed every hour, to query your APM data and upload service dependencies to BELA.
+Set up a script, to be executed every hour, to query your APM tool and upload service dependencies to BELA.
 
-Here are some examples:
+Here examples for some tools:
 - Datadog
 - Elastic APM
   
 If you use a different tool, you can copy one of the scripts above and call BELA's [generic API](API.md) directly.
+
+
+## Diagram-as-Code
+
+You can upload arbitrary "hard coded" elements, dependencies and containments to BELA.
+
+... Service -> maven-project containment example.
+
+See "Upload the update to BELA" above.
