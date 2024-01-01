@@ -4,7 +4,7 @@ This API has a single endpoint that allows you to upload your architecture or a 
 
 It is called by pipeline steps or repository actions (Github actions, for example) every time new commits are pushed or merged to the main branch.
 
-It can also be called daily, for example, by processes that read architecture information from APM tools such as Dynatrace, Datadog and OpenTelemetry.
+It can also be called daily, for example, by processes that read service dependency information from APM tools such as Dynatrace, Datadog and OpenTelemetry.
 
 
 ## Host
