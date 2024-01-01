@@ -1,7 +1,7 @@
 # BELA
 The Browser for Enterprise-Level Architecture
 
-[BELA](https://jux.house/bela) is a platform developed in partnership with [Nubank](https://international.nubank.com.br/about) to visualize and navigate any software architecture, from high-level business domains down to projects and code.
+[BELA](https://jux.house/bela) is a platform developed in partnership with [Nubank](https://international.nubank.com.br/about) to visualize and navigate any software architecture, from high-level business domains down to projects and code elements.
 
 ## Main Features
 
