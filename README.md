@@ -12,11 +12,13 @@ The Browser for Enterprise-Level Architecture
 
 ## Synchronizing your Code Repositories
 
-Set up these two commands as a repository action or as an optional pipeline step. Set it up to run after your main CI/CD pipeline has completed.
+Set up these two commands as a repository action or as an optional pipeline step after your main CI/CD pipeline steps have completed.
 
 #### 1. Run the `BELA Updater` docker app.
   
-   It runs with the `--network=none` argument for secure containment and produces a single `bela-update.json` file.
+   It runs with the `--network=none` argument for secure containment.
+   
+   It detects all projects in the repository and produces a single `bela-update.json` file.
 
    See examples for the supported languages:
    - C#
@@ -27,29 +29,28 @@ Set up these two commands as a repository action or as an optional pipeline step
    If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly.
 
  
-#### 2. Upload the update file to BELA.
+#### 2. Upload the update to BELA.
 
-   Upload the `bela-update.json` file produced above to BELA using curl, for example:
-
+   Upload the `bela-update.json` file, produced above, to BELA. See below.
+   
+   For example:
    ```
-   curl "https://${{ secrets.BELA_HOST  }}/architecture" --fail \
+   curl -f "https://${{ secrets.BELA_HOST  }}/architecture" \
         -H "Authorization: ${{ secrets.BELA_TOKEN }}" \
         -H "Content-Type: application/json" \
         --data @bela-update.json
    ```
-
+   You can obtain your `BELA_TOKEN` from the BELA web app.
+   
 
 ## Synchronizing your APM Tools
 
-If some dependencies among services are not standardized in the code, you can obtain them easily from your Application Performance Monitoring (APM) data.
+You can obtain your services and the dependencies among them from your Application Performance Monitoring (APM) data.
 
-1. Obtain your BELA API token from the BELA web app.
+Set up a script, to be executed every hour, to query your APM data and upload service dependencies to BELA.
 
-2. Call
+Here are some examples:
 - Datadog
-- Dynatrace
 - Elastic APM
   
-3. Automate the above by calling 
-
-
+If you use a different tool, you can copy one of the scripts above and call BELA's [generic API](API.md) directly.
