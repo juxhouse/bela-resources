@@ -1,22 +1,20 @@
 # BELA
 The Browser for Enterprise-Level Architecture
 
-A tool developed by [Nubank](https://international.nubank.com.br/about) and [Jux](https://jux.house) to visualize and navigate any software architecture, from high-level business domains down to projects and code.
+[BELA](https://jux.house/bela) is a platform developed in partnership with [Nubank](https://international.nubank.com.br/about) to visualize and navigate any software architecture, from high-level business domains down to projects and code.
 
 ## Main Features
 
-- Live diagrams for your source code repos and APM data.
-- Simple, familiar [C4 model](https://c4model.com/) notation.
-- Infinite levels of expand/collapse to explore element children.
-- Central, shared source-of-truth for your manually *modeled* elements.
+- Live diagrams integrating all your source code repositories and Application Performance Monitoring (APM) data.
+- Simple C4 model notation.
+- Infinite levels of element expand/collapse from high-level containers down to code.
+- Single source of truth for manually modeled elements across your entire organization.
 
 ## Synchronizing your Code Repositories
 
 1. Obtain your BELA API token from the BELA web app.
-2. Run the `BELA Updater` docker image or call the [BELA API](API.md) directly.
-3. Automate the above in an optional pipeline step that runs after your main CICD pipeline has completed.
-
-See examples for the languages supported by the `BELA Updater`:
+   
+2. Run the `BELA Updater` docker app. See examples for the supported languages:
 - C#
 - Java
 - Javascript
@@ -24,7 +22,12 @@ See examples for the languages supported by the `BELA Updater`:
 
 If your language is not supported, you can use a native code analysis tool and call BELA's [generic API](API.md) directly.
 
+3. Automate the above as a repository action or as an optional pipeline step that runs after your main CICD pipeline has completed.
+
+
 ## Synchronizing your APM Tools
+
+
 
 1. Obtain your BELA API token from the BELA web app.
 2. Call
