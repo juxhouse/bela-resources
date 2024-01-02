@@ -49,17 +49,27 @@ If you use a services architecture, you can obtain your service names and the de
 
 Set up a script, to be executed every hour, to query your APM tool and upload service dependencies to BELA.
 
-Here examples for some tools:
+Examples for some APM tools:
 - Datadog
 - Elastic APM
   
-If you use a different tool, you can copy one of the scripts above and call BELA's [generic API](API.md) directly.
+If you use a different tool, you can adapt one of the scripts above or call BELA's [generic API](API.md) directly.
 
 
 ## Diagram-as-Code
 
-You can upload arbitrary "hard coded" elements, dependencies and containments to BELA.
+You can upload "hard coded" elements, dependencies and containments to BELA by writing a JSON file yourself, using the format defined by the [BELA API](API.md).
 
-... Service -> maven-project containment example.
+> [!IMPORTANT]
+> This "diagram-as-code" technique is supported by other tools but it makes you write code which is brittle and redundant to your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
+
 
 See "Upload the update to BELA" above.
+
+Example:
+
+You have 3 services covered by your APM tool
+```
+... Service -> maven-project containment example.
+```
+
