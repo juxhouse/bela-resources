@@ -61,7 +61,7 @@ If you use a different tool, you can adapt one of the scripts above or call BELA
 You can upload "hard coded" elements, dependencies and containments to BELA by writing a JSON file yourself, using the format defined by the [BELA API](API.md).
 
 > [!IMPORTANT]
-> This "diagram-as-code" technique is supported by other tools but it makes you write code which is brittle and redundant to your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
+> Other tools also provide this "diagram-as-code" technique but it makes you write diagram code which is brittle and redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
 
 
 See "Upload the update to BELA" above.
