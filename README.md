@@ -29,7 +29,7 @@ Set up these two commands as a repository action or as an optional pipeline step
    If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly.
 
  
-#### 2. Upload the update to BELA.
+#### 2. Upload to BELA.
 
    Upload the `bela-update.json` file, produced above, to BELA.
    
