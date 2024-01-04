@@ -14,7 +14,7 @@ The Browser for Enterprise-Level Architecture
 
 Set up these two commands as a repository action or as an optional pipeline step after your main CI/CD pipeline steps have completed.
 
-#### 1. Run the `BELA Updater` docker app.
+#### 1. Run the `BELA Updater` docker app
   
    It runs with the `--network=none` argument for secure containment.
    
@@ -29,7 +29,7 @@ Set up these two commands as a repository action or as an optional pipeline step
    If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly.
 
  
-#### 2. Upload to BELA.
+#### 2. Upload to BELA
 
    Upload the `bela-update.json` file, produced above, to BELA.
    
@@ -60,16 +60,7 @@ If you use a different tool, you can adapt one of the scripts above or call BELA
 
 You can upload "hard coded" elements, dependencies and containments to BELA by writing a JSON file yourself, using the format defined by the [BELA API](API.md).
 
+See [Upload to BELA](#2-upload-to-bela) above.
+
 > [!IMPORTANT]
 > Other tools also provide this "diagram-as-code" technique but it makes you write diagram code which is brittle and redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
-
-
-See "Upload the update to BELA" above.
-
-Example:
-
-You have 3 services covered by your APM tool
-```
-... Service -> maven-project containment example.
-```
-
