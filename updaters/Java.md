@@ -12,6 +12,7 @@ The bela-updater docker app analyses the projects in your repo and generates the
 
 It runs with network=none for secure containment.
 
+An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own source:
 ```
 docker run --network=none \
            -v ./:/workspace/ \
@@ -20,7 +21,9 @@ docker run --network=none \
 ```
 
 ## 3. Upload to BELA
+```
 curl "https://${{ secrets.BELA_HOST  }}/architecture" --fail \
      -H "Authorization: ${{ secrets.BELA_TOKEN }}" \
      -H "Content-Type: application/json" \
      --data @bela-update.json
+```
