@@ -64,4 +64,4 @@ You can upload "hard coded" elements, dependencies and containments to BELA by w
 See [Upload to BELA](#2-upload-to-bela) above.
 
 > [!IMPORTANT]
-> Other tools also provide this "diagram-as-code" technique but it makes you write diagram code which is brittle and redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
+> Other tools also provide this "diagram-as-code" technique which makes you write brittle diagram code which is redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
