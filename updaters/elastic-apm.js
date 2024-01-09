@@ -161,7 +161,7 @@ const isIgnoredService = (element) => {
 const isIgnoredDependency = (dependency) => {
   const { sourceData } = dependency;
   if (!sourceData) return true;
-  isIgnoredService(sourceData);
+  return isIgnoredService(sourceData);
 }
 
 const createTransactions = () => {
