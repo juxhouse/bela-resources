@@ -10,7 +10,8 @@ If you are using `Gradle` or some other build tool, build your project normally 
 
 The bela-updater docker app analyses the projects in your repo and generates the bela-update.json file.
 
-It runs with network=none for secure containment.
+> [!IMPORTANT]
+> It runs with network=none for secure containment.
 
 An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own source:
 ```
