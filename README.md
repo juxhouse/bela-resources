@@ -15,8 +15,9 @@ The Browser for Enterprise-Level Architecture
 Set up these two commands as a repository action or as an optional pipeline step after your main CI/CD pipeline steps have completed.
 
 #### 1. Run the `BELA Updater` docker app
-  
-   It runs with the `--network=none` argument for secure containment.
+
+   > [!IMPORTANT]
+   > It runs with the `--network=none` argument for secure containment.
    
    It detects all projects in the repository and produces a single `bela-update.json` file.
 
