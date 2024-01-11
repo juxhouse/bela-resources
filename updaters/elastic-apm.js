@@ -10,6 +10,7 @@ const ENV = "ENVIRONMENT_ALL";
 // BELA params:
 const BELA_TOKEN = "BELA_TOKEN";
 const BELA_HOST = "BELA_HOST";
+const SOURCE = "elastic-apm";
 const SERVICE_ENVIRONMENTS_TO_IGNORE = [ "staging", "develop" ]; // services with these fragments in their name or in their environment will be ignored
 const SERVICE_NAME_FRAGMENTS_TO_CLEAN_UP = [ "-production", "-prd" ]; // services will have theses fragments removed from their name. Ex: acme-production -> acme
 
@@ -192,7 +193,7 @@ const patchArchitecture = (transaction) => {
 
   req.on("error", (error) => console.error(`Request error: ${error.message}`));
 
-  req.write(JSON.stringify({ source: "elastic-apm", transaction }));
+  req.write(JSON.stringify({ source: SOURCE, transaction }));
   req.end();
 }
 
