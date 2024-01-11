@@ -199,7 +199,6 @@ const patchArchitecture = (transaction) => {
 const run = async () => {
   const serviceMap = await fetchServiceMap();
   const transactions = createTransactions(serviceMap);
-  console.log(transactions);
   patchArchitecture(transactions);
 }
 
