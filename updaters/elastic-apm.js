@@ -13,9 +13,6 @@ const BELA_HOST = "BELA_HOST";
 const SERVICE_ENVIRONMENTS_TO_IGNORE = [ "staging", "develop" ]; // services with these fragments in their name or in their environment will be ignored
 const SERVICE_NAME_FRAGMENTS_TO_CLEAN_UP = [ "-production", "-prd" ]; // services will have theses fragments removed from their name. Ex: acme-production -> acme
 
-let serviceMap;
-const transaction = [];
-
 const getTimestamps = () => {
   const formatDate = (date) => {
     const year  = date.getUTCFullYear();
@@ -43,7 +40,6 @@ const fetchServiceMap = () => {
       hostname: API_URL,
       port: API_PORT,
       path: `/internal/apm/service-map?start=${encodeURIComponent(START_TS)}&end=${encodeURIComponent(END_TS)}&environment=${ENV}`,
-      method: "GET",
       headers: {
         "kbn-xsrf": "true",
         "Authorization": `ApiKey ${API_KEY}`,
@@ -52,13 +48,12 @@ const fetchServiceMap = () => {
       let data = "";
       res.on("data", (chunk) => data += chunk);
       res.on("end", () => {
-        serviceMap = JSON.parse(data);
-        resolve();
+        resolve(JSON.parse(data));
       });
     });
-  
+
     req.on("error", (error) => reject(`Request error: ${error.message}`));
-  
+
     req.end();
   });
 }
@@ -116,14 +111,14 @@ const createElementUpsertTransaction = (element) => {
     elementUpsertion.name = createElementName(removeFragmentsIfNecessary(element.label));
   }
 
-  transaction.push(elementUpsertion);
+  return elementUpsertion;
 }
 
 const createDependenciesUpsertTransaction = (data) => {
   const dependenciesUpsertion = { op: "add-dependencies" };
 
   const { sourceData, targetData } = data;
-  if (!sourceData || !targetData) return;
+  if (!sourceData || !targetData) return null;
   let fromPath;
   let toPath;
 
@@ -145,7 +140,7 @@ const createDependenciesUpsertTransaction = (data) => {
   dependenciesUpsertion.from = fromPath;
   dependenciesUpsertion.dependencies = [{ to: toPath }];
 
-  transaction.push(dependenciesUpsertion);
+  return dependenciesUpsertion;
 }
 
 const checkIgnored = (value) => {
@@ -164,20 +159,25 @@ const isIgnoredDependency = (dependency) => {
   return isIgnoredService(sourceData);
 }
 
-const createTransactions = () => {
+const createTransactions = (serviceMap) => {
+  const transactions = [];
+
   serviceMap.elements.forEach(({ data }) => {
     if (data.source && data.target) {
       if (isIgnoredDependency(data)) return;
-      createDependenciesUpsertTransaction(data);
+      const transaction = createDependenciesUpsertTransaction(data);
+      if (transaction) transactions.push(transaction);
 
       return;
     }
     if (isIgnoredService(data)) return;
-    createElementUpsertTransaction(data);
+    transactions.push(createElementUpsertTransaction(data));
   });
+
+  return transactions;
 }
 
-const patchArchitecture = () => {
+const patchArchitecture = (transaction) => {
   const req = https.request({
     hostname: BELA_HOST,
     path: "/architecture",
@@ -196,14 +196,11 @@ const patchArchitecture = () => {
   req.end();
 }
 
-const init = async () => {
-  try {
-    await fetchServiceMap();
-    createTransactions();
-    patchArchitecture();
-  } catch (err) {
-    console.error(`Failed to fetch service map. Error: ${err.message}`);
-  }
+const run = async () => {
+  const serviceMap = await fetchServiceMap();
+  const transactions = createTransactions(serviceMap);
+  console.log(transactions);
+  patchArchitecture(transactions);
 }
 
-init();
+run();
