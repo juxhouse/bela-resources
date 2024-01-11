@@ -41,16 +41,18 @@ const httpsRequest = (url, options, body = null) => {
 }
 
 const fetchDatadogDependencies = async () => {
-  const params = new URLSearchParams({
-    env: ENV,
-    start: Math.floor(Date.now() / 1000) - (60 * 60 * 24 * 31) // One month ago
-  });
   const options = {
     headers: {
       "DD-API-KEY": API_KEY,
       "DD-APPLICATION-KEY": APP_KEY
     }
   };
+
+  const params = new URLSearchParams({
+    env: ENV,
+    start: Math.floor(Date.now() / 1000) - (60 * 60 * 24 * 31) // One month ago
+  });
+
   const url = `https://api.datadoghq.com/api/v1/service_dependencies?${params}`;
 
   return httpsRequest(url, options);
@@ -109,14 +111,10 @@ const sendToTargetApi = async (body) => {
   return httpsRequest(url, options, JSON.stringify(body));
 }
 
-const init = async () => {
-  try {
-    const datadogData = await fetchDatadogDependencies();
-    const belaTransaction = transformToTargetFormat(datadogData);
-    await sendToTargetApi(belaTransaction);
-  } catch (error) {
-    console.error(error.message);
-  }
+const run = async () => {
+  const datadogData = await fetchDatadogDependencies();
+  const belaTransaction = transformToTargetFormat(datadogData);
+  sendToTargetApi(belaTransaction);
 }
 
-init();
+run();
