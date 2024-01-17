@@ -2,9 +2,12 @@
 
 ## 1. Build Your Projects
 
+Example for a simple Maven project:
+
 `mvn clean package`
 
-If you are using `Gradle` or some other build tool, build your project normally and use your build tool to generate a `pom.xml` file.
+> [!TIP]
+> Gradle, SBT, Bazel, Buildr: If you are using a build tool other than Maven, build your project normally and use your build tool to generate a `pom.xml` file. For best results, configure your tool to download the dependency artifacts to the local Maven `.m2` directory. It will be used in the next step.
 
 ## 2. Run the Bela Updater
 
