@@ -177,7 +177,7 @@ const patchArchitecture = (transaction) => {
       "Authorization": BELA_TOKEN,
     }
   }, (res) => {
-    res.on("data", (chunk) => console.log(`BODY: ${chunk}`));
+    res.on("data", (chunk) => console.log(chunk));
   });
 
   req.on("error", (error) => console.error(`Request error: ${error.message}`));
