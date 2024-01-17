@@ -38,7 +38,15 @@ const fetchServiceMap = () => {
       let data = "";
       res.on("data", (chunk) => data += chunk);
       res.on("end", () => {
-        resolve(JSON.parse(data));
+        const parsedData = JSON.parse(data);
+        if (res.statusCode < 200 || res.statusCode >= 300) {
+          const message = parsedData.message.replace(/\n/g, '').replace(/\t/g, '');
+          console.error(`Elastic APM Request Failed: ${res.statusCode} ${parsedData.error}.\n ${message}`);
+
+          return;
+        }
+
+        resolve(parsedData);
       });
     });
 
@@ -177,7 +185,7 @@ const patchArchitecture = (transaction) => {
       "Authorization": BELA_TOKEN,
     }
   }, (res) => {
-    res.on("data", (chunk) => console.log(chunk));
+    res.on("data", (chunk) => console.log(chunk.toString()));
   });
 
   req.on("error", (error) => console.error(`Request error: ${error.message}`));
