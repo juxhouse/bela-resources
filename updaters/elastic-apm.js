@@ -14,33 +14,22 @@ const SOURCE = "elastic-apm";
 const SERVICE_ENVIRONMENTS_TO_IGNORE = [ "staging", "develop" ]; // services with these fragments in their name or in their environment will be ignored
 const SERVICE_NAME_FRAGMENTS_TO_CLEAN_UP = [ "-production", "-prd" ]; // services will have theses fragments removed from their name. Ex: acme-production -> acme
 
-const getTimestamps = () => {
-  const formatDate = (date) => {
-    const year  = date.getUTCFullYear();
-    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // getUTCMonth() returns 0-11
-    const day   = String(date.getUTCDate()).padStart(2, '0');
-    const hours = String(date.getUTCHours()).padStart(2, '0');
-    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-    const seconds = String(date.getUTCSeconds()).padStart(2, '0');
-
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.00Z`
-  }
-
-  const currentDate = new Date();
+const getDates = () => {
+  const current = new Date();
   const oneMonthBefore = new Date();
-  oneMonthBefore.setMonth(currentDate.getMonth() - 1);
+  oneMonthBefore.setMonth(current.getMonth() - 1);
 
-  return { START_TS: formatDate(oneMonthBefore), END_TS: formatDate(currentDate) };
+  return { START_DATE: oneMonthBefore.toISOString(), END_DATE: current.toISOString() };
 }
 
 const fetchServiceMap = () => {
-  const { START_TS, END_TS } = getTimestamps();
+  const { START_DATE, END_DATE } = getDates();
 
   return new Promise((resolve, reject) => {
     const req = https.request({
       hostname: API_URL,
       port: API_PORT,
-      path: `/internal/apm/service-map?start=${encodeURIComponent(START_TS)}&end=${encodeURIComponent(END_TS)}&environment=${ENV}`,
+      path: `/internal/apm/service-map?start=${encodeURIComponent(START_DATE)}&end=${encodeURIComponent(END_DATE)}&environment=${ENV}`,
       headers: {
         "kbn-xsrf": "true",
         "Authorization": `ApiKey ${API_KEY}`,
