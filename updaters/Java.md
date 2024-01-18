@@ -25,9 +25,5 @@ docker run --network=none \
 ```
 
 ## 3. Upload to BELA
-```
-curl "https://${{ secrets.BELA_HOST  }}/architecture" --fail \
-     -H "Authorization: ${{ secrets.BELA_TOKEN }}" \
-     -H "Content-Type: application/json" \
-     --data @bela-update.json
-```
+
+See [upload example](/README.md#3-upload-to-bela).
