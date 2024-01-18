@@ -1,16 +1,37 @@
-// Running this script: node elastic-apm.js
+// Example on how to run this script: 
+// node elastic-apm.js --api-key "ELASTIC_APM_API_KEY" --api-url "https://elastic-apm-api-url:9544" --bela-token "BELA_TOKEN" --bela-host "BELA_HOST"
+// Required Flags:
+// --api-key    -> Api Key provided to you by Elastic APM
+// --api-url    -> Api Url you use to access Elastic APM (should include port number)
+// --bela-token -> Access token provided to you by BELA
+// --bela-host  -> Your host provided by BELA
+// Optional Flags:
+// --environment -> The environment you want to query in Elastic APM (defaults to ENVIRONMENT_ALL)
+// --source -> A name that is gonna be associated with the entities created in this import, commonly set to a repository name (defaults to elastic-apm)
+
 const https = require("https");
 
+const getProcessArgValue = (processArg, required) => {
+  const index = process.argv.indexOf(processArg);
+  if (index > -1) {
+    return process.argv[index + 1];
+  }
+  if (required) {
+    const arg = processArg.replace(/^--/, "");
+    console.error(`Missing required argument: ${arg}`);
+    process.exit(1);
+  }
+}
+
 // Elastic APM params:
-const API_KEY = "YOUR_API_KEY";
-const API_URL = "YOUR_API_URL";
-const API_PORT = 0;
-const ENV = "ENVIRONMENT_ALL";
+const API_KEY = getProcessArgValue("--api-key", true);
+const API_URL = getProcessArgValue("--api-url", true);
+const ENV = getProcessArgValue("--environment") || "ENVIRONMENT_ALL";
 
 // BELA params:
-const BELA_TOKEN = "BELA_TOKEN";
-const BELA_HOST = "BELA_HOST";
-const SOURCE = "elastic-apm";
+const BELA_TOKEN = getProcessArgValue("--bela-token", true);
+const BELA_HOST = getProcessArgValue("--bela-host", true);
+const SOURCE = getProcessArgValue("--source") || "elastic-apm";
 const SERVICE_ENVIRONMENTS_TO_IGNORE = [ "staging", "develop" ]; // services with these fragments in their name or in their environment will be ignored
 const SERVICE_NAME_FRAGMENTS_TO_CLEAN_UP = [ "-production", "-prd" ]; // services will have theses fragments removed from their name. Ex: acme-production -> acme
 
@@ -24,11 +45,12 @@ const getDates = () => {
 
 const fetchServiceMap = () => {
   const { START_DATE, END_DATE } = getDates();
+  const url = new URL(API_URL);
 
   return new Promise((resolve, reject) => {
     const req = https.request({
-      hostname: API_URL,
-      port: API_PORT,
+      hostname: url.hostname,
+      port: url.port,
       path: `/internal/apm/service-map?start=${encodeURIComponent(START_DATE)}&end=${encodeURIComponent(END_DATE)}&environment=${ENV}`,
       headers: {
         "kbn-xsrf": "true",
