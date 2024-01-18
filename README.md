@@ -36,8 +36,8 @@ Set up these two commands as a repository action or as an optional pipeline step
    
    For example:
    ```
-   curl -f "https://${{ secrets.BELA_HOST  }}/architecture" \
-        -H "Authorization: ${{ secrets.BELA_TOKEN }}" \
+   curl -f "https://$BELA_HOST/architecture" \
+        -H "Authorization: $BELA_TOKEN" \
         -H "Content-Type: application/json" \
         --data @bela-update.json
    ```
