@@ -61,7 +61,15 @@ If you use a different tool, you can adapt one of the scripts above or call BELA
 
 You can upload "hard coded" elements, dependencies and containments to BELA by writing a JSON file yourself, using the format defined by the [BELA API](API.md).
 
-See [Upload to BELA](#2-upload-to-bela) above.
+An example command you can use in your CI/CD pipeline to update BELA with custom diagram elements:
+```
+if [ -f "bela-custom-update.json" ]; then
+    curl ... --data @bela-custom-update.json
+fi
+```
+Use the same [curl command](#2-upload-to-bela) as above, changing the data arg to `--data @bela-custom-update.json`.
+
+Now, every repository that uses this CI/CD pipeline can simply create the `bela-custom-update.json` file to have custom "diagrams-as-code".
 
 > [!IMPORTANT]
-> Other tools also provide this "diagram-as-code" technique which makes you write brittle diagram code which is redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
+> "Diagram-as-code" is a technique that makes you write brittle diagram code which is redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
