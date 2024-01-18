@@ -12,9 +12,13 @@ The Browser for Enterprise-Level Architecture
 
 ## Synchronizing your Code Repositories
 
-Set up these two commands as a repository action or as an optional pipeline step after your main CI/CD pipeline steps have completed.
+Set up these 3 steps as a repository action or as optional pipeline steps after your main CI/CD pipeline has completed.
 
-#### 1. Run the `BELA Updater` docker app
+#### 1. Build your projects
+
+Build your projects normally.
+
+#### 2. Run the `BELA Updater` docker app
 
    > [!IMPORTANT]
    > It runs with the `--network=none` argument for secure containment.
@@ -30,7 +34,7 @@ Set up these two commands as a repository action or as an optional pipeline step
    If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly.
 
  
-#### 2. Upload to BELA
+#### 3. Upload to BELA
 
    Upload the `bela-update.json` file, produced above, to BELA.
    
@@ -67,7 +71,7 @@ if [ -f "bela-custom-update.json" ]; then
     curl ... --data @bela-custom-update.json
 fi
 ```
-Use the same [curl command](#2-upload-to-bela) as above, changing the data arg to `--data @bela-custom-update.json`.
+Use the same [curl command](#3-upload-to-bela) as above, changing the data arg to `--data @bela-custom-update.json`.
 
 Now, every repository that uses this CI/CD pipeline can simply use the `bela-custom-update.json` file for custom diagrams-as-code.
 
