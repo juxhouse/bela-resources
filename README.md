@@ -76,4 +76,4 @@ Use the same [curl command](#3-upload-to-bela) as above, changing the data arg t
 Now, every repository that uses this CI/CD pipeline can simply use the `bela-custom-update.json` file for custom diagrams-as-code.
 
 > [!IMPORTANT]
-> Diagram-as-code is a technique that makes you write brittle diagram code that is redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
+> Diagram-as-code is a technique that produces brittle diagram code that is redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
