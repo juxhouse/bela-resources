@@ -63,7 +63,7 @@ If you use a different tool, you can adapt one of the scripts above or call BELA
 
 ## Diagram-as-Code
 
-You can upload "hard coded" elements, dependencies and containments to BELA using the JSON format defined by the [BELA API](API.md).
+You can upload "hard coded" diagram elements to BELA using the JSON format defined by the [BELA API](API.md).
 
 Add this command to your CI/CD pipeline to update BELA with custom diagram elements:
 ```
