@@ -25,6 +25,8 @@ Build the projects in your repository, as normal.
    
    It detects all projects in the repository and produces a single `bela-update.json` file.
 
+   You must provide a `source` argument. This is typically the name of your repository, such as `$GITHUB_REPOSITORY`. BELA uses the `source` to detect elements that were deleted from your architecture. BELA will garbage collect elements that are no longer present in any source.
+
    See examples for the supported languages:
    - C#
    - [Java](/updaters/Java.md)
