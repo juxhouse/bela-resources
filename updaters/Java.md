@@ -1,6 +1,8 @@
 # Updating BELA with Elements from your Java Projects
 
-## 1. Build Your Projects
+## Preparation: Build Your Projects
+
+Make sure your projects are built. You can skip this step if the projects in your repository are already built.
 
 Example for a simple Maven project:
 
@@ -9,7 +11,7 @@ Example for a simple Maven project:
 > [!TIP]
 > Gradle, SBT, Bazel, Buildr: If you are using a build tool other than Maven, build your project normally and use your build tool to generate a `pom.xml` file. For best results, configure your tool to download the dependency artifacts to the local Maven `.m2` directory. It will be used in the next step.
 
-## 2. Run the Bela Updater
+## 1. Run the Bela Updater
 
 The bela-updater docker app analyses the projects in your repo and generates the bela-update.json file.
 
@@ -24,6 +26,6 @@ docker run --network=none \
            juxhouse/bela-updater -source "$GITHUB_REPOSITORY"
 ```
 
-## 3. Upload to BELA
+## 2. Upload to BELA
 
-See [upload example](/README.md#3-upload-to-bela).
+See [upload example](/README.md#2-upload-to-bela).
