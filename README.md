@@ -16,7 +16,7 @@ Set up these 3 steps as a repository action or as optional pipeline steps after 
 
 #### 1. Build your projects
 
-Build your projects normally.
+Build the projects in your repository, as normal.
 
 #### 2. Run the `BELA Updater` docker app
 
