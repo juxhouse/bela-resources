@@ -14,7 +14,7 @@ The Browser for Enterprise-Level Architecture
 
 Set up these 2 steps as a repository action or as optional pipeline steps after your main CI/CD pipeline has completed.
 
-#### 1. Run the `BELA Updater` docker app
+#### 1. Run the `bela-updater` docker app
 
    > [!IMPORTANT]
    > It runs with the `--network=none` argument for secure containment.
