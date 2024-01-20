@@ -2,7 +2,7 @@
 
 ## ECDs
 
-ECDs are software [Elements](#elements), [Containments](#Containments) and [Dependencies](#dependencies).
+ECDs are software [Elements](#elements), [Containments](#Containments) and [Dependencies](#dependencies). These are the only top-level concepts necessary to describe software architecture.
 
 
 ## Architecture
