@@ -1,13 +1,13 @@
 # BELA Concepts
 
-## ECD
+## ECDs
 
-An ECD is a software Element, Containment and/or Dependency.
+ECDs are software [Elements](#elements), [Containments](#Containments) and [Dependencies](#dependencies).
 
 
 ## Architecture
 
-Architecture is a collection of software ECDs (Elements, Containments and Dependencies).
+Architecture is a collection of software ECDs.
 
 #### Built Architecture
 
