@@ -7,7 +7,7 @@ ECDs are software [Elements](#elements), [Containments](#Containments) and [Depe
 
 ## Architecture
 
-Architecture is a collection of software ECDs.
+Architecture is a collection of ECDs.
 
 #### Built Architecture
 
