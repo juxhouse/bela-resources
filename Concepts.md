@@ -1,4 +1,4 @@
-# Concepts
+# BELA Concepts
 
 ## ECDs
 
@@ -11,11 +11,9 @@ These are the only 3 top-level concepts necessary to represent and explore softw
 
 Architecture is simply a collection of ECDs.
 
-#### Built Architecture
+#### Built Architecture vs Modeled Architecture
 
 "Built architecture" or "built ECDs" refer to ECDs that actually exist in your production environments.
-
-#### Modeled Architecture
 
 "Modeled architecture" or "modeled ECDs" refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
