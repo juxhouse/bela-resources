@@ -13,7 +13,7 @@ Architecture is simply a collection of ECDs.
 
 #### Built Architecture vs Modeled Architecture
 
-"Built architecture" or "built ECDs" refer to ECDs that actually exist in your production environments.
+"Built architecture" or "built ECDs" refer to ECDs that actually exist in your production environments and were imported to BELA.
 
 "Modeled architecture" or "modeled ECDs" refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
@@ -25,7 +25,7 @@ When a built element is created with the same name as an existing modeled elemen
 
 ## Elements
 
-Software elements are the nouns in your architecture. [API](/API.md#upsert-element)
+Software elements are the nouns in your architecture: projects, classes, methods, etc. [API](/API.md#upsert-element)
 
 #### Element Type
 
@@ -76,9 +76,16 @@ Example paths of top-level elements:
  - project/SomeApp
 
 
+## Dependencies
+
+Any element can depend on any other element. [API](/API.md#add-dependencies)
+
+Dependencies are uniquely identified by the path of both elements, a type and a name.
+
+
 ## Sources
 
-A Source is a String that indicates where each built ECD exists in your architecture: a code repository, a config files, an APM tool, etc.
+A Source is a String that indicates where each built ECD exists in your architecture: a code repository, a config file, an APM tool, etc.
 
 Some examples:
  - "my-repo"
