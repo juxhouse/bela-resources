@@ -4,12 +4,12 @@
 
 ECDs are software [Elements](#elements), [Containments](#Containments) and [Dependencies](#dependencies).
 
-These are the only 3 top-level concepts necessary to represent understand and explore software architecture.
+These are the only 3 top-level concepts necessary to represent and explore software architecture structure.
 
 
 ## Architecture
 
-Architecture is a collection of ECDs.
+Architecture is simply a collection of ECDs.
 
 #### Built Architecture
 
@@ -17,7 +17,7 @@ Architecture is a collection of ECDs.
 
 #### Modeled Architecture
 
-"Modeled architecture" or "modeled ECDs" refer to ECDs that have been manually created in BELA and that do not exist in your production environments.
+"Modeled architecture" or "modeled ECDs" refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
 When a built element is created with the same name as an existing modeled element, the modeled element will get a `(model)` suffix to its name.
 
@@ -27,7 +27,7 @@ When a built element is created with the same name as an existing modeled elemen
 
 ## Elements
 
-Software elements are the nouns in your architecture. [Details](/API.md#upsert-element)
+Software elements are the nouns in your architecture. [API](/API.md#upsert-element)
 
 #### Element Type
 
@@ -37,7 +37,7 @@ You can create your own element types.
 
 #### Element Path
 
-Every element is identified by a path. [Details](/API.md#elementpath)
+Every element is identified by a path. [API](/API.md#elementpath)
 
 Examples:
  - service/customers
@@ -60,7 +60,7 @@ method      setName(String)   java-project/my-company:my-artifact/org.mycompany/
 
 ## Containments
 
-Containment is the relationship between a parent element and a child element. Parent elements are also called "containers".
+Containment is the relationship between a parent element and a child element. Parent elements are also called "containers". [API](/API.md#add-containments)
 
 Restrictions:
  - An element cannot be contained by more that one parent element.
