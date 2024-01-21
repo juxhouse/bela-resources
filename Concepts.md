@@ -20,29 +20,40 @@ Architecture is a collection of ECDs.
 When a built element is created with the same name as an existing modeled element, the modeled element will get a `(model)` suffix to its name.
 
 > [!TIP]
-> You can use the `Diagram Legend` tool from BELA's main menu to see the different colors in which built and modeled ECDs are diplayed.
+> You can use the `Diagram Legend` tool from BELA's main menu to see the different colors in which different ECDs are diplayed.
 
 
 ## Elements
 
-Software elements are the nouns in your architecture: components, classes, methods, etc. [Details](/API.md#upsert-element).
+Software elements are the nouns in your architecture. [Details](/API.md#upsert-element)
 
 #### Element Type
 
-Examples of element types: domain, system, module, component, namespace, package, interface, classe, function, method, field, etc.
+Element type examples: domain, system, project, service, component, namespace, package, interface, classe, function, method, field, database, bucket, table, data-set, endpoint, topic, queue, etc.
 
 #### Element Path
 
-An element's path is its identifier. Examples:
- - "service/customers"
- - "dotnet-assembly/MyAssembly/MyNamespace/MyInterface
- - "java-project/
- 
+Every element is identified by a path. [Details](/API.md#elementpath)
+
+Examples:
+ - service/customers
+ - dotnet-assembly/MyAssembly/MyNamespace/MyInterface
+ - java-project/org.acme:customers/org.acme/customer/Customer/setName(java.lang.String)
+
+#### Element Name
+
+Every element has a simple name. Names are not unique.
+
+Examples:
+```
+Type        Name              Path
+service     Customers         service/customers
+interface   MyInterface       dotnet-assembly/MyAssembly/MyNamespace/MyInterface
+method      setName(String)   java-project/my-company:my-artifact/org.mycompany/customers/Customer/setName(java.lang.String)
+```
+
 
 ## Containments
-
-Software elements are the nouns in your architecture, things like: domains, systems, components, namespaces, packages, interfaces, classes, functions, methods, fields, etc.
-
 
 
 ## Sources
