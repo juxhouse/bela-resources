@@ -1,13 +1,18 @@
-// Example on how to run this script: 
+//
+// This script will import service interaction data from Elastic APM and upload it to BELA.
+//
+// Example:
 // node elastic-apm.js --api-key "ELASTIC_APM_API_KEY" --api-url "https://elastic-apm-api-url:9544" --bela-token "BELA_TOKEN" --bela-host "BELA_HOST"
-// Required Flags:
-// --api-key    -> Api Key provided to you by Elastic APM
-// --api-url    -> Api Url you use to access Elastic APM (should include port number)
-// --bela-token -> Access token provided to you by BELA
-// --bela-host  -> Your host provided by BELA
-// Optional Flags:
-// --environment -> The environment you want to query in Elastic APM (defaults to ENVIRONMENT_ALL)
-// --source -> A name that is going to be associated with the entities created in this import (defaults to elastic-apm)
+//
+// Arguments:
+// --api-key       API Key provided to you by Elastic APM
+// --api-url       API URL you use to access Elastic APM (includes port number)
+// --bela-token    Access token provided to you by BELA
+// --bela-host     Your host provided by BELA (just the host name, not a URL)
+//
+// Optional Arguments:
+// --environment   The environment you want to query in Elastic APM (defaults to ENVIRONMENT_ALL)
+// --source        A name that will be associated with the entities created in this import (defaults to "elastic-apm")
 
 const https = require("https");
 
