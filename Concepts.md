@@ -82,19 +82,28 @@ Any element can depend on any other element. [API](/API.md#add-dependencies)
 
 Dependencies are uniquely identified by the path of both elements, a type and a name.
 
+> [!TIP]
+> If there is a dependency "from" element A "to" element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency that is "pointing up" will be displayed in red.
+
+#### Dataflow Direction
+
+Dependencies can be tagged with "read" and/or "write" tags. This dataflow direction will be displayed as arrowheads on the dependency line.
+
+Dataflow direction is independent of dependency direction.
+
 
 ## Sources
 
-A Source is a String that indicates where each built ECD exists in your architecture: a code repository, a config file, an APM tool, etc.
+A Source indicates where each built ECD exists in your architecture: a code repository, a config file, an APM tool, etc.
 
-Some examples:
+Examples sources:
  - "my-repo"
  - "my-service-postman-catalog"
  - "my-company-apm-tool"
  - etc
 
-The source name is sent to the BELA API when ECDs are uploaded.
-
 An ECD will typically exist in only one source but some ECDs, like libs, can be present in multiple sources.
+
+The source name is sent to BELA when ECDs are uploaded.
 
 BELA will garbage collect ECDs that are no longer present in any source. That is the purpose of sources.
