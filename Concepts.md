@@ -2,20 +2,20 @@
 
 ## ECDs
 
-ECDs are software [Elements](#elements), [Containments](#Containments) and [Dependencies](#dependencies).
+ECDs are software [Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies).
 
-These are the only 3 top-level concepts necessary to represent and explore software architecture structure.
+They are the only top-level concepts necessary to represent and explore software architecture structure.
 
 
 ## Architecture
 
 Architecture is simply a collection of ECDs.
 
-#### Built Architecture vs Modeled Architecture
+#### Built vs Modeled
 
-"Built architecture" or "built ECDs" refer to ECDs that actually exist in your production environments and were imported to BELA.
+**Built** architecture or **built** ECDs refer to ECDs that actually exist in your production environments and were imported to BELA.
 
-"Modeled architecture" or "modeled ECDs" refer to ECDs that have been manually created in BELA and do not exist in your production environments.
+**Modeled** architecture or **modeled** ECDs refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
 When a built element is created with the same name as an existing modeled element, the modeled element will get a `(model)` suffix to its name.
 
