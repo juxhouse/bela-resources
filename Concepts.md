@@ -58,13 +58,16 @@ method      setName(String)   java-project/my-company:my-artifact/org.mycompany/
 
 ## Containments
 
-Containment is the relationship between a parent element and a child element. Parent elements are also called "containers". [API](/API.md#add-containments)
+A containment is the relationship between a parent element and a child element. Parent elements can also be called "containers". [API](/API.md#add-containments)
 
 Restrictions:
  - An element cannot be contained by more that one parent element.
  - There cannot be containment cycles.
 
 A project can contain a package, for example, which can contain a class, which can contain a method. BELA does not have any containment restrictions based on element types.
+
+> [!NOTE]
+> The standard C4 model, which inspires BELA's graphics, defines a specific meaning for "containers" and allows them only at a single level. BELA uses the more general meaning of "container" which is simply an element that contains other elements, and allows containments at infinite levels, like Russian dolls.
 
 #### Top-level Elements
 
