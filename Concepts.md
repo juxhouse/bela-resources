@@ -96,7 +96,7 @@ Dataflow direction is independent of dependency direction.
 
 ## Sources
 
-A Source indicates where each built ECD exists in your architecture: a code repository, a config file, an APM tool, etc.
+A Source indicates where each [built](#built-vs-modeled) ECD exists in your architecture: a code repository, a config file, an APM tool, etc.
 
 Examples sources:
  - "my-repo"
