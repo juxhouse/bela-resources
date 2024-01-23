@@ -1,4 +1,4 @@
-# Typescript and Javascript BELA Integration
+# Typescript and Javascript BELA Updater
   You can upload your Typescript or Javascript project to BELA
 
 ## Creating tsconfig file
