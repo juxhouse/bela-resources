@@ -23,7 +23,7 @@ An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own 
 docker run --network=none \
            -v ./:/workspace/ \
            -v ~/.m2:/root/.m2 \
-           juxhouse/bela-updater -source "$GITHUB_REPOSITORY"
+           juxhouse/bela-updater-java -source "$GITHUB_REPOSITORY"
 ```
 
 ## 2. Upload to BELA
