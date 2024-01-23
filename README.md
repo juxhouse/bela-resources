@@ -24,7 +24,7 @@ Get a solid understanding of BELA's fundamental [concepts](/Concepts.md).
    > [!IMPORTANT]
    > It runs with the `--network=none` argument for secure containment.
    
-   It detects all projects in the repository and produces a single `bela-update.json` file with the [ECDs](/Concepts.md#ecds) (not code) to be sent to BELA.
+   It detects all projects in the repository and produces a single `bela-update.json` file with the [architecture structure](/Concepts.md#ecds) (not code) to be sent to BELA.
 
    You must provide a [source](/Concepts.md#sources) argument.
 
