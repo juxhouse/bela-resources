@@ -13,7 +13,7 @@ Example for a simple Maven project:
 
 ## 1. Run the Bela Updater
 
-The bela-updater docker app analyses the projects in your repo and generates the bela-update.json file.
+The bela-updater docker app analyses the projects in your repo and generates the `bela-update.json` file.
 
 > [!IMPORTANT]
 > It runs with network=none for secure containment.
@@ -28,4 +28,4 @@ docker run --network=none \
 
 ## 2. Upload to BELA
 
-See [upload example](/README.md#2-upload-to-bela).
+See [upload example](/updaters/reference/upload-example.md).
