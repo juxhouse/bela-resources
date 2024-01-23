@@ -53,8 +53,8 @@ If you use a services architecture, you can obtain your service names and the de
 Set up a script, to be executed every hour, to query your APM tool and upload service dependencies to BELA.
 
 Examples for some APM tools:
-- Datadog
-- Elastic APM
+- [Datadog](/updaters/datadog.js)
+- [Elastic APM](/updaters/elastic-apm.js)
   
 If you use a different tool, you can adapt one of the scripts above or call BELA's [generic API](API.md) directly.
 
