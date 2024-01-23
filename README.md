@@ -38,7 +38,7 @@ If your language is not supported, you can use a code analysis tool for your lan
  
 #### 2. Upload to BELA
 
-Upload the `bela-update.json` file, produced above, to BELA. See [example](/updaters/reference/upload-example.md)
+Upload the `bela-update.json` file, produced above, to BELA. See [example](/updaters/reference/upload-example.md).
 
 #### 3. Automate
 
@@ -68,7 +68,7 @@ if [ -f "bela-custom-update.json" ]; then
     curl ... --data @bela-custom-update.json
 fi
 ```
-Use the same [curl command](#2-upload-to-bela) as above, changing the data arg to `--data @bela-custom-update.json`.
+Use this [curl command](/updaters/reference/upload-example.md), changing the data arg to `--data @bela-custom-update.json`.
 
 Now, every repository that uses this CI/CD pipeline can simply use the `bela-custom-update.json` file for custom diagrams-as-code.
 
