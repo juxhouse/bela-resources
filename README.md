@@ -1,7 +1,8 @@
 # BELA
 The Browser for Enterprise-Level Architecture
 
-[BELA](https://jux.house/bela) is a platform to visualize and navigate any software architecture, from high-level business domains down to projects and code elements.
+[BELA](https://jux.house/bela) is a platform to visualize and navigate any software architecture, from high-level business domains down to code elements.
+
 
 ## Main Features
 
@@ -10,9 +11,13 @@ The Browser for Enterprise-Level Architecture
 - Infinite levels of element expand/collapse from high-level containers down to code.
 - Single source of truth for manually modeled elements across your entire organization.
 
-## Synchronizing your Code Repositories
 
-Set up these 2 steps as a repository action or as optional pipeline steps after your main CI/CD pipeline has completed.
+## Concepts
+
+Get 
+
+
+## Synchronizing your Code Repositories
 
 #### 1. Run the `bela-updater` docker app
 
@@ -30,7 +35,6 @@ Set up these 2 steps as a repository action or as optional pipeline steps after 
    - Typescript
 
    If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly.
-
  
 #### 2. Upload to BELA
 
@@ -44,7 +48,11 @@ Set up these 2 steps as a repository action or as optional pipeline steps after 
         --data @bela-update.json
    ```
    You can obtain your `BELA_TOKEN` from the BELA web app.
-   
+
+#### 3. Automate
+
+Set up the steps above as a repository action or as optional pipeline steps after your main CI/CD pipeline has completed.
+
 
 ## Synchronizing your APM Tools
 
