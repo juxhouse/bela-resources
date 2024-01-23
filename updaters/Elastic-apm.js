@@ -11,7 +11,7 @@
 // --bela-host     Your host provided by BELA (just the host name, not a URL)
 //
 // Optional Arguments:
-// --environment   The environment you want to query in Elastic APM (defaults to ENVIRONMENT_ALL)
+// --environment   The Elastic APM environment you want to query (defaults to ENVIRONMENT_ALL). Refer to SERVICE_ENVIRONMENTS_TO_IGNORE and SERVICE_NAME_FRAGMENTS_TO_CLEAN_UP below for further customization.
 // --source        A name that will be associated with the entities created in this import (defaults to "elastic-apm")
 
 const https = require("https");
