@@ -14,10 +14,10 @@ The Browser for Enterprise-Level Architecture
 
 ## Concepts
 
-Get 
+Get a solid understanding of BELA's fundamental [concepts](/Concepts.md).
 
 
-## Synchronizing your Code Repositories
+## Synchronize your Code Repositories
 
 #### 1. Run the `bela-updater` docker app
 
@@ -31,8 +31,8 @@ Get
    See examples for the supported languages:
    - [C#](/updaters/.NET.md)
    - [Java](/updaters/Java.md)
-   - Javascript
-   - Typescript
+   - [Javascript](/updaters/Typescript.md)
+   - [Typescript](/updaters/Typescript.md)
 
    If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly.
  
@@ -54,11 +54,11 @@ Get
 Set up the steps above as a repository action or as optional pipeline steps after your main CI/CD pipeline has completed.
 
 
-## Synchronizing your APM Tools
+## Synchronize your APM Tools
 
 If you use a services architecture, you can obtain your service names and the dependencies among them from your Application Performance Monitoring (APM) data.
 
-Set up a script, to be executed every hour, to query your APM tool and upload service dependencies to BELA.
+Set up a script, to be executed periodically, to query your APM tool and upload service dependencies to BELA.
 
 Examples for some APM tools:
 - [Datadog](/updaters/datadog.js)
