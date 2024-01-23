@@ -1,5 +1,5 @@
-# Typescript and Javascript BELA Updater
-  You can upload your Typescript or Javascript project to BELA
+# Updating BELA with Elements from your Typescript and Javascript Projects
+  You can upload your Typescript or Javascript projects to BELA
 
 ## Creating tsconfig file
   If your project is using Typescript, you may ignore this step, however, if you're only using Javascript you should create a tsconfig.json file first at the project root, containing your package.json file. The file should have the following content:

@@ -1,1 +1,1 @@
-See [Typescript and Javascript BELA Updater](/updaters/Typescript.md)
+See [Updating BELA with Elements from your Typescript and Javascript Projects](/updaters/Typescript.md)
