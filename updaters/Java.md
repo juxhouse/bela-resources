@@ -1,4 +1,4 @@
-# Updating BELA with Elements from your Java Projects
+# Updating BELA with your Java Projects
 
 ## Preparation: Build Your Projects
 

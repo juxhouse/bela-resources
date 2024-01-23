@@ -1,4 +1,4 @@
-# Updating BELA with Elements from your Typescript and Javascript Projects
+# Updating BELA with your TS and JS Projects
   You can upload your Typescript or Javascript projects to BELA
 
 ## Creating tsconfig file
