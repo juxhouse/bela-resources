@@ -1,7 +1,7 @@
 //
 // This script will import service interaction data from Elastic APM and upload it to BELA.
 //
-// Example:
+// Example call:
 // node elastic-apm.js --api-key "ELASTIC_APM_API_KEY" --api-url "https://elastic-apm-api-url:9544" --bela-token "BELA_TOKEN" --bela-host "BELA_HOST"
 //
 // Arguments:
