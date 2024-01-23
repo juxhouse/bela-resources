@@ -13,7 +13,7 @@ Architecture is simply a collection of ECDs.
 
 #### Built vs Modeled
 
-**Built** architecture or **built** ECDs refer to ECDs that actually exist in your production environments and were imported to BELA.
+**Built** architecture or **built** ECDs refer to ECDs that actually exist in your production environments and had their structure imported to BELA.
 
 **Modeled** architecture or **modeled** ECDs refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
