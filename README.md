@@ -62,15 +62,9 @@ If you use a different tool, you can adapt one of the scripts above or call BELA
 
 You can upload "hard coded" diagram elements to BELA using the JSON format defined by the [BELA API](API.md).
 
-Add this command to your CI/CD pipeline to update BELA with custom diagram elements:
-```
-if [ -f "bela-custom-update.json" ]; then
-    curl ... --data @bela-custom-update.json
-fi
-```
-Use this [curl command](/updaters/reference/upload-example.md), changing the data arg to `--data @bela-custom-update.json`.
+Add [this command]() to your CI/CD pipeline to update BELA with custom diagram elements. It will upload the `bela-custom-update.json` file to BELA if it exists.
 
-Now, every repository that uses this CI/CD pipeline can simply use the `bela-custom-update.json` file for custom diagrams-as-code.
+Now, every repository that uses this CI/CD pipeline can simply create the `bela-custom-update.json` file for custom diagrams-as-code.
 
 > [!IMPORTANT]
 > Diagram-as-code is a technique that produces diagram code that is brittle and redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
