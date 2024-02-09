@@ -1,10 +1,9 @@
 # Updating BELA with your TS and JS Projects
 
 ## Preparation: Install Dependencies
-  Make sure your project has all of its dependencies installed. Additionaly, you have to install scip-typescrit to create your project index.
+  Make sure your project has its dependencies installed. You can skip this step if your dependencies are already installed.
 ```sh
   npm ci
-  npm install @sourcegraph/scip-typescript
 ```
 
 ## 1. Run the Bela Updater
