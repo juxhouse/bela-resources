@@ -1,17 +1,23 @@
 # Updating BELA with your Java Projects
 
-## Preparation: Build Your Projects
+## 1. Install Your Project(s)
 
-Make sure your projects are built. You can skip this step if the projects in your repository are already built.
+Make sure your project is built and installed in the local Maven .m2 repository. In the same directory as your `pom.xml` file, run:
 
-Example for a simple Maven project:
+`mvn clean install dependency:build-classpath`
 
-`mvn clean package`
+If your project had already been installed by a previous step in your build pipeline, you can just run this instead:
+
+`mvn dependency:build-classpath`
+
+This will download all Maven plugins that the BELA Updater docker app will need in the next step.
+
+If you are using a monorepo with several projects, repeat the above for each one of them.
 
 > [!TIP]
-> Gradle, SBT, Bazel, Buildr: If you are using a build tool other than Maven, build your project normally and use your build tool to generate a `pom.xml` file. For best results, configure your tool to download the dependency artifacts to the local Maven `.m2` directory. It will be used in the next step.
+> Gradle, SBT, Bazel, Buildr: If you are using a build tool other than Maven, build your project normally and use your build tool to generate a `pom.xml` file. Configure your tool to install your compiled project artifact and its dependency artifacts to the local Maven `.m2` directory. They will be used in the next step.
 
-## 1. Run the Bela Updater
+## 2. Run the Bela Updater
 
 The bela-updater docker app analyses the projects in your repo and generates the `bela-update.json` file.
 
@@ -26,6 +32,6 @@ docker run --network=none --pull=always \
            juxhouse/bela-updater-java -source "$GITHUB_REPOSITORY"
 ```
 
-## 2. Upload to BELA
+## 3. Upload to BELA
 
 See [upload example](/updaters/reference/upload-example.md).
