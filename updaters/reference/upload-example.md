@@ -13,7 +13,7 @@ You can obtain your `BELA_HOST` and `BELA_TOKEN` from the BELA web app.
 
 # Uploading "Diagrams-as-Code"
 
-Use this command to upload [Diagram-as-Code](/README.md#diagram-as-code) data.
+Use this command to upload [Diagram-as-Code](/README.md#diagram-as-code) data, if it exists.
 
 ```
 if [ -f "bela-custom-update.json" ]; then
