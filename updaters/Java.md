@@ -10,7 +10,7 @@ If your project had already been installed by a previous step in your build pipe
 
 `mvn dependency:build-classpath`
 
-This will download all Maven plugins that the BELA Updater docker app will need in the next step.
+This will download all Maven plugins needed in the next step.
 
 If you are using a monorepo with several projects, repeat the above for each one of them.
 
