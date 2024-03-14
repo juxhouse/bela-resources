@@ -12,7 +12,7 @@ Will return:
 
 you can use `*` to represent any part of the name and type.
 
-Typing: `Person*[class]`
+Typing: `Pers*[cla`
 Will return:
   - `PersonController [class]`
   - `PersonImpl [class]`
