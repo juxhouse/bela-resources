@@ -148,14 +148,13 @@ The paths of modeled elements are composed of their type and name: `type/name`. 
 
 ### Dependency
 
-Dependencies are uniquely identified by the combination of `from` element, `to` element, `type` and `name`.
+Dependencies are uniquely identified by the combination of `from` element, `to` element and `name`.
 
-An element can have more than one dependency on another element as long as these dependencies have different types or names.
+An element can have more than one dependency on another element as long as these dependencies have different names.
 
 ```
 {
   to: ElementPath
-  type: Identifier                // Optional.
   name: String                    // Optional. Case sensitive.
   description: String             // Optional.
   tags: [Identifier]              // Optional. You can have any tags you want.
