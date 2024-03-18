@@ -2,10 +2,10 @@
 
 ## Search
 
-When searching for diagrams or elements, you type a fragment of their name and type.
+When searching for diagrams or elements, type a fragment of their name and type.
 
 Typing: `Person`
-Will return:
+Will find:
   - `getPerson() [method]`
   - `PersonController [class]`
   - `PersonImpl [class]`
@@ -13,7 +13,7 @@ Will return:
 you can use `*` to represent any part of the name and type.
 
 Typing: `Pers*[cla`
-Will return:
+Will find:
   - `PersonController [class]`
   - `PersonImpl [class]`
 
