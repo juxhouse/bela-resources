@@ -98,7 +98,7 @@ This operation:
 
 ### Source
 
-String. This is the source of the elements being uploaded. BELA will garbage collect elements and containments that are no longer present in the latest upload of any of your sources.
+String. This is the source of the elements being uploaded. BELA will garbage collect ECDs that are no longer present in the latest upload of any of your sources.
 
 Examples:
   - "my-company/my-repo"
