@@ -52,7 +52,7 @@ Type        Name              Path
 ---------   ---------------   ----------------------------------------------------------------------------------------------
 service     Customers         service/customers
 interface   MyInterface       dotnet-assembly/MyAssembly/MyNamespace/MyInterface
-method      setName(String)   java-project/my-company:my-artifact/org.mycompany/customers/Customer/setName(java.lang.String)
+method      setName(String)   maven-group/group-id/artifact-id/org.mycompany/customers/Customer/setName(java.lang.String)
 ```
 
 
