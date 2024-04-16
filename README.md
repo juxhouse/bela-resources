@@ -30,6 +30,7 @@ You must provide a [source](/Concepts.md#sources) argument.
 
 See examples for the supported languages:
  - [C#](/updaters/.NET.md)
+ - [Clojure](/updaters/Clojure.md)
  - [Java](/updaters/Java.md)
  - [Javascript](/updaters/Typescript.md)
  - [Typescript](/updaters/Typescript.md)
