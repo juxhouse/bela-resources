@@ -27,8 +27,8 @@ The bela-updater docker app analyses the projects in your repo and generates the
 An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own source:
 ```
 docker run --network=none --pull=always \
-           -v ./:/workspace/:ro \
-           -v ~/.m2:/root/.m2:ro \
+           -v ./:/workspace/ \
+           -v ~/.m2:/root/.m2 \
            juxhouse/bela-updater-java -source "$GITHUB_REPOSITORY"
 ```
 
