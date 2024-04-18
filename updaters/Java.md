@@ -2,7 +2,7 @@
 
 ## Requirement
 
-Your Maven project needs to be installed in the local Maven .m2 repository. For a simple Maven project, that is done running:
+Your Maven project needs to be **installed** in the local Maven .m2 repository. For a simple Maven project, for example, that is done running:
 
 `mvn clean install`
 
@@ -12,7 +12,10 @@ Your Maven project needs to be installed in the local Maven .m2 repository. For 
 
 ## 1. Generate Classpath
 
-`mvn dependency:build-classpath -Dmdep.outputFile=bela-classpath.txt`
+```
+mkdir -p .bela
+mvn dependency:build-classpath -Dmdep.outputFile=.bela/classpath.txt
+```
 
 If you are using a monorepo with several projects, repeat this step for each one of them.
 
@@ -27,8 +30,9 @@ The bela-updater docker app analyses the projects in your repo and generates the
 An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own source:
 ```
 docker run --network=none --pull=always \
-           -v ./:/workspace/ \
-           -v ~/.m2:/root/.m2 \
+           -v ./.bela:/.bela
+           -v ./:/workspace/:ro \
+           -v ~/.m2:/root/.m2:ro \
            juxhouse/bela-updater-java -source "$GITHUB_REPOSITORY"
 ```
 
