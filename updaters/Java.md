@@ -7,7 +7,7 @@ Your Maven project needs to be **installed** in the local Maven .m2 repository. 
 `mvn clean install`
 
 > [!TIP]
-> Gradle, SBT, Bazel, Buildr: If you are using a build tool other than Maven, build your project normally and use your build tool to generate a `pom.xml` file. Configure your tool to install your compiled project artifact and its dependency artifacts to the local Maven `.m2` directory. They will be used in the next step.
+> Gradle, SBT, Bazel, Buildr: If you are using a build tool other than Maven, build your project normally and use your build tool to generate a `pom.xml` file. Configure your tool to install your compiled project artifact and its dependency artifacts to the local Maven `.m2` directory. They will be used below.
 
 
 ## 1. Generate Classpath
