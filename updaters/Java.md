@@ -13,7 +13,6 @@ Your Maven project needs to be **installed** in the local Maven .m2 repository. 
 ## 1. Generate Classpath
 
 ```
-mkdir -p .bela
 mvn dependency:build-classpath -Dmdep.outputFile=.bela/classpath.txt
 ```
 
@@ -32,7 +31,7 @@ An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own 
 docker run --network=none --pull=always \
            -v ./.bela:/.bela
            -v ./:/workspace/:ro \
-           -v ~/.m2:/root/.m2:ro \
+           -v ~/.m2:/.m2:ro \
            juxhouse/bela-updater-java -source "$GITHUB_REPOSITORY"
 ```
 
