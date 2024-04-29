@@ -17,4 +17,4 @@ Will find:
   - `PersonController [class]`
   - `PersonImpl [class]`
 
-You can use the `only modeled` icon 🎨 to search only for [modeled](https://github.com/juxhouse/bela-resources/blob/main/Concepts.md#built-vs-modeled) diagrams and elements.
+You can use the `only modeled` icon 🎨 in the search field to search only for [modeled](https://github.com/juxhouse/bela-resources/blob/main/Concepts.md#built-vs-modeled) diagrams and elements.
