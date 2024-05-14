@@ -11,7 +11,6 @@ An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own 
 ```
 docker run --network=none --pull=always \
            -v ./:/workspace/ \
-           -v ~/.m2:/.m2 \
            juxhouse/bela-updater-clojure -source "$GITHUB_REPOSITORY"
 ```
 
