@@ -150,7 +150,7 @@ The paths of modeled elements are composed of their type and name: `type/name`. 
 
 Dependencies are uniquely identified by the combination of `from` element, `to` element and `name`.
 
-An element can have more than one dependency on another element as long as these dependencies have different names.
+An element can have more than one dependency to another element as long as these dependencies have different names.
 
 ```
 {
