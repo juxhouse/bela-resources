@@ -169,4 +169,4 @@ An element can have more than one dependency to another element as long as these
 
 ### Identifier
 
-A String that begins with a lowercase letter (a-z), followed by any number of lowercase letters, digits, and hyphens.
+A String that begins with a lowercase letter (a-z), followed by any number of lowercase letters, digits, and hyphens (not underscore).
