@@ -17,7 +17,7 @@ Architecture is simply a collection of ECDs.
 
 **Modeled** architecture or **modeled** ECDs refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
-When a built element is created with the same name as an existing modeled element, the modeled element will get a `(model)` suffix to its name.
+When a built element is created with the same name as an existing modeled element, the modeled element gets a `(model)` suffix to its name.
 
 > [!TIP]
 > You can use the `Diagram Legend` tool from BELA's main menu to see the different colors in which different ECDs are diplayed.
