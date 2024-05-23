@@ -85,7 +85,7 @@ Any element can depend on any other element. [API](/API.md#add-dependencies)
 Dependencies are uniquely identified by the path of both elements and a name.
 
 > [!TIP]
-> If there is a dependency "from" element A "to" element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency that is "pointing up" will be displayed in red.
+> If there is a dependency line "from" element A "to" element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency line that is pointing upward will be displayed in red.
 
 #### Dataflow Direction
 
