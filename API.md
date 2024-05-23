@@ -144,7 +144,7 @@ Elements with 3 or more path segments have their containment predefined by their
 - service/Billing/billing/core/Bill/isDue() (ElementType: method)
 ```
 
-The paths of modeled elements are composed of their type and name: `type/name`. Modeled elements that have the same path as a new uploaded built element, will have `(Model)` appended to their name.
+The paths of modeled elements are composed of their type and name: `type/name`. Modeled elements that have the same path as a new uploaded built element, have `(Model)` appended to their name.
 
 ### Dependency
 
