@@ -94,6 +94,19 @@ This operation:
 }
 ```
 
+### `alert`
+
+Adds an alert to the list of alerts of current source, visible in the BELA Sources screen.
+
+```
+{
+  "op": "alert"
+  "alert": String              // The title of the alert. Uniquely identifies the alert. Example: "Class Employee is missing"
+  "level": identifier          // Optional. `info`, `warning` or `error`. Defaults to `info`.
+  "details": String            // Optional. A stack trace, for example.
+}
+```
+
 ## Schemas
 
 ### Source
