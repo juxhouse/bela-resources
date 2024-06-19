@@ -24,6 +24,6 @@ curl "http://localhost:8081/architecture" --fail \
 
 ## Open BELA
 
-Access [local.bela.live](local.bela.live)
+Access [local.bela.live](https://local.bela.live)
 
 This will open BELA connected to your localhost instance.
