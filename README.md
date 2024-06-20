@@ -19,14 +19,12 @@ Get a solid understanding of BELA's fundamental [concepts](/Concepts.md).
 
 ## Synchronize your Code Repositories
 
-#### 1. Run the `bela-updater` docker app
+#### Run the `bela-updater` docker app
+
+It detects all projects in your repository and produces the [architecture data](/Concepts.md#ecds) that is sent to BELA. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
 > [!IMPORTANT]
-> It runs with the `--network=none` argument for secure containment.
-   
-It detects all projects in the repository and produces a single `bela-update.json` file with the [architecture data](/Concepts.md#ecds) to be sent to BELA. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
-
-You must provide a [source](/Concepts.md#sources) argument.
+> The `bela-updater` docker app runs with the `--network=none` argument for secure containment.
 
 See examples for the supported languages:
  - [C#](/updaters/.NET.md)
@@ -37,11 +35,7 @@ See examples for the supported languages:
 
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
  
-#### 2. Upload to BELA
-
-Upload the `bela-update.json` file, produced above, to BELA. See [example](/updaters/reference/upload-example.md).
-
-#### 3. Automate
+#### Automate
 
 Set up the steps above as a repository action or as optional pipeline steps after your main CI/CD pipeline has completed.
 
