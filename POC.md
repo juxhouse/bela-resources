@@ -12,7 +12,16 @@ You can obtain your POC_TOKEN with the BELA team.
 
 ## Generate the BELA update file
 
-[Run the bela-updater docker app](https://github.com/juxhouse/bela-resources/blob/main/README.md#synchronize-your-code-repositories) to generate a `bela-update.json` file for one of your projects .
+Run the `bela-updater` docker app to generate a `bela-update.json` file for one of your projects.
+
+See examples for the supported languages:
+ - [C#](/updaters/.NET.md)
+ - [Clojure](/updaters/Clojure.md)
+ - [Java](/updaters/Java.md)
+ - [Javascript](/updaters/Typescript.md)
+ - [Typescript](/updaters/Typescript.md)
+
+If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
 
 ## Upload it to your local instance
