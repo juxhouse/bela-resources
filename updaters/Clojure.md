@@ -7,7 +7,7 @@ The bela-updater docker app analyses the projects in your repo and generates the
 > [!IMPORTANT]
 > It runs with network=none for secure containment.
 
-An example using the `GITHUB_REPOSITORY` env var as source. Adapt with your own source:
+An example using the `GITHUB_REPOSITORY` env var as source. Adapt it with your own [source](/Concepts.md#sources):
 ```
 docker run --network=none --pull=always \
            -v ./:/workspace/ \
