@@ -104,7 +104,6 @@ const sendToTargetApi = async (body) => {
     method: "PATCH",
     headers: {
       "Authorization": BELA_TOKEN,
-      "Content-Type": "application/json"
     }
   };
 

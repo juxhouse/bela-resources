@@ -26,7 +26,6 @@ If your language is not supported, you can use a code analysis tool for your lan
 Upload the `bela-update.json` file generated above to your local instance:
 ```
 curl "http://localhost:8081/architecture" --fail \
-     -H "Content-Type: application/json" \
      --data @bela-update.json
 ```
 

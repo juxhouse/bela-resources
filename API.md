@@ -17,8 +17,6 @@ Your BELA API host address is provided to you when you sign-up for a BELA accoun
 `Authorization: Token <your-token>`
 Obtain you BELA API token from the BELA web app.
 
-`Content-Type: application/json`
-
 
 ## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/architecture`
 

@@ -208,7 +208,6 @@ const patchArchitecture = (transaction) => {
     path: "/architecture",
     method: "PATCH",
     headers: {
-      "Content-Type": "application/json",
       "Authorization": BELA_TOKEN,
     }
   }, (res) => {
