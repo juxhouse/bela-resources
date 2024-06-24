@@ -1,6 +1,6 @@
 # BELA Proof-of-Concept (POC)
 
-To run a BELA instance locally, to try it out, you can follow these steps.
+To run a BELA instance locally and try it out, you can follow these steps.
 
 ## 1. Start the BELA backend
 
