@@ -1,7 +1,7 @@
 # BELA
 The Browser for Enterprise-Level Architecture
 
-[BELA](https://jux.house/bela) is a platform to visualize and navigate any software architecture, from high-level business domains down to code elements.
+[BELA](https://bela.live) is a platform to visualize and navigate any software architecture, from high-level business domains down to code elements.
 
 
 ## Main Features
