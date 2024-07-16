@@ -109,5 +109,3 @@ An ECD will typically exist in only one source but some ECDs, like libs, can be 
 The source name is sent to BELA when ECDs are uploaded.
 
 BELA will garbage collect ECDs that are no longer present in any source. That is the purpose of sources.
-
-## Parent Element
