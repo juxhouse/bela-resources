@@ -4,16 +4,14 @@
 
 When searching for diagrams or elements, type a fragment of their name and type.
 
-Typing: `Person`
-Will find:
+Typing: `Person` will return:
   - `getPerson() [method]`
   - `PersonController [class]`
   - `PersonImpl [class]`
 
 you can use `*` to represent any part of the name and type.
 
-Typing: `Pers*[cla`
-Will find:
+Typing: `Pers*[cla` will return:
   - `PersonController [class]`
   - `PersonImpl [class]`
 
