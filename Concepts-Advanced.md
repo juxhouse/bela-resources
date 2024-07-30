@@ -39,7 +39,7 @@ Given an element A:
 #### Vertical deps
   Deps from/to A to/from one of its descendants or ancestors.
   It is internal for ancestor and external for the descendant.
-  Suggetions for a better name than "vertical" are welcome.
+  Suggestions for a better name than "vertical" are welcome.
 
 #### Visible deps (on a diagram)
   The external deps of an element but not vertical deps.
