@@ -25,7 +25,7 @@ Given an element A:
 Given an element A:
 
 #### Own deps
-  The deps from/to A, not any of its descendants.
+  The deps from/to A.
 
 #### Self deps
   The own deps from A to A.
@@ -38,7 +38,7 @@ Given an element A:
 
 #### Vertical deps
   Deps from/to A to/from one of its descendants or ancestors.
-  It is internal for ancestor and external for the descendant.
+  It is internal for the ancestor and external for the descendant.
   Suggestions for a better name than "vertical" are welcome.
 
 #### Visible deps (on a diagram)
