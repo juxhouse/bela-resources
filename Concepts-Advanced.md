@@ -34,7 +34,10 @@ Given an element A:
   Deps from/to (A and its descendants) to/from another element not contained in A.
 
 #### Internal deps
-  Deps among any two of (A and its decendants).
+  Deps among any two of (A and its descendants).
+
+#### Contained Deps
+  Deps among any two of A's descendants.
 
 #### Vertical deps
   Deps from/to A to/from one of its descendants or ancestors.
