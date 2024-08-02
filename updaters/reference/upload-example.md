@@ -1,6 +1,6 @@
 # Uploading the BELA update file
 
-Use this command to upload the `bela-update.json` file to BELA:
+Use this command to upload the `.bela/bela-update.json` file to BELA:
 
 ```
 curl -f "https://$BELA_HOST/architecture" \
