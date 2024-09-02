@@ -14,11 +14,11 @@ Given an element A:
   The direct container of A.
 
 #### Ancestors
-  Any container of A, direct or transitive.
+  All containers of A, direct or transitive.
 
 #### Collateral
   Any element that is not a descendant nor ancestor of A.
-  Term comes from biology.
+  Term comes from biology for things like siblings, uncles, cousins, etc.
 
 ## Dependency Concepts
 
