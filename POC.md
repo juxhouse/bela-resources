@@ -5,7 +5,7 @@ To run a BELA instance locally and try it out, you can follow these steps.
 ## 1. Start the BELA backend
 
 ```
-docker run -p 8081:8081 --pull=always -e POC_TOKEN={TOKEN} juxhouse/bela-backend
+docker run -p 8081:8081 --pull=always -e POC_TOKEN={YOUR_TOKEN} juxhouse/bela-backend
 ```
 You can obtain your POC_TOKEN with the BELA team.
 
