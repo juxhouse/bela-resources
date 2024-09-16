@@ -33,7 +33,7 @@ You can obtain your `BELA_HOST` and `BELA_API_TOKEN` from the BELA web app.
 If you are uploading to a local BELA instance running on your machine, you don't need the BELA_API_TOKEN. You can simply do:
 
 ```
-curl -X POST "https://$BELA_HOST/api/architecture-scip?source=my-source&parent-element-path=service/my-service" \
+curl -X POST "http://localhost:8081/api/architecture-scip?source=my-source&parent-element-path=service/my-service" \
              -H "Content-Type: application/octet-stream" \
              --data-binary @index.scip
 ```
