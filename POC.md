@@ -23,10 +23,6 @@ See examples for the supported languages:
 
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
-Upload the `bela-update.json` file generated above to your local instance:
-```
-curl "http://localhost:8081/architecture" --data @.bela/bela-update.json
-```
 
 ## 3. Browse It
 
