@@ -40,11 +40,11 @@ If your language is not supported, you can use a code analysis tool for your lan
 Set up the steps above as a repository action or as optional pipeline steps after your main CI/CD pipeline has completed.
 
 
-## Synchronize your APM Tools
+## Synchronize your APM/Telemetry Tools
 
-If you use a services architecture, you can obtain your service names and the dependencies among them from your Application Performance Monitoring (APM) data.
+If you use a services architecture, you can obtain your service names and the dependencies among them from your Application Performance Monitoring (APM) or Telemetry data.
 
-Set up a script, to be executed periodically, to query your APM tool and upload service dependencies to BELA.
+Set up a script, to be executed periodically, to query your APM/Telemetry tool and upload service dependencies to BELA.
 
 Examples for some APM tools:
 - [Datadog](/updaters/Datadog.js)
