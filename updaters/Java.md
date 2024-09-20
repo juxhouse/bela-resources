@@ -26,13 +26,25 @@ The bela-updater docker app analyses the projects in your repo and generates the
 > [!IMPORTANT]
 > It runs with network=none for secure containment.
 
-An example using the `GITHUB_REPOSITORY` env var as source. Adapt it with your own [source](/Concepts.md#sources):
 ```
 docker run --network=none --pull=always \
            -v ./.bela:/.bela \
            -v ./:/workspace:ro \
            -v ~/.m2:/.m2:ro \
-           juxhouse/bela-updater-java -source "$GITHUB_REPOSITORY"
+           juxhouse/bela-updater-java -source my-source \
+           -parent-element-path service/my-service
+```
+
+#### `-source`
+
+This argument indicates the [source](/Concepts.md#sources) for the elements being uploaded. Normally the name of the repo is used as source. In Github that would be `"$GITHUB_REPOSITORY"`, for example.
+
+
+#### `-parent-element-path`  
+
+This optional argument will import your projects' elements as contents to some parent element. If your project is the implementation of a microservice for example, you can import it inside that microservice, like this:
+```
+  -parent-element-path service/my-service
 ```
 
 ## 3. Upload to BELA
