@@ -49,8 +49,6 @@ Errors will be returned as some 4XX or 5XX HTTP error code with a helpful messag
 
 Creates/updates a built element with the given attributes.
 
-If a built element is created with the same [path](#elementpath) as an existing modeled element, the modeled element will have `(Model)` appended to their path and name.
-
 ```
 {
   "op": "upsert-element"
