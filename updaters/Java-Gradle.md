@@ -2,7 +2,7 @@
 
 ## Requirement
 
-This playbook is for Gradle projects. If you are using Maven or some other build tool (SBT, Bazel, Buildr) go [here](/updaters/Java.md).
+This playbook is for Gradle projects. If you are using Maven go [here](/updaters/Java.md). If you are using some other build tool (SBT, Bazel, Buildr, etc) go [here](/updaters/Java-Other.md).
 
 
 ## 1. Generate Classpath
