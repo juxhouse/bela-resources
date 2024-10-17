@@ -2,12 +2,12 @@
 
 ## Requirement
 
+This playbook is for Maven projects. For Gradle projects go [here](/updaters/Java-Gradle.md). For other built tools go [here](/updaters/Java-Others.md).
+
 Your Maven project needs to be **installed** in the local Maven .m2 repository. For a simple Maven project, for example, that is done running:
 
 `mvn clean install`
 
-> [!TIP]
-> Gradle, SBT, Bazel, Buildr: If you are using a build tool other than Maven, build your project normally and use your build tool to generate a `pom.xml` file. Configure your tool to install your compiled project artifact and its dependency artifacts to the local Maven `.m2` directory. They will be used below.
 
 
 ## 1. Generate Classpath
