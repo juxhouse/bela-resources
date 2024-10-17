@@ -1,4 +1,4 @@
-# Updating BELA with your Java Gradle Projects
+# Updating BELA with your Java Projects (Gradle)
 
 ## Requirement
 
