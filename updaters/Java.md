@@ -16,7 +16,7 @@ Your Maven project needs to be **installed** in the local Maven .m2 repository. 
 mvn dependency:build-classpath -Dmdep.outputFile=.bela/classpath.txt
 ```
 
-If you are using a monorepo with several projects, repeat this step inside the folder of each one of them.
+If your repo has several maven projects or maven modules, repeat this step inside the folder of each one of them.
 
 
 ## 2. Run the Bela Updater
