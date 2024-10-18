@@ -4,7 +4,7 @@
 
 This playbook is for Maven projects. For Gradle projects go [here](/updaters/Java-Gradle.md). For other built tools go [here](/updaters/Java-Others.md).
 
-Your Maven project needs to be **installed** in the local Maven .m2 repository. For a simple Maven project, for example, that is done running:
+Your Maven projects need to be **installed** in the local Maven .m2 repository. For a simple Maven projects, for example, that is done running:
 
 `mvn clean install`
 
@@ -16,7 +16,7 @@ Your Maven project needs to be **installed** in the local Maven .m2 repository. 
 mvn dependency:build-classpath -Dmdep.outputFile=.bela/classpath.txt
 ```
 
-If your repo has several maven projects or maven modules, repeat this step inside the folder of each one of them.
+If your repo has several maven modules, repeat this step inside the folder of each one of them.
 
 
 ## 2. Run the Bela Updater
