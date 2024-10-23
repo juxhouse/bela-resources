@@ -5,16 +5,16 @@ To run a BELA instance locally and try it out, you can follow these steps.
 ## 1. Start the BELA backend
 
 ```
-docker run -p 8081:8081 --pull=always -e POC_TOKEN={YOUR_TOKEN} juxhouse/bela-backend
+docker run -p 8081:8081 --pull=always -e POC_TOKEN={YOUR_TOKEN} juxhouse/bela-poc
 ```
 You can obtain your POC_TOKEN with the BELA team.
 
 
 ## 2. Update BELA with your project's architecture
 
-Run the `bela-updater` docker app to generate a `bela-update.json` file for one of your projects.
+Run the `bela-updater` docker app to send the architecture data of one of your projects to BELA.
 
-See examples for the supported languages:
+See examples for supported languages:
  - [C#](/updaters/.NET.md)
  - [Clojure](/updaters/Clojure.md)
  - [Java](/updaters/Java.md)
