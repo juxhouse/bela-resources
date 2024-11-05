@@ -39,7 +39,7 @@ Given an element A:
 #### Boundary-Crossing or simply Crossing deps
   Deps from/to a descendant of A to/from an element not contained in A (ancestor or collateral).
 
-#### Pertinent or Unqualified
+#### Pertinent (Default)
   When deps are not qualified as in "A has many deps", that means pertinent deps.
   Pertinent deps are A's own and crossing deps.
 
