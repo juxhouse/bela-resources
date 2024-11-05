@@ -30,19 +30,26 @@ Given an element A:
 #### Self deps
   The own deps from A to A.
 
-#### External deps
-  Deps from/to (A and its descendants) to/from another element not contained in A.
-
 #### Internal deps
-  Deps among any two of (A and its descendants).
+  Deps from/to A to/from any of (A and its descendants). Self deps are internal deps, therefor.
 
 #### Contained Deps
-  Deps among any two of A's descendants.
+  Deps among any two of A's descendants. They are not deps of A.
+
+#### Boundary-Crossing or simply Crossing deps
+  Deps from/to a descendant of A to/from an element not contained in A (ancestor or collateral).
+
+#### Pertinent or Unqualified
+  When deps are not qualified as in "A has many deps", that means pertinent deps.
+  Pertinent deps are A's own and crossing deps.
+
+#### External deps
+  The pertinent deps of A that are not internal.
 
 #### Vertical deps
-  Deps from/to A to/from one of its descendants or ancestors.
+  Deps from/to A to/from one of its descendants, ancestors or A itself.
   It is internal for the ancestor and external for the descendant.
   Suggestions for a better name than "vertical" are welcome.
-
+  
 #### Visible deps (on a diagram)
   The external deps of an element but not vertical deps.
