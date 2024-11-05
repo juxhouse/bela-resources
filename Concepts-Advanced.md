@@ -46,10 +46,9 @@ Given an element A:
 #### External deps
   The pertinent deps of A that are not internal.
 
-#### Vertical deps
+#### Hierarchical deps
   Deps from/to A to/from one of its descendants, ancestors or A itself.
   It is internal for the ancestor and external for the descendant.
-  Suggestions for a better name than "vertical" are welcome.
   
 #### Visible deps (on a diagram)
   The external deps of an element but not vertical deps.
