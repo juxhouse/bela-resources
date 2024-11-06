@@ -4,28 +4,75 @@
 
 This playbook is for Gradle projects. If you are using Maven go [here](/updaters/Java.md). If you are using some other build tool (SBT, Bazel, Buildr, etc) go [here](/updaters/Java-Other.md).
 
+Your Gradle projects need to have been **built**. For a simple Gradle project, for example, that is done running:
 
-## 1. Generate Classpath
+`gradle clean build`
+
+## 1. Generate and run belaBuild task
 
 Inside your project folder run:
 
 ```
 cat > bela.gradle <<'EOF'
 allprojects {
-  task printClasspath {
-    doLast {
-      println "classpath:"
-      configurations.runtimeClasspath.each { println it }
-      println "source-dirs:"
-      sourceSets.main.allSource.srcDirs.each { println it }
+    afterEvaluate {
+        tasks.named('compileJava').configure {
+            destinationDir = file("$projectDir/target/classes")
+        }
+
+        task copyDependencies(type: Copy) {
+            dependsOn compileJava
+            from configurations.runtimeClasspath
+            into file("$projectDir/target/dependency")
+        }
+
+        task writeClasspath {
+            dependsOn compileJava
+            doLast {
+                def classpathFile = file("$projectDir/target/classpath.txt")
+                classpathFile.withWriter('UTF-8') { writer ->
+                    configurations.runtimeClasspath.each { 
+                        writer.writeLine it.name
+                    }
+                }
+            }
+        }
+
+        task writeProjectProperties {
+            dependsOn compileJava
+            doLast {
+                def propertiesFile = file("$projectDir/target/project.properties")
+                def artifactId = project.hasProperty('archivesBaseName') ? project.archivesBaseName : project.name
+
+                propertiesFile.withWriter('UTF-8') { writer ->
+                    writer.writeLine "artifactType=${project.hasProperty('group') && project.group ? 'maven' : 'gradle'}"
+                    writer.writeLine "groupId=${project.group ?: 'unspecified'}"
+                    writer.writeLine "artifactId=${artifactId}"
+                    writer.writeLine "version=${project.version ?: 'unspecified'}"
+                }
+            }
+        }
+
+        task createNeededDirs {
+            file("$projectDir/target").mkdirs()
+            file(".bela").mkdirs()
+        }
+
+        task belaBuild {
+            dependsOn createNeededDirs
+            dependsOn compileJava
+            dependsOn copyDependencies
+            dependsOn writeClasspath
+            dependsOn writeProjectProperties
+        }
     }
-  }
 }
 EOF
+
 ```
 and
 ```
-mkdir -p ./.bela && ./gradlew -I bela.gradle printClasspath > ./.bela/gradle-classpath.txt
+./gradlew belaBuild --init-script bela.gradle
 ```
 If you are using a monorepo with several projects, repeat this step inside the folder of each one of them.
 
@@ -41,7 +88,6 @@ The bela-updater docker app analyses the projects in your repo and generates the
 docker run --network=none --pull=always \
            -v ./.bela:/.bela \
            -v ./:/workspace:ro \
-           -v ~/.gradle:/.gradle:ro \
            juxhouse/bela-updater-java -source my-source \
            -parent-element-path service/my-service
 ```
