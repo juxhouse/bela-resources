@@ -1,26 +1,26 @@
-# Updating BELA with your Java Projects (Gradle)
+# Updating BELA with your Java Projects (Other)
 
 ## Requirement
 
-This playbook is for Gradle projects. If you are using Maven go [here](/updaters/Java.md). If you are using some other build tool (SBT, Bazel, Buildr, etc) go [here](/updaters/Java-Other.md).
-
-Your Gradle projects need to have been **built**. For a simple Gradle project, for example, that is done running:
-
-`gradle clean build`
-
-
-
-## 1. Generate and run belaBuild task
-
-Copy this [bela.gradle](/updaters/reference/bela.gradle) file into your project folder and run the following command:
+Build your project into this structure:
 
 ```
-./gradlew belaBuild --init-script bela.gradle
+YourProjectName/
+├── .bela/
+├── src/
+│   └── .../
+└── target/
+    ├── classes/
+    ├── dependency/
+    └── classpath.txt
 ```
-If you are using a monorepo with several projects, repeat this step inside the folder of each one of them.
 
+- `.bela` directory where the update file will be created.
+- `target/classes` should contain your compiled `.class` files.
+- `target/dependency` should contain the JAR files of your project dependencies.
+- `target/classpath.txt` should be a txt file containing your project classpath.
 
-## 2. Run the Bela Updater
+## 1. Run the Bela Updater
 
 The bela-updater docker app analyses the projects in your repo and generates the `bela-update.json` file.
 
@@ -47,6 +47,7 @@ This optional argument will import your projects' elements as contents to some p
   -parent-element-path service/my-service
 ```
 
-## 3. Upload to BELA
+## 2. Upload to BELA
 
 See [upload example](/updaters/reference/upload-example.md).
+
