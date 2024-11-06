@@ -8,6 +8,8 @@ Your Gradle projects need to have been **built**. For a simple Gradle project, f
 
 `gradle clean build`
 
+
+
 ## 1. Generate and run belaBuild task
 
 Inside your project folder run:
