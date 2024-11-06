@@ -12,13 +12,13 @@ Your Maven projects need to be **built**. For a simple Maven project, for exampl
 
 ## 1. Create .bela Directory
 
+In the root of your project, create the .bela directory if necessary.
+
 ```
-mkdir .bela
+mkdir -p .bela
 ```
 
-At the root of your project, you should create a .bela directory.
-
-## 2. Generate Classpath and Copy Project Dependencies
+## 2. Prepare Classpath
 
 ```
 mvn dependency:build-classpath -Dmdep.outputFile=target/classpath.txt
