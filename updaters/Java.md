@@ -4,9 +4,9 @@
 
 This playbook is for Maven projects. For Gradle projects go [here](/updaters/Java-Gradle.md). For other built tools go [here](/updaters/Java-Others.md).
 
-Your Maven projects need to be **built**. For a simple Maven project, for example, that is done running:
+Your Maven projects need to be **installed**. For a simple Maven project, for example, that is done running:
 
-`mvn clean package`
+`mvn clean install`
 
 
 
