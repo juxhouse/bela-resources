@@ -4,21 +4,12 @@
 
 Build your project into this structure:
 
-```
-YourProjectName/
-├── .bela/
-├── src/
-│   └── .../
-└── target/
-    ├── classes/
-    ├── dependency/
-    └── classpath.txt
-```
-
+- `src/` directory containing your project source files.
 - `.bela` directory where the update file will be created.
-- `target/classes` should contain your compiled `.class` files.
-- `target/dependency` should contain the JAR files of your project dependencies.
-- `target/classpath.txt` should be a txt file containing your project classpath.
+- `target/classes` directory containing your compiled `.class` files.
+- `target/dependency` directory with the JAR files of your project dependencies.
+- `target/project.properties` a file containing groupId, artifactId and version. See [example](/updaters/reference/project.properties).
+- `target/classpath.txt` a txt file containing your project classpath.
 
 ## 1. Run the Bela Updater
 
