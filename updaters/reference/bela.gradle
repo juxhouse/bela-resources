@@ -1,0 +1,53 @@
+allprojects {
+    afterEvaluate {
+        tasks.named('compileJava').configure {
+            destinationDir = file("$projectDir/target/classes")
+        }
+
+        task copyDependencies(type: Copy) {
+            dependsOn compileJava
+            from configurations.runtimeClasspath
+            into file("$projectDir/target/dependency")
+        }
+
+        task writeClasspath {
+            dependsOn compileJava
+            doLast {
+                def classpathFile = file("$projectDir/target/classpath.txt")
+                classpathFile.withWriter('UTF-8') { writer ->
+                    configurations.runtimeClasspath.each { 
+                        writer.writeLine it.name
+                    }
+                }
+            }
+        }
+
+        task writeProjectProperties {
+            dependsOn compileJava
+            doLast {
+                def propertiesFile = file("$projectDir/target/project.properties")
+                def artifactId = project.hasProperty('archivesBaseName') ? project.archivesBaseName : project.name
+
+                propertiesFile.withWriter('UTF-8') { writer ->
+                    writer.writeLine "artifactType=${project.hasProperty('group') && project.group ? 'maven' : 'gradle'}"
+                    writer.writeLine "groupId=${project.group ?: 'unspecified'}"
+                    writer.writeLine "artifactId=${artifactId}"
+                    writer.writeLine "version=${project.version ?: 'unspecified'}"
+                }
+            }
+        }
+
+        task createNeededDirs {
+            file("$projectDir/target").mkdirs()
+            file(".bela").mkdirs()
+        }
+
+        task belaBuild {
+            dependsOn createNeededDirs
+            dependsOn compileJava
+            dependsOn copyDependencies
+            dependsOn writeClasspath
+            dependsOn writeProjectProperties
+        }
+    }
+}

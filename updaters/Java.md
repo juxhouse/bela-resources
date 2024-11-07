@@ -4,22 +4,33 @@
 
 This playbook is for Maven projects. For Gradle projects go [here](/updaters/Java-Gradle.md). For other built tools go [here](/updaters/Java-Others.md).
 
-Your Maven projects need to be **installed** in the local Maven .m2 repository. For a simple Maven projects, for example, that is done running:
+Your Maven projects need to be **built**. For a simple Maven project, for example, that is done running:
 
-`mvn clean install`
+`mvn clean package`
 
 
 
-## 1. Generate Classpath
+## 1. Create .bela Directory
+
+In the root of your project, create the .bela directory if necessary.
 
 ```
-mvn dependency:build-classpath -Dmdep.outputFile=.bela/classpath.txt
+mkdir -p .bela
 ```
 
-If your repo has several maven modules, repeat this step inside the folder of each one of them.
+## 2. Prepare Classpath
 
+```
+mvn dependency:build-classpath -Dmdep.outputFile=target/classpath.txt
+```
+and
 
-## 2. Run the Bela Updater
+```
+mvn dependency:copy-dependencies -Dmdep.outputDirectory=target/dependency
+```
+If your repo has several maven modules, repeat these steps inside the folder of each one of them.
+
+## 3. Run the Bela Updater
 
 The bela-updater docker app analyses the projects in your repo and generates the `bela-update.json` file.
 
@@ -30,7 +41,6 @@ The bela-updater docker app analyses the projects in your repo and generates the
 docker run --network=none --pull=always \
            -v ./.bela:/.bela \
            -v ./:/workspace:ro \
-           -v ~/.m2:/.m2:ro \
            juxhouse/bela-updater-java -source my-source \
            -parent-element-path service/my-service
 ```
