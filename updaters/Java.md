@@ -1,36 +1,12 @@
 # Updating BELA with your Java Projects
 
-## Requirement
+## 1. Prepare Your Project
 
-This playbook is for Maven projects. For Gradle projects go [here](/updaters/Java-Gradle.md). For other built tools go [here](/updaters/Java-Others.md).
+- [Using Maven](/updaters/Java-Maven.md)
+- [Using Gradle](/updaters/Java-Gradle.md)
+- [Using other build tools](/updaters/Java-Other.md)
 
-Your Maven projects need to be **installed**. For a simple Maven project, for example, that is done running:
-
-`mvn clean install`
-
-
-
-## 1. Create .bela Directory
-
-In the root of your project, create the .bela directory if necessary.
-
-```
-mkdir -p .bela
-```
-
-## 2. Prepare Classpath
-
-```
-mvn dependency:build-classpath -Dmdep.outputFile=target/classpath.txt
-```
-and
-
-```
-mvn dependency:copy-dependencies -Dmdep.outputDirectory=target/dependency
-```
-If your repo has several maven modules, repeat these steps inside the folder of each one of them.
-
-## 3. Run the Bela Updater
+## 2. Run the Bela Updater
 
 The bela-updater docker app analyses the projects in your repo and generates the `bela-update.json` file.
 
