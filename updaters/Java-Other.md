@@ -4,7 +4,7 @@
 
 Build your project into this structure:
 
-- `src/` directory containing your project source files.
+- `src` directory containing your project source files.
 - `.bela` directory where the update file will be created.
 - `target/classes` directory containing your compiled `.class` files.
 - `target/dependency` directory with the JAR files of your project dependencies.
