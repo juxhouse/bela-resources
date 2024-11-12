@@ -1,52 +1,15 @@
-# Updating BELA with your Java Projects (Gradle)
+## Prepare your Gradle Project
 
-## Requirement
-
-This playbook is for Gradle projects. If you are using Maven go [here](/updaters/Java.md). If you are using some other build tool (SBT, Bazel, Buildr, etc) go [here](/updaters/Java-Other.md).
-
-Your Gradle projects need to have been **built**. For a simple Gradle project, for example, that is done running:
+Build your Gradle project. For a simple Gradle project, for example, that is done running:
 
 `gradle clean build`
-
-
-
-## 1. Generate and run belaBuild task
 
 Copy this [bela.gradle](/updaters/reference/bela.gradle) file into your project folder and run the following command:
 
 ```
 ./gradlew belaBuild --init-script bela.gradle
 ```
-If you are using a monorepo with several projects, repeat this step inside the folder of each one of them.
 
+If you are using a monorepo with several projects, repeat the above inside the folder of each one of them.
 
-## 2. Run the Bela Updater
-
-The bela-updater docker app analyses the projects in your repo and generates the `bela-update.json` file.
-
-> [!IMPORTANT]
-> It runs with network=none for secure containment.
-
-```
-docker run --network=none --pull=always \
-           -v ./.bela:/.bela \
-           -v ./:/workspace:ro \
-           juxhouse/bela-updater-java -source my-source \
-           -parent-element-path service/my-service
-```
-
-#### `-source`
-
-This argument indicates the [source](/Concepts.md#sources) for the elements being uploaded. Normally the name of the repo is used as source. In Github that would be `"$GITHUB_REPOSITORY"`, for example.
-
-
-#### `-parent-element-path`  
-
-This optional argument will import your projects' elements as contents to some parent element. If your project is the implementation of a microservice for example, you can import it inside that microservice, like this:
-```
-  -parent-element-path service/my-service
-```
-
-## 3. Upload to BELA
-
-See [upload example](/updaters/reference/upload-example.md).
+Your project is now ready to be [analysed by BELA](/updaters/Java.md).
