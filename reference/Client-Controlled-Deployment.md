@@ -7,7 +7,7 @@ With an enterprise account you can deploy BELA in your own environment.
 
 You can activate SSO in BELA using the OpenID Connect (OIDC) standard:
 
-Register BELA as an application in your SSO provider. Use this as the redirect URI: `https://{your-bela-host}/callback`.
+Register BELA as an application in your SSO provider. Use this as the redirect URI: `https://{your-bela-host}/callback`
 
 Add the following properties to the [bela.properties](/reference/bela.properties.md) file:
 
