@@ -3,7 +3,7 @@
 
 With an enterprise account you can deploy BELA in your own environment.
 
-### Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 BELA uses the OpenID Connect protocol as its SSO standard. You will need to register BELA in your SSO provider, also you will have to allow BELA's redirect URI: `https://{host}/callback`.
 
