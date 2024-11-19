@@ -15,7 +15,7 @@ Below is a sample bela.properties file with configuration details:
 ```properties
 owner.email=user@example.com              # The email address of the application owner.
 
-architecture.api.token=your-api-token     # Token for accessing the architecture API endpoint.
+architecture.api.token=your-api-token     # Token for accessing BELA's architecture API endpoint. You can set any string you like here.
 
 openid.configuration.url=https://{host}/.well-known/openid-configuration # URL for your SSO provider's OpenID configuration.
 openid.client.id=your-client-id           # Client ID for BELA, as provided by your SSO provider.
