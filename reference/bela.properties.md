@@ -21,6 +21,6 @@ openid.configuration.url=https://{host}/.well-known/openid-configuration # URL f
 openid.client.id=your-client-id           # Client ID for BELA, as provided by your SSO provider.
 openid.client.secret=your-client-secret   # Client secret for BELA, as provided by your SSO provider.
 
-openai.api.url=https://api.openai.com/v1/chat/completions       # URL for OpenAI's chat completion API endpoint.
+openai.api.url=https://api.openai.com/v1/chat/completions   # URL for OpenAI's chat completion API endpoint.
 openai.api.token=openai-api-token   # API token for authenticating with OpenAI.
 ```
