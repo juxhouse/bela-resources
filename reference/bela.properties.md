@@ -1,16 +1,11 @@
 # bela.properties
 
-The bela.properties file provides settings for BELA, supplying information such as client IDs and secrets.
+Use the bela.properties file to provide settings for BELA, such as client IDs and secrets.
 
-- [Path](#path)
-- [Example](#example)
-
-
-## Path
-
-When running BELA using its Docker image, mount a volume pointing to the bela-data directory. Inside this directory, create a config folder to contain the bela.properties file. The expected file path is:
+Place it in the directory that is mounted onto the `\bela-data` mount point 
+when running the BELA Docker image.
 ```
-{your-path}/bela-data/config/bela.properties
+{your-data-path}/config/bela.properties
 ```
 
 ## Example
@@ -18,31 +13,14 @@ When running BELA using its Docker image, mount a volume pointing to the bela-da
 Below is a sample bela.properties file with configuration details:
 
 ```properties
+owner.email=user@example.com              # The email address of the application owner.
 
-# General BELA's configuration
+architecture.api.token=your-api-token     # Token for accessing the architecture API endpoint.
 
-# The email address of the application owner.
-owner.email=user@example.com
+openid.configuration.url=https://{host}/.well-known/openid-configuration # URL for your SSO provider's OpenID configuration.
+openid.client.id=your-client-id           # Client ID for BELA, as provided by your SSO provider.
+openid.client.secret=your-client-secret   # Client secret for BELA, as provided by your SSO provider.
 
-# Token for accessing the architecture API endpoint.
-architecture.api.token=your-api-token
-
-# OpenID configuration
-
-# URL for your SSO provider's OpenID configuration.
-openid.configuration.url=https://{host}/.well-known/openid-configuration
-
-# Client ID for BELA, as provided by your SSO provider.
-openid.client.id=your-client-id 
-
-# Client secret for BELA, as provided by your SSO provider.
-openid.client.secret=your-client-secret 
-
-# OpenAI configuration
-
-# URL for OpenAI's chat completion API endpoint.
-openai.api.url=openai-api-url
-
-# API token for authenticating with OpenAI.
-openai.api.token=openai-api-token
+openai.api.url=openai-api-url       # URL for OpenAI's chat completion API endpoint.
+openai.api.token=openai-api-token   # API token for authenticating with OpenAI.
 ```
