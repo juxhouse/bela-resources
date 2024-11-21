@@ -2,7 +2,7 @@
 
 Use the bela.properties file to provide settings for BELA, such as client IDs and secrets.
 
-Place it in the directory that is mounted onto the `\bela-data` mount point 
+Place it in the host directory that is mounted onto the `\bela-data` mount point 
 when running the BELA Docker image.
 ```
 {host-directory}/config/bela.properties
