@@ -1,5 +1,5 @@
 # Google
-To enable Single Sign-On (SSO) for BELA using Google as the identity provider, follow these steps to obtain the required credentials and configure your application:
+To enable Single Sign-On (SSO) for BELA using Google as the identity provider, follow these steps:
 
 ## Create a Google Cloud Project
 - Access Google Cloud Console: Go to the [Google Cloud Console](https://console.developers.google.com/)
@@ -14,12 +14,12 @@ To enable Single Sign-On (SSO) for BELA using Google as the identity provider, f
 - Create Credentials:
   - Click on "Create Credentials" and select "OAuth client ID"
 - Configure Consent Screen:
-  - If prompted, configure the OAuth consent screen by providing the necessary information (app name, user support email, etc.)
+  - If prompted, configure the OAuth consent screen with the information for BELA within your company. For "Support Email", for example, enter the email of the person or group responsible for the BELA installation inside your company.
   - Save the changes
 - Select Application Type:
   - Choose "Web application" as the application type
 - Set Redirect URIs:
-  - Under "Authorized redirect URIs," add the URI where users will be redirected after authentication (e.g., https://{your-bela-host}/callback)
+  - Under "Authorized redirect URIs," enter https://{your-bela-host}/callback
 - Create the Credentials:
   - Click "Create." You will see your Client ID and Client Secret. Make sure to save these credentials securely
 
