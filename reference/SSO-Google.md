@@ -28,3 +28,6 @@ The OpenID Connect configuration URL for Google is:
 ```
 https://accounts.google.com/.well-known/openid-configuration
 ```
+
+## Configuring BELA SSO
+Now you have the information needed to configure [BELA SSO](/reference/Client-Controlled-Deployment.md).

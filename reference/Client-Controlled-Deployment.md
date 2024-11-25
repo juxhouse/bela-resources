@@ -19,6 +19,6 @@ Add the following properties to the [bela.properties](/reference/bela.properties
 
 If you need help setting up your SSO provider, you may check these guides below:
 
-- [Google](/reference/Google-SSO.md)
-- [Microsoft Entra ID](/reference/Microsoft-Entra-ID.md)
-- [Okta](/reference/Okta.md)
+- [Google](/reference/SSO-Google.md)
+- [Microsoft Entra ID](/reference/SSO-Microsoft-Entra-ID.md)
+- [Okta](/reference/SSO-Okta.md)

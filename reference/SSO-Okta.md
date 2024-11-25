@@ -25,3 +25,6 @@ Still on the "Settings" tab, scroll down untill you find "Advanced Settings". Cl
 ```
 https://{your-okta-domain}/.well-known/openid-configuration
 ```
+
+## Configuring BELA SSO
+Now you have the information needed to configure [BELA SSO](/reference/Client-Controlled-Deployment.md).

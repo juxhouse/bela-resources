@@ -26,3 +26,6 @@ Under your application overview, click on the "Endpoints" tab. The OpenID Connec
 ```
 https://login.microsoftonline.com/{tenant-id}/v2.0/.well-known/openid-configuration
 ```
+
+## Configuring BELA SSO
+Now you have the information needed to configure [BELA SSO](/reference/Client-Controlled-Deployment.md).
