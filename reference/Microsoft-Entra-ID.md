@@ -26,4 +26,3 @@ Under your application overview, click on the "Endpoints" tab. The OpenID Connec
 ```
 https://login.microsoftonline.com/{tenant-id}/v2.0/.well-known/openid-configuration
 ```
-
