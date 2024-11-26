@@ -18,7 +18,7 @@ Architecture is simply a collection of ECDs.
 **Modeled** architecture or **modeled** ECDs refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
 > [!TIP]
-> You can use the `Diagram Legend` tool from BELA's main menu to see the different colors in which different ECDs are diplayed.
+> You can use the `Diagram Legend` tool from BELA's main menu to see the colors in which different ECDs are diplayed.
 
 
 ## Elements
