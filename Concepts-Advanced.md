@@ -51,4 +51,4 @@ Given an element A:
   It is internal for the ancestor and external for the descendant.
   
 #### Visible deps (on a diagram)
-  The external deps of an element but not vertical deps.
+  The external deps of an element but not hierarchical deps.
