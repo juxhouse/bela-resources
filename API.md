@@ -55,7 +55,6 @@ Creates/updates a built element with the given attributes.
   "path": ElementPath           // Primary key.
   "type": ElementType           // See ElementType schema below.
   "name": String                // Optional. Defaults to last segment in the path.
-  "technology": Technology      // Optional. See Technology schema below.
   "third-party": boolean        // Optional. Defaults to false.
   "description": String         // Optional. 1000 characters max.
   "extra": Object               // Optional. Any extra information you want to store. It is opaque to BELA.
@@ -121,10 +120,6 @@ Examples:
 Identifier. Examples: domain, subdomain, person, package, class, function, method, service, endpoint, topic, queue, bucket, table, etc.
 
 See also: ElementPath.
-
-### Technology
-
-Identifier. Examples: java, php, clojure, python, kafka, http, etc.
 
 ### ElementPath
 
