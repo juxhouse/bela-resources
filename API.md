@@ -57,7 +57,7 @@ Creates/updates a built element with the given attributes.
   "name": String                // Optional. Defaults to last segment in the path.
   "third-party": boolean        // Optional. Defaults to false.
   "description": String         // Optional. 1000 characters max.
-  "links": [Link]               // Optional. An array of arrays. See Link schema below.
+  "links": [Link]               // Optional. An array of arrays. See Link schema below. BELA displays these links on the Element's details panel for easy navigation.
   "extra": Object               // Optional. Any extra information you want to store. It is opaque to BELA.
 }
 ```
