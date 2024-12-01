@@ -57,6 +57,7 @@ Creates/updates a built element with the given attributes.
   "name": String                // Optional. Defaults to last segment in the path.
   "third-party": boolean        // Optional. Defaults to false.
   "description": String         // Optional. 1000 characters max.
+  "links": [Link]               // Optional. An array of arrays. See Link schema below.
   "extra": Object               // Optional. Any extra information you want to store. It is opaque to BELA.
 }
 ```
@@ -149,6 +150,18 @@ Elements with 3 or more path segments have their containment predefined by their
 ```
 
 The paths of modeled elements are composed of their type and name: `type/name`. Modeled elements that have the same path as a new uploaded built element, have `(Model)` appended to their name.
+
+### Link
+
+An array of with any String (can be double quoted) followed by a URL including the protocol, like "https://".
+
+Examples:
+```
+["Source Code" https://github.com/my-company/some-repo]
+[Documentation https://wiki.my-company.com/some-page]
+```
+
+Examples
 
 ### Dependency
 
