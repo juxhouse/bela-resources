@@ -153,7 +153,7 @@ The paths of modeled elements are composed of their type and name: `type/name`. 
 
 ### Link
 
-An array of with any String (can be double quoted) followed by a URL including the protocol, like "https://".
+An array with any String (can be double quoted) followed by a URL including the protocol (https, etc).
 
 Examples:
 ```
