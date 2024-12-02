@@ -54,9 +54,9 @@ Creates/updates a built element with the given attributes.
   "op": "upsert-element"
   "path": ElementPath           // Primary key.
   "type": ElementType           // See ElementType schema below.
-  "name": String                // Optional. Defaults to last segment in the path.
+  "name": string                // Optional. Defaults to last segment in the path.
   "third-party": boolean        // Optional. Defaults to false.
-  "description": String         // Optional. 1000 characters max.
+  "description": string         // Optional. 1000 characters max.
   "links": [Link]               // Optional. An array of arrays. See Link schema below. BELA displays these links on the element's details panel for easy navigation.
   "extra": Object               // Optional. Any extra information you want to store. It is opaque to BELA.
 }
@@ -97,9 +97,9 @@ Adds an alert to the list of alerts of current source, visible in the BELA Sourc
 ```
 {
   "op": "alert"
-  "alert": String              // The title of the alert. Uniquely identifies the alert. Example: "Class Employee is missing"
+  "alert": string              // The title of the alert. Uniquely identifies the alert. Example: "Class Employee is missing"
   "level": identifier          // Optional. `info`, `warning` or `error`. Defaults to `info`.
-  "details": String            // Optional. A stack trace, for example.
+  "details": string            // Optional. A stack trace, for example.
 }
 ```
 
@@ -153,7 +153,7 @@ The paths of modeled elements are composed of their type and name: `type/name`. 
 
 ### Link
 
-An array with any String (can be double quoted) followed by a URL including the protocol (https, etc).
+An array with a label (any string) followed by a URL string including the protocol (https, etc).
 
 Examples:
 ```
@@ -172,7 +172,7 @@ An element can have more than one dependency to another element as long as these
 ```
 {
   to: ElementPath
-  name: String                    // Optional. Case sensitive.
+  name: string                    // Optional. Case sensitive.
   tags: [Identifier]              // Optional. You can have any tags you want.
                                   // BELA displays the following tags in special ways:
                                   //   read: Displayed as an arrowhead
@@ -185,4 +185,4 @@ An element can have more than one dependency to another element as long as these
 
 ### Identifier
 
-A String that begins with a lowercase letter (a-z), followed by any number of lowercase letters, digits, and hyphens (not underscore).
+A string that begins with a lowercase letter (a-z), followed by any number of lowercase letters, digits, and hyphens (not underscore).
