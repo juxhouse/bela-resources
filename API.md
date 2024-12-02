@@ -157,8 +157,8 @@ An array with a label (any string) followed by a URL string including the protoc
 
 Examples:
 ```
-["Source Code" https://github.com/my-company/some-repo]
-[Documentation https://wiki.my-company.com/some-page]
+["Source Code" "https://github.com/my-company/some-repo"]
+["Documentation" "https://wiki.my-company.com/some-page"]
 ```
 
 Examples
