@@ -2,7 +2,7 @@
 
 Use the bela.properties file to provide settings for BELA, such as client IDs and secrets.
 
-Place it in the host directory that is mounted onto the `\bela-data` mount point 
+Place it in the host directory that is mounted onto the `\bela-data` mount point
 when running the BELA Docker image.
 ```
 {host-directory}/config/bela.properties
@@ -20,6 +20,8 @@ architecture.api.token=your-api-token     # Token for accessing BELA's architect
 openid.configuration.url=https://{host}/.well-known/openid-configuration # URL for your SSO provider's OpenID configuration.
 openid.client.id=your-client-id           # Client ID for BELA, as provided by your SSO provider.
 openid.client.secret=your-client-secret   # Client secret for BELA, as provided by your SSO provider.
+
+# auth.passwords=true                     # Enable this instead of the openid configs above if you want to use user+password authentication.
 
 openai.api.url=https://api.openai.com/v1/chat/completions   # URL for OpenAI's chat completion API endpoint.
 openai.api.token=openai-api-token   # API token for authenticating with OpenAI.
