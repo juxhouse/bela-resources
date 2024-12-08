@@ -13,16 +13,24 @@ when running the BELA Docker image.
 Below is a sample bela.properties file with configuration details:
 
 ```properties
-owner.email=user@example.com              # The email address of the application owner.
+# The email address of the application owner.
+owner.email=user@example.com
 
-architecture.api.token=your-api-token     # Token for accessing BELA's architecture API endpoint. You can set any string you like here.
+# Token for accessing BELA's architecture API endpoint. You can set any string you like here.
+architecture.api.token=your-api-token
 
-openid.configuration.url=https://{host}/.well-known/openid-configuration # URL for your SSO provider's OpenID configuration.
-openid.client.id=your-client-id           # Client ID for BELA, as provided by your SSO provider.
-openid.client.secret=your-client-secret   # Client secret for BELA, as provided by your SSO provider.
+# URL for your SSO provider's OpenID configuration.
+openid.configuration.url=https://{host}/.well-known/openid-configuration
+# Client ID for BELA, as provided by your SSO provider.
+openid.client.id=your-client-id
+# Client secret for BELA, as provided by your SSO provider.
+openid.client.secret=your-client-secret
 
-# auth.passwords=true                     # Enable this instead of the openid configs above if you want to use user+password authentication.
+# Enable this instead of the openid configs above if you want to use user+password authentication.
+# auth.passwords=true
 
-openai.api.url=https://api.openai.com/v1/chat/completions   # URL for OpenAI's chat completion API endpoint.
-openai.api.token=openai-api-token   # API token for authenticating with OpenAI.
+# URL for OpenAI's chat completion API endpoint.
+openai.api.url=https://api.openai.com/v1/chat/completions
+# API token for authenticating with OpenAI.
+openai.api.token=openai-api-token
 ```
