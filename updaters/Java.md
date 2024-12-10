@@ -1,10 +1,12 @@
 # Updating BELA with your Java Projects
 
-## 1. Prepare Your Project
+## 1. Prepare Your Project(s)
 
 - [Using Maven](/updaters/Java-Maven.md)
 - [Using Gradle](/updaters/Java-Gradle.md)
 - [Using other build tools](/updaters/Java-Other.md)
+
+If your repo has several projects or Maven modules, repeat this step inside the each one of them.
 
 ## 2. Run the Bela Updater
 
