@@ -33,7 +33,7 @@ You can create your own element types.
 
 #### Element Path
 
-Every element is identified by a path. [API](/API.md#elementpath)
+Every built element is identified by a path. [API](/API.md#elementpath)
 
 Examples:
  - service/customers
