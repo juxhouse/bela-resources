@@ -38,7 +38,7 @@ Every built element is identified by a path. [API](/API.md#elementpath)
 Examples:
  - service/customers
  - dotnet-assembly/MyAssembly/MyNamespace/MyInterface
- - java-project/org.acme:customers/org.acme/customer/Customer/setName(java.lang.String)
+ - maven-project/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String)
 
 #### Element Name
 
