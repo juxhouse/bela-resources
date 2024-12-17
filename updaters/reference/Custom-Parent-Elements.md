@@ -1,10 +1,10 @@
 ## Custom Parent Elements
 
-To allow your projects to specify their own parent element, each project must contain a file called:
+To allow each of your projects to specify its own parent element, each project must contain a file called:
 
 `.bela/parent-element-path`
 
-Use a script like this example for running the BELA updater:
+Use a script like this example for running the BELA updater that analyses your projects:
 
 ```bash
 FILE=".bela/parent-element-path"
