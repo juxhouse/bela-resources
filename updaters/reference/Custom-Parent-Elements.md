@@ -12,7 +12,7 @@ read -r PARENT < "$FILE"
 docker run --network=none --pull=always \
            -v ./.bela:/.bela \
            -v .:/workspace:ro \
-           juxhouse/bela-updater-dotnet -source my-source \
+           juxhouse/bela-updater-XXXX -source my-source \
            -parent-element-path "$PARENT" \
            -ignore-test-code
 ```
