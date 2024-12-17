@@ -8,9 +8,7 @@ Use a script like this for running the BELA updater:
 
 ```bash
 FILE=".bela/parent-element-path"
-
 [ -f "$FILE" ] || { echo "$FILE file does not exist. Skipping BELA update."; exit 0; }
-
 read -r PARENT < "$FILE"
 
 docker run --network=none --pull=always \
