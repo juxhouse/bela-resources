@@ -1,6 +1,10 @@
 ## Custom Parent Elements
 
-To allow each of your projects to specify its own parent element when updating BELA, you can use a script like this:
+To allow your projects to specify their own parent element, each project must contain a file called:
+
+`.bela/parent-element-path`
+
+Use a script like this for running the BELA updater and the first line of that file will be used as the parent element path:
 
 ```bash
 FILE=".bela/parent-element-path"
@@ -16,5 +20,3 @@ docker run --network=none --pull=always \
            -parent-element-path "$PARENT" \
            -ignore-test-code
 ```
-
-Each project will be updated to BELA only if it has a `.bela/parent-element-path` file. The first line of that file will be used as the parent element path.
