@@ -34,7 +34,7 @@ This optional argument will import your projects' elements as contents to some p
 ```
   -parent-element-path service/my-service
 ```
-Your projects can also have [custom parent elements](updaters/reference/Custom-Parent-Elements.md).
+Your projects can also have [custom parent elements](reference/Custom-Parent-Elements.md).
 
 ## 3. Upload to BELA
 
