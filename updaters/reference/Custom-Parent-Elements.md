@@ -5,7 +5,7 @@ To allow each of your projects to specify its own parent element when updating B
 ```bash
 FILE=".bela/parent-element-path"
 
-[ -f "$FILE" ] || { echo "File $FILE does not exist. Will not update BELA."; exit 0; }
+[ -f "$FILE" ] || { echo "$FILE file does not exist. Skipping BELA update."; exit 0; }
 
 read -r PARENT < "$FILE"
 
