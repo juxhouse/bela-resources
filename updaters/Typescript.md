@@ -29,9 +29,10 @@ curl -X POST "http://localhost:8081/api/architecture-scip?source=my-source&paren
 
 To upload it to a remote BELA service:
 ```
-curl -X POST "https://$BELA_HOST/api/architecture-scip?source=my-source&parent-element-path=service/my-service&secret=$BELA_API_TOKEN" \
-             -H "Content-Type: application/octet-stream" \
-             --data-binary @index.scip
+curl -X POST "https://$BELA_HOST/api/architecture-scip?source=my-source&parent-element-path=service/my-service" \
+     -H "Content-Type: application/octet-stream" \
+     -H "Authorization: $BELA_API_TOKEN" \
+     --data-binary @index.scip
 ```
 
 The `parent-element-path` param is optional. Elements being uploaded will be contents in the given parent element. 
