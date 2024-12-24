@@ -9,7 +9,7 @@ Place it in the config directory in the host directory that is mounted onto the 
 
 ## Example
 
-Below is a sample bela.properties file with configuration details:
+A sample bela.properties file with configuration details:
 
 ```properties
 # The email address of the application owner.
