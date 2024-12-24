@@ -12,8 +12,8 @@ Place it in the config directory in the host directory that is mounted onto the 
 A sample bela.properties file with configuration details:
 
 ```properties
-# The email address of the application owner.
-owner.email=user@example.com
+# The email of the owner of the BELA installation within your organization.
+owner.email=person@your-company.com
 
 # URL for your SSO provider's OpenID configuration.
 openid.configuration.url=https://{host}/.well-known/openid-configuration
@@ -25,7 +25,7 @@ openid.client.secret=your-client-secret
 # Enable this instead of the openid configs above if you want to use user+password authentication.
 # auth.passwords=true
 
-# Token for accessing BELA's architecture API endpoint. You can set any string you like here.
+# Token for accessing BELA's architecture API endpoint. You can set any string of random letters and digits.
 architecture.api.token=your-api-token
 
 # URL for OpenAI's chat completion API endpoint.
