@@ -3,15 +3,18 @@
 
 With an enterprise account you can deploy BELA as a container in your own environment.
 
-The required CPU, RAM, and disk resources for the container are determined by the number of simultaneous users and the number of lines of code to be imported, using this simple [calculator](https://bela.live/container-sizing).
+## Required Resources
+
+The required CPU, RAM, and disk resources for the BELA container are determined by the number of simultaneous users and the number of lines of code to be imported, using this simple [calculator](https://bela.live/container-sizing).
 
 ## BELA Data Volume
 
 The container must have a file directory mounted at the volume `\bela-data`. This directory must provide durability equivalent to Amazon's EBS or EFS and must have backup procedures enabled.
 
-The container must be configured as a single instance. No more than one container can access the same file directory. Therefore, the container cannot be configured for horizontal scaling.
+> [!CAUTION]
+> **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling.
 
-The BELA container runs with a restricted user (non-root) with a user ID (UID) and group ID (GID) of `1000000042`. Consequently, the mounted directory must have its UID and GID set accordingly:
+The BELA container runs with a restricted, non-root user with user ID (UID) and group ID (GID) of `1000000042`. The mounted directory must have its UID and GID set accordingly:
 
 ```bash
 sudo chown 1000000042:1000000042 /path/to/directory
