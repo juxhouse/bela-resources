@@ -22,7 +22,7 @@ openid.client.id=your-client-id
 # Client secret for BELA, as provided by your SSO provider.
 openid.client.secret=your-client-secret
 
-# Enable this instead of the openid configs above if you want to use user+password authentication.
+# Enable this instead of the openid configs above if you want to use user+password authentication:
 # auth.passwords=true
 
 # Token for accessing BELA's architecture API endpoint. You can set any string of random letters and digits.
