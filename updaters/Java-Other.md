@@ -6,9 +6,9 @@ Build your project into this structure:
 - `target/classes` directory containing your compiled `.class` files.
 - `target/dependency` directory with the JAR files of your project dependencies.
 - `target/project.properties` a file containing groupId, artifactId and version. See [example](/updaters/reference/project.properties).
-- `target/classpath.txt` a txt file containing your project classpath.
+- `target/classpath.txt` a txt file containing your project classpath. Only the names of the jars are used. Their paths can be anything because they are ignored.
 
-Create the `.bela` directory where the update file will be created:
+Make sure the `.bela` directory exists. The update file to be sent to BELA will be created in there:
 
 `mkdir -p .bela`
 
