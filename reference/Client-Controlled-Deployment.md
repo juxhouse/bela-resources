@@ -9,13 +9,18 @@ Determine the required CPU, RAM, and disk resources for the BELA container using
 
 ## BELA Data Volume
 
-Provide a file directory to be mounted as volume `\bela-data` in the BELA container. This directory must provide durability equivalent to Amazon's EFS and must have backup procedures enabled.
+Provide a file directory to store all BELA's data. Suppose you call this directory `my-bela-files`. You will mount it as volume `\bela-data` in the BELA container.
+
+
+
+This directory must provide durability equivalent to Amazon's EFS and must have backup procedures enabled.
 
 > [!CAUTION]
 > **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling.
 
-## Enable User Access
+## Configure BELA
 
+Configure access control and API integrations using the .bela-properties file.
 
 
 ## Single Sign-On (SSO)
