@@ -9,14 +9,12 @@ Determine the required CPU, RAM, and disk resources for the BELA container using
 
 ## BELA Data Volume
 
-Provide a file directory to store all BELA's data. Suppose you call this directory `my-bela-files`. You will mount it as volume `\bela-data` in the BELA container.
+Provide a host directory to store all BELA's files. Suppose you call this host directory `host-directory`. You will mount it as volume `\bela-data` in the BELA container. See example Docker command below.
 
-
-
-This directory must provide durability equivalent to Amazon's EFS and must have backup procedures enabled.
+This directory must provide durability equivalent to Amazon's EFS and must have a backup procedure enabled.
 
 > [!CAUTION]
-> **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling.
+> **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling. On Kubernetes, use the ReadWriteOnce access mode.
 
 ## Configure BELA
 
