@@ -29,11 +29,17 @@ This host directory will be mounted it as volume `\bela-data` in the BELA contai
 
 ## Running BELA
 
-```bash
-# Log in to Docker hub
-echo "$BELA_DOCKERHUB_TOKEN" | docker login -u juxhouse --password-stdin
+This is an example using Docker.
 
-# Start the BELA container
+Log in to Docker Hub using the `BELA_DOCKERHUB_TOKEN` provided with your BELA Enterprise account.
+
+```bash
+echo "$BELA_DOCKERHUB_TOKEN" | docker login -u juxhouse --password-stdin
+```
+
+Start the BELA container.
+
+```
 docker run --pull=always \
            -v $HOST_DIRECTORY:/bela-data \
            -p 8081:8081 \
@@ -46,10 +52,13 @@ Configure DNS to point to the host of the BELA container. BELA is tested with IP
 
 Make it an easy subdomain such as `bela.company.com`. If you make it an obscure host name, people will not remember it and that will defeat the purpose of the tool.
 
-BELA serves plain HTTP on port 8081. Configure a reverse-proxy on the host to close the SSL connection using the default SSL port (443) and directing requests to BELA's port 8081.
+BELA serves plain HTTP on port 8081. Configure your reverse-proxy on the host to accept SSL connections using the default port (443) and forward them to BELA's HTTP port 8081.
+
+BELA should now be accessible by HTTPS on the domain you configured.
 
 
 ## Configure BELA
+
 
 Configure access control and API integrations using the .bela-properties file.
 
