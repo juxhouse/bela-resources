@@ -11,13 +11,9 @@ Determine the required CPU, RAM, and disk resources for the BELA container using
 
 Provide a host directory to store all BELA's files. This directory must provide durability equivalent to Amazon EFS and must have a backup procedure enabled.
 
-Set an env var with the path to the host directory, for example:
-```bash
-   HOST_DIRECTORY=\my-host-directory
-```
-
 Make sure the host directory will be accessible to the BELA container user:
 ```bash
+   HOST_DIRECTORY=\my-host-directory
    chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
 ```
 This allows the BELA container to run with a non-root user, in a way that is compatible with Docker, Kubernetes and OpenShift with its random user ids.
