@@ -9,12 +9,38 @@ Determine the required CPU, RAM, and disk resources for the BELA container using
 
 ## BELA Data Volume
 
-Provide a host directory to store all BELA's files. Suppose you call this host directory `host-directory`. You will mount it as volume `\bela-data` in the BELA container. See example Docker command below.
+Provide a host directory to store all BELA's files. This directory must provide durability equivalent to Amazon EFS and must have a backup procedure enabled.
 
-This directory must provide durability equivalent to Amazon's EFS and must have a backup procedure enabled.
+Set an env var with the path to the host directory, for example:
+
+```bash
+   HOST_DIRECTORY=\my-host-directory
+```
+
+Make sure the host directory is accessible to the BELA container:
+
+```bash
+   chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
+```
+This allows the BELA container to run with a non-root user, in a way that is compatible with Docker, Kubernetes and OpenShift with its random user ids.
+
+This host directory will be mounted it as volume `\bela-data` in the BELA container.
 
 > [!CAUTION]
-> **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling. On Kubernetes, use the ReadWriteOnce access mode.
+> **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling. On Kubernetes, Openshift, etc, use the ReadWriteOnce access mode.
+
+## Example Docker Command
+
+```bash
+# Log in to Docker hub
+echo "$BELA_DOCKERHUB_TOKEN" | docker login -u juxhouse --password-stdin
+
+# Start the BELA container
+docker run --pull=always \
+           -v /my-host-directory:/bela-data \
+           -p 8081:8081 \
+           juxhouse/bela
+```
 
 ## Configure BELA
 
