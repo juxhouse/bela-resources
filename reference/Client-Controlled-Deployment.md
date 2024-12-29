@@ -18,7 +18,7 @@ Make the host directory accessible to the BELA container user:
 ```
 This allows the BELA container to run with a non-root user, in a way that is compatible with Docker, Kubernetes and OpenShift with its random user ids.
 
-This host directory will be mounted it as volume `\bela-data` in the BELA container.
+This host directory will be mounted as volume `\bela-data` in the BELA container.
 
 > [!CAUTION]
 > **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling. On Kubernetes, Openshift, etc, use the ReadWriteOnce access mode.
