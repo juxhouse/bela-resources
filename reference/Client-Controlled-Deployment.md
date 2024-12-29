@@ -23,9 +23,9 @@ This host directory will be mounted it as volume `\bela-data` in the BELA contai
 > [!CAUTION]
 > **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling. On Kubernetes, Openshift, etc, use the ReadWriteOnce access mode.
 
-## Running BELA
+## Starting the BELA Container
 
-This is an example using Docker.
+This is a minimal example using Docker.
 
 Log in to Docker Hub using the `BELA_DOCKERHUB_TOKEN` provided with your BELA Enterprise account.
 
@@ -42,7 +42,7 @@ docker run --pull=always \
            juxhouse/bela
 ```
 
-## Configure the Network (DNS and SSL)
+## Configure DNS and SSL
 
 Configure DNS to point to the host of the BELA container. BELA is tested with IPv4.
 
@@ -55,8 +55,22 @@ BELA should now be accessible by HTTPS on the domain you configured.
 
 ## Configure BELA
 
+When you run BELA for the first time, this file will be created in your host directory, mentioned above:
+```bash
+   config\bela.properties
+```
 
 Configure access control and API integrations using the .bela-properties file.
+
+Restart the BELA container.
+
+## Troubleshooting
+
+Your host directory, mentioned above, will contain a logs folder with logs from BELA executions. It can provide error messages and insight.
+
+Your BELA Enterprise account gives your BELA admins access to the BELA team by popular instant messaging apps.
+
+
 
 
 ## Single Sign-On (SSO)
