@@ -25,7 +25,7 @@ This host directory will be mounted as volume `\bela-data` in the BELA container
 
 ## Starting the BELA Container
 
-This is a minimal example using Docker.
+This is a minimal example of how to start the BELA container using Docker.
 
 Log in to Docker Hub using the `BELA_DOCKERHUB_TOKEN` provided with your BELA Enterprise account.
 
