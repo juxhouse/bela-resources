@@ -57,16 +57,16 @@ BELA should now be accessible by HTTPS on the domain you configured.
 
 When you run BELA for the first time, this file will be created in your host directory, mentioned above:
 ```bash
-   config\bela.properties
+   $HOST_DIRECTORY\config\bela.properties
 ```
 
-Configure access control and API integrations using the .bela-properties file.
+Edit it to configure access control and API integrations using this [template](reference/bela.properties.md).
 
 Restart the BELA container.
 
 ## Troubleshooting
 
-Your host directory, mentioned above, will contain a logs folder with logs from BELA executions. It can provide error messages and insight.
+Your host directory, mentioned above, will contain a `logs` folder with logs from BELA executions. It can provide error messages and insights.
 
 Your BELA Enterprise account gives your BELA admins access to the BELA team by popular instant messaging apps.
 
