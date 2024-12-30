@@ -6,7 +6,7 @@ When you first run the BELA container, it will create this file:
    $HOST_DIRECTORY/config/bela.properties
 ```
 
-Edit that file to provide settings for BELA, such as API URLs and secrets:
+Edit that file to provide settings for BELA, such as external API URLs and secrets.
 
 ## Example
 
