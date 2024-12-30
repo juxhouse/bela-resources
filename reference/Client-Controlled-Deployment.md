@@ -13,7 +13,7 @@ Provide a host directory to store all BELA's files. This directory must provide 
 
 Make the host directory accessible to the BELA container user:
 ```bash
-   HOST_DIRECTORY=\my-host-directory
+   HOST_DIRECTORY=\your-host-directory
    chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
 ```
 This allows the BELA container to run with a non-root user, in a way that is compatible with Docker, Kubernetes and OpenShift with its random user ids.
