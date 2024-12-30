@@ -16,7 +16,7 @@ A sample bela.properties file with configuration details:
 # The email of the owner of the BELA installation within your organization.
 owner.email=person@your-company.com
 
-# URL for your SSO provider's OpenID configuration.
+# URL for your SSO provider's OpenID configuration. It must follow this pattern:
 openid.configuration.url=https://{host}/.well-known/openid-configuration
 # Client ID for BELA, as provided by your SSO provider.
 openid.client.id=your-client-id
@@ -46,7 +46,7 @@ Examples for some popular providers:
 - [Microsoft Entra ID](/reference/SSO-Microsoft-Entra-ID.md)
 - [Okta](/reference/SSO-Okta.md)
 
-2. Add the following properties to the [bela.properties](/reference/bela.properties.md) file:
+2. Add the following properties to the `bela.properties` file above:
 
 |Property|Value|
 |--------|-----|
