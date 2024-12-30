@@ -60,7 +60,7 @@ When you run BELA for the first time, this file will be created in your host dir
    $HOST_DIRECTORY\config\bela.properties
 ```
 
-Edit it to configure access control and API integrations using this [template](reference/bela.properties.md).
+Edit it to configure access control and API integrations using this [template](/reference/bela.properties.md).
 
 Restart the BELA container.
 
