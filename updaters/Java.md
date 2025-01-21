@@ -6,7 +6,7 @@
 - [Using Gradle](/updaters/Java-Gradle.md)
 - [Using other build tools](/updaters/Java-Other.md)
 
-If your repo has several projects or Maven modules, repeat this step inside the each one of them.
+If your repo has several projects or Maven modules, repeat this step inside the folder of each one of them.
 
 ## 2. Run the Bela Updater
 
