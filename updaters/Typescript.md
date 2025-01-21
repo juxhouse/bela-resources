@@ -19,12 +19,22 @@ The bela-updater docker app analyses your project and generates the `bela-update
 docker run --network=none --pull=always \
                      -v ./.bela:/.bela \
                      -v ./:/workspace:ro \
-                     juxhouse/bela-updater-typescript -source my-source
+                     juxhouse/bela-updater-typescript -source my-source \
+                     -parent-element-path service/my-service
 ```
 
 #### `-source`
 
 This argument indicates the [source](/Concepts.md#sources) for the elements being uploaded. Normally the name of the repo is used as source. In Github that would be `"$GITHUB_REPOSITORY"`, for example.
+
+
+#### `-parent-element-path`  
+
+This optional argument will import your projects' elements as contents to some parent element. If your project is the implementation of a microservice for example, you can import it inside that microservice, like this:
+```
+  -parent-element-path service/my-service
+```
+Your projects can also have [custom parent elements](reference/Custom-Parent-Elements.md).
 
 ## 3. Upload the generated `bela-update.ecd` file to BELA
 
@@ -40,7 +50,5 @@ curl -f POST "https://$BELA_HOST/api/ecd-architecture" \
      -H "Authorization: $BELA_API_TOKEN" \
      --data-binary @.bela/bela-update.ecd
 ```
-
-The `parent-element-path` param is optional. Elements being uploaded will be contents in the given parent element. 
 
 You can obtain your `BELA_HOST` and `BELA_API_TOKEN` from the BELA web app.
