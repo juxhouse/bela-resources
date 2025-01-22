@@ -46,7 +46,7 @@ curl -f "http://localhost:8081/api/ecd-architecture" \
 
 To upload it to a remote BELA service:
 ```
-curl -f POST "https://$BELA_HOST/api/ecd-architecture" \
+curl -f "https://$BELA_HOST/api/ecd-architecture" \
      -H "Authorization: $BELA_API_TOKEN" \
      --data-binary @.bela/bela-update.ecd
 ```
