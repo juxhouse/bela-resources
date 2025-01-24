@@ -1,6 +1,6 @@
 ## Prepare your Java Project (Other Build Tool)
 
-Build your project into this structure:
+This is the directory structure read by BELA:
 
 - `src` directory containing your project source files.
 - `target/classes` directory containing your compiled `.class` files.
