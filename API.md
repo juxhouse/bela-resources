@@ -24,7 +24,7 @@ This endpoint allows you to upload your architecture or a part of it to BELA.
 
 It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-You can upload elements from different [sources](#source).
+You can upload elements from different [sources](Concepts.md#sources).
 
 **Reply Success Code** `200`
 
