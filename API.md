@@ -18,7 +18,7 @@ Your BELA API host address is provided to you when you sign-up for a BELA accoun
 Obtain you BELA API token from the BELA web app.
 
 
-## Endpoint: [PATCH](https://en.wikipedia.org/wiki/PATCH_(HTTP)) `/ecd-architecture`
+## Endpoint: POST `/ecd-architecture`
 
 This endpoint allows you to upload your architecture or a part of it to BELA.
 
