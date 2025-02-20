@@ -16,7 +16,7 @@ Make the host directory accessible to the BELA container user:
    HOST_DIRECTORY=\your-host-directory
    chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
 ```
-Setting ownership to group 0 like that is the Openshift standard way of allowing access to a non-root user. It is also compatible with Docker, Kubernetes, etc.
+Setting ownership to group 0 like that is Openshift's secure way of allowing access to a container running with a non-root user. It is also compatible with Docker, Kubernetes, etc.
 
 This host directory will be mounted as volume `\bela-data` in the BELA container.
 
