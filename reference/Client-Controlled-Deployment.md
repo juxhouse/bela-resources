@@ -68,4 +68,4 @@ Restart the BELA container.
 
 Your host directory, mentioned above, will contain a `logs` folder with logs from BELA executions. It can provide error messages and insights.
 
-Your BELA Enterprise account gives your BELA admins access to the BELA team by popular instant messaging apps.
+Your BELA Enterprise account gives your admins access to the BELA team by popular instant messaging apps.
