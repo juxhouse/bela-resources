@@ -18,7 +18,7 @@ Make the host directory accessible to the BELA container user:
 ```
 Setting ownership to group 0 like that is Openshift's secure way of allowing access to a container running with a non-root user. It is also compatible with Docker, Kubernetes, etc.
 
-This host directory will be mounted as volume `\bela-data` in the BELA container.
+This host directory will be mounted as volume `\bela-data` in the BELA container below.
 
 > [!CAUTION]
 > **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling. On Kubernetes, Openshift, etc, use the ReadWriteOnce access mode.
