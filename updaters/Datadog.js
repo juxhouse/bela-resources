@@ -1,5 +1,6 @@
 // Running this script: datadog.js
 const https = require("https");
+const fs = require("fs");
 
 // Datadog params:
 const API_KEY = "YOUR_API_KEY";
@@ -58,48 +59,33 @@ const fetchDatadogDependencies = async () => {
   return httpsRequest(url, options);
 }
 
-const transformToTargetFormat = (datadogData) => {
-  const transaction = [];
-  const serviceDependencies = {};
+const createUpdateFileStream = (filename, datadogData) => {
+  const writableStream = fs.createWriteStream(filename);
 
-  // Add services as elements to transaction
-  for (const service in datadogData) {
-    transaction.push({
-      op: "upsert-element",
-      path: `service/${service}`
-    });
-  }
+  const writeLine = (content, padding = 0) => writableStream.write(" ".repeat(padding) + content + "\n");
 
-  // Collect dependencies
+  const versionLine = "v1";
+  writeLine(versionLine);
+
+  const sourceLine = "source datadog";
+  writeLine(sourceLine);
+
   for (const [service, details] of Object.entries(datadogData)) {
-    if (!serviceDependencies[service]) {
-      serviceDependencies[service] = [];
-    }
+    writeLine(`/service/${service} [service]`);
+
     const calls = details.calls || [];
     for (const call of calls) {
-      serviceDependencies[service].push({
-        to: `service/${call}`
-      });
+      writeLine(`> /service/${call}`, 2);
     }
   }
 
-  // Add dependencies to transaction
-  for (const [service, dependencies] of Object.entries(serviceDependencies)) {
-    transaction.push({
-      op: "add-dependencies",
-      from: `service/${service}`,
-      dependencies: dependencies
-    });
-  }
+  writableStream.end();
 
-  return {
-    source: "datadog",
-    transaction: transaction
-  };
+  return writableStream;
 }
 
 const sendToTargetApi = async (body) => {
-  const url = BELA_HOST + "/architecture";
+  const url = BELA_HOST + "/api/ecd-architecture";
   const options = {
     method: "PATCH",
     headers: {
@@ -107,13 +93,22 @@ const sendToTargetApi = async (body) => {
     }
   };
 
-  return httpsRequest(url, options, JSON.stringify(body));
+  return httpsRequest(url, options, body);
 }
 
 const run = async () => {
   const datadogData = await fetchDatadogDependencies();
-  const belaTransaction = transformToTargetFormat(datadogData);
-  sendToTargetApi(belaTransaction);
+
+  const filename = "bela-update.ecd";
+  const updateFileStream = createUpdateFileStream(filename, datadogData);
+
+  await new Promise((resolve, reject) => {
+    updateFileStream.on("finish", resolve);
+    updateFileStream.on("error", reject);
+  });
+
+  const fileContent = await fs.promises.readFile(filename, "utf8");
+  await sendToTargetApi(fileContent);
 }
 
 run();
