@@ -143,7 +143,15 @@ const createElementUpsertLine = (element) => {
 const createDependenciesUpsertLine = (data) => {
   const { sourceData, targetData } = data;
   if (!sourceData || !targetData) return null;
+  let fromPath;
   let toPath;
+
+  const sourceDataId = removeFragmentsIfNecessary(sourceData.id);
+  if (sourceData["service.name"]) {
+    fromPath = createElementPath(sourceDataId);
+  } else {
+    fromPath = createSpanPath(sourceDataId, sourceData["span.type"], sourceData["span.subtype"]);
+  }
 
   const targetDataId = removeFragmentsIfNecessary(targetData.id);
   if (targetData["service.name"]) {
@@ -152,7 +160,7 @@ const createDependenciesUpsertLine = (data) => {
     toPath = createSpanPath(targetDataId, targetData["span.type"], targetData["span.subtype"]);
   }
 
-  return `> ${toPath}`;
+  return { fromLine: `/${fromPath}`, toLine: `> ${toPath}` };
 }
 
 const checkIgnored = (value) => {
@@ -182,15 +190,19 @@ const createUpdateFileStream = (filename, serviceMap) => {
   writeLine(sourceLine);
 
   serviceMap.elements.forEach(({ data }) => {
-    if (isIgnoredService(data)) return;
-    writeLine(createElementUpsertLine(data));
     if (data.source && data.target) {
       if (isIgnoredDependency(data)) return;
       const depLine = createDependenciesUpsertLine(data);
-      if (depLine) writeLine(depLine, 2);
+      if (depLine) {
+        const { fromLine, toLine } = depLine;
+        writeLine(fromLine);
+        writeLine(toLine, 2);
+      }
 
       return;
     }
+    if (isIgnoredService(data)) return;
+    writeLine(createElementUpsertLine(data));
   });
 
   writableStream.end();
@@ -217,199 +229,7 @@ const patchArchitecture = (body) => {
 }
 
 const run = async () => {
-  // const serviceMap = await fetchServiceMap();
-  const serviceMap = {
-    "elements": [{
-      "data": {
-        "id": "web-gateway",
-        "service.environment": "development",
-        "service.name": "web-gateway",
-        "agent.name": "opentelemetry/python"
-      }
-    }, {
-      "data": {
-        "id": "api-gateway",
-        "service.name": "api-gateway",
-        "agent.name": "opentelemetry/cpp"
-      }
-    }, {
-      "data": {
-        "id": "content",
-        "service.environment": "development",
-        "service.name": "content",
-        "agent.name": "opentelemetry/python"
-      }
-    }, {
-      "data": {
-        "span.subtype": "http",
-        "span.destination.service.resource": "storage.googleapis.com:443",
-        "span.type": "external",
-        "id": ">storage.googleapis.com:443",
-        "label": "storage.googleapis.com:443"
-      }
-    }, {
-      "data": {
-        "id": "checkout",
-        "service.environment": "development",
-        "service.name": "checkout",
-        "agent.name": "opentelemetry/python"
-      }
-    }, {
-      "data": {
-        "id": "cart",
-        "service.environment": "development",
-        "service.name": "cart",
-        "agent.name": "opentelemetry/python"
-      }
-    }, {
-      "data": {
-        "span.subtype": "redis",
-        "span.destination.service.resource": "redis",
-        "span.type": "db",
-        "id": ">redis",
-        "label": "redis"
-      }
-    }, {
-      "data": {
-        "service.name": "product",
-        "agent.name": "opentelemetry/python",
-        "service.environment": null,
-        "id": "product"
-      }
-    }, {
-      "data": {
-        "service.name": "payment",
-        "agent.name": "opentelemetry/python",
-        "service.environment": null,
-        "id": "payment"
-      }
-    }, {
-      "data": {
-        "source": "api-gateway",
-        "target": "cart",
-        "id": "api-gateway~cart",
-        "sourceData": {
-          "id": "api-gateway",
-          "service.name": "api-gateway",
-          "agent.name": "opentelemetry/cpp"
-        },
-        "targetData": {
-          "id": "cart",
-          "service.environment": "development",
-          "service.name": "cart",
-          "agent.name": "opentelemetry/python"
-        }
-      }
-    }, {
-      "data": {
-        "source": "api-gateway",
-        "target": "checkout",
-        "id": "api-gateway~checkout",
-        "sourceData": {
-          "id": "api-gateway",
-          "service.name": "api-gateway",
-          "agent.name": "opentelemetry/cpp"
-        },
-        "targetData": {
-          "id": "checkout",
-          "service.environment": "development",
-          "service.name": "checkout",
-          "agent.name": "opentelemetry/python"
-        },
-        "bidirectional": true
-      }
-    }, {
-      "data": {
-        "source": "api-gateway",
-        "target": "content",
-        "id": "api-gateway~content",
-        "sourceData": {
-          "id": "api-gateway",
-          "service.name": "api-gateway",
-          "agent.name": "opentelemetry/cpp"
-        },
-        "targetData": {
-          "id": "content",
-          "service.environment": "development",
-          "service.name": "content",
-          "agent.name": "opentelemetry/python"
-        }
-      }
-    }, {
-      "data": {
-        "source": "cart",
-        "target": ">redis",
-        "id": "cart~>redis",
-        "sourceData": {
-          "id": "cart",
-          "service.environment": "development",
-          "service.name": "cart",
-          "agent.name": "opentelemetry/python"
-        },
-        "targetData": {
-          "span.subtype": "redis",
-          "span.destination.service.resource": "redis",
-          "span.type": "db",
-          "id": ">redis",
-          "label": "redis"
-        }
-      }
-    }, {
-      "data": {
-        "source": "checkout",
-        "target": "api-gateway",
-        "id": "checkout~api-gateway",
-        "sourceData": {
-          "id": "checkout",
-          "service.environment": "development",
-          "service.name": "checkout",
-          "agent.name": "opentelemetry/python"
-        },
-        "targetData": {
-          "id": "api-gateway",
-          "service.name": "api-gateway",
-          "agent.name": "opentelemetry/cpp"
-        },
-        "isInverseEdge": true
-      }
-    }, {
-      "data": {
-        "source": "content",
-        "target": ">storage.googleapis.com:443",
-        "id": "content~>storage.googleapis.com:443",
-        "sourceData": {
-          "id": "content",
-          "service.environment": "development",
-          "service.name": "content",
-          "agent.name": "opentelemetry/python"
-        },
-        "targetData": {
-          "span.subtype": "http",
-          "span.destination.service.resource": "storage.googleapis.com:443",
-          "span.type": "external",
-          "id": ">storage.googleapis.com:443",
-          "label": "storage.googleapis.com:443"
-        }
-      }
-    }, {
-      "data": {
-        "source": "web-gateway",
-        "target": "api-gateway",
-        "id": "web-gateway~api-gateway",
-        "sourceData": {
-          "id": "web-gateway",
-          "service.environment": "development",
-          "service.name": "web-gateway",
-          "agent.name": "opentelemetry/python"
-        },
-        "targetData": {
-          "id": "api-gateway",
-          "service.name": "api-gateway",
-          "agent.name": "opentelemetry/cpp"
-        }
-      }
-    }]
-  }
+  const serviceMap = await fetchServiceMap();
 
   const filename = "bela-update.ecd";
   const updateFileStream = createUpdateFileStream(filename, serviceMap);
