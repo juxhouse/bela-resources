@@ -23,7 +23,7 @@ Architecture is simply a collection of ECDs.
 
 ## Elements
 
-Software elements are the nouns in your architecture: projects, classes, methods, etc. [API](/API.md#upsert-element)
+Software elements are the nouns in your architecture: projects, classes, methods, etc.
 
 #### Element Type
 
@@ -33,7 +33,7 @@ You can create your own element types.
 
 #### Element Path
 
-Every built element is identified by a path. [API](/API.md#elementpath)
+Every built element is identified by a path.
 
 Examples:
  - service/customers
@@ -56,7 +56,7 @@ method      setName(String)   maven-group/group-id/artifact-id/org.mycompany/cus
 
 ## Containments
 
-A containment is the relationship between a parent element and a child element. Parent elements can also be called "containers". [API](/API.md#add-containments)
+A containment is the relationship between a parent element and a child element. Parent elements can also be called "containers".
 
 Restrictions:
  - An element can be contained by at most one direct parent (like folders in a file system).
@@ -78,7 +78,7 @@ Example paths of top-level elements:
 
 ## Dependencies
 
-Any element can depend on any other element. [API](/API.md#add-dependencies)
+Any element can depend on any other element.
 
 Dependencies are uniquely identified by the path of both elements and a name.
 
