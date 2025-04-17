@@ -13,16 +13,16 @@ Provide a host directory to store all BELA's files. This directory must provide 
 
 This host directory will be mounted as volume `\bela-data` in the BELA container below.
 
-**Docker variant:**
+ - **Docker variant:**
 Make the host directory accessible to the BELA container using group 0.
 ```bash
    HOST_DIRECTORY=\your-host-directory
    chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
 ```
 
-**Kubernetes variant**: Use the security context `fsGroup` setting with any non-zero group id.
+ - **Kubernetes variant**: Use the security context `fsGroup` setting with any non-zero group id.
 
-**Openshift variant**: Volume access is automatically enabled by the SCC (Security Context Constraints) system.
+ - **Openshift variant**: Volume access is automatically enabled by the SCC (Security Context Constraints) system.
 
 
 > [!CAUTION]
