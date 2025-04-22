@@ -8,8 +8,4 @@ This is the directory structure read by BELA:
 - `target/dependency` directory with the JAR files of your project dependencies.
 - `target/classpath.txt` a txt file containing your project classpath. Only the names of the jars are used. Their paths can be anything because they are not used.
 
-Make sure the `.bela` directory exists. The update file to be sent to BELA will be created in there:
-
-`mkdir -p .bela`
-
-Your project is now ready to be [analysed by BELA](/updaters/Java.md).
+When your project is built with this structure you will be ready to [go back](/CodeSynchronization.md) and run the Java BELA Updater app on it.
