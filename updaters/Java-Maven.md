@@ -14,10 +14,4 @@ mvn dependency:copy-dependencies -Dmdep.outputDirectory=target/dependency
 > [!IMPORTANT]
 > If your build does not produce artifacts in the standard Maven folder structure, please check [here](/updaters/Java-Other.md).
 
-In your project directory, create the .bela directory if necessary:
-
-```
-mkdir -p .bela
-```
-
-Your project is now ready to be [analysed by BELA](/updaters/Java.md).
+You are now ready to [go back](/CodeSynchronization.md) run the Java BELA Updater app on your project.
