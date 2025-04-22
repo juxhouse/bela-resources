@@ -24,9 +24,8 @@ Build your project using these steps, depending on your language environment:
 
 ## 2. Run the BELA Updater Docker App for Your Language
 
-It will detect all projects in your repository and produce the [architecture data](/Concepts.md#ecds) that will be sent to BELA below. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
+It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) that will be sent to BELA below. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
-Create the `.bela` folder if it does not already exist.
 
 
 > [!IMPORTANT]
