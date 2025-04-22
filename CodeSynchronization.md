@@ -12,7 +12,7 @@ Create the `.bela` folder if it does not already exist.
 mkdir -p .bela
 ```
 
-Build your project using these steps, depending on your language environment:
+Build your project according to its language and build tool:
  - [C#](/updaters/.NET.md)
  - [Clojure](/updaters/Clojure.md)
  - [Java (Maven)](/updaters/Java-Maven.md)
