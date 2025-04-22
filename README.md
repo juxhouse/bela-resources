@@ -19,12 +19,12 @@ Get a solid understanding of BELA's fundamental [concepts](/Concepts.md).
 
 ## Synchronize your Code Repositories
 
-#### Run the `bela-updater` docker app
+#### Run the `BELA Updater` Docker App for Your Language
 
-It detects all projects in your repository and produces the [architecture data](/Concepts.md#ecds) that is sent to BELA. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
+It will detect all projects in your repository and produce the [architecture data](/Concepts.md#ecds) that is sent to BELA. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
 > [!IMPORTANT]
-> The `bela-updater` docker app runs with the `--network=none` argument for secure containment.
+> The `BELA Updater` docker apps run with the `--network=none` argument for secure containment.
 
 See examples for the supported languages:
  - [C#](/updaters/.NET.md)
@@ -55,11 +55,11 @@ If you use a different tool, you can adapt one of the scripts above or call BELA
 
 ## Diagram-as-Code
 
-You can upload "hard coded" diagram elements to BELA using the JSON format defined by the [BELA API](API.md).
+You can upload "hard coded" diagram elements to BELA using the ECD format defined by the [BELA API](API.md).
 
-Add [this command](/updaters/reference/upload-example.md#uploading-diagrams-as-code) to your CI/CD pipeline to update BELA with custom diagram elements. It will upload the `bela-custom-update.json` file to BELA if it exists.
+Add [this command](/updaters/reference/upload-example.md#uploading-diagrams-as-code) to your CI/CD pipeline to update BELA with custom diagram elements. It will upload the `.bela/bela-custom-update.ecd` file to BELA if it exists.
 
-Now, every repository that uses this CI/CD pipeline can simply create the `bela-custom-update.json` file for custom diagrams-as-code.
+Now, every project of yours that uses this CI/CD pipeline can simply create the `.bela/bela-custom-update.ecd` file for custom diagrams-as-code.
 
 > [!IMPORTANT]
 > Diagram-as-code is a technique that produces diagram code that is brittle and redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
