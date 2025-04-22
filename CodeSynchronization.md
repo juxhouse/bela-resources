@@ -1,13 +1,18 @@
 # Synchronize a Code Repository
 
-## 1. Build the Projects
+## 1. Build Your Project
 
-Check out your repository, and `cd` into it, if necessary.
+Check out your project and `cd` into it, if necessary.
 ```
-cd my-repository
+cd my-project
 ```
 
-Build your project using the correct playbook for your language environment:
+Create the `.bela` folder if it does not already exist.
+```
+mkdir -p .bela
+```
+
+Build your project using these steps, depending on your language environment:
  - [C#](/updaters/.NET.md)
  - [Clojure](/updaters/Clojure.md)
  - [Java (Maven)](/updaters/Java-Maven.md)
@@ -22,10 +27,6 @@ Build your project using the correct playbook for your language environment:
 It will detect all projects in your repository and produce the [architecture data](/Concepts.md#ecds) that will be sent to BELA below. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
 Create the `.bela` folder if it does not already exist.
-```
-cd my-repository
-mkdir -p .bela
-```
 
 
 > [!IMPORTANT]
