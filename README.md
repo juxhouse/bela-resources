@@ -26,12 +26,17 @@ It will detect all projects in your repository and produce the [architecture dat
 > [!IMPORTANT]
 > The `BELA Updater` docker apps run with the `--network=none` argument for secure containment.
 
-See examples for the supported languages:
- - [C#](/updaters/.NET.md)
- - [Clojure](/updaters/Clojure.md)
- - [Java](/updaters/Java.md)
- - [Javascript](/updaters/Typescript.md)
- - [Typescript](/updaters/Typescript.md)
+[Step-by-step instructions](/CodeSynchronization.md)
+
+Supported languages:
+ - C#
+ - Clojure
+ - Java
+ - Javascript
+ - Oracle Stored Procedures (beta)
+ - Powerbuilder (beta)
+ - Ruby (beta)
+ - Typescript
 
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
  
