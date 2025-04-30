@@ -26,13 +26,31 @@ Build your project according to its language and build tool:
 
 It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) that will be sent to BELA below. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
-
+```
+docker run --network=none --pull=always \
+           -v ./.bela:/.bela \
+           -v ./:/workspace:ro \
+           $DOCKER_APP -source my-source \
+           -parent-element-path service/my-service
+```
 
 > [!IMPORTANT]
 > The `BELA Updater` docker apps run with the `--network=none` argument for secure containment.
 
+#### DOCKER_APP
+
+Use the appropriate Docker App for your language:
+
+| Language | BELA Updater Docker App |
+|----------|-------------------------|
+| C#  | juxhouse/bela-updater-dotnet |
+
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
+
+#### `-source`
+
+This argument indicates the [source](/Concepts.md#sources) for the elements being uploaded. Normally the name of the repo is used as source. In Github that would be `"$GITHUB_REPOSITORY"`, for example.
 
 #### `-parent-element-path`  
 
