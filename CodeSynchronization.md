@@ -24,7 +24,7 @@ Build your project according to its language and build tool:
 
 ## 2. Run the BELA Updater Docker App for Your Language
 
-It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) that will be sent to BELA below. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
+It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) that will be sent to BELA in the following step. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
 ```
 docker run --network=none --pull=always \
@@ -62,7 +62,10 @@ This optional argument will import your projects' elements as the contents of so
 ```
 Your projects can also have [custom parent elements](reference/Custom-Parent-Elements.md).
 
+## 3. Upload to BELA
 
-## 3. Automate
+See [upload example](/updaters/reference/upload-example.md).
+
+## Automate
 
 Set up the above as a repository action or as an optional step after your main CI/CD pipeline has completed.
