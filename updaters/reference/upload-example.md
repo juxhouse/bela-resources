@@ -1,4 +1,4 @@
-# Uploading the BELA update file
+# Uploading the BELA ECD file
 
 To upload to a BELA container running anonymously on your local machine:
 
