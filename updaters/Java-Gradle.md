@@ -14,5 +14,4 @@ You are now ready to [go back](/CodeSynchronization.md) and run the BELA Updater
 
 ## Troubleshooting
 
-If you have an unusual build config and the above isn't working, [this](/updaters
-/Java-Other.md) is the output structure that BELA needs.
+If you have an unusual build config and the above isn't working, [this](/updaters/Java-Other.md) is the output structure that BELA needs.
