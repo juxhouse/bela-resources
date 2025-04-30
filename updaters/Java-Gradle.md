@@ -10,4 +10,9 @@ Copy this [bela.gradle](/updaters/reference/bela.gradle) file into your project 
 ./gradlew belaBuild --init-script bela.gradle
 ```
 
-Your project is now ready to be [analysed by BELA](/updaters/Java.md).
+You are now ready to [go back](/CodeSynchronization.md) and run the BELA Updater for Java.
+
+## Troubleshooting
+
+If you have an unusual build config and the above isn't working, [this](/updaters
+/Java-Other.md) is the output structure that BELA needs.
