@@ -1,5 +1,3 @@
-# Prepare your Clojure Project
-
 ## Download the dependencies for your project.
 
 #### For a Lein Project
