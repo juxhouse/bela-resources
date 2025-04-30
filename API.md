@@ -24,16 +24,12 @@ This endpoint allows you to upload your architecture or a part of it to BELA.
 
 It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
 
-You can upload elements from different [sources](Concepts.md#sources).
-
-**Reply Success Code** `200`
+**Reply Success Code** `2XX`
 
 **Reply Error Codes**
 
 Errors will be returned as some 4XX or 5XX HTTP error code with a helpful message in the reply body.
 
-...
-
 **Body**
 
-This endpoint receives an [.ecd file](reference/ECD-File) in its body. The entire file is applied to BELA atomically.
+This endpoint receives an [.ecd file](reference/ECD-File) in its body. BELA will detect the changes between the file and apply them all atomically.
