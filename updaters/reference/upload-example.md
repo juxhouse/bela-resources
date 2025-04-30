@@ -1,13 +1,13 @@
-# Uploading the BELA ECD file
+# Uploading the BELA ECD File
 
-To upload to a BELA container running anonymously on your local machine:
+To upload to a BELA backend running anonymously on your local machine:
 
 ```
 curl -f "http://localhost:8081/api/ecd-architecture" \
      --data-binary @.bela/bela-update.ecd
 ```
 
-To upload to a remote BELA service:
+To upload to a remote BELA backend:
 
 ```
 curl -f "https://$BELA_HOST/api/ecd-architecture" \
