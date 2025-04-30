@@ -30,20 +30,22 @@ It will analyse your project and produce the `.bela/bela-update.ecd` file with [
 docker run --network=none --pull=always \
            -v ./.bela:/.bela \
            -v ./:/workspace:ro \
-           $DOCKER_APP -source my-source \
+           $DOCKER_APP \
+           -source my-source \
            -parent-element-path service/my-service
 ```
 
 > [!IMPORTANT]
-> The `BELA Updater` docker apps run with the `--network=none` argument for secure containment.
+> The container runs with `--network=none` and your project is mounted in read-only mode for secure containment.
 
 #### DOCKER_APP
 
-Use the appropriate Docker App for your language:
+Use the appropriate docker image for your language:
 
-| Language | BELA Updater Docker App |
+| Language | BELA Updater Docker Image |
 |----------|-------------------------|
-| C#  | juxhouse/bela-updater-dotnet |
+| C# | juxhouse/bela-updater-dotnet |
+| Java | juxhouse/bela-updater-java |
 
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
