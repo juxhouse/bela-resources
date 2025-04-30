@@ -64,3 +64,11 @@ auth.passwords=true
 ```
 > [!WARNING]
 > Anyone will be able to log in using the `owner.email` set above until the password for that email is reset the first time.
+
+## Anonymous Access (Optional)
+
+If you are just trying out BELA, you can enable this line in the template above:
+```
+anonymous=true
+```
+Anyone will be able access BELA without needing to log in.
