@@ -45,6 +45,7 @@ Use the appropriate docker image for your language:
 | Language | BELA Updater Docker Image |
 |----------|-------------------------|
 | C# | juxhouse/bela-updater-dotnet |
+| Clojure | juxhouse/bela-updater-clojure |
 | Java | juxhouse/bela-updater-java |
 
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
