@@ -1,22 +1,22 @@
 ## Download the dependencies for your project.
 
-#### For a Lein Project
+An example for a simple `Lein` project:
 
-For a simple lein project, for example:
+```
+lein deps
+```
 
-`lein deps`
+An example for a simple `deps.edn` project:
 
-#### For a tools.deps Project
-
-For a simple tools.deps project, for example, that is done running:
-
-`clojure -A:test:dev -Spath`
+```
+clojure -A:test:dev -Spath
+```
 
 Replace the aliases in the -A parameter according to your project.
 
 ## Copy the Dependencies
 
-Copy the depedencies to your project folder, so that the BELA updater Docker App can see them, for example:
+Copy the depedencies to your project folder, so that the BELA Updater Docker App can see them, for example:
 
 ```
 cp -r ~/.m2 ./
