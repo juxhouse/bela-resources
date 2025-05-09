@@ -62,8 +62,7 @@ If you do not want to use SSO, you can enable this line in the template above:
 ```
 auth.passwords=true
 ```
-> [!WARNING]
-> Anyone will be able to log in using the `owner.email` set above until the password for that email is reset the first time.
+Anyone will be able to log in using the `owner.email` set above until the password for that email is reset the first time.
 
 ## Anonymous Access (Optional)
 
