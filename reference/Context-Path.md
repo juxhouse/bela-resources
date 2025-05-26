@@ -1,6 +1,6 @@
 ## 1. Set the context.path Property
 
-Add a line to the [bela.properties](bela.properties.md) file of each BELA instance with a different context-path, for example:
+Add a line to the [bela.properties](bela.properties.md) file of each BELA instance with a different context path, for example:
 ```
 context.path=customers
 ```
@@ -17,6 +17,6 @@ https://bela.mycompany.com/operations
 
 ## 2. Configure Your Proxy
 
-Configure your reverse proxy to route requests to each BELA instance according to its context-path.
+Configure your reverse proxy to route requests to each BELA instance according to its context path.
 
 [Back to bela.properties](bela.properties.md)
