@@ -8,7 +8,7 @@ Now BELA will accept requests in this format:
 ```
 https://{your-bela-host}/customers
 ```
-Examples for three BELA instances:
+Examples for three BELA instances using the same DNS subdomain and different context paths:
 ```
 https://bela.mycompany.com/customers
 https://bela.mycompany.com/billing
