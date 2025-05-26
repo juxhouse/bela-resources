@@ -1,14 +1,14 @@
-## 1. Set Up the context.path Property
+## 1. Set the context.path Property
 
-Add this line to your [bela.properties](bela.properties.md) files to give each BELA instance a different context-path:
+Add a line to the [bela.properties](bela.properties.md) file of each BELA instance with a different context-path, for example:
 ```
-context.path={context-path}
+context.path=customers
 ```
 Now BELA will accept requests in this format:
 ```
-https://{your-bela-host}/{context-path}
+https://{your-bela-host}/customers
 ```
-Examples for three different BELA instances:
+Examples for three BELA instances:
 ```
 https://bela.mycompany.com/customers
 https://bela.mycompany.com/billing
