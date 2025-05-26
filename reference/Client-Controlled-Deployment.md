@@ -5,7 +5,13 @@ With an enterprise account you can deploy BELA as a container in your own enviro
 
 ## Required Resources
 
-Determine the required CPU, RAM, and disk resources for the BELA container using this simple [calculator](https://bela.live/container-sizing).
+Determine the required CPU, RAM, and disk resources for your BELA container(s) using this simple [calculator](https://bela.live/container-sizing).
+
+#### Multiple Instances
+
+You can run multiple BELA instances to isolate access to different codebases and to distribute BELA’s computational load.
+
+You can use different DNS subdomains or different context paths within the same domain. Configuration instructions are below.
 
 ## BELA Data Volume
 
@@ -56,12 +62,6 @@ Make it an easy subdomain such as `bela.company.com`. If you make it an obscure 
 BELA serves plain HTTP on port 8081. Configure your reverse-proxy on the host to accept SSL connections using the default port (443) and forward them to BELA's HTTP port 8081.
 
 BELA should now be accessible by HTTPS on the domain you configured.
-
-#### Multiple Instances
-
-You can run multiple BELA instances to isolate access to different codebases and to distribute BELA’s computational load. See [container sizing calculator](https://bela.live/container-sizing).
-
-You can use different DNS subdomains or different **context paths** within the same domain. Configuration instructions follow.
 
 
 ## Configure BELA
