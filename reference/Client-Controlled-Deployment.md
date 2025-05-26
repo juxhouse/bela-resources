@@ -57,9 +57,11 @@ BELA serves plain HTTP on port 8081. Configure your reverse-proxy on the host to
 
 BELA should now be accessible by HTTPS on the domain you configured.
 
-#### Multiple Instances using Context Paths
+#### Multiple Instances
 
-If you want multiple BELA instances to share the same domain, you can use [context paths](/reference/Context-Path.md).
+You can run multiple BELA instances to isolate access to different codebases and to distribute BELA’s computational load. See [container sizing calculator](https://bela.live/container-sizing).
+
+You can use different DNS subdomains or different **context paths** within the same domain. Configuration instructions follow.
 
 
 ## Configure BELA
@@ -69,7 +71,7 @@ When you run BELA for the first time, this file will be created in your host dir
    $HOST_DIRECTORY\config\bela.properties
 ```
 
-Edit it to configure access control and API integrations using this [template](/reference/bela.properties.md).
+Edit that file to configure your BELA instance using this [template](/reference/bela.properties.md).
 
 Restart the BELA container.
 
