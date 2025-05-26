@@ -17,7 +17,7 @@ A sample bela.properties file with configuration examples:
 owner.email=person@your-company.com
 
 # Context path for this BELA instance (optional). See below.
-# context.path=my-context-path
+# context.path={context-path}
 
 # URL for your SSO provider's OpenID configuration. It must follow this pattern:
 openid.configuration.url=https://{host}/.well-known/openid-configuration
@@ -53,7 +53,14 @@ You can use a different DNS subdomains for each BELA instance or you can use a s
 
 You can activate SSO in BELA using OAuth2 OpenID (not SAML).
 
-1. Register BELA as an application with your SSO provider. Use this as the redirect URI: `https://{your-bela-host}/callback`
+1. Register BELA as an application with your SSO provider. Use this as the redirect URI:
+```
+https://{your-bela-host}/callback
+```
+If you have multiple BELA instances using different [context paths](/reference/Context-Path.md), remember to include them:
+```
+https://{your-bela-host}/{context-path}/callback
+```
 
 Examples for some popular providers:
 - [Google](/reference/SSO-Google.md)
