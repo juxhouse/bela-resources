@@ -42,7 +42,9 @@ openai.api.token=openai-api-token
 
 ## Context Path (Optional)
 
-You can run multiple BELA instances under the same DNS domain using context paths. This allows you to isolate access to different codebases and distribute BELA’s computational load.
+You can run multiple BELA instances to isolate access to different codebases and distribute BELA’s computational load.
+
+You can use a different DNS subdomains for each BELA instance or you can use a single DNS domain with different context paths.
 
 [Set up context paths](/reference/Context-Path.md)
 
