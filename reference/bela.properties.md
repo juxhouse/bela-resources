@@ -10,11 +10,14 @@ Edit that file to provide settings for BELA, such as external API URLs and secre
 
 ## Example
 
-A sample bela.properties file with configuration details:
+A sample bela.properties file with configuration examples:
 
 ```properties
 # The email of the owner of the BELA installation within your organization.
 owner.email=person@your-company.com
+
+# Context path for this BELA instance (optional). See below.
+# context.path=my-context-path
 
 # URL for your SSO provider's OpenID configuration. It must follow this pattern:
 openid.configuration.url=https://{host}/.well-known/openid-configuration
@@ -36,6 +39,13 @@ openai.api.url=https://api.openai.com/v1/chat/completions
 # API token for authenticating with OpenAI.
 openai.api.token=openai-api-token
 ```
+
+## Context Path (Optional)
+
+You can run multiple BELA instances under the same DNS domain using context paths. This allows you to isolate access to different codebases and distribute BELA’s computational load.
+
+[Set up context paths](/reference/Context-Path.md)
+
 
 ## Single Sign-On (SSO) (Optional)
 
