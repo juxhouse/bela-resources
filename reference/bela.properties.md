@@ -16,8 +16,8 @@ A sample bela.properties file with configuration examples:
 # The email of the owner of the BELA installation within your organization.
 owner.email=person@your-company.com
 
-# Context path for this BELA instance (optional). See below.
-# context.path={context-path}
+# URL Prefix for this BELA instance (optional). See below.
+# url.prefix={your-url-prefix}
 
 # URL for your SSO provider's OpenID configuration. It must follow this pattern:
 openid.configuration.url=https://{host}/.well-known/openid-configuration
@@ -40,13 +40,13 @@ openai.api.url=https://api.openai.com/v1/chat/completions
 openai.api.token=openai-api-token
 ```
 
-## Context Path (Optional)
+## URL Prefix (Optional)
 
 You can run multiple BELA instances to isolate access to different codebases and distribute BELA’s computational load.
 
-You can use a different DNS subdomains for each BELA instance or you can use a single DNS domain with different context paths.
+You can use a different DNS subdomains for each BELA instance or you can use a single DNS domain with different URL Prefixes.
 
-[Set up context paths](/reference/Context-Path.md)
+[Set up URL Prefixes](/reference/URL-Prefix.md)
 
 
 ## Single Sign-On (SSO) (Optional)
@@ -57,9 +57,9 @@ You can activate SSO in BELA using OAuth2 OpenID (not SAML).
 ```
 https://{your-bela-host}/callback
 ```
-If you have multiple BELA instances using different [context paths](/reference/Context-Path.md), remember to include them:
+If you have multiple BELA instances using different [URL Prefixes](/reference/URL-Prefix.md), remember to include them:
 ```
-https://{your-bela-host}/{context-path}/callback
+https://{your-bela-host}/{your-url-prefix}/callback
 ```
 
 Examples for some popular providers:
