@@ -11,7 +11,7 @@ Determine the required CPU, RAM, and disk resources for your BELA container(s) u
 
 You can run multiple BELA instances to isolate access to different codebases and to distribute BELA’s computational load.
 
-You can use different DNS subdomains or different context paths within the same domain. Configuration instructions are below.
+You can use different DNS subdomains or different URL prefixes within the same domain. Configuration instructions are below.
 
 ## BELA Data Volume
 
