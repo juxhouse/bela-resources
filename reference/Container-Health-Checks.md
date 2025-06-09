@@ -2,7 +2,7 @@
 
 You can use BELA's `/api/health` endpoint to configure startup, readiness and liveness probes for container orchestrators such as Kubernetes.
 
-For speed, BELA loads all data into RAM on startup, so it can take a while to start: approximately 1 min per GB of RAM used.
+For speed, BELA keeps all data in RAM at all times, so startup will take approximately 1 min per GB of RAM used.
 
 The example setting below sets the maximum startup time at 30 min.
 
