@@ -32,4 +32,4 @@ Errors will be returned as some 4XX or 5XX HTTP error code with a helpful messag
 
 **Body**
 
-This endpoint receives an [.ecd file](reference/ECD-File) in its body. BELA will detect the changes between the file and apply them all atomically.
+This endpoint receives an .ecd file in its body. BELA will detect the changes between the file and apply them all atomically.
