@@ -1,5 +1,5 @@
 # Client-Controlled Deployment
-(AKA "On-Premisses", AKA "Bring Your Own Cloud")
+(AKA "On-Premisses" or "Bring Your Own Cloud")
 
 With an enterprise account you can deploy BELA as a container in your own environment.
 
