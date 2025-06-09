@@ -19,7 +19,7 @@ You can obtain your `BELA_HOST` and `BELA_API_TOKEN` from the BELA web app.
 
 # Uploading Diagrams as Code
 
-Run the following command in your CICD pipeline to allow any project to have a `.bela/diagram-as-code.ecd` file with "hard coded" diagram elements. [(ECD Format)](reference/ECD-File)
+Run the following command in your CICD pipeline to allow any project to have a `.bela/diagram-as-code.ecd` file with "hard coded" diagram elements.
 
 ```
 if [ -f .bela/diagram-as-code.ecd ]; then
