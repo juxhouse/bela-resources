@@ -53,6 +53,10 @@ docker run --pull=always \
            juxhouse/bela
 ```
 
+## Health Checks (Optional)
+
+If you are using a container orchestration platform such as Kubernetes, you can configure startup, readiness and liveness probes [like this](/reference/Container-Health-Checks.md).
+
 ## Configure DNS and SSL
 
 Configure DNS to point to the host of the BELA container. BELA is tested with IPv4.
