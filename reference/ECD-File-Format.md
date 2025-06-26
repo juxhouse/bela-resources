@@ -2,6 +2,8 @@
 
 This is the format of the file produced by BELA's [updaters apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and accepted by the BELA [API](/API.md).
 
+It was designed for compactness, readability, and—unlike JSON—supports incremental parsing, allowing it to be processed line by line without having to read the entire file.
+
 ## Lines
 
 This is a line-based format. If you need to escape newline characters within your own strings, such as element descriptions, use `backslash` followed by `n`.
