@@ -12,7 +12,7 @@ Any future changes will follow [BoringVer](https://medium.com/@klauswuestefeld/b
 
 ## Lines
 
-This is a line-based format. If you need to escape newline characters within your own strings, such as element descriptions, use `backslash` followed by `n`.
+This is a line-based format. If you need newline characters within your own strings, such as element descriptions, escape them with `backslash` followed by `n`.
 
 ## Source
 
