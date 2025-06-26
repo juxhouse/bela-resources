@@ -16,7 +16,7 @@ This is a line-based format. To include a newline inside a string—such as in a
 
 ## Source
 
-The second line is `source` followed by the name of the [source](/Concepts.md#sources), for example:
+The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources), for example:
 
 ```
 v1
