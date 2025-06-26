@@ -1,8 +1,8 @@
 # ECD File Format (.ecd)
 
-This is the format of the file produced by BELA's [updaters apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and accepted by the BELA [API](/API.md).
+This is the format of the file produced by the [BELA updaters apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and accepted by the [BELA API](/API.md).
 
-It was designed for compactness, readability, and—unlike JSON—supports incremental parsing, allowing it to be processed line by line without having to read the entire file.
+It was designed for compactness, readability and on-the-fly parsing—unlike JSON—allowing each line to be processed as it’s read, without loading the entire file.
 
 ## Versioning
 
