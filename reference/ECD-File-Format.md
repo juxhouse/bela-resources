@@ -4,20 +4,24 @@ This is the format of the file produced by BELA's [updaters apps](/CodeSynchroni
 
 It was designed for compactness, readability, and—unlike JSON—supports incremental parsing, allowing it to be processed line by line without having to read the entire file.
 
+## Versioning
+
+The format is currently at version 1, so the first line of the file is always `v1`.
+
+Any future changes will follow [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) to ensure backward compatibility.
+
 ## Lines
 
 This is a line-based format. If you need to escape newline characters within your own strings, such as element descriptions, use `backslash` followed by `n`.
 
-## Version 1
-
-The first line is always `v1`, for now. Future versions will be versioned using [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380).
-
 ## Source
 
-The second line is `source` followed by a space and the name of the [source](/Concepts.md#sources), for example:
+The second line is `source` followed by the name of the [source](/Concepts.md#sources), for example:
 
 ```
 v1
 source your-source-name 
 ```
+
+## ECD Lines
 
