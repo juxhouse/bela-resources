@@ -10,7 +10,7 @@ This is a line-based format. If you need to escape newline characters within you
 
 ## Version 1
 
-The first line is always `v1`.
+The first line is always `v1`, for now. Future versions will be versioned using [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380).
 
 ## Source
 
