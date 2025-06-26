@@ -25,4 +25,41 @@ source your-source-name
 
 ## ECD Lines
 
-...
+The lines that follow are either Element lines or Dependency lines. Containments are formed by indenting consecutive Element lines.
+
+```
+maven/my-company/my-project [maven-artifact]
+  mycompany [package]
+    myproject [package]
+
+  > /maven/com.apache/commons/version/3.0.1
+  mycompany [package]
+    myproject [package]
+      MyClass [class]
+        main [method]
+          > mycompany/myproject/
+      
+```
+In the example above you can see . Explanations follow.
+
+### Indentation
+
+ECD Lines can be indented. Each indentation level uses exaclty two space characters.
+
+Dependency lines indented below an Element lines 
+
+
+### Element Line
+
+An Element line 
+
+### Element Upsert Line
+
+An element upsert line is 
+
+### Element Reference Line
+
+
+
+
+
