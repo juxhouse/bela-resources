@@ -2,7 +2,7 @@
 
 This is the format of the file produced by the [BELA updaters apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and accepted by the [BELA API](/API.md).
 
-It was designed for compactness, readability and on-the-fly parsing—unlike JSON—allowing each line to be processed as it’s read, without loading the entire file.
+It was designed for compactness, readability and on-the-fly parsing—unlike JSON—allowing each line to be processed as it is read, without loading the entire file.
 
 ## Versioning
 
@@ -28,15 +28,12 @@ source your-source-name
 The lines that follow are either Element lines or Dependency lines. Containments are formed by indenting consecutive Element lines.
 
 ```
-maven/my-company/my-project [maven-artifact]
-  mycompany [package]
-    myproject [package]
-
+/maven/my-company/my-project [maven-artifact]
   > /maven/com.apache/commons/version/3.0.1
-  mycompany [package]
-    myproject [package]
-      MyClass [class]
-        main [method]
+  business [package]
+    customers [package]
+      Customer [class]
+        setName(String) [method]
           > mycompany/myproject/
       
 ```
@@ -44,20 +41,20 @@ In the example above you can see . Explanations follow.
 
 ### Indentation
 
-ECD Lines can be indented. Each indentation level uses exaclty two space characters.
+ECD Lines can be indented. Each indentation level uses exactly two space characters.
 
 Dependency lines indented below an Element lines 
 
 
-### Element Line
+### Element Lines
 
 An Element line 
 
-### Element Upsert Line
+### Element Upsert Lines
 
 An element upsert line is 
 
-### Element Reference Line
+### Element Reference Lines
 
 
 
