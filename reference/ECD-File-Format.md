@@ -46,33 +46,54 @@ The lines that follow are ECD lines. Here is an example. It will be explained be
 
 ECD Lines can be nested. Each nesting level uses exactly two space characters for indentation.
 
-### Element Paths
-
-An [element path](/Concepts.md#element-path) is a String with two or more path segments separated by `/`. Example: `/maven/my-company/my-project`
-
-Element paths cannot contain spaces nor double-quotes (`"`).
-
-### Element Lines
+### Element Line
 
 An element line is composed of:
-
-- Absolute element reference: Slash (`/`) followed by an . Example: `/maven/my-company/my-project`. It can be quoted.
+- Absolute element reference: Slash (`/`) followed by an [element path](#element-path).
 - Element Type (Optional): an [identifier](#identifier) in brackets. Examples: `[class]`, `[function]`.
-- Element Name (Optional): 
+- Element Name (Optional): Any String. Can be quoted.
 - 
-
-### Absolute Element References
-
-An Element reference is just `/` followed by 
-
-### 
-
-This line in the example above is an element reference: `/maven/com.apache`
 
 
 ### Nested Element Upsert Line
 
-### Element Reference Lines
+### Element Reference Line
+
+### Element Path
+
+Paths are primary keys for [built elements](/Concepts.md#built-vs-modeled).
+
+An [element path](/Concepts.md#element-path) is a String composed of two or more path segments separated by `/`.
+
+Path segments are case-sensitive: `getName()` and `getname()` are NOT the same.
+
+The first segment is always an `ElementType`. You can think of it as a namespace, so that you can have elements with the same name if they have different types.
+
+Examples:
+| Path | Obs
+| ---- | ----
+| domain/Billing | Domain
+| domain/Billing/Invoices | Subdomain
+| maven/my-company/my-project | Maven artifact "my-project" in the "my-company" maven group.
+| service/Billing | 
+service/Billing/billing/core/Bill/isDue(java.util.Date)
+```
+
+
+
+### Element Path Segment
+
+Any String without slashes `/`, spaces or newline characters.
+
+### Quoted String
+
+A String in double-quotes `"`. It can contain spaces and any other character.
+
+| Special Character | Escape Sequence
+| ---- | ----
+| Newline | `\` + `n`
+| Double-Quote | `\` + `"`
+| Backslash | `\` + `\`
 
 ### Identifier
 
