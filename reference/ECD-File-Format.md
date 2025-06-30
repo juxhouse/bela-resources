@@ -28,7 +28,7 @@ source your-source-name
 The lines that follow are ECD lines. Here is an example. It will be explained below.
 
 ```
-/maven/my-company/my-project [maven-artifact]
+/maven/my-company/my-project [maven-artifact] "My Project" (java)
   > /maven/com.apache/commons/version/3.0.1
   business [package]
     billing [package]
@@ -38,25 +38,43 @@ The lines that follow are ECD lines. Here is an example. It will be explained be
     customers [package]
       Customer [class]
         setName(String) [method]
+/grouping/libs/maven
+  /maven/com.apache
 ```
 
 ### Nesting
 
 ECD Lines can be nested. Each nesting level uses exactly two space characters for indentation.
 
-### Element Reference Lines
+### Element Paths
 
-An Element reference line is just `/` followed by an [element path](/Concepts.md#element-path).
+An [element path](/Concepts.md#element-path) is a String with two or more path segments separated by `/`. Example: `/maven/my-company/my-project`
 
-### Element Upsert Lines
+Element paths cannot contain spaces nor double-quotes (`"`).
 
-An element upsert line is 
+### Element Lines
+
+An element line is composed of:
+
+- Absolute element reference: Slash (`/`) followed by an . Example: `/maven/my-company/my-project`. It can be quoted.
+- Element Type (Optional): an [identifier](#identifier) in brackets. Examples: `[class]`, `[function]`.
+- Element Name (Optional): 
+- 
+
+### Absolute Element References
+
+An Element reference is just `/` followed by 
+
+### 
+
+This line in the example above is an element reference: `/maven/com.apache`
+
 
 ### Nested Element Upsert Line
 
 ### Element Reference Lines
 
+### Identifier
 
-
-
+aa
 
