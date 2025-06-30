@@ -8,7 +8,7 @@ It was designed for compactness, readability and on-the-fly parsing—unlike JSO
 
 The format is currently at version 1, so the first line of the file is always `v1`.
 
-Any future changes will follow [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) to ensure backward compatibility.
+Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
 
 ## Lines
 
@@ -67,17 +67,19 @@ An [element path](/Concepts.md#element-path) is a String composed of two or more
 
 Path segments are case-sensitive: `getName()` and `getname()` are NOT the same.
 
+You can use capital letters, diacritics and all sorts of fancy characters but we strongly recommend you keep things simple.
+
 The first segment is always an `ElementType`. You can think of it as a namespace, so that you can have elements with the same name if they have different types.
 
 Examples:
 | Path | Obs
 | ---- | ----
-| domain/Billing | Domain
-| domain/Billing/Invoices | Subdomain
+| domain/billing | Domain
+| domain/billing/invoices | Subdomain
 | maven/my-company/my-project | Maven artifact "my-project" in the "my-company" maven group.
-| service/Billing | 
+| service/billing | 
 service/Billing/billing/core/Bill/isDue(java.util.Date)
-```
+
 
 
 
