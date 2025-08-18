@@ -48,8 +48,10 @@ BELA does not support bulk deletion of modeled elements. That is intentional.
 
 ## Manual Diagram Layout (Non-Feature)
 
-BELA does not support manual "artistic" layout of diagram elements. Manual layouts are brittle. People get emotionally attached to them and resist necessary architectural change because of that.
+BELA diagrams are dynamically browsed, not printed on paper.
+
+BELA does not support manual or “artistic” placement of diagram elements, therefor. Manual layouts are brittle and do not support expanding/collapsing elements. People often become emotionally attached to them and resistant to necessary architectural change.
 
 ## Dependency Labels (Non-Feature)
 
-Labels on dependency lines tend to create clutter and are only legible at high zoom levels, regardless of the tool. For this reason, BELA does not support them. BELA diagrams are designed to be dynamically browsed, not printed on paper. Instead of zooming in and out to read labels, simply click a dependency in BELA to see its details.
+Labels on dependency lines tend to create clutter and are only legible at high zoom levels, regardless of the tool. For this reason, BELA does not support them. Instead of zooming in and out to read labels, simply click a dependency in BELA to see its details.
