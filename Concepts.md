@@ -33,7 +33,7 @@ You can create your own element types.
 
 #### Element Path
 
-Every built element is identified by a path.
+Every **built** element is identified by a path.
 
 Examples:
  - service/customers
@@ -68,7 +68,7 @@ A project can contain a package, for example, which can contain a class, which c
 
 A top-level element is an element that is not contained by any other.
 
-Example paths of top-level elements:
+Example paths of top-level **built** elements:
  - domain/Billing
  - service/customers
  - project/SomeApp
@@ -80,10 +80,10 @@ Example paths of top-level elements:
 
 Any element can depend on any other element.
 
-Dependencies are uniquely identified by the path of both elements and a name.
+Dependencies are uniquely identified by the "from" and "to" elements, and an optional name.
 
 > [!TIP]
-> If there is a dependency line "from" element A "to" element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency line that is pointing upward will be displayed in red.
+> If there is a dependency line from element A to element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency line that is pointing upward will be displayed in red.
 
 #### Dataflow Direction
 
@@ -107,7 +107,3 @@ An ECD will typically exist in only one source but some ECDs, like libs, can be 
 The source name is sent to BELA when ECDs are uploaded.
 
 BELA will garbage collect ECDs that are no longer present in any source. That is the purpose of sources.
-
-## See Also
-
-[Advanced Concepts](Concepts-Advanced.md)
