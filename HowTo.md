@@ -21,6 +21,10 @@ If you’re not using a standard 2-button mouse, check how your pointing device 
 
 There is a question-mark icon on the bottom-left of the screen. It opens a pop-up key to BELA's graphical elements.
 
+## Disabled Buttons and Menu Actions
+
+Every time you see a disabled button or menu action, you can hover over it to see **WHY** that item is disabled.
+
 ## Search
 
 When searching for diagrams or elements, you can type a fragment of their name and type.
