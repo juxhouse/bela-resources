@@ -7,13 +7,13 @@ This is a list of essential, non-obvious BELA features.
 
 ## Non-Obvious Mouse Button Actions
 
-Double-click on element: expand/collapse element, to display its contents.
-Right-click on element: Open element menu.
-Right-click on diagram background: Open diagram menu.
-Right-click on dependency line: Open dependency menu.
-Drag element: Move element in or out of a container or simply move it to nudge the automatic layout.
-Right-drag: Scroll diagram in all directions.
-Mouse wheel: Zoom in/out (like Google maps).
+ - **Double-click on element:** expand/collapse element, to display its contents.
+ - **Right-click on element:** Open element menu.
+ - **Right-click on diagram background:** Open diagram menu.
+ - **Right-click on dependency line:** Open dependency menu.
+ - **Drag element:** Move element in or out of a container or simply move it to nudge the automatic layout.
+ - **Right-drag:** Scroll diagram in all directions.
+ - **Mouse wheel:** Zoom in/out (like Google maps).
 
 If you’re not using a standard 2-button mouse, check how your pointing device maps these actions. On Mac trackpads, for example, a two-finger tap acts as right-click, while a soft press and two-finger drag scrolls the diagram.
 
