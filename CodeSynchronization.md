@@ -36,7 +36,7 @@ docker run --network=none --pull=always \
 ```
 
 > [!IMPORTANT]
-> The container runs with `--network=none` and your project is mounted in read-only mode for secure containment.
+> The container runs with `--network=none` and your project is mounted with `:ro` (read-only mode) for secure containment.
 
 #### DOCKER_APP
 
