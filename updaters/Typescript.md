@@ -2,6 +2,7 @@
 
 Make sure your project has its dependencies installed. You can skip this step if your dependencies are already installed.
 
+Example for a simple NPM project:
 ```sh
   npm ci
 ```
