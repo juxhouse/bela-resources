@@ -72,7 +72,7 @@ BELA should now be accessible by HTTPS on the domain you configured.
 
 When you run BELA for the first time, this file will be created in your host directory, mentioned above:
 ```bash
-   $HOST_DIRECTORY\config\bela.properties
+   $HOST_DIRECTORY/config/bela.properties
 ```
 
 Edit that file to configure your BELA instance using this [template](/reference/bela.properties.md).
