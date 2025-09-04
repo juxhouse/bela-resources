@@ -22,7 +22,7 @@ This host directory will be mounted as volume `\bela-data` in the BELA container
  - **Docker variant:**
 Make the host directory accessible to the BELA container using group 0.
 ```bash
-   HOST_DIRECTORY=\your-host-directory
+   HOST_DIRECTORY=your-host-directory
    chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
 ```
 
