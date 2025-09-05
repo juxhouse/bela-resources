@@ -2,7 +2,7 @@
 
 Make sure your project has its dependencies installed. You can skip this step if your dependencies are already installed.
 
-You can use npm, Yarn and other package managers. This is an example for a simple npm project:
+You can use npm, Yarn or other package managers. This is an example for a simple npm project:
 ```sh
   npm ci
 ```
