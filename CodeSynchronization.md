@@ -51,7 +51,7 @@ docker run --network=none --pull=always \
            -source my-source \
            -parent-element-path service/my-service
 ```
-It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) you will be sent to BELA.
+It will analyse your project and produce the `.bela/bela-update.ecd` file with the [architecture data](/Concepts.md#ecds) you will upload to BELA.
 
 > [!IMPORTANT]
 > This container runs with `--network=none` and your project folder is mounted with `:ro` (read-only mode) for secure containment.
