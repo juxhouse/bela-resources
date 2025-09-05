@@ -26,23 +26,9 @@ Build your project according to its language and build tool:
 
 It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) that will be sent to BELA in the following step. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
-```
-docker run --network=none --pull=always \
-           -v ./.bela:/.bela \
-           -v ./:/workspace:ro \
-           $DOCKER_APP \
-           -source my-source \
-           -parent-element-path service/my-service
-```
+Set the `BELA_UPDATER` environment variable to the appropriate docker image for your language:
 
-> [!IMPORTANT]
-> The container runs with `--network=none` and your project is mounted with `:ro` (read-only mode) for secure containment.
-
-#### DOCKER_APP
-
-Use the appropriate docker image for your language:
-
-| Language | BELA Updater Docker Image |
+| Language | BELA_UPDATER Docker App |
 |----------|-------------------------|
 | C# | juxhouse/bela-updater-dotnet |
 | Clojure | juxhouse/bela-updater-clojure |
@@ -50,8 +36,24 @@ Use the appropriate docker image for your language:
 | Javascript | juxhouse/bela-updater-typescript |
 | Typescript | juxhouse/bela-updater-typescript |
 
+Example for Javascript/Typescript:
+```
+BELA_UPDATER=juxhouse/bela-updater-typescript
+```
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
+Run the `BELA_UPDATER` Docker app you chose:
+```
+docker run --network=none --pull=always \
+           -v ./.bela:/.bela \
+           -v ./:/workspace:ro \
+           $BELA_UPDATER \
+           -source my-source \
+           -parent-element-path service/my-service
+```
+
+> [!IMPORTANT]
+> The container runs with `--network=none` and your project is mounted with `:ro` (read-only mode) for secure containment.
 
 #### `-source`
 
