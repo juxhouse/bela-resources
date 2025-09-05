@@ -17,7 +17,7 @@ You can use different DNS subdomains or different URL prefixes within the same d
 
 Provide a host directory to store all BELA's files. This directory must provide durability equivalent to Amazon EFS and must have a backup procedure enabled.
 
-This host directory will be mounted as volume `\bela-data` in the BELA container below.
+This host directory will be mounted as volume `/bela-data` in the BELA container below.
 
  - **Docker variant:**
 Make the host directory accessible to the BELA container using group 0.
