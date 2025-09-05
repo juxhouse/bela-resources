@@ -26,9 +26,9 @@ Build your project according to its language and build tool:
 
 It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) that will be sent to BELA in the following step. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
-Set the `BELA_UPDATER` environment variable to the appropriate docker image for your language. These images can be downloaded anonymously, without a token. You are authorized to execute them only to generate data to be sent to a licensed BELA instance. You are not licensed to read their contents or use them for any other purpose.
+Set the `BELA_UPDATER` environment variable to the appropriate docker image for your language below. These images can be downloaded anonymously, without a token. You are authorized to execute them only to generate data to be sent to a licensed BELA instance. You are not licensed to read their contents or use them for any other purpose.
 
-| Language | BELA_UPDATER Docker App |
+| Language | BELA_UPDATER Docker Image |
 |----------|-------------------------|
 | C# | juxhouse/bela-updater-dotnet |
 | Clojure | juxhouse/bela-updater-clojure |
