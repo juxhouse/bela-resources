@@ -66,7 +66,7 @@ This optional argument will import your projects' elements as the contents of so
 ```
   -parent-element-path service/my-service
 ```
-Your projects can also have [custom parent elements](reference/Custom-Parent-Elements.md).
+You can also use [diagram-as-code](updaters/reference/upload-example.md#uploading-diagrams-as-code) to give each of your projects a custom parent element.
 
 ## 3. Upload to BELA
 
