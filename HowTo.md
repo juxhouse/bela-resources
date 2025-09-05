@@ -3,7 +3,7 @@
 This is a list of essential, non-obvious BELA features.
 
 > [!TIP]
-> This page will not waste your time with obvious features. Reading it will make your life easier and happier.
+> This page will not waste your time with obvious features. Reading it will make your life easier and happier. 😉
 
 ## Non-Obvious Mouse Button Actions
 
@@ -19,7 +19,7 @@ If you’re not using a standard 2-button mouse, check how your pointing device 
 
 ## Diagram Legend
 
-There is a question-mark icon on the bottom-left of the screen. It opens a pop-up key to BELA's graphical elements.
+There is a question-mark icon on the bottom-left of the screen. It pops open a key to BELA's graphical elements.
 
 ## Disabled Buttons and Menu Actions
 
