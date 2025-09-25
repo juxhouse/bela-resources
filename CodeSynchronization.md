@@ -19,7 +19,7 @@ Build your project according to its language and build tool:
  - [Java (Gradle)](/updaters/Java-Gradle.md)
  - [Java (other build tools)](/updaters/Java-Other.md)
  - [Javascript](/updaters/Typescript.md)
- - ORACLE Schema (Get in touch)
+ - [Oracle (Schema)] (/updaters/Oracle.md)
  - Powerbuilder (Get in touch)
  - Ruby (Get in touch)
  - [Typescript](/updaters/Typescript.md)
@@ -38,6 +38,7 @@ Set the `BELA_UPDATER` environment variable to the appropriate docker image for 
 | Java | juxhouse/bela-updater-java |
 | Javascript | juxhouse/bela-updater-typescript |
 | Typescript | juxhouse/bela-updater-typescript |
+| Oracle | juxhouse/bela-updater-oracle |
 
 Example for Javascript/Typescript:
 ```
