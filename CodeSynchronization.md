@@ -19,7 +19,7 @@ Build your project according to its language and build tool:
  - [Java (Gradle)](/updaters/Java-Gradle.md)
  - [Java (other build tools)](/updaters/Java-Other.md)
  - [Javascript](/updaters/Typescript.md)
- - [Oracle (Schema)] (/updaters/Oracle.md)
+ - [Oracle (Schema)](/updaters/Oracle.md)
  - Powerbuilder (Get in touch)
  - Ruby (Get in touch)
  - [Typescript](/updaters/Typescript.md)
