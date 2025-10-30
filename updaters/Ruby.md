@@ -1,5 +1,6 @@
 # Updating BELA with Your Ruby Projects
 
+
 ## 1. Prepare Your Project(s)
 
 The BELA updater app for Ruby supports projects with standard Ruby conventions, including the presence of a `lib` or `app` directory.
@@ -10,7 +11,6 @@ Change into your project's folder and create the `.bela` folder, if necessary:
 mkdir -p .bela
 ```
 
----
 
 ## 2. Run the Bela Updater
 
@@ -39,8 +39,6 @@ You can get `root-gems-path` by running `Gem.path` inside `rails console` or `ir
 
 You can also use `bundle show --paths` to retrieve the root path of the installed gems.
 
----
-
 #### `--source`
 
 This argument specifies the [source](/Concepts.md#sources) for the elements being uploaded. Normally, the repository name is used as the source. For example, in GitHub, you could use:
@@ -54,9 +52,7 @@ This optional argument will import your projects' elements as contents to some p
 ```
   -parent-element-path service/my-service
 ```
-Your projects can also have [custom parent elements](reference/Custom-Parent-Elements.md).
----
 
 ## 3. Upload to BELA
 
-Once the updater has generated the `bela-update.ecd` file, follow the instructions in the [upload example](/updaters/reference/upload-example.md) to complete the upload process.
+Once the updater has generated the `bela-update.ecd` file, follow the instructions in the [upload example](/updaters/reference/upload-example.md) to update BELA.
