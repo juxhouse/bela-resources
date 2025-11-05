@@ -13,7 +13,7 @@ APM tools are useful for debugging small flows, with a few elements:
 
 As APM views grow, they become cluttured and unmanageable:
 
-<Diagram Here>
+![Architecture](traditional-apm-tools-are-messy.png)
 
 Some tools fall back to circular layouts — visually interesting, architecturally meaningless:
 
