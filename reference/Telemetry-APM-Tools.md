@@ -9,7 +9,7 @@ The result is a unified architectural model — enabling insights and navigation
 
 APM tools are useful for debugging small flows, with a few elements:
 
-<Diagram Here>
+![Architecture](traditional-apm-tools-small-flow.png)
 
 As APM views grow, they become cluttured and unmanageable:
 
