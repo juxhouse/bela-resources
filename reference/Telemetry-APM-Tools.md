@@ -4,6 +4,7 @@ BELA ingests data from Telemetry/APM platforms like Datadog, Dynatrace, Elastic 
 
 The result is a unified architectural model — enabling insights and navigation that APM tools alone cannot provide.
 
+<br><br>
 
 ## From Small Flows to Scalable Architecture Maps
 
@@ -11,16 +12,23 @@ APM tools are useful for debugging small flows, with a few elements:
 
 ![Architecture](traditional-apm-tools-small-flow.png)
 
+<br><br>
+
 As APM views grow, they become cluttured and unmanageable:
 
 ![Architecture](traditional-apm-tools-are-messy.png)
+
+<br><br>
 
 Some tools fall back to circular layouts — visually interesting, architecturally meaningless:
 
 ![Architecture](traditional-apm-tools-circular-layout.png)
 
+<br>
+
 BELA scales to millions of elements, preserving structure, hierarchy, and navigability far beyond the limits of APM views.
 
+<br>
 
 ## From Call Traces to Structure
 
@@ -38,6 +46,7 @@ It ingests telemetry, but also analyzes source code and compiled artifacts — m
 
 And when you need runtime detail, BELA also lets you open the element directly in your APM tool with a single click.
 
+<br>
 
 ## From a Global Soup to Governance
 
