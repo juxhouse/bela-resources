@@ -17,7 +17,7 @@ As APM views grow, they become cluttured and unmanageable:
 
 Some tools fall back to circular layouts — visually interesting, architecturally meaningless:
 
-<Diagram Here>
+![Architecture](traditional-apm-tools-circular-layout.png)
 
 BELA scales to millions of elements, preserving structure, hierarchy, and navigability far beyond the limits of APM views.
 
