@@ -1,7 +1,7 @@
 # Leveraging Telemetry/APM Tools with BELA
 
 BELA extracts data from your Telemetry/APM (Application Performance Monitoring) tools such as Datadog, Dynatrace, Elastic APM, AppDynamics, etc.
-BELA combines that with data from other sources such as code repositories to produce the following.
+BELA combines that with data from other sources such as code repositories to provide the following features.
 
 
 ## Powerful Visualization and Dynamic Exploration
