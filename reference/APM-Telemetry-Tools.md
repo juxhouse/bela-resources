@@ -21,24 +21,24 @@ Some tools fall back to circular layouts — visually interesting, architectural
 BELA scales to millions of elements, preserving structure, hierarchy, and navigability far beyond the limits of APM views.
 
 
-## From Call Traces to Structure
+#### From Call Traces to Structure
 
-APM tools observe only runtime behavior — stack traces and network calls — so they don't know the difference:
+APM tools see only runtime behavior — stack traces and network calls — and cannot distinguish:
 
- - between a direct dependency call and an injected one
- - between a framework-driven invocation and business logic coupling
- - between an http request and a webhook callback
+ - a direct dependency call from an injected one
+ - a framework invocation from business logic coupling
+ - a normal HTTP request from a webhook callback
 
-APM tools mix up call direction with actual dependency direction (architectural coupling).
+So they produce diagrams that reflect only low-level execution activity.
 
-BELA correctly separates the two — enabling accurate, stable, navigable architectural views.
+BELA separates runtime activity from true architectural structure.
 
-BELA analyzes telemetry data but also source code and compiled artifacts, mapping only true dependencies and structural relationships, not incidental runtime paths.
+It ingests telemetry, but also analyzes source code and compiled artifacts — mapping only actual dependencies and structural relationships, not incidental runtime flows. This yields accurate, meaningful, navigable architectural views.
 
 
-## From a Global Soup to Structure and Governance
+## From a Global Soup to Governance
 
-APM tools present all elements in a single flat universe, sometimes grouped only by type or physical layer.
+APM tools model all elements in a single flat space, sometimes grouped coarsely by type or physical layer.
 
 BELA organizes everything — telemetry, services, repos, libraries, endpoints — into your actual architecture model, whether that's:
 
