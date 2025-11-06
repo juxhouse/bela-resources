@@ -13,7 +13,7 @@ Architecture is simply a collection of ECDs.
 
 #### Built vs Modeled
 
-**Built** architecture or **built** ECDs refer to ECDs that actually exist in your production environments. Their structure is imported to BELA.
+**Built** architecture or **built** ECDs refer to ECDs that actually exist in your production environments. They are imported to BELA and cannot be deleted or altered (only augmented) by any user. See "Sources" below.
 
 **Modeled** architecture or **modeled** ECDs refer to ECDs that have been manually created in BELA and do not exist in your production environments.
 
@@ -107,3 +107,5 @@ An ECD will typically exist in only one source but some ECDs, like libs, can be 
 The source name is sent to BELA when ECDs are uploaded.
 
 BELA will garbage collect ECDs that are no longer present in any source. That is the purpose of sources.
+
+Admins can delete a source, which will delete all ECDs that were present exclusively in that source.
