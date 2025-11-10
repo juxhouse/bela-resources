@@ -1,4 +1,4 @@
-// Running this script: datadog.js
+// Running this script: node Datadog.js
 const https = require("https");
 const fs = require("fs");
 
@@ -92,7 +92,8 @@ const sendToTargetApi = async (body) => {
       "Authorization": BELA_TOKEN,
     }
   };
-
+  
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; // Allow self-signed certificates
   return httpsRequest(url, options, body);
 }
 
@@ -112,3 +113,4 @@ const run = async () => {
 }
 
 run();
+
