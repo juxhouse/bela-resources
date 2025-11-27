@@ -4,7 +4,7 @@
 
 ECDs are software [Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies).
 
-They are the only fundamental concepts necessary to represent and explore software architecture structure.
+They are the only fundamental concepts necessary to represent and explore software architecture structure. More on them below.
 
 
 ## Architecture
