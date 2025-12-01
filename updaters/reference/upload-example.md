@@ -15,7 +15,7 @@ curl -f -k "https://$BELA_HOST/api/ecd-architecture" \
      --data-binary @.bela/bela-update.ecd
 ```
 
-You can obtain your `BELA_HOST` and `BELA_API_TOKEN` from the BELA web app.
+You can obtain your `BELA_API_TOKEN` from `BELA Main Menu > Sources > Use API`.
 
 # Uploading Diagrams as Code
 
