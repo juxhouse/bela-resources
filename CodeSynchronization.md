@@ -19,39 +19,46 @@ Build your project according to its language and build tool:
  - [Java (Gradle)](/updaters/Java-Gradle.md)
  - [Java (other build tools)](/updaters/Java-Other.md)
  - [Javascript](/updaters/Typescript.md)
+ - [Oracle Schema](/updaters/Oracle.md)
+ - Powerbuilder (Get in touch)
+ - Ruby (Get in touch)
  - [Typescript](/updaters/Typescript.md)
 
 
-## 2. Run the BELA Updater Docker App for Your Language
+## 2. Run the BELA Updater Docker App
 
 It will analyse your project and produce the `.bela/bela-update.ecd` file with [architecture data](/Concepts.md#ecds) that will be sent to BELA in the following step. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
-```
-docker run --network=none --pull=always \
-           -v ./.bela:/.bela \
-           -v ./:/workspace:ro \
-           $DOCKER_APP \
-           -source my-source \
-           -parent-element-path service/my-service
-```
+Set the `BELA_UPDATER` environment variable to the appropriate docker image for your language below. These images can be downloaded anonymously, without a token. You are authorized to execute them only to generate data to be sent to a licensed BELA instance. You are not licensed to read their contents or use them for any other purpose.
 
-> [!IMPORTANT]
-> The container runs with `--network=none` and your project is mounted in read-only mode for secure containment.
-
-#### DOCKER_APP
-
-Use the appropriate docker image for your language:
-
-| Language | BELA Updater Docker Image |
+| Language | BELA_UPDATER Docker Image |
 |----------|-------------------------|
 | C# | juxhouse/bela-updater-dotnet |
 | Clojure | juxhouse/bela-updater-clojure |
 | Java | juxhouse/bela-updater-java |
 | Javascript | juxhouse/bela-updater-typescript |
+| Oracle | juxhouse/bela-updater-oracle |
 | Typescript | juxhouse/bela-updater-typescript |
 
+Example for Javascript/Typescript:
+```
+BELA_UPDATER=juxhouse/bela-updater-typescript
+```
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
+Run the `BELA_UPDATER` Docker app:
+```
+docker run --network=none --pull=always \
+           -v ./.bela:/.bela \
+           -v ./:/workspace:ro \
+           $BELA_UPDATER \
+           -source my-source \
+           -parent-element-path service/my-service
+```
+It will analyse your project and produce the `.bela/bela-update.ecd` file with the [architecture data](/Concepts.md#ecds) you will upload to BELA.
+
+> [!IMPORTANT]
+> This container runs with `--network=none` and your project folder is mounted with `:ro` (read-only mode) for secure containment.
 
 #### `-source`
 
@@ -63,7 +70,7 @@ This optional argument will import your projects' elements as the contents of so
 ```
   -parent-element-path service/my-service
 ```
-Your projects can also have [custom parent elements](reference/Custom-Parent-Elements.md).
+You can also use [diagram-as-code](updaters/reference/upload-example.md#uploading-diagrams-as-code) to give each of your projects a custom parent element.
 
 ## 3. Upload to BELA
 

@@ -1,4 +1,4 @@
-// Running this script: datadog.js
+// Running this script: node Datadog.js
 const https = require("https");
 const fs = require("fs");
 
@@ -71,11 +71,11 @@ const createUpdateFileStream = (filename, datadogData) => {
   writeLine(sourceLine);
 
   for (const [service, details] of Object.entries(datadogData)) {
-    writeLine(`/service/${service} [service]`);
+    writeLine(`*/${service}`);
 
     const calls = details.calls || [];
     for (const call of calls) {
-      writeLine(`> /service/${call}`, 2);
+      writeLine(`> */${call}`, 2);
     }
   }
 
@@ -92,7 +92,8 @@ const sendToTargetApi = async (body) => {
       "Authorization": BELA_TOKEN,
     }
   };
-
+  
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; // Allow self-signed certificates
   return httpsRequest(url, options, body);
 }
 
@@ -112,3 +113,5 @@ const run = async () => {
 }
 
 run();
+
+

@@ -15,14 +15,14 @@ You can use different DNS subdomains or different URL prefixes within the same d
 
 ## BELA Data Volume
 
-Provide a host directory to store all BELA's files. This directory must provide durability equivalent to Amazon EFS and must have a backup procedure enabled.
+Each BELA instance uses its own exclusive data volume. Provide a host directory to store all its files. This directory must provide durability equivalent to Amazon EFS and must have a backup procedure enabled.
 
-This host directory will be mounted as volume `\bela-data` in the BELA container below.
+This host directory will be mounted as volume `/bela-data` in the BELA container below.
 
  - **Docker variant:**
 Make the host directory accessible to the BELA container using group 0.
 ```bash
-   HOST_DIRECTORY=\your-host-directory
+   HOST_DIRECTORY=your-host-directory
    chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
 ```
 
@@ -72,7 +72,7 @@ BELA should now be accessible by HTTPS on the domain you configured.
 
 When you run BELA for the first time, this file will be created in your host directory, mentioned above:
 ```bash
-   $HOST_DIRECTORY\config\bela.properties
+   $HOST_DIRECTORY/config/bela.properties
 ```
 
 Edit that file to configure your BELA instance using this [template](/reference/bela.properties.md).

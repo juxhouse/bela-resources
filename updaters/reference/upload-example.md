@@ -10,12 +10,12 @@ curl -f "http://localhost:8081/api/ecd-architecture" \
 To upload to a remote BELA backend:
 
 ```
-curl -f "https://$BELA_HOST/api/ecd-architecture" \
+curl -f -k "https://$BELA_HOST/api/ecd-architecture" \
      -H "Authorization: $BELA_TOKEN" \
      --data-binary @.bela/bela-update.ecd
 ```
 
-You can obtain your `BELA_HOST` and `BELA_API_TOKEN` from the BELA web app.
+You can obtain your `BELA_API_TOKEN` from `BELA Main Menu > Sources > Use API`.
 
 # Uploading Diagrams as Code
 

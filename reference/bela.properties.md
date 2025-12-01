@@ -8,9 +8,17 @@ When you first run the BELA container, it will create this file:
 
 Edit that file to provide settings for BELA, such as external API URLs and secrets.
 
-## Example
+## Anonymous Access (Optional)
 
-A sample bela.properties file with configuration examples:
+If you are just trying out BELA, you only need this single line in the file:
+```
+anonymous=true
+```
+Anyone will be able access BELA without needing to log in. That's the simplest configuration.
+
+## Configuration Template
+
+This is sample bela.properties file with more configuration options:
 
 ```properties
 # The email of the owner of the BELA installation within your organization.
@@ -82,11 +90,3 @@ If you do not want to use SSO, you can enable this line in the template above:
 auth.passwords=true
 ```
 Anyone will be able to log in using the `owner.email` set above until the password for that email is reset the first time.
-
-## Anonymous Access (Optional)
-
-If you are just trying out BELA, you can enable this line in the template above:
-```
-anonymous=true
-```
-Anyone will be able access BELA without needing to log in.

@@ -31,9 +31,9 @@ Supported languages:
  - Clojure
  - Java
  - Javascript
- - Oracle Stored Procedures (beta)
- - Powerbuilder (beta)
- - Ruby (beta)
+ - Oracle Schema (All Tables, Columns, Stored Procedures, etc)
+ - Powerbuilder
+ - Ruby
  - Typescript
 
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
