@@ -48,6 +48,10 @@ The lines that follow are ECD lines. Here is an example.
 
 ECD Lines can be nested. Each nesting level uses exactly two space characters for indentation.
 
+#### Base Elements
+
+Elements that are not nested are "base elements". Their path is used as the prefix for all relative dependency references that come after them, to avoid wasteful repetition.
+
 ...WIP...
 
 ## EBNF Grammar
