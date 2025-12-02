@@ -72,7 +72,7 @@ service/Billing/billing/core/Bill/isDue(java.util.Date)
 
 ## EBNF Grammar
 
-#### EBNF Cheatsheet
+#### Syntax Summary
  - Optional: [ ... ]
  - Repetition: { ... }
  - Alternatives: ...|...
