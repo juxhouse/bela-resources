@@ -81,3 +81,9 @@ You can also use [diagram-as-code](updaters/reference/upload-example.md#uploadin
 ## 3. Upload to BELA
 
 See [upload example](/updaters/reference/upload-example.md).
+
+## Success
+
+Your updated source will appear in the Sources screen: `BELA Main Menu > Sources`.
+
+You can also search (🔍) BELA for elements (classes, functions, methods, etc) that are present in the source you just updated.
