@@ -57,7 +57,7 @@ ECD Lines can be nested. Each nesting level uses exactly two space characters fo
  - Repetition: { ... }
  - Alternatives: ...|...
 
-#### ECD File Format
+#### ECD File Format Version 1
 
 Blank lines and lines starting with hashtag (#) are ignored. They can be used for comments. All other lines use the following grammar.
 
