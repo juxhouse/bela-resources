@@ -24,8 +24,8 @@ Build your project according to its language and build tool:
  - [Java (other build tools)](/updaters/Java-Other.md)
  - [Javascript](/updaters/Typescript.md)
  - [Oracle Schema](/updaters/Oracle.md)
- - Powerbuilder (Get in touch)
- - Ruby (Get in touch)
+ - Powerbuilder ([get in touch](/README.md#contact-us))
+ - Ruby ([get in touch](/README.md#contact-us))
  - [Typescript](/updaters/Typescript.md)
 
 
@@ -87,3 +87,5 @@ See [upload example](/updaters/reference/upload-example.md).
 Your updated source will appear in the Sources screen: `BELA Main Menu > Sources`.
 
 You can also search (🔍) BELA for elements (classes, functions, methods, etc) that are present in the source you just updated.
+
+If you have any trouble, please [contact us](/README.md#contact-us).
