@@ -85,16 +85,16 @@ ecd-file          = header ,
 
 header            = 'v1' , newline ,
                     'source' , space , source-name , newline ;
-source-name       = reasonable-string ; // Max length of 100.
+source-name       = reasonable-string ;  // Max length of 100.
 
 body              = { ecd-line } ;
-ecd-line          = element-line | dependency-line; // A containment is simply an element-line nested below another element-line.
+ecd-line          = element-line | dependency-line;  // A containment is simply an element-line nested below another element-line.
 
-dependency-line   = nesting , '>' , space , path-string , newline ;
+dependency-line   = nesting , '>' , space , path-string , newline ;  // Must be nested below an element-line.
 element-line      = nesting , path-string , newline ;
 
-nesting           = { space , space } ; // Indentation is a multiple of 2 spaces, including zero spaces.
-path-string       = reasonable-string ; // Max length of 200.
+nesting           = { space , space } ;  // Indentation of 2 spaces for each nesting level. Nesting of zero (no spaces) is also possible.
+path-string       = reasonable-string ;  // Max length of 200.
 
 reasonable-string = unquoted-string | quoted-string ;
 unquoted-string   = unquoted-char , { unquoted-char } ;
