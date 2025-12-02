@@ -49,26 +49,7 @@ The lines that follow are ECD lines. Here is an example.
 ECD Lines can be nested. Each nesting level uses exactly two space characters for indentation.
 
 
-### Element Path
 
-Paths are primary keys for [built elements](/Concepts.md#built-vs-modeled).
-
-An [element path](/Concepts.md#element-path) is a String composed of two or more path segments separated by `/`.
-
-Path segments are case-sensitive: `getName()` and `getname()` are NOT the same.
-
-You can use capital letters, diacritics and all sorts of fancy characters but we strongly recommend you keep things simple.
-
-The first segment is always an `ElementType`. You can think of it as a namespace, so that you can have elements with the same name if they have different types.
-
-Examples:
-| Path | Obs
-| ---- | ----
-| domain/billing | Domain
-| domain/billing/invoices | Subdomain
-| maven/my-company/my-project | Maven artifact "my-project" in the "my-company" maven group.
-| service/billing | 
-service/Billing/billing/core/Bill/isDue(java.util.Date)
 
 ## EBNF Grammar
 
@@ -110,4 +91,25 @@ newline           = '\n' | '\r' ;
 ```
 
 
+# OLD:
 
+### Element Path
+
+Paths are primary keys for [built elements](/Concepts.md#built-vs-modeled).
+
+An [element path](/Concepts.md#element-path) is a String composed of two or more path segments separated by `/`.
+
+Path segments are case-sensitive: `getName()` and `getname()` are NOT the same.
+
+You can use capital letters, diacritics and all sorts of fancy characters but we strongly recommend you keep things simple.
+
+The first segment is always an `ElementType`. You can think of it as a namespace, so that you can have elements with the same name if they have different types.
+
+Examples:
+| Path | Obs
+| ---- | ----
+| domain/billing | Domain
+| domain/billing/invoices | Subdomain
+| maven/my-company/my-project | Maven artifact "my-project" in the "my-company" maven group.
+| service/billing | 
+service/Billing/billing/core/Bill/isDue(java.util.Date)
