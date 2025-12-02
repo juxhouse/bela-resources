@@ -96,10 +96,10 @@ newline           = '\n' | '\r' ;
 
 # OLD:
 
-name-char-limit 512
-type-char-limit 32
-tag-char-limit 32 (includes old "tech" and "dataflow" attributes)
-dep-name-char-limit 256
+ - name-char-limit 512
+ - type-char-limit 32
+ - tag-char-limit 32 (includes old "tech" and "dataflow" attributes)
+ - dep-name-char-limit 256
 
 ### Element Path
 
