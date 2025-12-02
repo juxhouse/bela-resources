@@ -1,6 +1,6 @@
 # Synchronize a Code Repository
 
-These 3 steps will update your BELA instance with the architecture data from your software project.
+These are the steps to update your BELA instance with the architecture data from your software project.
 
 If you set them up as a repository action or as an optional step after your main CI/CD pipeline has completed, BELA will always be in sync with your latest code.
 
