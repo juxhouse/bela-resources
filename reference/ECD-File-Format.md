@@ -79,7 +79,7 @@ service/Billing/billing/core/Bill/isDue(java.util.Date)
 
 #### ECD File Format
 
-Blank lines and lines starting with hastag (#) are ignored. They can be used for comments. All other lines use the following grammar.
+Blank lines and lines starting with hashtag (#) are ignored. They can be used for comments. All other lines use the following grammar.
 
 ```ebnf
 ecd-file          = header ,
