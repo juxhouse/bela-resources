@@ -77,7 +77,7 @@ service/Billing/billing/core/Bill/isDue(java.util.Date)
  - Repetition: { ... }
  - Alternatives: ...|...
 
-#### ECD File Grammar
+#### ECD File Format
 
 ```ebnf
 ecd-file          = header ,
