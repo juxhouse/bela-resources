@@ -80,7 +80,7 @@ dependency-line   = nesting , '>' , space , path-string , newline ;  // Must be 
 element-line      = nesting , path-string , newline ;
 
 nesting           = { space , space } ;  // Indentation of 2 spaces for each nesting level. Nesting of zero (no spaces) is also possible.
-path-string       = reasonable-string ;  // Max length of 200.
+path-string       = reasonable-string ;  // Max length of 1024.
 
 reasonable-string = unquoted-string | quoted-string ;
 unquoted-string   = unquoted-char , { unquoted-char } ;
@@ -95,6 +95,11 @@ newline           = '\n' | '\r' ;
 
 
 # OLD:
+
+name-char-limit 512
+type-char-limit 32
+tag-char-limit 32 (includes old "tech" and "dataflow" attributes)
+dep-name-char-limit 256
 
 ### Element Path
 
