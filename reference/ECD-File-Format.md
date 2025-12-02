@@ -2,7 +2,9 @@
 
 This is the format of the [architecture data](/Concepts.md#ecds) file produced by the [BELA updater apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and accepted by the [BELA API](/API.md).
 
-It was designed for compactness, readability and on-the-fly parsing—unlike JSON—allowing each line to be processed as it is read, without loading the entire file.
+It was designed for compactness, readability. It also extensible, by allowing an optional JSON data at the end of each line.
+
+There is a formal [EBNF grammar](#ebnf-grammar) below.
 
 ## Versioning
 
@@ -38,7 +40,7 @@ The lines that follow are ECD lines. Here is an example. It will be explained be
     customers [package]
       Customer [class]
         setName(String) [method]
-/grouping/libs/maven
+/grouping/libs/maven [grouping]
   /maven/com.apache
 ```
 
@@ -46,18 +48,6 @@ The lines that follow are ECD lines. Here is an example. It will be explained be
 
 ECD Lines can be nested. Each nesting level uses exactly two space characters for indentation.
 
-### Element Line
-
-An element line is composed of:
-- Absolute element reference: Slash (`/`) followed by an [element path](#element-path).
-- Element Type (Optional): an [identifier](#identifier) in brackets. Examples: `[class]`, `[function]`.
-- Element Name (Optional): Any String. Can be quoted.
-- 
-
-
-### Nested Element Upsert Line
-
-### Element Reference Line
 
 ### Element Path
 
@@ -80,24 +70,42 @@ Examples:
 | service/billing | 
 service/Billing/billing/core/Bill/isDue(java.util.Date)
 
+## EBNF Grammar
+
+#### EBNF Cheatsheet
+ - Optional: [ ... ]
+ - Repetition: { ... }
+ - Alternatives: ...|...
+
+#### ECD File EBNF Grammar
+
+```ebnf
+ecd-file          = header ,
+                    body ;
+
+header            = 'v1' , newline ,
+                    'source' , space , source-name , newline ;
+source-name       = reasonable-string ; // Max length of 100.
+
+body              = { ecd-line } ;
+ecd-line          = element-line | dependency-line; // A containment is simply an element-line nested below another element-line.
+
+dependency-line   = nesting , '>' , space , path-string , newline ;
+element-line      = nesting , path-string , newline ;
+
+nesting           = { space , space } ; // Indentation is a multiple of 2 spaces, including zero spaces.
+path-string       = reasonable-string ; // Max length of 200.
+
+reasonable-string = unquoted-string | quoted-string ;
+unquoted-string   = unquoted-char , { unquoted-char } ;
+quoted-string     = '"' , quoted-char , { quoted-char } , '"' ;
+
+unquoted-char     = quoted-char - space ; // No spaces, no double-quotes.
+quoted-char       = any-char - '"' ; // No double-quotes.
+space             = ' ' ;
+any-char          = ? any Unicode character except newline ? ;
+newline           = '\n' | '\r' ;
+```
 
 
-
-### Element Path Segment
-
-Any String without slashes `/`, spaces or newline characters.
-
-### Quoted String
-
-A String in double-quotes `"`. It can contain spaces and any other character.
-
-| Special Character | Escape Sequence
-| ---- | ----
-| Newline | `\` + `n`
-| Double-Quote | `\` + `"`
-| Backslash | `\` + `\`
-
-### Identifier
-
-aa
 
