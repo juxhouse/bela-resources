@@ -1,5 +1,9 @@
 # Synchronize a Code Repository
 
+These 3 steps will update your BELA instance with the architecture data from your software project.
+
+If you set them up as a repository action or as an optional step after your main CI/CD pipeline has completed, BELA will always be in sync with your latest code.
+
 ## 1. Build Your Project
 
 Check out your project and `cd` into it, if necessary.
@@ -60,11 +64,13 @@ It will analyse your project and produce the `.bela/bela-update.ecd` file with t
 > [!IMPORTANT]
 > This container runs with `--network=none` and your project folder is mounted with `:ro` (read-only mode) for secure containment.
 
-#### `-source`
+### Arguments
+
+#### -source
 
 This argument indicates the [source](/Concepts.md#sources) for the elements being uploaded. Normally the name of the repo is used as source. In Github that would be `"$GITHUB_REPOSITORY"`, for example.
 
-#### `-parent-element-path`  
+#### -parent-element-path (Optional)
 
 This optional argument will import your projects' elements as the contents of some parent element. If your project is the implementation of a microservice for example, you can import it inside that microservice, like this:
 ```
@@ -75,7 +81,3 @@ You can also use [diagram-as-code](updaters/reference/upload-example.md#uploadin
 ## 3. Upload to BELA
 
 See [upload example](/updaters/reference/upload-example.md).
-
-## Automate
-
-Set up the above as a repository action or as an optional step after your main CI/CD pipeline has completed.
