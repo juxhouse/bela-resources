@@ -27,7 +27,7 @@ source your-source-name
 
 ## ECD Lines
 
-The lines that follow are ECD lines. Here is an example. It will be explained below.
+The lines that follow are ECD lines. Here is an example.
 
 ```
 /maven/my-company/my-project [maven-artifact] "My Project" (java)
