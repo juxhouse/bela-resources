@@ -14,7 +14,7 @@ ECD files are designed to be read with line wrap off.
 
 #### JSON Extension
 
-Each line can have an optional JSON data object at the end. It must be formatted as a single line, without newlines. JSON already require newlines to be escaped in strings.
+Each line can have an optional JSON data object at the end. It must be formatted as a single line, without newline characters. JSON already require newlines to be escaped in strings.
 
 #### Comments
 
