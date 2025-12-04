@@ -1,20 +1,26 @@
 # ECD File Format (.ecd)
 
-This is the format of the [architecture data](/Concepts.md#ecds) file produced by the [BELA updater apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and accepted by the [BELA API](/API.md).
+This is the format of the [architecture data](/Concepts.md#ecds) file produced by the [BELA updater apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and sent to the [BELA API](/API.md).
 
-It is designed for compactness and readability. It also extensible, by allowing optional JSON data at the end of each line.
+It is designed for compactness and readability. It is also extensible, by allowing optional JSON data.
 
 There is a formal [EBNF grammar](#ebnf-grammar) below.
+
+## Lines
+
+This is a line-based format, so strings must not contain newline characters (ASCII codes 10 and 13).
+
+ECD files are designed to be read with line wrap off.
+
+#### JSON Extension
+
+Each line can have an optional JSON data object at the end. It must be formatted as a single line, without newlines. JSON already require newlines to be escaped in strings.
 
 ## Versioning
 
 The format is currently at version 1, so the first line of the file is always `v1`.
 
 Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
-
-## Lines
-
-This is a line-based format. To include a newline inside a string—such as in an element description—escape it using `\` + `n`.
 
 ## Source
 
