@@ -16,6 +16,10 @@ ECD files are designed to be read with line wrap off.
 
 Each line can have an optional JSON data object at the end. It must be formatted as a single line, without newlines. JSON already require newlines to be escaped in strings.
 
+#### Comments
+
+Blank lines and lines starting with hashtag (#) are ignored. Inline comments with hashtag are **NOT** supported.
+
 ## Versioning
 
 The format is currently at version 1, so the first line of the file is always `v1`.
