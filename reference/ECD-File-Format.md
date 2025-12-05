@@ -2,7 +2,7 @@
 
 This is the format of the [architecture data](/Concepts.md#ecds) file produced by the [BELA updater apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and sent to the [BELA API](/API.md).
 
-It is designed for compactness and readability. It is also extensible, by allowing optional JSON data.
+It is designed for compactness and readability. It is also extensible, by allowing custom JSON metadata.
 
 There is a [syntax specification](#syntax) below.
 
