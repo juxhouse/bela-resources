@@ -11,7 +11,7 @@ There is a more formal [syntax specification](#appendix---syntax) at the end.
 v1
 source my-source-name
 
-/maven/my-company/my-project [maven-artifact] "My Project" (java)
+/maven/my-company:my-project "My Project" (java)
   > /maven/com.apache/commons/version/3.0.1
   business [package]
     billing [package]
@@ -67,9 +67,9 @@ Each line that follows is either an `element` or a `dependency`.
 
 `Elements` start with a path reference, which can be one of:
 
- - Absolute Path Reference: A slash `\` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
- - Child Path Segment: A 
- - Path Query:
+ - Absolute Path Reference: A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
+ - Child Path Segment: Nested elements . It is a [quotable string](#quotable-string) that does not contain a slash `/`.
+ - Path Query: An `absolute path reference` that replaces all segments of the path with a wildcard `*` except the last. Example: `/*/getCustomer()`
 
 
 #### Custom Metadata
