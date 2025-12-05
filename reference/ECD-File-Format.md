@@ -9,7 +9,7 @@ There is a formal [syntax specification](#appendix---syntax) at the end.
 ## Example
 ```
 v1
-source your-source-name
+source my-source-name
 
 /maven/my-company/my-project [maven-artifact] "My Project" (java)
   > /maven/com.apache/commons/version/3.0.1
@@ -49,15 +49,7 @@ Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/bori
 
 ## Source
 
-The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources).
-
-
-
-
-#### Custom Metadata
-
-Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings anyway.
-
+The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources). It is a [quotable string](#quotable-string) with max length of 100.
 
 ## ECD Lines
 
@@ -71,9 +63,18 @@ ECD Lines can be nested. Each nesting level uses exactly two space characters fo
 
 Elements that are not nested are "base elements". Their path is used as the prefix for all relative dependency references that come after them, to avoid wasteful repetition.
 
-...WIP...
+#### Custom Metadata
 
-## Appendix - Syntax
+Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings anyway.
+
+## Definitions
+
+#### Quotable String 
+
+A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded.
+
+
+## Appendix 1 - Syntax
 
 This is the ECD syntax specification as an EBNF grammar.
 
@@ -106,7 +107,7 @@ space             = ' ' ;
 path-reference    = quotable-string ;  // Max length of 1024.
 dependency-name   = quotable-string ;  // Max length of 40.  It must be quoted if it starts with '(' (open-brackets).
 element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
-quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can be optionally surrounded by double-quotes and can only contain spaces when surrounded. ? ;
+quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
 type              = '[' , identifier , ']' ;
 tags              = '(' , identifier , { space , identifier } , ')';
