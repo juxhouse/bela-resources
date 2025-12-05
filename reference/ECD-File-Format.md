@@ -14,7 +14,7 @@ ECD files are designed to be read with line-wrap off.
 
 #### Custom Metadata
 
-Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already require newlines to be escaped in strings.
+Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings.
 
 #### Comments
 
@@ -89,15 +89,15 @@ body              = { ecd-line } ;
 ecd-line          = element-line | dependency-line;  // A containment is simply an element-line nested below another element-line.
 
 dependency-line   = nesting , '>' , space , path-reference , newline ;  // Must be nested below an element-line.
-element-line      = nesting , path-reference , [ type ] , [ element-name ] , [ tags ] , [ metadata ] , newline ;
+element-line      = nesting , path-reference , [ type ] , [ element-name ] , [ tags ] , [ custom-metadata ] , newline ;
 
 nesting           = { space , space } ;  // Indentation of 2 spaces for each nesting level. Nesting of zero (no spaces) is also possible.
 space             = ' ' ;
 
 path-reference    = quotable-string ;  // Max length of 1024.
 element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
-tags              = '(' , { identifier } , ')';
-metadata          = ? A JSON string without newlines. ? ;
+tags              = '(' , identifier , { space , identifier } , ')';
+custom-metadata   = ? A JSON object (a collection of name/value pairs inside curly braces) formatted as a single line without newlines. JSON already requires newlines to be escaped in strings. ? ;
 quotable-string   = ? A string that does not contain double-quotes. It can be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
 type              = '[' , identifier , ']' ;
