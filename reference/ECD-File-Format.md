@@ -4,7 +4,7 @@ This is the format of the [architecture data](/Concepts.md#ecds) file produced b
 
 It is designed for compactness and readability. It is also extensible, by allowing optional JSON data.
 
-There is a formal [EBNF grammar](#ebnf-grammar) below.
+There is a [syntax specification](#syntax) below.
 
 ## Lines
 
@@ -12,9 +12,9 @@ This is a line-based format, so strings must not contain newline characters (ASC
 
 ECD files are designed to be read with line-wrap off.
 
-#### JSON Extension
+#### Custom Metadata
 
-Each line can have an optional JSON data object at the end. It must be formatted as a single line, without newline characters. JSON already require newlines to be escaped in strings.
+Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already require newlines to be escaped in strings.
 
 #### Comments
 
@@ -64,16 +64,18 @@ Elements that are not nested are "base elements". Their path is used as the pref
 
 ...WIP...
 
-## EBNF Grammar
+## Syntax
 
-#### Syntax Summary
+This is the ECD syntax specification as an EBNF grammar.
+
+#### EBNF Notation Summary
  - Optional: [ ... ]
  - Repetition: { ... }
  - Alternatives: ...|...
 
-#### ECD File Format Version 1
+#### ECD Syntax Version 1
 
-Blank lines and lines starting with hashtag (#) are ignored. They can be used for comments. All other lines use the following grammar.
+Blank lines and lines starting with hashtag (#) are ignored. They can be used for comments. All other lines follow this grammar:
 
 ```ebnf
 ecd-file          = header ,
@@ -87,16 +89,20 @@ body              = { ecd-line } ;
 ecd-line          = element-line | dependency-line;  // A containment is simply an element-line nested below another element-line.
 
 dependency-line   = nesting , '>' , space , path-reference , newline ;  // Must be nested below an element-line.
-element-line      = nesting , path-reference , [ type ] , newline ;
+element-line      = nesting , path-reference , [ type ] , [ element-name ] , [ tags ] , [ metadata ] , newline ;
 
 nesting           = { space , space } ;  // Indentation of 2 spaces for each nesting level. Nesting of zero (no spaces) is also possible.
-path-reference    = quotable-string ;  // path-reference is a quotable-string. Max length of 1024.
-type              = '[' , identifier , ']' ;
-identifier        = 
+space             = ' ' ;
 
+path-reference    = quotable-string ;  // Max length of 1024.
+element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
+tags              = '(' , { identifier } , ')';
+metadata          = ? A JSON string without newlines. ? ;
 quotable-string   = ? A string that does not contain double-quotes. It can be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
-space             = ' ' ;
+type              = '[' , identifier , ']' ;
+identifier        = ? A string that begins with a lowercase letter (a-z), followed by any number of lowercase letters, digits, and hyphens (not underscore). Max length 32. ?
+
 newline           = '\n' | '\r' ;  // ASCII codes 13 and 10
 ```
 
@@ -104,8 +110,6 @@ newline           = '\n' | '\r' ;  // ASCII codes 13 and 10
 # OLD:
 
  - name-char-limit 512
- - type-char-limit 32
- - tag-char-limit 32 (includes old "tech" and "dataflow" attributes)
  - dep-name-char-limit 256
 
 ### Element Path
