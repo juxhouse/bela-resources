@@ -30,6 +30,12 @@ source my-source-name
 
 UTF-8
 
+## Versioning
+
+The format is currently at version 1, so the first line of the file is always `v1`.
+
+Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
+
 ## Line-Based
 
 ECD is a line-based format, so newline characters (CR and LF) in your strings must be escaped. More on that below.
@@ -41,27 +47,30 @@ ECD is a line-based format, so newline characters (CR and LF) in your strings mu
 
 Blank lines and lines starting with hashtag (#) are ignored. Inline comments with hashtag are **NOT** supported.
 
-## Versioning
-
-The format is currently at version 1, so the first line of the file is always `v1`.
-
-Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
-
 ## Source
 
 The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources). It is a [quotable string](#quotable-string) with max length of 100.
 
-## ECD Lines
+## Element and Dependency Lines
 
-The lines that follow are ECD lines.
+Each line that follows is either an `element` or a `dependency`.
 
-### Nesting
+#### Nesting
 
-ECD Lines can be nested. Each nesting level uses exactly two space characters for indentation.
+`Elements` and `dependencies` can be nested below other `elements`. Each nesting level uses exactly two spaces for indentation.
 
 #### Base Elements
 
-Elements that are not nested are "base elements". Their path is used as the prefix for all relative dependency references that come after them, to avoid wasteful repetition.
+`Elements` that are not nested are called `base elements`. They are used as the base path for relative `dependency` paths (see below).
+
+#### Element Path Reference
+
+`Elements` start with a path reference, which can be one of:
+
+ - Absolute Path Reference: A slash `\` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
+ - Child Path Segment: A 
+ - Path Query:
+
 
 #### Custom Metadata
 
