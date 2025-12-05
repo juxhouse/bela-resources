@@ -33,7 +33,7 @@ You can create your own element types.
 
 #### Element Path
 
-Every **built** element is identified by a path.
+Every **built** element is identified by a path. It is composed of path segments separated by slash `/`. Path segments can contain any character except slash `/`, newline (CR and LF) and double-quotes.
 
 Examples:
  - service/customers
