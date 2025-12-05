@@ -69,7 +69,7 @@ Elements that are not nested are "base elements". Their path is used as the pref
 
 ...WIP...
 
-## Syntax
+## Appendix - Syntax
 
 This is the ECD syntax specification as an EBNF grammar.
 
