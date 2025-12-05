@@ -74,7 +74,7 @@ Each line can have custom metadata as a JSON object at the end. It must be forma
 A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded.
 
 
-## Appendix 1 - Syntax
+## Appendix - Syntax
 
 This is the ECD syntax specification as an EBNF grammar.
 
