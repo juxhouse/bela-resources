@@ -102,14 +102,16 @@ space             = ' ' ;
 path-reference    = quotable-string ;  // Max length of 1024.
 dependency-name   = quotable-string ;  // Max length of 40.  It must be quoted if it starts with '(' (open-brackets).
 element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
-tags              = '(' , identifier , { space , identifier } , ')';
-custom-metadata   = ? A JSON object (a collection of name/value pairs inside curly braces) formatted as a single line without newlines. JSON already requires newlines to be escaped in strings. ? ;
-quotable-string   = ? A string that does not contain double-quotes. It can be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
+quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
 type              = '[' , identifier , ']' ;
-identifier        = ? A string that begins with a lowercase letter (a-z), followed by any number of lowercase letters, digits, and hyphens (not underscore). Max length 32. ?
+tags              = '(' , identifier , { space , identifier } , ')';
+identifier        = ? A string that begins with a lowercase letter (a-z), followed by lowercase letters, digits and hyphens (not underscore). Max length 32. ?
 
-newline           = '\n' | '\r' ;  // ASCII codes 13 and 10
+custom-metadata   = ? A JSON object formatted as a single line without newlines. JSON already requires newlines to be escaped in strings. ? ;
+
+double-quotes     = '"' ;  // Unicode U+0022
+newline           = '\n' | '\r' ;  // Unicode characters CR and LF.
 ```
 
 
