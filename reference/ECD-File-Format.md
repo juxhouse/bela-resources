@@ -4,47 +4,12 @@ This is the format of the [architecture data](/Concepts.md#ecds) file produced b
 
 It is designed for compactness and readability. It is also extensible, by allowing custom JSON metadata.
 
-There is a [syntax specification](#appendix---syntax) below.
+There is a formal [syntax specification](#appendix---syntax) at the end.
 
-## Encoding
-
-UTF-8
-
-## Lines
-
-This is a line-based format, so newline characters (CR and LF) in your strings must be escaped. More on that below.
-
-> [!TIP]
-> ECD files are designed to be read with line-wrap off.
-
-#### Custom Metadata
-
-Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings anyway.
-
-#### Comments
-
-Blank lines and lines starting with hashtag (#) are ignored. Inline comments with hashtag are **NOT** supported.
-
-## Versioning
-
-The format is currently at version 1, so the first line of the file is always `v1`.
-
-Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
-
-## Source
-
-The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources), for example:
-
+## Example
 ```
 v1
-source your-source-name 
-```
-
-## ECD Lines
-
-The lines that follow are ECD lines. Here is an example.
-
-```
+source your-source-name
 /maven/my-company/my-project [maven-artifact] "My Project" (java)
   > /maven/com.apache/commons/version/3.0.1
   business [package]
@@ -58,6 +23,41 @@ The lines that follow are ECD lines. Here is an example.
 /grouping/libs/maven [grouping]
   /maven/com.apache
 ```
+
+## Encoding
+
+UTF-8
+
+## Line-Based
+
+ECD is a line-based format, so newline characters (CR and LF) in your strings must be escaped. More on that below.
+
+> [!TIP]
+> ECD files are designed to be read with line-wrap off.
+
+## Versioning
+
+The format is currently at version 1, so the first line of the file is always `v1`.
+
+Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
+
+## Source
+
+The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources).
+
+## Comments
+
+Blank lines and lines starting with hashtag (#) are ignored. Inline comments with hashtag are **NOT** supported.
+
+
+#### Custom Metadata
+
+Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings anyway.
+
+
+## ECD Lines
+
+The lines that follow are ECD lines.
 
 ### Nesting
 
