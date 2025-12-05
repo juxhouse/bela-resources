@@ -4,7 +4,7 @@ This is the format of the [architecture data](/Concepts.md#ecds) file produced b
 
 It is designed for compactness and readability. It is also extensible, by allowing custom JSON metadata.
 
-There is a [syntax specification](#syntax) below.
+There is a [syntax specification](#appendix---syntax) below.
 
 ## Encoding
 
