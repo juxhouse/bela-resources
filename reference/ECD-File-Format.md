@@ -10,6 +10,7 @@ There is a formal [syntax specification](#appendix---syntax) at the end.
 ```
 v1
 source your-source-name
+
 /maven/my-company/my-project [maven-artifact] "My Project" (java)
   > /maven/com.apache/commons/version/3.0.1
   business [package]
@@ -20,6 +21,7 @@ source your-source-name
     customers [package]
       Customer [class]
         setName(String) [method]
+
 /grouping/libs/maven [grouping]
   /maven/com.apache
 ```
@@ -35,6 +37,10 @@ ECD is a line-based format, so newline characters (CR and LF) in your strings mu
 > [!TIP]
 > ECD files are designed to be read with line-wrap off.
 
+#### Comments
+
+Blank lines and lines starting with hashtag (#) are ignored. Inline comments with hashtag are **NOT** supported.
+
 ## Versioning
 
 The format is currently at version 1, so the first line of the file is always `v1`.
@@ -45,9 +51,7 @@ Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/bori
 
 The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources).
 
-## Comments
 
-Blank lines and lines starting with hashtag (#) are ignored. Inline comments with hashtag are **NOT** supported.
 
 
 #### Custom Metadata
