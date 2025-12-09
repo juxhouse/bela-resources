@@ -2,6 +2,8 @@
 
 This is the format of the [architecture data](/Concepts.md#ecds) file produced by the [BELA updater apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and sent to the [BELA API](/API.md).
 
+![ECD Overview](ECD-File-Format-Overview.png)
+
 It is designed for compactness and readability. It is also extensible, by allowing custom JSON metadata.
 
 There is a more formal [syntax specification](#appendix---syntax) at the end.
