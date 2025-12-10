@@ -55,15 +55,25 @@ The second line in the file is `source` followed by the name of the [source](/Co
 
 ## Element and Dependency Lines
 
-Each line that follows is either an `element` or a `dependency`.
+Each line that follows is either an Element Line or a Dependency Line. A containment is simply an Element Line nested below another.
 
 #### Nesting
 
-`Elements` and `dependencies` can be nested below other `elements`. Each nesting level uses exactly two spaces for indentation.
+Element and Dependency Lines can be nested below another Element Line. Each nesting level uses exactly two spaces for indentation.
 
 #### Base Elements
 
-`Elements` that are not nested are called `base elements`. They are used as the base path for relative `dependency` paths (see below).
+Element Lines that are not nested are called `Base Elements`. They are used for conciseness, as the base path for relative dependencies (see below).
+
+#### Element Line
+
+Element lines are composed of:
+
+ - Element Path Reference
+ - Element Type (optional)
+ - Element Name (optional)
+ - Tags (optional)
+ - Custom Metadata (optional)
 
 #### Element Path Reference
 
@@ -107,7 +117,7 @@ header            = 'v1' , newline ,
 source-name       = quotable-string ;  // Max length of 100.
 
 body              = { ecd-line } ;
-ecd-line          = element-line | dependency-line;  // A containment is simply an element-line nested below another element-line.
+ecd-line          = element-line | dependency-line;
 
 dependency-line   = nesting , { nesting } , '>' , space , path-reference ,            [ dependency-name ] , [ tags ] , [ custom-metadata ] , newline ;
 element-line      =           { nesting } ,               path-reference , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
