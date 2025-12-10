@@ -47,7 +47,7 @@ ECD is a line-based format, so newline characters (CR and LF) in your strings mu
 
 #### Comments
 
-Blank lines and lines starting with hashtag (#) are ignored. Inline comments with hashtag are **NOT** supported.
+Blank lines and lines starting with hashtag (#) are ignored. In-line comments are **NOT** supported.
 
 ## Source
 
