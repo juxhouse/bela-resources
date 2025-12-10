@@ -4,7 +4,7 @@ This is the format of the [architecture data](/Concepts.md#ecds) file produced b
 
 ![ECD Overview](ECD-File-Format-Overview.png)
 
-The ECD format is designed for compactness and readability. It is also extensible, by allowing custom JSON metadata.
+The ECD format is designed for conciseness and readability. It is also extensible, by allowing custom JSON metadata.
 
 There is a more formal [syntax specification](#appendix---syntax) at the end.
 
