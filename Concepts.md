@@ -44,7 +44,7 @@ The first segment of the path is the `type` of the `root element`. That allows f
 
 #### Element Name
 
-Every element has a simple name. Names are not unique.
+Element names can be user-friendly and don't need to be unique. They can use any UTF-8 characters including emojis and spaces.
 
 Examples:
 ```
