@@ -1,5 +1,9 @@
 # Synchronize a Code Repository
 
+These are the steps to update your BELA instance with the architecture data from your software project.
+
+If you set them up as a repository action or as an optional step after your main CI/CD pipeline has completed, BELA will always be in sync with your latest code.
+
 ## 1. Build Your Project
 
 Check out your project and `cd` into it, if necessary.
@@ -20,8 +24,8 @@ Build your project according to its language and build tool:
  - [Java (other build tools)](/updaters/Java-Other.md)
  - [Javascript](/updaters/Typescript.md)
  - [Oracle Schema](/updaters/Oracle.md)
- - Powerbuilder (Get in touch)
- - Ruby (Get in touch)
+ - Powerbuilder ([get in touch](/README.md#contact-us))
+ - Ruby ([get in touch](/README.md#contact-us))
  - [Typescript](/updaters/Typescript.md)
 
 
@@ -60,11 +64,13 @@ It will analyse your project and produce the `.bela/bela-update.ecd` file with t
 > [!IMPORTANT]
 > This container runs with `--network=none` and your project folder is mounted with `:ro` (read-only mode) for secure containment.
 
-#### `-source`
+### Arguments
+
+#### -source
 
 This argument indicates the [source](/Concepts.md#sources) for the elements being uploaded. Normally the name of the repo is used as source. In Github that would be `"$GITHUB_REPOSITORY"`, for example.
 
-#### `-parent-element-path`  
+#### -parent-element-path (Optional)
 
 This optional argument will import your projects' elements as the contents of some parent element. If your project is the implementation of a microservice for example, you can import it inside that microservice, like this:
 ```
@@ -76,6 +82,10 @@ You can also use [diagram-as-code](updaters/reference/upload-example.md#uploadin
 
 See [upload example](/updaters/reference/upload-example.md).
 
-## Automate
+## Success
 
-Set up the above as a repository action or as an optional step after your main CI/CD pipeline has completed.
+Your updated source will appear in the Sources screen: `BELA Main Menu > Sources`.
+
+You can also search (🔍) BELA for elements (classes, functions, methods, etc) that are present in the source you just updated.
+
+If you have any trouble, please [contact us](/README.md#contact-us).

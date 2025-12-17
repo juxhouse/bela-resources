@@ -68,3 +68,9 @@ Now, every project of yours that uses this CI/CD pipeline can simply create the 
 
 > [!IMPORTANT]
 > Diagram-as-code is a technique that produces diagram code that is brittle and redundant with your production code. Use this only in exceptional cases. It is often better to simply use the BELA UI to model these cases.
+
+## Contact Us
+
+Want to use BELA but do not know where to start? Have questions or suggestions?
+
+Reach out to us at `support@jux.house` — we will be happy to help.
