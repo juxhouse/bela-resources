@@ -15,14 +15,15 @@ Your BELA API host address is provided to you when you sign-up for a BELA accoun
 ## Headers
 
 `Authorization: Token <your-token>`
-Obtain you BELA API token from the BELA web app.
+
+Obtain you BELA API token from `BELA Menu > Sources > Use API`.
 
 
 ## Endpoint: POST `/ecd-architecture`
 
-This endpoint allows you to upload your architecture or a part of it to BELA.
+This endpoint allows you to update BELA with the architecture from one of your [sources](/Concepts.md#sources).
 
-It does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
+BELA does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest. See [ECD File Format](/reference/ECD-File-Format.md).
 
 **Reply Success Code** `2XX`
 
@@ -32,4 +33,5 @@ Errors will be returned as some 4XX or 5XX HTTP error code with a helpful messag
 
 **Body**
 
-This endpoint receives an .ecd file in its body. BELA will detect the changes between the file and apply them all atomically.
+This endpoint receives an .ecd file in its body. See [ECD File Format](/reference/ECD-File-Format.md).
+
