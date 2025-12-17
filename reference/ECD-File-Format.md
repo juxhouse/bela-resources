@@ -79,20 +79,19 @@ Element lines are composed of:
 
 `Elements` start with a path reference, which can be one of:
 
- - Absolute Path Reference: A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
- - Child Path Segment: A nested element can be declared with only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`.
- - Last Segment Query: `/*/` followed by the last path segment of some element. Example: `/*/getCustomer()`. A warning is generated in case of ambiguity.
+ - **Child Path Segment** - A nested element can be declared with only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`.
+ - **Absolute Path Reference** - A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
+ - **Last Segment Query** - `/*/` followed by the last path segment of some element. Example: `/*/getCustomer()`. A warning is generated in case of ambiguity.
 
 
 #### Custom Metadata
 
 Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings anyway.
 
-## Definitions
 
 #### Quotable String 
 
-A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded.
+A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes. It must be surrounded if it contains spaces.
 
 
 ## Appendix - Syntax
