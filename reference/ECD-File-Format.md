@@ -35,7 +35,7 @@ UTF-8
 
 The format is currently at version 1, so the first line of the file is always `v1`.
 
-Future changes will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
+Future versions will use the [BoringVer](https://medium.com/@klauswuestefeld/boringver-ad84d272a380) versioning scheme.
 
 ## Line-Based
 
