@@ -54,7 +54,7 @@ The second line in the file is `source` followed by the name of the [source](/Co
 
 ## Element and Dependency Lines
 
-Each line that follows is either an Element Line or a Dependency Line. A containment is simply an Element Line nested below another.
+Each line that follows is either an [Element Line](#element-line) or a [Dependency Line](#dependency-line). A containment is simply an Element Line nested below another.
 
 #### Nesting
 
@@ -62,7 +62,7 @@ Element and Dependency Lines can be nested below another Element Line. Each nest
 
 #### Base Elements
 
-Element Lines that are not nested are called `Base Elements`. They are used for conciseness, as the base path for relative dependencies (see below).
+Element Lines that are not nested are called `Base Elements`. They are used as the base path for relative dependencies (see below).
 
 #### Element Line
 
@@ -71,6 +71,15 @@ Element lines are composed of:
  - [Element Path Reference](#element-path-reference)
  - [Element Type](#element-type) (optional)
  - [Element Name](#element-name) (optional)
+ - [Tags](#tags) (optional)
+ - [Custom Metadata](#custom-metadata) (optional)
+
+#### Dependency Line
+
+Dependency lines start with `> ` followed by:
+
+ - [Element Path Reference](#element-path-reference)
+ - [Dependency Name](#element-name) (optional)
  - [Tags](#tags) (optional)
  - [Custom Metadata](#custom-metadata) (optional)
 
@@ -88,11 +97,15 @@ An [identifier](#identifier) between square brackets. Examples: `[domain]`, `[su
 
 #### Element Name
 
-A [quotable string](#quotable-string) with max length of 512. Example: `"My Project"`. If ommitted, the last path segment will be used as the element name.
+A [quotable string](#quotable-string) with max length of 512. Example: `"My Project"`. If ommitted, the last path segment will be used as the element name. It must be quoted if it starts with `(`.
 
 #### Tags
 
 A list of identifiers between parentheses. Example: `(tag1 tag2 tag3)`. Example tags: `async` `python` `critical`, etc.
+
+#### Dependency Name
+
+A [quotable string](#quotable-string) with max length of 128. Example: `"GET customer{id}"`. It must be quoted if it starts with `(`.
 
 #### Custom Metadata
 
@@ -142,7 +155,7 @@ nesting           = space , space ;  // Indentation of 2 spaces for each nesting
 space             = ' ' ;
 
 path-reference    = quotable-string ;  // Max length of 1024.
-dependency-name   = quotable-string ;  // Max length of 40.  It must be quoted if it starts with '(' (open-brackets).
+dependency-name   = quotable-string ;  // Max length of 128.  It must be quoted if it starts with '(' (open-brackets).
 element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
 quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
