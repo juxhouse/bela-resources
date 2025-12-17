@@ -80,8 +80,8 @@ Element lines are composed of:
 `Elements` start with a path reference, which can be one of:
 
  - Absolute Path Reference: A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
- - Child Path Segment: Nested elements . It is a [quotable string](#quotable-string) that does not contain a slash `/`.
- - Path Query: An `absolute path reference` that replaces all segments of the path with a wildcard `*` except the last. Example: `/*/getCustomer()`
+ - Child Path Segment: A nested element can be declared with only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`.
+ - Last Segment Query: `/*/` followed by the last path segment of some element. Example: `/*/getCustomer()`. A warning is generated in case of ambiguity.
 
 
 #### Custom Metadata
