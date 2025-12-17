@@ -23,7 +23,7 @@ Obtain you BELA API token from `BELA Menu > Sources > Use API`.
 
 This endpoint allows you to update BELA with the architecture from one of your [sources](/Concepts.md#sources).
 
-BELA does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest.
+BELA does not require you to inform the deletion or renaming of elements in your architecture. Instead, it allows you to upload the elements that currently exist and BELA will garbage collect the rest. See [ECD File Format](/reference/ECD-File-Format.md).
 
 **Reply Success Code** `2XX`
 
@@ -33,5 +33,5 @@ Errors will be returned as some 4XX or 5XX HTTP error code with a helpful messag
 
 **Body**
 
-This endpoint receives an .ecd file in its body. See ECD Format.
+This endpoint receives an .ecd file in its body. See [ECD File Format](/reference/ECD-File-Format.md).
 
