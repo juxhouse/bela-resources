@@ -92,7 +92,7 @@ A [quotable string](#quotable-string) with max length of 512. Example: `"My Proj
 
 #### Tags
 
-A list of identifiers between parentheses. Example: `(async extends python critical)`.
+A list of identifiers between parentheses. Example: `(tag1 tag2 tag3)`. Example tags: `async` `python` `critical`, etc.
 
 #### Custom Metadata
 
