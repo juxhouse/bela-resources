@@ -84,22 +84,31 @@ Element lines are composed of:
 
 #### Element Type
 
-An identifier with max length of 32 between square brackets. Examples: `[domain]`, `[subdomain]`, `[service]`, `[package]`, `[class]`, `[endpoint]`, etc.
+An [identifier](#identifier) between square brackets. Examples: `[domain]`, `[subdomain]`, `[service]`, `[package]`, `[class]`, `[endpoint]`, etc.
 
 #### Element Name
 
-A [quotable string](#quotable-string) with max length of 512. If ommitted, the last path segment will be used as the element name.
+A [quotable string](#quotable-string) with max length of 512. Example: `"My Project"`. If ommitted, the last path segment will be used as the element name.
+
+#### Tags
+
+A list of identifiers between parentheses. Example: `(async extends python critical)`.
 
 #### Custom Metadata
 
-Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings anyway.
+Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, stripped of newline characters. JSON already requires newlines to be escaped in strings anyway.
 
-The custom metadata's attribute `description` is used as the element's description. All other attributes are displayed by BELA as metadata in the element details panel.
+The `description` attribute of this JSON object is the element's description. All other attributes are displayed by BELA as metadata in the element details panel.
 
 
 #### Quotable String 
 
 A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes. It must be surrounded if it contains spaces.
+
+
+#### Identifier
+
+A string that begins with a lowercase letter (a-z), followed by lowercase letters, digits and hyphens (not underscore). Max length 32.
 
 
 ## Appendix - Syntax
@@ -146,27 +155,3 @@ custom-metadata   = ? A JSON object formatted as a single line without newlines.
 double-quote      = '"' ;  // Unicode U+0022
 newline           = '\n' | '\r' ;  // Unicode character CR or LF.
 ```
-
-
-# OLD:
-
-### Element Path
-
-Paths are primary keys for [built elements](/Concepts.md#built-vs-modeled).
-
-An [element path](/Concepts.md#element-path) is a String composed of two or more path segments separated by `/`.
-
-Path segments are case-sensitive: `getName()` and `getname()` are NOT the same.
-
-You can use capital letters, diacritics and all sorts of fancy characters but we strongly recommend you keep things simple.
-
-The first segment is always an `ElementType`. You can think of it as a namespace, so that you can have elements with the same name if they have different types.
-
-Examples:
-| Path | Obs
-| ---- | ----
-| domain/billing | Domain
-| domain/billing/invoices | Subdomain
-| maven/my-company/my-project | Maven artifact "my-project" in the "my-company" maven group.
-| service/billing | 
-service/Billing/billing/core/Bill/isDue(java.util.Date)
