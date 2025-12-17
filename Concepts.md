@@ -33,12 +33,14 @@ You can create your own element types.
 
 #### Element Path
 
-Every **built** element is identified by a path.
+Every **built** element is identified by a `path` made up of slash-separated `segments`.
 
 Examples:
- - service/customers
- - dotnet-assembly/MyAssembly/MyNamespace/MyInterface
- - maven-project/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String)
+ - `service/customers`
+ - `assembly/MyAssembly/MyNamespace/MyInterface`
+ - `maven/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String)`
+
+The first segment of the path is the type of the root-path element. These are the root-path elements in the examples above: `service/customers`, `assembly/MyAssembly` and `maven/org.acme:customers`.
 
 #### Element Name
 
