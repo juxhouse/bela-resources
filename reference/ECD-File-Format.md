@@ -12,9 +12,8 @@ There is a more formal [syntax specification](#appendix---syntax) at the end.
 ```
 v1
 source my-source-name
-
 /maven/my-company:my-project "My Project" (java)
-  > /maven/com.apache/commons/version/3.0.1
+  > /maven/org.apache.commons:commons-collections4/version/3.0.1
   business [package]
     billing [package]
       Invoice [class]
@@ -25,7 +24,7 @@ source my-source-name
         setName(String) [method]
 
 /grouping/libs/maven [grouping]
-  /maven/com.apache
+  /maven/org.apache.commons:commons-collections4
 ```
 
 ## Encoding
@@ -69,24 +68,33 @@ Element Lines that are not nested are called `Base Elements`. They are used for 
 
 Element lines are composed of:
 
- - Element Path Reference
- - Element Type (optional)
- - Element Name (optional)
- - Tags (optional)
- - Custom Metadata (optional)
+ - [Element Path Reference](#element-path-reference)
+ - [Element Type](#element-type) (optional)
+ - [Element Name](#element-name) (optional)
+ - [Tags](#tags) (optional)
+ - [Custom Metadata](#custom-metadata) (optional)
 
 #### Element Path Reference
 
 `Elements` start with a path reference, which can be one of:
 
- - **Child Path Segment** - A nested element can be declared with only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`.
+ - **Child Path Segment** - A nested element can be declared with only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this.
  - **Absolute Path Reference** - A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
  - **Last Segment Query** - `/*/` followed by the last path segment of some element. Example: `/*/getCustomer()`. A warning is generated in case of ambiguity.
 
+#### Element Type
+
+An identifier with max length of 32 between square brackets. Examples: `[domain]`, `[subdomain]`, `[service]`, `[package]`, `[class]`, `[endpoint]`, etc.
+
+#### Element Name
+
+A [quotable string](#quotable-string) with max length of 512. If ommitted, the last path segment will be used as the element name.
 
 #### Custom Metadata
 
 Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters. JSON already requires newlines to be escaped in strings anyway.
+
+The custom metadata's attribute `description` is used as the element's description. All other attributes are displayed by BELA as metadata in the element details panel.
 
 
 #### Quotable String 
@@ -129,7 +137,7 @@ dependency-name   = quotable-string ;  // Max length of 40.  It must be quoted i
 element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
 quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
-type              = '[' , identifier , ']' ;
+type              = '[' , identifier , ']' ;  // Max length of 32.
 tags              = '(' , identifier , { space , identifier } , ')';
 identifier        = ? A string that begins with a lowercase letter (a-z), followed by lowercase letters, digits and hyphens (not underscore). Max length 32. ?
 
