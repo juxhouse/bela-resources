@@ -40,7 +40,7 @@ Examples:
  - `assembly/MyAssembly/MyNamespace/MyInterface`
  - `maven/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String)`
 
-The first segment of the path is the type of the root-path element. These are the root-path elements in the examples above: `service/customers`, `assembly/MyAssembly` and `maven/org.acme:customers`.
+The first segment of the path is the type of the root element. That allows for different types of elements with the same name. These are the root elements in the examples above: `service/customers`, `assembly/MyAssembly` and `maven/org.acme:customers`.
 
 #### Element Name
 
