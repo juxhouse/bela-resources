@@ -65,7 +65,7 @@ You can activate SSO in BELA using OAuth2 OpenID (not SAML).
 ```
 https://{your-bela-host}/callback
 ```
-If you have multiple BELA instances using different [URL Prefixes](/reference/URL-Prefix.md), remember to include them:
+If you have multiple BELA instances using different [URL Prefixes](/reference/URL-Prefix.md), create an app in your SSO for each one, with this redirect URI:
 ```
 https://{your-bela-host}/{your-url-prefix}/callback
 ```
