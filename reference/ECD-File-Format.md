@@ -19,6 +19,7 @@ source my-source-name
       Invoice [class]
         getCustomer() [method]
           > business/customers/Customer
+          > /*/getAddress()
     customers [package]
       Customer [class]
         setName(String) [method]
