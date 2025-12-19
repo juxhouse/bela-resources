@@ -69,7 +69,7 @@ Element Lines that are not nested are called `Base Elements`. They are used as t
 
 Element lines are composed of:
 
- - [Element Path Reference](#element-path-reference)
+ - [Element Path Reference](#element-path-reference) or [Child Path Segment](#child-path-segment)
  - [Element Type](#element-type) (optional)
  - [Element Name](#element-name) (optional)
  - [Tags](#tags) (optional)
@@ -86,11 +86,14 @@ Dependency lines start with `> ` followed by:
 
 #### Element Path Reference
 
-`Elements` start with a path reference, which can be one of:
+An element path reference is one of:
 
- - **Child Path Segment** - A nested child element can be declared with its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Child elements are IMPLICITLY contained by their parent and cannot de contained by any other built element.
- - **Absolute Path Reference** - A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024. If this absolute path reference is nested, that creates an EXPLICIT containment: the parent element contains this referenced element, which must not be implicitly contained by any other element.
+ - **Absolute Path Reference** - A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024. If this absolute path reference is nested, that creates an EXPLICIT containment: the parent element will contain this referenced element, which must not be implicitly contained by any other.
  - **Last Segment Query** - `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity.
+
+#### Child Path Segment
+
+ - **Child Path Segment** - A nested child element is declared with its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Child elements are IMPLICITLY contained by their parent and cannot de explicitly contained by any other built element.
 
 #### Element Type
 
