@@ -90,7 +90,7 @@ Dependency lines start with `> ` followed by:
 
  - **Child Path Segment** - A nested element can be declared with only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this.
  - **Absolute Path Reference** - A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024.
- - **Last Segment Query** - `/*/` followed by the last path segment of some element. Example: `/*/getCustomer()`. A warning is generated in case of ambiguity.
+ - **Last Segment Query** - `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity.
 
 #### Element Type
 
