@@ -86,10 +86,10 @@ Dependency lines start with `> ` followed by:
 
 #### Element Path Reference
 
-An element path reference is one of:
+An element path reference starts with a slash `/` and is one of:
 
  - **Absolute Path Reference** - A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024. If this absolute path reference is nested, that creates an EXPLICIT containment: the parent element will contain this referenced element, which must not be implicitly contained by any other.
- - **Last Segment Query** - `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity.
+ - **Last Segment Query** - A slash followed by a path wildcard `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity (more than one `getAddress()` elements found, for example). To guarantee good performance, no other wildcard positioning is supported, for now.
 
 #### Child Path Segment
 
@@ -152,14 +152,15 @@ source-name       = quotable-string ;  // Max length of 100.
 body              = { ecd-line } ;
 ecd-line          = element-line | dependency-line;
 
-dependency-line   = nesting , { nesting } , '>' , space , path-reference ,            [ dependency-name ] , [ tags ] , [ custom-metadata ] , newline ;
-element-line      =           { nesting } ,               path-reference , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
+dependency-line   = nesting , { nesting } , '>' , space ,   path-reference ,            [ dependency-name ] , [ tags ] , [ custom-metadata ] , newline;
+element-line      =           { nesting } , child-segment | path-reference , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
 
 nesting           = space , space ;  // Indentation of 2 spaces for each nesting level.
 space             = ' ' ;
 
 path-reference    = quotable-string ;  // Max length of 1024.
-dependency-name   = quotable-string ;  // Max length of 128.  It must be quoted if it starts with '(' (open-brackets).
+child-segment     = quotable-string ;  // It must not contain slash `/`.
+dependency-name   = quotable-string ;  // Max length of 128. It must be quoted if it starts with '(' (open-brackets).
 element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
 quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
