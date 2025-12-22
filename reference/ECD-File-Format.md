@@ -1,6 +1,6 @@
 # ECD File Format (.ecd)
 
-This is the format of the [architecture data](/Concepts.md#ecds) file produced by the [BELA updater apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) when they analyse your code repositories. It is sent to the [BELA API](/API.md).
+This is the format of the [architecture data](/Concepts.md#ecds) file produced by the [BELA updater apps](/CodeSynchronization.md#2-run-the-bela-updater-docker-app-for-your-language) and sent to the [BELA API](/API.md).
 
 ![ECD Overview](ECD-File-Format-Overview.png)
 
