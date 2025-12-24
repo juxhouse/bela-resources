@@ -155,7 +155,7 @@ ecd-line          = element-line | dependency-line;
 dependency-line   = nesting , { nesting } , '>' , space ,   path-reference ,            [ dependency-name ] , [ tags ] , [ custom-metadata ] , newline;
 element-line      =           { nesting } , child-segment | path-reference , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
 
-nesting           = space , space ;  // Indentation of 2 spaces for each nesting level.
+nesting           = space , space ;  // Indentation of 2 spaces for each nesting level. Nesting works like a stack, as one would expect: a line can only increase nesting one level at a time and when a line reduces the level of nesting, it "pops" the elements that were previously nested at that level or more.
 space             = ' ' ;
 
 path-reference    = quotable-string ;  // Max length of 1024.
