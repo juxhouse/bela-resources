@@ -132,12 +132,12 @@ An alert line is composed of
  - `Details:` (optional - any string with newlines escaped to `\n`)
 
 Example:
-
+```
         Error: Exception while resolving return type. Details: {Stack with newlines escaped to \n}
+```
 
 #### Quotable String 
-
-A tring of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes. It must be surrounded if it contains spaces.
+A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes. It must be surrounded if it contains spaces.
 
 
 #### Identifier
