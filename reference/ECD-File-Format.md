@@ -61,45 +61,45 @@ Each line that follows is either an [Element Line](#element-line) or a [Dependen
 
 Element and Dependency Lines can be nested below another Element Line. Each nesting level uses exactly two spaces for indentation.
 
-#### Base Elements
-
-Element Lines that are not nested are called `Base Elements`. They are used as the base path for relative dependencies (see below).
-
 #### Element Line
 
 Element lines are composed of:
 
- - [Element Path Reference](#element-path-reference) or [Child Path Segment](#child-path-segment)
+ - [Absolute Path Reference](#absolute-path-reference) or [Child Path Segment](#child-path-segment) or [Element Query](#element-query)
  - [Element Type](#element-type) (optional)
  - [Element Name](#element-name) (optional)
  - [Tags](#tags) (optional)
  - [Custom Metadata](#custom-metadata) (optional)
 
+#### Base Element
+
+An [Element Line](#element-line) that is not nested is called a `Base Element`. It is used as the base path for subsequent [Relative Path References](#relative-path-reference).
+
 #### Dependency Line
 
 Dependency lines start with `> ` followed by:
 
- - [Element Path Reference](#element-path-reference)
- - [Dependency Name](#element-name) (optional)
+ - [Absolute Path Reference](#absolute-path-reference) or [Relative Path Reference](#relative-path-reference) or [Element Query](#element-query)
+ - [Dependency Name](#dependency-name) (optional)
  - [Tags](#tags) (optional)
  - [Custom Metadata](#custom-metadata) (optional)
 
-#### Element Path Reference
+#### Absolute Path Reference
+A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024. If this absolute path reference is nested, that creates an EXPLICIT containment: the parent element will contain this referenced element, which must not be implicitly contained by any other.
 
-An element path reference starts with a slash `/` and is one of:
-
- - **Absolute Path Reference** - A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024. If this absolute path reference is nested, that creates an EXPLICIT containment: the parent element will contain this referenced element, which must not be implicitly contained by any other.
- - **Last Segment Query** - A slash followed by a path wildcard `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity (more than one `getAddress()` elements found, for example). To guarantee good performance, no other wildcard positioning is supported, for now.
+#### Relative Path Reference
+A [quotable string](#quotable-string) that does not start with slash `/`. It will be appended to the path of the previous [Base Element](#base-element) to form an [Absolute Path Reference](#absolute-path-reference).
 
 #### Child Path Segment
-
 A nested child element is declared using only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Child elements are IMPLICITLY contained by their parent and cannot de explicitly contained by any other built element.
 
-#### Element Type
+#### Element Query
+A slash followed by a wildcard `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity (more than one `getAddress()` elements found, for example). To guarantee good performance, no other wildcard positioning is supported, for now.
 
+#### Element Type
 An [identifier](#identifier) between square brackets. Examples: `[domain]`, `[subdomain]`, `[service]`, `[package]`, `[class]`, `[endpoint]`, etc.
 
-#### Element Name
+#### Name
 
 A [quotable string](#quotable-string) with max length of 512. Example: `"My Project"`. If ommitted, the last path segment will be used as the element name. It must be quoted if it starts with `(`.
 
