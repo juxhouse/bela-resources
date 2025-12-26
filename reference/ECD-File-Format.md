@@ -55,7 +55,11 @@ The second line in the file is `source` followed by the name of the [source](/Co
 
 ## Element and Dependency Lines
 
-Each line that follows is either an [Element Line](#element-line) or a [Dependency Line](#dependency-line). A containment is declared simply by nesting an Element Line below another.
+Each line that follows is one of:
+ - [Element Line](#element-line)
+ - [Dependency Line](#dependency-line)
+ - [Alert Line](#alert-line).
+A containment is declared simply by nesting an Element Line below another.
 
 #### Nesting
 
@@ -120,10 +124,20 @@ Each line can have custom metadata as a JSON object at the end. It must be forma
 
 The `description` attribute of this JSON object is the element's description. All other attributes are displayed by BELA as metadata in the element details panel.
 
+#### Alert Line
+
+An alert line is composed of
+ - `Error:`, `Warning:` or `Info:`
+ - Title (any string without newlines)
+ - `Details:` (optional - any string with newlines escaped to `\n`)
+
+Example:
+
+        Error: Exception while resolving return type. Details: {Stack with newlines escaped to \n}
 
 #### Quotable String 
 
-A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes. It must be surrounded if it contains spaces.
+A tring of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes. It must be surrounded if it contains spaces.
 
 
 #### Identifier
