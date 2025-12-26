@@ -59,6 +59,7 @@ Each line that follows is one of:
  - [Element Line](#element-line)
  - [Dependency Line](#dependency-line)
  - [Alert Line](#alert-line).
+
 A containment is declared simply by nesting an Element Line below another.
 
 #### Nesting
@@ -126,7 +127,7 @@ The `description` attribute of this JSON object is the element's description. Al
 
 #### Alert Line
 
-An alert line is composed of
+An alert line can be nested and is composed of
  - `Error:`, `Warning:` or `Info:`
  - Title (any string without newlines)
  - `Details:` (optional - any string with newlines escaped to `\n`)
