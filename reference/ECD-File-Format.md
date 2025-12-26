@@ -94,7 +94,9 @@ A [quotable string](#quotable-string) that does not start with slash `/`. It wil
 A nested child element is declared using only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Child elements are IMPLICITLY contained by their parent and cannot de explicitly contained by any other built element.
 
 #### Element Query
-A slash followed by a wildcard `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity (more than one `getAddress()` elements found, for example). To guarantee good performance, no other wildcard positioning is supported, for now.
+Slash-asterisk-slash `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`. A warning is generated in case of ambiguity (more than one `getAddress()` elements found, for example). To guarantee good performance, no other wildcard positioning is supported, for now.
+
+If the line also includes a [type](#element-type), it will be used as a query filter too.
 
 #### Element Type
 An [identifier](#identifier) between square brackets. Examples: `[domain]`, `[subdomain]`, `[service]`, `[package]`, `[class]`, `[endpoint]`, etc.
