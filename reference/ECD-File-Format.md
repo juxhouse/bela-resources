@@ -98,7 +98,7 @@ Slash-asterisk-slash `/*/` followed by the last path segment of some element. Ex
 
 If the line also includes a [type](#element-type), it will be used as a query filter too.
 
-A warning is generated in case of ambiguity (more than one `getAddress()` elements found, for example). To guarantee good performance, no other wildcard positioning is supported, for now.
+A warning is generated in case of ambiguity (more than one `getAddress()` elements found, for example).
 
 #### Element Type
 An [identifier](#identifier) between square brackets. Examples: `[domain]`, `[subdomain]`, `[service]`, `[package]`, `[class]`, `[endpoint]`, etc.
