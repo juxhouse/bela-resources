@@ -53,7 +53,7 @@ Blank lines and lines starting with hashtag (#) are ignored. In-line comments ar
 
 The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources). It is a [quotable string](#quotable-string) with max length of 100.
 
-## Element and Dependency Lines
+## Data Lines
 
 Each line that follows is one of:
  - [Element Line](#element-line)
@@ -70,7 +70,7 @@ Element and Dependency Lines can be nested below another Element Line. Each nest
 
 Element lines are composed of:
 
- - [Absolute Path Reference](#absolute-path-reference) or [Child Path Segment](#child-path-segment) or [Element Query](#element-query)
+ - [Absolute Path](#absolute-path) or [Child Path Segment](#child-path-segment) or [Element Query](#element-query)
  - [Element Type](#element-type) (optional)
  - [Element Name](#element-name) (optional)
  - [Tags](#tags) (optional)
@@ -84,16 +84,16 @@ An [Element Line](#element-line) that is not nested is called a `Base Element`. 
 
 Dependency lines start with `> ` followed by:
 
- - [Absolute Path Reference](#absolute-path-reference) or [Relative Path Reference](#relative-path-reference) or [Element Query](#element-query)
+ - [Absolute Path](#absolute-path) or [Relative Path](#relative-path) or [Element Query](#element-query)
  - [Dependency Name](#dependency-name) (optional)
  - [Tags](#tags) (optional)
  - [Custom Metadata](#custom-metadata) (optional)
 
-#### Absolute Path Reference
+#### Absolute Path
 A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024. If this absolute path reference is nested, that creates an EXPLICIT containment: the parent element will contain this referenced element, which must not be implicitly contained by any other.
 
-#### Relative Path Reference
-A [quotable string](#quotable-string) that does not start with slash `/`. It will be appended to the path of the previous [Base Element](#base-element) to form an [Absolute Path Reference](#absolute-path-reference).
+#### Relative Path
+A [quotable string](#quotable-string) that does not start with slash `/`. It will be appended to the path of the previous [Base Element](#base-element) to form an [Absolute Path](#absolute-path).
 
 #### Child Path Segment
 A nested child element is declared using only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Child elements are IMPLICITLY contained by their parent and cannot de explicitly contained by any other built element.
@@ -142,12 +142,10 @@ A string of any Unicode chars except double-quotes and newline. It can optionall
 
 
 #### Identifier
-
 A string that begins with a lowercase letter (a-z), followed by lowercase letters, digits and hyphens (not underscore). Max length 32.
 
 
 ## Appendix - Syntax
-
 This is the ECD syntax specification as an EBNF grammar.
 
 #### EBNF Notation Summary
@@ -156,7 +154,6 @@ This is the ECD syntax specification as an EBNF grammar.
  - Alternatives: ...|...
 
 #### ECD Syntax Version 1
-
 Blank lines and lines starting with hashtag (#) are ignored. They can be used for comments. All other lines follow this grammar:
 
 ```ebnf
