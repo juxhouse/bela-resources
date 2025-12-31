@@ -4,7 +4,7 @@ This is the format of the [architecture data](/Concepts.md#ecds) file produced b
 
 ![ECD Overview](ECD-File-Format-Overview.png)
 
-The ECD format is designed for conciseness and readability. It is also extensible, by allowing custom JSON metadata.
+This ECD format is designed for conciseness and readability. It is also extensible, by allowing custom JSON metadata.
 
 There is a more formal [syntax specification](#appendix---syntax) at the end.
 
@@ -53,7 +53,7 @@ Blank lines and lines starting with hashtag (#) are ignored. In-line comments ar
 
 The second line in the file is `source` followed by the name of the [source](/Concepts.md#sources). It is a [quotable string](#quotable-string) with max length of 100.
 
-## Data Lines
+## ECD Lines
 
 Each line that follows is one of:
  - [Element Line](#element-line)
@@ -64,7 +64,7 @@ A containment is declared simply by nesting an Element Line below another.
 
 #### Nesting
 
-Data Lines can be nested below an Element Line. Each nesting level uses exactly two spaces for indentation.
+Lines can be nested below an Element Line. Each nesting level uses exactly two spaces for indentation.
 
 #### Element Line
 
