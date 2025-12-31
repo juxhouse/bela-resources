@@ -64,7 +64,7 @@ A containment is declared simply by nesting an Element Line below another.
 
 #### Nesting
 
-Element and Dependency Lines can be nested below another Element Line. Each nesting level uses exactly two spaces for indentation.
+Data Lines can be nested below an Element Line. Each nesting level uses exactly two spaces for indentation.
 
 #### Element Line
 
@@ -127,6 +127,7 @@ The `description` attribute of this JSON object is the element's description. Al
 
 #### Alert Line
 
+Dependency lines start with `> ` followed by:
 An alert line can be nested and is composed of
  - `Error:`, `Warning:` or `Info:`
  - Title (any string without newlines)
@@ -167,7 +168,7 @@ source-name       = quotable-string ;  // Max length of 100.
 body              = { ecd-line } ;
 ecd-line          = element-line | dependency-line;
 
-dependency-line   = nesting , { nesting } , '>' , space ,   path-reference ,            [ dependency-name ] , [ tags ] , [ custom-metadata ] , newline;
+dependency-line   = nesting , { nesting } , '>' , space ,   path-reference ,            [ dependency-name ] , [ tags ] , newline;
 element-line      =           { nesting } , child-segment | path-reference , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
 
 nesting           = space , space ;  // Indentation of 2 spaces for each nesting level. Nesting works like a stack, as one would expect: 1) A line can only make the nesting deeper by one level. 2) When a line returns to a shallower level of nesting, it "pops" the parents that were previously nested at that level or deeper.
