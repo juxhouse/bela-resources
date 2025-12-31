@@ -127,15 +127,14 @@ The `description` attribute of this JSON object is the element's description. Al
 
 #### Alert Line
 
-Dependency lines start with `> ` followed by:
-An alert line can be nested and is composed of
- - `Error:`, `Warning:` or `Info:`
- - Title (any string without newlines)
- - `Details:` (optional - any string with newlines escaped to `\n`)
+Alert lines start with `! ` followed by:
+ - Title - A [quotable string](#quotable-string)
+ - Level - `[error]`, `[warning]` or `[info]`.
+ - Details - A JSON-escaped string.
 
 Example:
 ```
-        Error: Exception while resolving return type. Details: {Stack with newlines escaped to \n}
+        ! "Exception while resolving dependency" [error] "Exception stack as a JSON string"
 ```
 
 #### Quotable String 
@@ -168,24 +167,30 @@ source-name       = quotable-string ;  // Max length of 100.
 body              = { ecd-line } ;
 ecd-line          = element-line | dependency-line;
 
-dependency-line   = nesting , { nesting } , '>' , space ,   path-reference ,            [ dependency-name ] , [ tags ] , newline;
-element-line      =           { nesting } , child-segment | path-reference , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
+dependency-line   = nesting , { nesting } , '>' , space , absolute-path | child-segment | element-query ,            [ dependency-name ] , [ tags ] , newline;
+element-line      =           { nesting } ,               absolute-path | relative-path | element-query , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
+alert-line        =           { nesting } , `!` , space , quotable-string, level , json-string ;
+level             = '[error]' | '[warning]' | '[info]' ;
 
 nesting           = space , space ;  // Indentation of 2 spaces for each nesting level. Nesting works like a stack, as one would expect: 1) A line can only make the nesting deeper by one level. 2) When a line returns to a shallower level of nesting, it "pops" the parents that were previously nested at that level or deeper.
 space             = ' ' ;
 
-path-reference    = quotable-string ;  // Max length of 1024.
-child-segment     = quotable-string ;  // It must not contain slash `/`.
+absolute-path     = quotable-string ;  // Must start with slash '/'. Max length of 1024.
+child-segment     = quotable-string ;  // Must not contain slash '/'.
+element-query     = quotable-string ;  // Must start with '/*/'.
+relative-path     = quotable-string ;  // Must not start with slash '/'.
+
 dependency-name   = quotable-string ;  // Max length of 128. It must be quoted if it starts with '(' (open-brackets).
 element-name      = quotable-string ;  // Max length of 512. It must be quoted if it starts with '(' (open-brackets).
-quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 
 type              = '[' , identifier , ']' ;  // Max length of 32.
 tags              = '(' , identifier , { space , identifier } , ')';
 identifier        = ? A string that begins with a lowercase letter (a-z), followed by lowercase letters, digits and hyphens (not underscore). Max length 32. ?
 
 custom-metadata   = ? A JSON object formatted as a single line without newlines. JSON already requires newlines to be escaped in strings. ? ;
+json-string       = ? A JSON string ?
 
+quotable-string   = ? A string of any Unicode chars except double-quotes and newline. It can optionally be surrounded by double-quotes and can only contain spaces when surrounded. ? ;
 double-quote      = '"' ;  // Unicode U+0022
 newline           = '\n' | '\r' ;  // Unicode character CR or LF.
 ```
