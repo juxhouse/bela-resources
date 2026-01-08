@@ -165,7 +165,7 @@ header            = 'v1' , newline ,
 source-name       = quotable-string ;  // Max length of 100.
 
 body              = { ecd-line } ;
-ecd-line          = element-line | dependency-line;
+ecd-line          = element-line | dependency-line , newline;
 
 dependency-line   = nesting , { nesting } , '>' , space , absolute-path | child-segment | element-query ,            [ dependency-name ] , [ tags ] , newline;
 element-line      =           { nesting } ,               absolute-path | relative-path | element-query , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
@@ -175,9 +175,9 @@ level             = '[error]' | '[warning]' | '[info]' ;
 nesting           = space , space ;  // Indentation of 2 spaces for each nesting level. Nesting works like a stack, as one would expect: 1) A line can only make the nesting deeper by one level. 2) When a line returns to a shallower level of nesting, it "pops" the parents that were previously nested at that level or deeper.
 space             = ' ' ;
 
-absolute-path     = quotable-string ;  // Must start with slash '/'. Max length of 1024.
 child-segment     = quotable-string ;  // Must not contain slash '/'.
 element-query     = quotable-string ;  // Must start with '/*/'.
+absolute-path     = quotable-string ;  // Must start with slash '/'. Max length of 1024.
 relative-path     = quotable-string ;  // Must not start with slash '/'.
 
 dependency-name   = quotable-string ;  // Max length of 128. It must be quoted if it starts with '(' (open-brackets).
