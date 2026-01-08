@@ -58,9 +58,9 @@ The second line in the file is `source` followed by the name of the [source](/Co
 Each line that follows is one of:
  - [Element Line](#element-line)
  - [Dependency Line](#dependency-line)
- - [Alert Line](#alert-line).
+ - [Alert Line](#alert-line)
 
-A containment is declared simply by nesting an Element Line below another.
+A Containment is declared simply by nesting an Element Line below another.
 
 #### Nesting
 
