@@ -10,7 +10,7 @@ There is a more formal [syntax specification](#appendix---syntax) at the end.
 
 ## License
 
-This format is Copyright Jux Tecnologia ltda. You may use it freely. If you use a similar format that is not compatible with the latest version of this file format, you are not allowed to call it "ECD" or similar.
+This format is Copyright Jux Tecnologia ltda. You may use it freely. To avoid incompatibility hell, if you use a similar format that is not compatible with the latest version of this file format, you are not allowed to call it "ECD" or similar.
 
 ## Example
 ```
