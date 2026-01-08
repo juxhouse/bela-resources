@@ -8,6 +8,10 @@ This ECD format is designed for conciseness and readability. It is also extensib
 
 There is a more formal [syntax specification](#appendix---syntax) at the end.
 
+## License
+
+This format is Copyright Jux Tecnologia ltda. You may use it freely. If you use a similar format that is not compatible with the latest version of this file format, you are not allowed to call it "ECD" or similar.
+
 ## Example
 ```
 v1
