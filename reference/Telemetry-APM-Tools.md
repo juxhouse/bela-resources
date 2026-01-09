@@ -20,7 +20,7 @@ As APM views grow, they become cluttured and unmanageable:
 
 <br><br>
 
-Some tools fall back to circular layouts — visually interesting, architecturally meaningless:
+Some tools fall back to circular layouts. They are visually interesting but architecturally meaningless:
 
 ![Architecture](traditional-apm-tools-circular-layout.png)
 
