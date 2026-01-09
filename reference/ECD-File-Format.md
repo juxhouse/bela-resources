@@ -100,7 +100,7 @@ A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable s
 A [quotable string](#quotable-string) that does not start with slash `/`. It will be appended to the path of the previous [Base Element](#base-element) to form an [Absolute Path](#absolute-path).
 
 #### Child Path Segment
-A nested child element is declared using only its last path segment. Its path will be composed of its parent's path + `/` + this segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Child elements are IMPLICITLY contained by their parent and cannot de explicitly contained by any other built element.
+A nested child element is declared using only its last path segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Its path will be composed of its parent's path + `/` + this segment. Child elements are IMPLICITLY contained by their parent and cannot de explicitly contained by any other built element.
 
 #### Element Query
 Slash-asterisk-slash `/*/` followed by the last path segment of some element. Example: `/*/getAddress()`.
