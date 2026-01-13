@@ -125,7 +125,7 @@ A [quotable string](#quotable-string) with max length of 128. Example: `"GET cus
 
 #### Custom Metadata
 
-Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, stripped of newline characters. JSON already requires newlines to be escaped in strings anyway.
+Each line can have custom metadata as a JSON object at the end. It must be formatted as a single line, without newline characters (default in most JSON libs).
 
 The `description` attribute of this JSON object is the element's description. All other attributes are displayed by BELA as metadata in the element details panel.
 
