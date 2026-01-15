@@ -53,7 +53,7 @@ openai.api.token=openai-api-token
 
 You can run multiple BELA instances to isolate access to different codebases and distribute BELA’s computational load.
 
-You can use a different DNS subdomains for each BELA instance or you can use a single DNS domain with different URL Prefixes.
+You can use a different DNS subdomain for each BELA instance or you can use a single DNS domain with different URL Prefixes.
 
 [Set up URL Prefixes](/reference/URL-Prefix.md)
 
