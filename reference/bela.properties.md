@@ -21,23 +21,24 @@ Anyone will be able access BELA without needing to log in. That's the simplest c
 This is sample bela.properties file with more configuration options:
 
 ```properties
+# Only enable this (instead of other auth configs below) if you want to allow anonymous read and WRITE access.
+# anonymous=true
+
 # The email of the owner of the BELA installation within your organization.
 owner.email=person@your-company.com
 
 # URL Prefix for this BELA instance (optional). See below.
 # url.prefix={your-url-prefix}
 
-# URL for your SSO provider's OpenID configuration. It must follow this pattern:
+# URL for your SSO provider's OpenID configuration. It must follow this pattern: https://{host}/.well-known/openid-configuration
 openid.configuration.url=https://{host}/.well-known/openid-configuration
 # Client ID for BELA, as provided by your SSO provider.
 openid.client.id=your-client-id
 # Client secret for BELA, as provided by your SSO provider.
 openid.client.secret=your-client-secret
 
-# Enable this instead of the openid configs above if you want to use user+password authentication:
-# auth.passwords=true
-# Enable this instead of the password configs above if you want open, anonymous access:
-# anonymous=true
+# Enable this instead of the openid configs above if you want to use user+password authentication.
+auth.passwords=false
 
 # Token for accessing BELA's architecture API endpoint. You can set any string of random letters and digits.
 architecture.api.token=your-api-token
