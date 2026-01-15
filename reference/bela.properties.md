@@ -21,7 +21,7 @@ Anyone will be able access BELA without needing to log in. That's the simplest c
 This is sample bela.properties file with more configuration options:
 
 ```properties
-# Only enable this (instead of other auth configs below) if you want to allow anonymous read and WRITE access.
+# Only enable this (instead of the authentication methods below) if you want to allow anonymous read and WRITE access.
 # anonymous=true
 
 # The email of the owner of the BELA installation within your organization.
