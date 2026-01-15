@@ -71,11 +71,11 @@ const createUpdateFileStream = (filename, datadogData) => {
   writeLine(sourceLine);
 
   for (const [service, details] of Object.entries(datadogData)) {
-    writeLine(`*/${service}`);
+    writeLine(`/*/${service}`);
 
     const calls = details.calls || [];
     for (const call of calls) {
-      writeLine(`> */${call}`, 2);
+      writeLine(`> /*/${call}`, 2);
     }
   }
 
@@ -113,5 +113,6 @@ const run = async () => {
 }
 
 run();
+
 
 
