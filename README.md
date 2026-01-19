@@ -7,9 +7,9 @@ The Browser for Enterprise-Level Architecture
 ## Main Features
 
 - Live dependency diagrams integrating all your source code repositories and Application Performance Monitoring (APM) data.
+- Single source of truth for manually modeled elements across your entire organization. No more copy-and-pasting outdated diagrams.
 - Simple C4 model notation.
-- Infinite levels of element expand/collapse from high-level containers down to code.
-- Single source of truth for manually modeled elements across your entire organization.
+- Infinite levels of element expanding/collapsing, from high-level containers down to code.
 
 
 ## Concepts
