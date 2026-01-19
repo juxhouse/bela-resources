@@ -87,6 +87,6 @@ See [upload example](/updaters/reference/upload-example.md).
 
 Your updated source will appear in the Sources screen: `BELA Main Menu > Sources`.
 
-You can also search (🔍) BELA for elements (classes, functions, methods, etc) that are present in the source you just updated.
+You can now search (🔍) BELA for elements (classes, functions, methods, etc) that are present in the source you just updated.
 
 If you have any trouble, please [contact us](/README.md#contact-us).
