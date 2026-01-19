@@ -1,8 +1,8 @@
 # Synchronize a Code Repository
 
-These are the steps to update your BELA instance with the architecture data from your software project.
+These are the steps to update your BELA instance with the [architecture data](/Concepts.md#ecds) from your software project. Only metadata down to method/function/field name level is sent. The actual lines of code are not.
 
-If you set them up as a repository action or as an optional step after your main CI/CD pipeline has completed, BELA will always be in sync with your latest code.
+If you set this up as a repository action or as an optional step after your main CI/CD pipeline has completed, BELA will always be in sync with your latest code.
 
 ## 1. Build Your Project
 
@@ -28,6 +28,7 @@ Build your project according to its language and build tool:
  - Ruby ([get in touch](/README.md#contact-us))
  - [Typescript](/updaters/Typescript.md)
 
+If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
 ## 2. Run the BELA Updater Docker App
 
