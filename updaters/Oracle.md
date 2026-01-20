@@ -4,11 +4,9 @@ Make sure your Oracle database schema is accessible through a JDBC connection wi
 
 ```jdbc:oracle:thin:MyUser/MyPassword@//localhost:1521/freepdb1```
 
-This JDBC URL must be passed as a parameter for the `BELA_UPDATER` Docker app command:
+The next step will be to run the .NET BELA Updater app on your to export your database sceham. When you do that, you must pass this JDBC URL as a parameter:
 ```
 docker run ... juxhouse/bela-updater-oracle -jdbc "jdbc:oracle:thin:MyUser/MyPassword@//localhost:1521/freepdb1" ...
 ```
-
-The schema for this user, with all its objects, table columns and dependencies will be exported.
 
 You are now ready to [go back](/CodeSynchronization.md) and run the BELA Updater for Oracle.
