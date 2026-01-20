@@ -73,7 +73,7 @@ This argument indicates the [source](/Concepts.md#sources) for the elements bein
 
 #### -parent-element-path (Optional)
 
-This optional argument will import your projects' elements as the contents of some parent element. If your project is the implementation of a microservice for example, you can import it inside that microservice, like this:
+This optional argument will export your projects' elements as the contents of some parent element. If your project is the implementation of a microservice for example, you can export it like this:
 ```
   -parent-element-path service/my-service
 ```
