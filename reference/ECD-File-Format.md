@@ -64,7 +64,7 @@ Each line that follows is one of:
  - [Dependency Line](#dependency-line)
  - [Alert Line](#alert-line)
 
-A Containment is declared simply by nesting an Element Line below another.
+An [explicit Containment](Concepts.md#implicit-vs-explicit-containments) is declared simply by nesting an Element Line below another.
 
 #### Nesting
 
