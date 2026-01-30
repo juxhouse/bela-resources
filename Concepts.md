@@ -3,19 +3,19 @@
 
 ## Software Structure (ECDs)
 
-"Software structure" is composed of ECDs ([Elements](#element), [Containments](#containment) and [Dependencies](#dependency)).
+"Software structure" is composed of ECDs ([Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies)).
 
 "Structure" is a precise term that works uniformly at all levels of abstracion, from high-level architecture to mid-level design and low-level implementation.
 
 ECDs are the only fundamental concepts necessary to represent and explore software structure.
 
 
-## Element
+## Elements
 
 Elements are the nouns that compose software structure: projects, classes, methods, etc.
 
 
-#### Element Type
+#### Element Types
 
 Each Element has a type, shown in [brackets].
 
@@ -23,45 +23,25 @@ Element type examples: domain, system, project, service, component, namespace, p
 
 You can create your own element types.
 
-#### Modeled Element
+#### Modeled Elements
 
 Modeled elements are manually created (modeled) in BELA and do not exist in your production artifacts. They are useful for modeling third-party systems and exploring plans for the future.
 
 You can change their name, type, description and other attributes at will.
 
-#### Built Element
+#### Built Elements
 
 Built elements refer to elements that actually exist in your production artifacts and are synced to BELA. They cannot be individually deleted or altered (only augmented) by any user. See [Sources](#sources) below.
 
 > [!TIP]
 > You can use the `Diagram Legend` tool (question-mark icon on the bottom-left) to see the colors and styles used to display different ECDs.
 
-#### Built Element Path
+#### Element Names
 
-Every **built** element is identified by a `path` made up of slash-separated `segments`.
-
-Examples:
- - `service/customers`
- - `assembly/MyAssembly/MyNamespace/MyInterface`
- - `maven/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String)`
-
-The first segment of the path is a `type`. It works as a namespace, allowing for different types of elements with the same name.
-
-#### Element Name
-
-Element names can be user-friendly and don't need to be unique. They can use any UTF-8 characters including emojis and spaces.
-
-Examples:
-```
-Name            Type        Path
---------------- ---------   -------------------------------------------------------------------------------------
-Customers       [service]   service/customers
-MyInterface     [interface] assembly/MyAssembly/MyNamespace/MyInterface
-setName(String) [method]    maven/group-id:artifact-id/org.mycompany/customers/Customer/setName(java.lang.String)
-```
+Element names can be user-friendly and don't need to be unique. They can use UTF-8 characters including emojis and spaces.
 
 
-## Containment
+## Containments
 
 An element can contain other elements, forming an arbitrarily deep containment hierarchy.
 
@@ -80,14 +60,15 @@ A project can contain a package, for example, which can contain a class, which c
 
 A top-level element is an element that is not contained by any other.
 
-## Dependency
+## Dependencies
 
 Any element can depend on any other element.
 
 Dependencies are uniquely identified by the "from" and "to" elements, and an optional name.
 
-> [!IMPORTANT]
-> If there is a dependency line from element A to element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency line that is pointing upward will be displayed in red.
+#### Automatic Layout
+
+When there is a dependency line from element A to element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency line that is pointing upward will be displayed in red.
 
 #### Dataflow Direction
 
@@ -95,6 +76,32 @@ Dependencies can be tagged with "read" and/or "write" tags. This dataflow direct
 
 Dataflow direction is independent of dependency direction.
 
+
+## Paths
+
+Every [built element](#built-elements) is identified by a `path` composed of slash-separated `segments`.
+
+The first segment of the path is a `type`. It works as a namespace, avoiding path conflicts among top-level elements of different types. Paths always have at least 2 segments, therefor.
+
+Examples paths and element types from C#:
+ - `assembly/MyAssembly [assembly]`
+ - `assembly/MyAssembly/MyNamespace [namespace]`
+ - `assembly/MyAssembly/MyNamespace/MyInterface [interface]`
+
+Examples paths and element types from Java:
+ - `maven/org.acme:customers [maven]`
+ - `maven/org.acme:customers/org.acme [package]`
+ - `maven/org.acme:customers/org.acme/customers [package]`
+ - `maven/org.acme:customers/org.acme/customers/Customer [class]`
+ - `maven/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String) [method]`
+
+#### Implicit Containments
+
+Paths define **implicit**, unbreakable containments between child elements and their parents.
+
+This means that elements with implicit parents cannot be contained by other elements.
+
+In the examples above, `assembly/MyAssembly` and `maven/org.acme:customers [maven]` are the only elements without implicit parents, so only they can be contained by other elements.
 
 ## Sources
 
@@ -113,3 +120,7 @@ The source name is sent to BELA when ECDs are uploaded.
 BELA will garbage collect ECDs that are no longer present in any source. That is the purpose of sources.
 
 Admins can delete a source, which will delete all ECDs that were present exclusively in that source.
+
+## See Also
+
+See these concepts applied by the [API](API.md).
