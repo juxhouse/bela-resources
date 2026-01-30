@@ -12,7 +12,7 @@ ECDs are the only fundamental concepts necessary to represent and explore softwa
 
 ## Element
 
-Software elements are the nouns that compose software structure: projects, classes, methods, etc.
+Elements are the nouns that compose software structure: projects, classes, methods, etc.
 
 
 #### Element Type
