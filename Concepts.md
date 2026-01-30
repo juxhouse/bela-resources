@@ -101,7 +101,7 @@ Paths define **implicit**, unbreakable containments between child elements and t
 
 This means that elements with implicit parents cannot be contained by other elements.
 
-In the examples above, `assembly/MyAssembly` and `maven/org.acme:customers [maven]` are the only elements without implicit parents, so only they can be contained by other elements.
+In the examples above, `assembly/MyAssembly` and `maven/org.acme:customers` are the only elements without implicit parents. They are free to be contained by other elements.
 
 ## Sources
 
