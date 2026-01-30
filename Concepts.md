@@ -95,9 +95,9 @@ Examples paths and element types from Java:
  - `maven/org.acme:customers/org.acme/customers/Customer [class]`
  - `maven/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String) [method]`
 
-#### Implicit Containments
+#### Implicit vs Explicit Containments
 
-Paths define **implicit**, unbreakable containments between child elements and their parents.
+Path segments define **implicit**, unbreakable containments between child elements and their parents.
 
 This means that elements with implicit parents cannot be contained by other elements.
 
