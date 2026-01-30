@@ -45,7 +45,7 @@ Examples:
  - `assembly/MyAssembly/MyNamespace/MyInterface`
  - `maven/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String)`
 
-The first segment of the path is a `type`. It works as a namespace, allowing for different types of elements with the same name. These are the `root elements` in the examples above: `service/customers`, `assembly/MyAssembly` and `maven/org.acme:customers`.
+The first segment of the path is a `type`. It works as a namespace, allowing for different types of elements with the same name.
 
 #### Element Name
 
@@ -53,17 +53,19 @@ Element names can be user-friendly and don't need to be unique. They can use any
 
 Examples:
 ```
-Type        Name              Path
----------   ---------------   ----------------------------------------------------------------------------------------------
-service     Customers         service/customers
-interface   MyInterface       dotnet-assembly/MyAssembly/MyNamespace/MyInterface
-method      setName(String)   maven-group/group-id/artifact-id/org.mycompany/customers/Customer/setName(java.lang.String)
+Name            Type        Path
+--------------- ---------   -------------------------------------------------------------------------------------
+Customers       [service]   service/customers
+MyInterface     [interface] assembly/MyAssembly/MyNamespace/MyInterface
+setName(String) [method]    maven/group-id:artifact-id/org.mycompany/customers/Customer/setName(java.lang.String)
 ```
 
 
 ## Containments
 
-A containment is the relationship between a parent element and a child element. Parent elements can also be called "containers".
+A containment is the relationship between a parent element and a child element. Parent elements are also called "containers".
+
+Containment hierarchies can beel arbitrarily deep.
 
 Restrictions:
  - An element can be contained by at most one direct parent (like folders in a file system).
@@ -71,17 +73,12 @@ Restrictions:
 
 A project can contain a package, for example, which can contain a class, which can contain a method. BELA does not have any containment restrictions based on element types.
 
+> [!NOTE]
+> BELA does not have a special meaning for the term "container". We use the common meaning of the word, as in "Russian dolls".
+
 #### Top-level Elements
 
 A top-level element is an element that is not contained by any other.
-
-Example paths of top-level **built** elements:
- - domain/Billing
- - service/customers
- - project/SomeApp
-
-> [!NOTE]
-> The standard C4 model, which inspires BELA's graphics, defines a specific meaning for "containers" and allows them only at a single level. BELA uses the more general meaning of "container" which is simply an element that contains other elements, and allows containments at infinite levels, like Russian dolls.
 
 ## Dependencies
 
