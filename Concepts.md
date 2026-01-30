@@ -1,19 +1,19 @@
 # BELA Concepts
 
-## ECDs
 
-ECDs are software [Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies).
+## Software Structure (ECDs)
 
-They are the only fundamental concepts necessary to represent and explore software architecture structure. More on them below.
+"Software structure" is a collection of ECDs ([Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies)).
 
+It is a precise term that works uniformly regardless of the level of abstracion, from high-level architecture to mid-level design and low-level implementation.
 
-## Architecture
+ECDs are the only fundamental concepts necessary to represent and explore software structure.
 
-Architecture is simply a collection of ECDs.
 
 ## Elements
 
 Software elements are the nouns that compose software structure: projects, classes, methods, etc.
+
 
 #### Element Type
 
@@ -25,11 +25,11 @@ You can create your own element types.
 
 #### Modeled Elements
 
-**Modeled** Elements are manually created (modeled) in BELA and do not exist in your production artifacts. They are useful for modeling third-party systems and architecture plans for the future.
+**Modeled** elements are manually created (modeled) in BELA and do not exist in your production artifacts. They are useful for modeling third-party systems and exploring plans for the future.
 
 #### Built Elements
 
-**Built** elements refer to elements that actually exist in your production environments. They are imported to BELA and cannot be deleted or altered (only augmented) by any user. See "Sources" below.
+**Built** elements refer to elements that actually exist in your production artifacts. They are imported to BELA and cannot be deleted or altered (only augmented) by any user. See "Sources" below.
 
 
 > [!TIP]
