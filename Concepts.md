@@ -3,9 +3,9 @@
 
 ## Software Structure (ECDs)
 
-"Software structure" is a collection of ECDs ([Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies)).
+"Software structure" is composed of ECDs ([Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies)).
 
-It is a precise term that works uniformly regardless of the level of abstracion, from high-level architecture to mid-level design and low-level implementation.
+"Structure" is a precise term that works uniformly at all levels of abstracion, from high-level architecture to mid-level design and low-level implementation.
 
 ECDs are the only fundamental concepts necessary to represent and explore software structure.
 
@@ -27,17 +27,14 @@ You can create your own element types.
 
 **Modeled** elements are manually created (modeled) in BELA and do not exist in your production artifacts. They are useful for modeling third-party systems and exploring plans for the future.
 
+You can change their name, type, description and other attributes at will.
+
 #### Built Elements
 
-**Built** elements refer to elements that actually exist in your production artifacts. They are imported to BELA in bulk and cannot be individually deleted or altered (only augmented) by any user. See [Sources](#sources) below.
-
+**Built** elements refer to elements that actually exist in your production artifacts and are synced to BELA. They cannot be individually deleted or altered (only augmented) by any user. See [Sources](#sources) below.
 
 > [!TIP]
-> You can use the `Diagram Legend` tool from BELA's main menu to see the colors in which different ECDs are diplayed.
-
-
-
-
+> You can use the `Diagram Legend` tool (question-mark icon on the bottom-left) to see the colors and styles used to display different ECDs.
 
 #### Built Element Path
 
@@ -104,7 +101,7 @@ Dataflow direction is independent of dependency direction.
 
 ## Sources
 
-A Source indicates where each [built](#built-vs-modeled) ECD exists in your architecture: a code repository, a config file, an APM tool, etc.
+A Source indicates where each [built](#built-elements) ECD exists in your architecture: a code repository, a config file, an APM tool, etc.
 
 Examples sources:
  - "my-repo"
