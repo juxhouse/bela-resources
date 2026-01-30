@@ -29,7 +29,7 @@ You can create your own element types.
 
 #### Built Elements
 
-**Built** elements refer to elements that actually exist in your production artifacts. They are imported to BELA and cannot be deleted or altered (only augmented) by any user. See "Sources" below.
+**Built** elements refer to elements that actually exist in your production artifacts. They are imported to BELA in bulk and cannot be individually deleted or altered (only augmented) by any user. See [Sources](#sources) below.
 
 
 > [!TIP]
