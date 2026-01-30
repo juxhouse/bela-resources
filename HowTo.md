@@ -15,7 +15,7 @@ This is a list of essential, non-obvious BELA features.
  - **Right-drag:** Scroll diagram in all directions.
  - **Mouse wheel:** Zoom in/out (like Google maps).
 
-If you’re not using a standard 2-button mouse, check how your pointing device maps these actions. On Mac trackpads, for example, a two-finger tap acts as right-click, while a soft press and two-finger drag scrolls the diagram.
+If you’re not using a standard 2-button mouse, check how your pointing device maps these actions. On Mac trackpads, for example, a two-finger tap acts as right-click, while a two-finger drag scrolls the diagram.
 
 ## Diagram Legend
 
