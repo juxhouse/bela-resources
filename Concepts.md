@@ -1,5 +1,8 @@
 # BELA Concepts
 
+This is the most critical page for understanding BELA.
+
+Using BELA without these concepts is like trying to drive a car without knowing what the pedals or gears are for.
 
 ## Software Structure (ECDs)
 
