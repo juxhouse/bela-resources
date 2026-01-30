@@ -11,27 +11,35 @@ They are the only fundamental concepts necessary to represent and explore softwa
 
 Architecture is simply a collection of ECDs.
 
-#### Built vs Modeled
-
-**Built** architecture or **built** ECDs refer to ECDs that actually exist in your production environments. They are imported to BELA and cannot be deleted or altered (only augmented) by any user. See "Sources" below.
-
-**Modeled** architecture or **modeled** ECDs refer to ECDs that have been manually created in BELA and do not exist in your production environments.
-
-> [!TIP]
-> You can use the `Diagram Legend` tool from BELA's main menu to see the colors in which different ECDs are diplayed.
-
-
 ## Elements
 
-Software elements are the nouns in your architecture: projects, classes, methods, etc.
+Software elements are the nouns that compose software structure: projects, classes, methods, etc.
 
 #### Element Type
+
+Each Element has a type, shown in [brackets].
 
 Element type examples: domain, system, project, service, component, namespace, package, interface, classe, function, method, field, database, bucket, table, data-set, endpoint, topic, queue, etc.
 
 You can create your own element types.
 
-#### Element Path
+#### Modeled Elements
+
+**Modeled** Elements are manually created (modeled) in BELA and do not exist in your production artifacts. They are useful for modeling third-party systems and architecture plans for the future.
+
+#### Built Elements
+
+**Built** elements refer to elements that actually exist in your production environments. They are imported to BELA and cannot be deleted or altered (only augmented) by any user. See "Sources" below.
+
+
+> [!TIP]
+> You can use the `Diagram Legend` tool from BELA's main menu to see the colors in which different ECDs are diplayed.
+
+
+
+
+
+#### Built Element Path
 
 Every **built** element is identified by a `path` made up of slash-separated `segments`.
 
@@ -40,7 +48,7 @@ Examples:
  - `assembly/MyAssembly/MyNamespace/MyInterface`
  - `maven/org.acme:customers/org.acme/customers/Customer/setName(java.lang.String)`
 
-The first segment of the path is the `type` of the `root element`. That allows for different types of elements with the same name. These are the `root elements` in the examples above: `service/customers`, `assembly/MyAssembly` and `maven/org.acme:customers`.
+The first segment of the path is a `type`. It works as a namespace, allowing for different types of elements with the same name. These are the `root elements` in the examples above: `service/customers`, `assembly/MyAssembly` and `maven/org.acme:customers`.
 
 #### Element Name
 
