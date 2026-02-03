@@ -1,14 +1,14 @@
 # BELA Concepts
 
-This is the most critical page for understanding BELA.
+This page is critical to understanding BELA.
 
 Using BELA without these concepts is like trying to drive a car without knowing what the pedals or gears are for.
 
 ## Software Structure (ECDs)
 
-"Software structure" is composed of ECDs ([Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies)).
+Software structure is made of ECDs: [Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies).
 
-"Structure" is a precise term that works uniformly at all levels of abstracion, from high-level architecture to mid-level design and low-level implementation.
+"Structure" is a precise term that works uniformly at all levels of abstracion. We use it instead of the vague and limited terms "architecture", "design" and "implementation".
 
 ECDs are the only fundamental concepts necessary to represent and explore software structure.
 
