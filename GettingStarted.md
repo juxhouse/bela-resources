@@ -8,9 +8,9 @@ In the meantime, you can get a jump start by understanding these basic concepts:
 
 The lines connecting elements represent **dependencies**. As a **convention**, elements always **depend on elements that are below** them.
 
-In this example, the webapp package depends on the Booking and FlightSearch classes.
+In this example, the webapp package depends on the `Booking` and `FlightSearch` classes.
 
-They, in turn, depend on the Databases grouping.
+They, in turn, depend on the `Databases` grouping.
 
 ![Dependency Orientation](assets/diagram1.png)
 
@@ -52,7 +52,7 @@ Drill into the search package to reveal its classes.
 
 ## Reveal the elements inside a class
 
-Double-click on a class to reveal its elements: fields, methods, constructor, and their dependencies.
+Double-click on a class to reveal its elements: *fields*, *methods*, *constructors*, and their *dependencies*.
 
 ![Reveal the elemtns inside a class](assets/diagram6.png)
 
