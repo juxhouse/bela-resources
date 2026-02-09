@@ -1,6 +1,6 @@
 # Getting Started with BELA
 
- - Please [schedule an onboarding call](https://calendar.app.google/C5y4SqGjAE8CDKuz5) at your earliest convenience.
+Please [schedule an onboarding call](https://calendar.app.google/C5y4SqGjAE8CDKuz5) at your earliest convenience.
 
 In the meantime, you can get a jump start by understanding these basic concepts:
 
