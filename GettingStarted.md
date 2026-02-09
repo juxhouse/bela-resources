@@ -2,7 +2,75 @@
 
  - [Schedule an onboarding call](https://calendar.app.google/C5y4SqGjAE8CDKuz5) at your earliest convenience.
 
-In the meantime, you can get a jump start:
+In the meantime, you can get a jump start by understanding these basic concepts:
+
+## Dependency orientation
+
+The lines connecting elements represent dependencies. As a convention, elements always depend on elements that are below them.
+
+In this example, the webapp package depends on the Booking and FlightSearch classes.
+
+They, in turn, depend on the Databases grouping.
+
+![Dependency Orientation](assets/diagram1.png)
+
+## Built x modeled elements
+
+BELA can be used to browse built and modeled elements.
+
+Built elements are extracted automatically from your source code. They’re represented in the diagram by shapes that have a blue background.
+
+Modeled elements are the ones you create directly in BELA when you’re planning future changes to your software. They’re represented by shapes that have a white background.
+
+Black lines represent built dependencies, that is, real dependencies extracted from your source code.
+
+Blue lines represent modeled dependencies.
+
+![Build x modeled elements](assets/diagram2.png)
+
+## High level view
+
+Drill into unlimited levels of detail, from big-picture down to code.
+
+In this example, you can see the high-level diagram of a simple Airline system.
+
+It contains only the most important macro elements and their dependencies.
+
+![High level view](assets/diagram3.png)
+
+## Package contents
+
+Double-click on a package to browse its contents.
+
+![Package contents](assets/diagram4.png)
+
+## Reveal the classes inside
+
+Drill into the search package to reveal its classes.
+
+![Reveal the classes inside](assets/diagram5.png)
+
+## Reveal the elements inside a class
+
+Double-click on a class to reveal its elements: fields, methods, constructor, and their dependencies.
+
+![Reveal the elemtns inside a class](assets/diagram6.png)
+
+## Create meaningful diagrams
+
+Create as many diagrams as you want, each revealing an important aspect of your software.
+
+Pick and choose specific elements in order to have a better understanding of them and their dependencies.
+
+![Create meaningful diagrams](assets/diagram7.png)
+
+## See BELA in action
+
+BELA is specially useful when you’re dealing with large systems. You can navigate the elements in a way similar to what you do with Google Maps. Check out the video below for an example of that.
+
+[![BELA WorldZoom](https://img.youtube.com/vi/TpLsRka5Dm4/0.jpg)](https://www.youtube.com/watch?v=TpLsRka5Dm4)
+
+## More Info
 
  - Visit the [BELA homepage](https://bela.live).
  - Watch [short videos](https://www.youtube.com/@JuxBELA/videos) on advanced AI features.
