@@ -29,7 +29,7 @@ They, in turn, depend on the `Databases` grouping.
 
 ## High level view
 
-**Drill into unlimited levels of detail**, from big-picture down to code.
+**Double-click** to drill into unlimited levels of detail, from big-picture down to code.
 
 In this example, you can see the **high-level diagram** of a simple Airline system.
 
