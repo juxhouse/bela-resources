@@ -4,29 +4,28 @@ Please [schedule an onboarding call](https://calendar.app.google/C5y4SqGjAE8CDKu
 
 In the meantime, you can get a jump start by understanding these basic concepts:
 
+## Built vs modeled elements
+
+BELA enables you to browse **built** and **modeled** elements.
+
+**Built** elements and dependencies are **extracted automatically** from your source code. They’re represented in the diagram by **black** lines and text, with **blue** background.
+
+**Modeled** elements and dependencies are the ones **you create manually in BELA** when doing high-level architecture or planning future changes to your software. They’re represented by **dark green** lines and text, with **white** background.
+
+
+**Cyan lines** represent **modeled dependencies**.
+
+![Build x modeled elements](assets/diagram2.png)
+
 ## Dependency orientation
 
-The lines connecting elements represent **dependencies**. As a **convention**, elements always **depend on elements that are below** them.
+The lines connecting elements are **dependencies**. By convention, elements depend on elements that are **below** them.
 
-In this example, the webapp package depends on the `Booking` and `FlightSearch` classes.
+In this example, the `webapp` package depends on the `Booking` and `FlightSearch` classes.
 
 They, in turn, depend on the `Databases` grouping.
 
 ![Dependency Orientation](assets/diagram1.png)
-
-## Built x modeled elements
-
-BELA can be used to browse **built** and **modeled elements**.
-
-**Built elements** are **extracted automatically** from your source code. They’re represented in the diagram by shapes that have a **blue background**.
-
-**Modeled elements** are the ones **you create directly in BELA** when you’re planning future changes to your software. They’re represented by shapes that have a **white background**.
-
-**Black lines** represent **built dependencies**, that is, real dependencies extracted from your source code.
-
-**Blue lines** represent **modeled dependencies**.
-
-![Build x modeled elements](assets/diagram2.png)
 
 ## High level view
 
