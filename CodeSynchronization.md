@@ -36,19 +36,15 @@ It will analyse your project and produce the `.bela/bela-update.ecd` file with [
 
 Set the `BELA_UPDATER` environment variable to the appropriate docker image for your language below. These images can be downloaded anonymously, without a token. You are authorized to execute them only to generate data to be sent to a licensed BELA instance. You are not licensed to read their contents or use them for any other purpose.
 
-| Language | BELA_UPDATER Docker Image |
+| Language | Command |
 |----------|-------------------------|
-| C# | juxhouse/bela-updater-dotnet |
-| Clojure | juxhouse/bela-updater-clojure |
-| Java | juxhouse/bela-updater-java |
-| Javascript | juxhouse/bela-updater-typescript |
-| Oracle | juxhouse/bela-updater-oracle |
-| Typescript | juxhouse/bela-updater-typescript |
+| C# | BELA_UPDATER=juxhouse/bela-updater-dotnet |
+| Clojure | BELA_UPDATER=juxhouse/bela-updater-clojure |
+| Java | BELA_UPDATER=juxhouse/bela-updater-java |
+| Javascript | BELA_UPDATER=juxhouse/bela-updater-typescript |
+| Oracle | BELA_UPDATER=juxhouse/bela-updater-oracle |
+| Typescript | BELA_UPDATER=juxhouse/bela-updater-typescript |
 
-Example for Javascript/Typescript:
-```
-BELA_UPDATER=juxhouse/bela-updater-typescript
-```
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
 Run the `BELA_UPDATER` Docker app:
