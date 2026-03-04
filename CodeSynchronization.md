@@ -38,12 +38,12 @@ Set the `BELA_UPDATER` environment variable to the appropriate docker image for 
 
 | Language | Command |
 |----------|-------------------------|
-| C# | BELA_UPDATER=juxhouse/bela-updater-dotnet |
-| Clojure | BELA_UPDATER=juxhouse/bela-updater-clojure |
-| Java | BELA_UPDATER=juxhouse/bela-updater-java |
-| Javascript | BELA_UPDATER=juxhouse/bela-updater-typescript |
-| Oracle | BELA_UPDATER=juxhouse/bela-updater-oracle |
-| Typescript | BELA_UPDATER=juxhouse/bela-updater-typescript |
+| C# | `BELA_UPDATER=juxhouse/bela-updater-dotnet` |
+| Clojure | `BELA_UPDATER=juxhouse/bela-updater-clojure` |
+| Java | `BELA_UPDATER=juxhouse/bela-updater-java` |
+| Javascript | `BELA_UPDATER=juxhouse/bela-updater-typescript` |
+| Oracle | `BELA_UPDATER=juxhouse/bela-updater-oracle` |
+| Typescript | `BELA_UPDATER=juxhouse/bela-updater-typescript` |
 
 If your language is not supported, you can use a code analysis tool for your language and call BELA's [generic API](API.md) directly. You can also hire BELA developers to build that integration for you.
 
