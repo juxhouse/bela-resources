@@ -3,15 +3,15 @@
 To upload to a BELA backend running anonymously on your local machine:
 
 ```
-curl -f "http://localhost:8081/api/ecd-architecture" \
+curl -f 'http://localhost:8081/api/ecd-architecture' \
      --data-binary @.bela/bela-update.ecd
 ```
 
 To upload to a remote BELA backend:
 
 ```
-curl -f -k "https://$BELA_HOST/api/ecd-architecture" \
-     -H "Authorization: $BELA_API_TOKEN" \
+curl -f -k 'https://$BELA_HOST/api/ecd-architecture' \
+     -H 'Authorization: $BELA_API_TOKEN' \
      --data-binary @.bela/bela-update.ecd
 ```
 
@@ -23,8 +23,8 @@ Run the following command in your CICD pipeline to allow any project to have a `
 
 ```
 if [ -f .bela/diagram-as-code.ecd ]; then
-  curl -f "https://$BELA_HOST/api/ecd-architecture" \
-       -H "Authorization: $BELA_API_TOKEN" \
+  curl -f 'https://$BELA_HOST/api/ecd-architecture' \
+       -H 'Authorization: $BELA_API_TOKEN' \
        --data-binary @.bela/diagram-as-code.ecd
 fi
 ```
