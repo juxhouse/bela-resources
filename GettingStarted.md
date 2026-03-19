@@ -72,17 +72,14 @@
 
 # What can I do with BELA?
 
-BELA enables you to browse both **built** and **modeled** elements.
+BELA enables you to visualize your actual software architecture and to create models manually too.
 
-**Built** elements and dependencies are **extracted automatically** from your source code. They are represented in the diagram by **black** lines and text on a **blue** background.
-
-**Modeled** elements and dependencies are the ones **you create manually in BELA** when doing high-level architecture or planning future changes to your software. They are represented by **dark green** lines and text on a white background.
-
-**Cyan lines** represent **modeled dependencies**.
+- **Built elements** (blue boxes) are extracted automatically from your source code.
+- **Built dependencies** (black lines) are extracted automatically from your source code.
+- **Modeled elements** (white boxes with cyan text) are the elements you create manually in BELA.
+- **Modeled dependencies** (cyan lines) are the dependencies you create manually in BELA.
 
 <img src="assets/image30.png" style="width:6.26772in;height:7.80556in" />
-
-<img src="assets/image13.png" style="width:6.26772in;height:5.76389in" />
 
 # How can I understand a diagram in BELA?
 
