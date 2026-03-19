@@ -2,7 +2,7 @@
 
 ## Uploading Manually
 
-<img src="/assets/image20.gif" style="width:6.26772in;height:4.06944in" />
+<img src="/assets/image20.gif" style="width:9.26772in;height:6.06944in" />
 
 ## Uploading via API
 
