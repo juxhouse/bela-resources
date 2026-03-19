@@ -20,11 +20,7 @@
 >
 > [How can I browse different levels of structure?](#how-can-i-browse-different-levels-of-structure)
 
-[**How can I import the structure of my code into BELA?**](#how-can-i-import-the-structure-of-my-code-into-bela)
-
-> [How can I upload the ECD file to BELA manually?](#how-can-i-upload-the-ecd-file-to-bela-manually)
->
-> [How can I upload the ECD file to BELA automatically?](#how-can-i-upload-the-ecd-file-to-bela-automatically)
+[**How can I see my code in BELA?**](#how-can-i-see-my-code-in-bela)
 
 [**How can I model elements and dependencies?**](#how-can-i-model-elements-and-dependencies)
 
@@ -162,7 +158,9 @@ To collapse a container that has been previously opened, double-click it again.
 
 <img src="assets/image31.gif" style="width:6.26772in;height:4.06944in" />
 
-# How can I import the structure of my code into BELA?
+# How can I see my code in BELA?
+
+See [Code Synchronization](CodeSynchronization.md)
 
 ## Synchronize a Code Repository
 
