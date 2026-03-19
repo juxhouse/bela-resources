@@ -1,5 +1,11 @@
 # Uploading the BELA ECD File
 
+## Uploading Manually
+
+<img src="assets/image20.gif" style="width:6.26772in;height:4.06944in" />
+
+## Uploading via API
+
 To upload to a BELA backend running anonymously on your local machine:
 
 ```
