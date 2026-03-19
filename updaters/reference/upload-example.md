@@ -2,9 +2,11 @@
 
 ## Uploading Manually
 
-<img src="assets/image20.gif" style="width:6.26772in;height:4.06944in" />
+<img src="/assets/image20.gif" style="width:6.26772in;height:4.06944in" />
 
 ## Uploading via API
+
+Obtain your `BELA_API_TOKEN` from `BELA Main Menu > Sources > Use API`.
 
 To upload to a BELA backend running anonymously on your local machine:
 
@@ -20,8 +22,6 @@ curl -f -k 'https://$BELA_HOST/api/ecd-architecture' \
      -H 'Authorization: $BELA_API_TOKEN' \
      --data-binary @.bela/bela-update.ecd
 ```
-
-You can obtain your `BELA_API_TOKEN` from `BELA Main Menu > Sources > Use API`.
 
 # Uploading Diagrams as Code
 
