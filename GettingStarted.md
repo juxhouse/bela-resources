@@ -20,7 +20,7 @@
 >
 > [How can I browse different levels of structure?](#how-can-i-browse-different-levels-of-structure)
 
-[**How can I see my code in BELA?**](#how-can-i-see-my-code-in-bela)
+[**How can I see my projects in BELA?**](#how-can-i-see-my-projects-in-bela)
 
 [**How can I model elements and dependencies?**](#how-can-i-model-elements-and-dependencies)
 
@@ -158,7 +158,7 @@ To collapse a container that has been previously opened, double-click it again.
 
 <img src="assets/image31.gif" style="width:6.26772in;height:4.06944in" />
 
-# How can I see my code in BELA?
+# How can I see my projects in BELA?
 
 See [Code Synchronization](CodeSynchronization.md)
 
