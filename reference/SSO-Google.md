@@ -30,4 +30,4 @@ https://accounts.google.com/.well-known/openid-configuration
 ```
 
 ## Configuring BELA SSO
-Now you have the information needed to configure [BELA SSO](/reference/Client-Controlled-Deployment.md).
+Now you have the information needed to configure [BELA SSO](/reference/bela.properties.md#single-sign-on-sso-optional).
