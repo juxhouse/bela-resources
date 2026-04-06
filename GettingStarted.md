@@ -4,21 +4,19 @@ The first thing you see when you log in to BELA is a box representing your organ
 
 ## Rename organization
 
-Click the box at the center of the screen, which represents your organization.
+Click the box at the center of the screen. It represents your organization.
 
-Click on the name of the organization in the detail pane, on the right side, to rename it.
+Click the name of the organization on the details panel, on the right side, to rename it.
 
-Add a description in the field below.
+Add a description in the field below it.
 
 <img src="assets/tutorial-image5.gif" style="width:6.26772in;height:3.52778in" />
 
 ## Create your first diagram
 
-Click on the BELA logo in the upper-left corner and select the “New” option from the menu.
+Click "BELA" (main menu) on the upper-left corner. Then click "Diagram > New".
 
-Click on the name of the diagram to rename it.
-
-Check out: [<u>How can I understand a diagram in BELA</u>](https://github.com/juxhouse/bela-resources/blob/main/GettingStarted.md#how-can-i-understand-a-diagram-in-bela)?
+Click the name of the diagram to rename it.
 
 <img src="assets/tutorial-image12.gif" style="width:6.26772in;height:3.52778in" />
 
@@ -26,7 +24,7 @@ Check out: [<u>How can I understand a diagram in BELA</u>](https://github.com/ju
 
 Right click on the diagram and choose the “Create element” option from the menu.
 
-Enter the name, type, and description of element on the upper-right details panel.
+Enter the name, type, and description of element on the upper-right details l.
 
 <img src="assets/tutorial-image3.gif" style="width:6.26772in;height:3.52778in" />
 
@@ -38,9 +36,9 @@ Right click on the dependency to choose its type.
 
 <img src="assets/tutorial-image6.gif" style="width:6.26772in;height:3.52778in" />
 
-## Dependencies in the detail pane
+## Dependencies in the detail 
 
-Click on a dependency to get more information about it on the detail pane.
+Click on a dependency to get more information about it on the detail .
 
 <img src="assets/tutorial-image1.gif" style="width:6.26772in;height:3.52778in" />
 
@@ -56,7 +54,7 @@ It explains the different meanings of the dependencies.
 
 Right click on the diagram and choose the “Create element” option from the menu.
 
-Enter the name, type, and description of the element on the upper-right details pane.
+Enter the name, type, and description of the element on the upper-right details .
 
 This time, choose “package” as the type.
 
@@ -80,7 +78,7 @@ Notice that you’ll find in it the elements you’ve created in your first diag
 
 Right click on the diagram and choose the “Create element” option from the menu.
 
-Enter the name, type, and description of element on the upper-right details panel.
+Enter the name, type, and description of element on the upper-right details l.
 
 Choose the type “person” and change it to 3rd party.
 
@@ -100,9 +98,9 @@ From there you can insert new elements in the diagram by right clicking the diag
 
 ## Find out which diagrams an element is in
 
-Click on an element to open the detail pane on the right.
+Click on an element to open the detail  on the right.
 
-Then click on the “Modeled diagrams featuring element” on the detail pane.
+Then click on the “Modeled diagrams featuring element” on the detail .
 
 <img src="assets/tutorial-image11.gif" style="width:6.26772in;height:3.52778in" />
 
@@ -126,13 +124,13 @@ Select the ECD file that you generated in the previous step.
 
 ## See the source of a built element
 
-After the code synchronization, you can see the source of a built element in the detail pane.
+After the code synchronization, you can see the source of a built element in the detail .
 
 <img src="assets/tutorial-image9.gif" style="width:6.26772in;height:3.52778in" />
 
 ## View the element path
 
-You can also see the built element’s path on the upper-right, in the detail pane.
+You can also see the built element’s path on the upper-right, in the detail .
 
 <img src="assets/tutorial-image15.gif" style="width:6.26772in;height:3.52778in" />
 
@@ -150,13 +148,13 @@ AI creates meaningful groupings. They help you to organize diagrams and plan fut
 
 You can’t change the name or the type of a built element, but you can add a description to make it easier for other people to understand them.
 
-Click on an element and write a description for it on the details pane.
+Click on an element and write a description for it on the details .
 
 <img src="assets/tutorial-image13.gif" style="width:6.26772in;height:3.52778in" />
 
 ## Use AI to create meaningful descriptions
 
-Click on an element and then click on the IA icon in the description field in the details pane.
+Click on an element and then click on the IA icon in the description field in the details .
 
 AI tries to understand the whole picture and come up with a useful description for the element.
 
