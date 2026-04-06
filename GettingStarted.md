@@ -42,11 +42,11 @@ Click on a dependency to get more information about it on the detail .
 
 <img src="assets/tutorial-image1.gif" style="width:6.26772in;height:3.52778in" />
 
-## Understand dependencies meaning
+## Open the diagram legend
 
-Click the question-mark icon (?) in the bottom-left corner to open the legend.
+Click the question-mark icon (?) on the bottom-left corner.
 
-It explains the different meanings of the dependencies.
+It explains the meaning of all the box and arrow styles.
 
 <img src="assets/tutorial-image16.gif" style="width:6.26772in;height:3.52778in" />
 
