@@ -1,6 +1,6 @@
 # Getting Started
 
-The first thing you see when you log in to BELA is a box representing your organization. If your team has already be using BELA, you might see more elements there too.
+The first thing you see when you log in to BELA is a box representing your organization. If people in your team have already been using BELA, you might see more elements there too.
 
 ## Rename organization
 
