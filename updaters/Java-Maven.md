@@ -10,10 +10,12 @@ Prepare the project's classpath and dependencies:
 
 ```
 mvn dependency:build-classpath -Dmdep.outputFile=target/classpath.txt
-mvn dependency:copy-dependencies -Dmdep.outputDirectory=target/dependency
 ```
 
-> [!IMPORTANT]
-> If your build does not produce artifacts in the standard Maven folder structure, please check [here](/updaters/Java-Other.md).
+If your build does not produce artifacts in the standard Maven folder structure, please check [here](/updaters/Java-Other.md).
 
-You are now ready to [go back](/CodeSynchronization.md) run the Java BELA Updater app on your project.
+👉 [Go back](/CodeSynchronization.md) and run the Java BELA Updater app, with an extra mount for your .m2 folder, otherwise dependencies to lib methods will not be resolved:
+```
+docker ...
+-v "$HOME/.m2":/.m2:ro \
+```
