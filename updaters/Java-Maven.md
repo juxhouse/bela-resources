@@ -4,7 +4,7 @@ Install your Maven project. Multi-module projects are supported too.
 
 For a standard Maven project, run:
 
-`mvn clean install`
+`mvn -DskipTests clean install`
 
 Prepare the project's classpath and dependencies:
 
