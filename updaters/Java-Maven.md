@@ -6,7 +6,7 @@ For a standard Maven project, run:
 
 `mvn -DskipTests clean install`
 
-Prepare the project's classpath and dependencies:
+Prepare the project's classpath:
 
 ```
 mvn dependency:build-classpath -Dmdep.outputFile=target/classpath.txt
