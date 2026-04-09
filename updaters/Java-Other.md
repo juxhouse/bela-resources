@@ -2,7 +2,7 @@
 
 Configure your build to produce this directory structure, read by BELA:
 
-- `src` directory containing your project source files.
+- `src/main/java` directory containing your project source files.
 - `target/classes` directory containing your compiled `.class` files.
 - `target/project.properties` a file containing groupId, artifactId and version. Used when a pom.xml file cannot be found. See [example](/updaters/reference/project.properties).
 - `target/dependency` directory with the JAR files of your project dependencies.
