@@ -4,13 +4,15 @@ This page is critical to understanding BELA.
 
 Using BELA without these concepts is like trying to drive a car without knowing what the pedals or gears are for.
 
-## Software Structure (ECDs)
+## The Elements-Containments-Dependencies (ECDs) Model
 
 Software structure is made of ECDs: [Elements](#elements), [Containments](#containments) and [Dependencies](#dependencies).
 
 "Structure" is a precise term that works uniformly at all levels of abstracion. We use it instead of the vague and limited terms "architecture", "design" and "implementation".
 
 ECDs are the only fundamental concepts necessary to represent and explore software structure.
+
+You can use and adapt this model. If you alter it in a way that is not compatible with the latest version of ECD published by Jux, you are not allowed to call it ECD or similar.
 
 
 ## Elements
