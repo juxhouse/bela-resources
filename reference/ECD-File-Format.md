@@ -82,7 +82,7 @@ Element lines are composed of:
 
 #### Base Element
 
-An [Element Line](#element-line) that is not nested is called a `Base Element`. It is used as the base path for subsequent [Relative Path References](#relative-path-reference).
+An [Element Line](#element-line) that is not nested becomes the current `Base Element`. It is used as the base path for subsequent [Relative Path References](#relative-path-reference).
 
 #### Dependency Line
 
@@ -97,7 +97,7 @@ Dependency lines start with `> ` followed by:
 A slash `/` followed by a [path](/Concepts.md#element-path). It is a [quotable string](#quotable-string) with max length of 1024. If this absolute path reference is nested, that creates an EXPLICIT containment: the parent element will contain this referenced element, which must not be implicitly contained by any other.
 
 #### Relative Path
-A [quotable string](#quotable-string) that does not start with slash `/`. It will be appended to the path of the previous [Base Element](#base-element) to form an [Absolute Path](#absolute-path).
+A [quotable string](#quotable-string) that does not start with slash `/`. It will be appended to the path of the current [Base Element](#base-element) to form an [Absolute Path](#absolute-path).
 
 #### Child Path Segment
 A nested child element is declared using only its last path segment. It is a [quotable string](#quotable-string) that does not contain a slash `/`. Most elements in the example ECD above are declared like this. Its path will be composed of its parent's path + `/` + this segment. Child elements are IMPLICITLY contained by their parent and cannot de explicitly contained by any other built element.
@@ -169,10 +169,10 @@ header            = 'v1' , newline ,
 source-name       = quotable-string ;  // Max length of 100.
 
 body              = { ecd-line } ;
-ecd-line          = element-line | dependency-line , newline;
+ecd-line          = (element-line | dependency-line | alert-line) , newline;
 
-dependency-line   = nesting , { nesting } , '>' , space , absolute-path | relative-path | element-query ,            [ dependency-name ] , [ tags ] , newline;
-element-line      =           { nesting } ,               absolute-path | child-segment | element-query , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
+dependency-line   = nesting , { nesting } , '>' , space , (absolute-path | relative-path | element-query) ,            [ dependency-name ] , [ tags ] ;
+element-line      =           { nesting } ,               (absolute-path | child-segment | element-query) , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] ;
 alert-line        =           { nesting } , `!` , space , quotable-string, level , json-string ;
 level             = '[error]' | '[warning]' | '[info]' ;
 
