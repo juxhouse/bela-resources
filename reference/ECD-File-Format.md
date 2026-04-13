@@ -171,8 +171,8 @@ source-name       = quotable-string ;  // Max length of 100.
 body              = { ecd-line } ;
 ecd-line          = element-line | dependency-line , newline;
 
-dependency-line   = nesting , { nesting } , '>' , space , absolute-path | child-segment | element-query ,            [ dependency-name ] , [ tags ] , newline;
-element-line      =           { nesting } ,               absolute-path | relative-path | element-query , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
+dependency-line   = nesting , { nesting } , '>' , space , absolute-path | relative-path | element-query ,            [ dependency-name ] , [ tags ] , newline;
+element-line      =           { nesting } ,               absolute-path | child-segment | element-query , [ type ] , [    element-name ] , [ tags ] , [ custom-metadata ] , newline ;
 alert-line        =           { nesting } , `!` , space , quotable-string, level , json-string ;
 level             = '[error]' | '[warning]' | '[info]' ;
 
