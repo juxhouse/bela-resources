@@ -1,6 +1,6 @@
-# BELA Model Context Protocol (MCP) Connector
+# BELA MCP Connector
 
-The BELA server exposes MCP tools that make your AI agents more effective and MUCH more efficient.
+The BELA server exposes Model Context Protocol (MCP) tools that make your AI agents more effective and MUCH more efficient.
 
 Your agents will query true code structure and dependencies FAST and CORRECTLY, instead of using tools like grep on huge projects and the LLM itself to parse code.
 
