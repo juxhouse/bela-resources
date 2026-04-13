@@ -2,7 +2,7 @@
 
 The BELA server exposes Model Context Protocol (MCP) tools that make your AI agents more effective and MUCH more efficient.
 
-Your agents will query true code structure and dependencies FAST and CORRECTLY, instead of using tools like grep on huge projects and the LLM itself to parse code.
+Your agents will query true code structure and dependencies FAST and CORRECTLY, instead of using tools like grep on huge projects and LLM tokens to parse code.
 
 ## Connection Configuration
 
