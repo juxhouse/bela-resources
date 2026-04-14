@@ -180,7 +180,7 @@ nesting           = space , space ;  // Indentation of 2 spaces for each nesting
 space             = ' ' ;
 
 child-segment     = quotable-string ;  // Must not contain slash '/'.
-element-query     = quotable-string ;  // Must start with '/*/'.
+element-query     = quotable-string, [ space, type ] ;  // Must start with '/*/'.
 absolute-path     = quotable-string ;  // Must start with slash '/'. Max length of 1024.
 relative-path     = quotable-string ;  // Must not start with slash '/'.
 
