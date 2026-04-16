@@ -15,7 +15,7 @@ allprojects {
             doLast {
                 def classpathFile = file("$projectDir/target/classpath.txt")
                 classpathFile.withWriter('UTF-8') { writer ->
-                    configurations.runtimeClasspath.each { 
+                    configurations.runtimeClasspath.each {
                         writer.writeLine it.name
                     }
                 }
@@ -27,12 +27,16 @@ allprojects {
             doLast {
                 def propertiesFile = file("$projectDir/target/project.properties")
                 def artifactId = project.hasProperty('archivesBaseName') ? project.archivesBaseName : project.name
+                def sourceDirectory = sourceSets.main.java.srcDirs.find { it.exists() }
 
                 propertiesFile.withWriter('UTF-8') { writer ->
                     writer.writeLine "artifactType=${project.hasProperty('group') && project.group ? 'maven' : 'gradle'}"
                     writer.writeLine "groupId=${project.group ?: 'unspecified'}"
                     writer.writeLine "artifactId=${artifactId}"
                     writer.writeLine "version=${project.version ?: 'unspecified'}"
+                    if (sourceDirectory != null) {
+                        writer.writeLine "sourceDirectory=${project.relativePath(sourceDirectory)}"
+                    }
                 }
             }
         }
