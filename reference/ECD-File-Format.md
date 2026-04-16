@@ -17,7 +17,7 @@ This format is Copyright Jux Tecnologia ltda. You may use it freely. To avoid in
 v1
 source my-source-name
 /maven/my-company:my-project "My Project" (java)
-  > /maven/org.apache.commons:commons-collections4/version/3.0.1
+  > /maven/org.apache.commons:commons-collections4/versions/3.0.1
   business [package]
     billing [package]
       Invoice [class]
