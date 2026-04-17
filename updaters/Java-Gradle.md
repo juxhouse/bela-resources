@@ -4,7 +4,7 @@ Build your Gradle project. For a simple Gradle project, for example, that is don
 
 `gradle clean build` or `./gradlew clean build`
 
-Copy this [bela.gradle](/updaters/reference/bela.gradle) file into your project folder and run the following command:
+Then, copy this [bela.gradle](/updaters/reference/bela.gradle) file into your project folder and run the following command:
 
 ```
 gradle belaBuild --init-script bela.gradle
