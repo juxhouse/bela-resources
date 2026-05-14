@@ -108,16 +108,6 @@ Then click on the “Modeled diagrams featuring element” on the detail .
 
 See [<u>Code Synchronization</u>](https://github.com/juxhouse/bela-resources/blob/main/CodeSynchronization.md).
 
-## Upload the ECD file to BELA.
-
-Click on the BELA logo in the upper-left corner and select the “Source” option from the menu.
-
-Click on the “Upload” button.
-
-Select the ECD file that you generated in the previous step.
-
-<img src="assets/tutorial-image7.gif" style="width:6.26772in;height:3.52778in" />
-
 ## See the source of a built element
 
 After the code synchronization, you can see the source of a built element in the detail .
