@@ -2,6 +2,8 @@
 
 ## Uploading Manually
 
+You can upload the ECD file manually in `BELA Main Menu > Sources > Upload`.
+
 <img src="/assets/image20.gif" style="width:9.26772in;height:6.06944in" />
 
 ## Uploading via API
