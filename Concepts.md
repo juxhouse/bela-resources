@@ -12,7 +12,7 @@ Software structure is made of ECDs: [Elements](#elements), [Containments](#conta
 
 ECDs are the only fundamental concepts necessary to represent and explore software structure.
 
-You can use and adapt this model. If you alter it in a way that is not compatible with the latest version of ECD published by Jux, you are not allowed to call it ECD or similar.
+You are free to use and adapt this model. If you alter it in a way that is not compatible with the latest version of ECD published by Jux, you are not allowed to call it ECD or similar.
 
 
 ## Elements
