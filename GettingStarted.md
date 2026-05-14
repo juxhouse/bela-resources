@@ -108,10 +108,6 @@ Then click on the “Modeled diagrams featuring element” on the detail .
 
 See [<u>Code Synchronization</u>](https://github.com/juxhouse/bela-resources/blob/main/CodeSynchronization.md).
 
-Generate the ECD file by running the BELA Updater Docker App.
-
-<img src="assets/tutorial-image17.gif" style="width:6.26772in;height:3.52778in" />
-
 ## Upload the ECD file to BELA.
 
 Click on the BELA logo in the upper-left corner and select the “Source” option from the menu.
