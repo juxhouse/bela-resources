@@ -17,6 +17,11 @@ The Browser for Enterprise-Level Architecture
 Get a solid understanding of BELA's 3 fundamental [concepts](/Concepts.md).
 
 
+## Getting Started
+
+You can follow [this tutorial](GettingStarted.md) to get started.
+
+
 ## Synchronize your Code Repositories
 
 Use [these 3 steps](/CodeSynchronization.md) to export the structure of a code repository to BELA.
