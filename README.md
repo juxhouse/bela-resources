@@ -14,7 +14,7 @@ The Browser for Enterprise-Level Architecture
 
 ## Concepts
 
-Get a solid understanding of BELA's fundamental [concepts](/Concepts.md).
+Get a solid understanding of BELA's 3 fundamental [concepts](/Concepts.md).
 
 
 ## Synchronize your Code Repositories
