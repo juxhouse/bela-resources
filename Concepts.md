@@ -73,7 +73,7 @@ Dependencies are uniquely identified by the "from" and "to" elements, and an opt
 
 #### Automatic Layout
 
-When there is a dependency line from element A to element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency line that is pointing upward will be displayed in red.
+When there is a dependency line from element A to element B, BELA will do automatic diagram layout to try and position A further up and B further down. When that is impossible (in the case of a dependency cycle, for example) the dependency line that is pointing upward will be displayed in bright purple.
 
 #### Dataflow Direction
 
