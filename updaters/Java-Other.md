@@ -2,11 +2,13 @@
 
 This is the directory structure read by BELA:
 
-- `src` directory containing your project source files.
+- `src/main/java` containing your Java source files, unless `target/project.properties` sets another `sourceDirectory`.
 - `target/classes` directory containing your compiled `.class` files.
-- `target/project.properties` a file containing groupId, artifactId and version. See [example](/updaters/reference/project.properties).
-- `target/dependency` directory with the JAR files of your project dependencies.
-- `target/classpath.txt` a txt file containing your project classpath. Only the names of the jars are used. Their paths can be anything because they are not used.
+- `target/classpath.txt` containing the project classpath. BELA reads the JAR names from this file.
+- Dependency JARs available in one of these locations:
+  - a mounted Maven repository at `/.m2`, or
+  - `target/dependency` inside the project directory.
+- For non-Maven projects, `target/project.properties` containing `groupId`, `artifactId`, `version`, and optionally `sourceDirectory`. See [example](/updaters/reference/project.properties).
 
 Make sure the `.bela` directory exists. The update file to be sent to BELA will be created in there:
 
