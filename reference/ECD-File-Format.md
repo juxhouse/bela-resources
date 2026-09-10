@@ -150,7 +150,7 @@ A string that begins with a lowercase letter (a-z), followed by lowercase letter
 
 
 ## Appendix - Syntax
-This is the ECD syntax specification as an EBNF grammar.
+This is an EBNF grammar for ECD.
 
 #### EBNF Notation Summary
  - Optional: [ ... ]
