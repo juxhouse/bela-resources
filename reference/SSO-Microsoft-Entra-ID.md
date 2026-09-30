@@ -28,4 +28,4 @@ https://login.microsoftonline.com/{tenant-id}/v2.0/.well-known/openid-configurat
 ```
 
 ## Configuring BELA SSO
-Now you have the information needed to configure [BELA SSO](/reference/Client-Controlled-Deployment.md).
+Now you have the information needed to configure [BELA SSO](/reference/bela.properties.md#single-sign-on-sso-optional).

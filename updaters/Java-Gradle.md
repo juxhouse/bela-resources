@@ -2,12 +2,18 @@
 
 Build your Gradle project. For a simple Gradle project, for example, that is done running:
 
-`gradle clean build`
+`gradle clean build` or `./gradlew clean build`
 
-Copy this [bela.gradle](/updaters/reference/bela.gradle) file into your project folder and run the following command:
+Then, copy this [bela.gradle](/updaters/reference/bela.gradle) file into your project folder and run the following command:
 
 ```
+gradle belaBuild --init-script bela.gradle
+or
 ./gradlew belaBuild --init-script bela.gradle
 ```
 
-Your project is now ready to be [analysed by BELA](/updaters/Java.md).
+You are now ready to [go back](/CodeSynchronization.md) and run the BELA Updater for Java.
+
+## Troubleshooting
+
+If you have an unusual build config and the above isn't working, configure it to also produce [this output](/updaters/Java-Other.md) needed by BELA.

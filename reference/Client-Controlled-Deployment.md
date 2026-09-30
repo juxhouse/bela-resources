@@ -1,24 +1,35 @@
 # Client-Controlled Deployment
-(AKA "On-Premisses", AKA "Bring Your Own Cloud")
+(AKA "On-Premisses" or "Bring Your Own Cloud")
 
 With an enterprise account you can deploy BELA as a container in your own environment.
 
 ## Required Resources
 
-Determine the required CPU, RAM, and disk resources for the BELA container using this simple [calculator](https://bela.live/container-sizing).
+Determine the required CPU, RAM, and disk resources for your BELA container(s) using this simple [calculator](https://bela.live/container-sizing).
+
+#### Multiple Instances
+
+You can run multiple BELA instances to isolate access to different codebases and to distribute BELA’s computational load.
+
+You can use different DNS subdomains or different URL prefixes within the same domain. Configuration instructions are below.
 
 ## BELA Data Volume
 
-Provide a host directory to store all BELA's files. This directory must provide durability equivalent to Amazon EFS and must have a backup procedure enabled.
+Each BELA instance uses its own exclusive data volume. Provide a host directory to store all its files. This directory must provide durability equivalent to Amazon EFS and must have a backup procedure enabled.
 
-Make the host directory accessible to the BELA container user:
+This host directory will be mounted as volume `/bela-data` in the BELA container below.
+
+ - **Docker variant:**
+Make the host directory accessible to the BELA container using group 0.
 ```bash
-   HOST_DIRECTORY=\your-host-directory
+   HOST_DIRECTORY=your-host-directory
    chgrp -R 0 $HOST_DIRECTORY  &&  chmod -R g+rwX $HOST_DIRECTORY
 ```
-Setting ownership to group 0 like that is Openshift's secure way of allowing access to a container running with a non-root user. It is also compatible with Docker, Kubernetes, etc.
 
-This host directory will be mounted as volume `\bela-data` in the BELA container below.
+ - **Kubernetes variant**: Use the security context `fsGroup` setting with any non-zero group id.
+
+ - **Openshift variant**: Volume access is automatically enabled by the SCC (Security Context Constraints) system.
+
 
 > [!CAUTION]
 > **The container must be configured as a single instance.** No more than one container can access the same file directory. The container cannot be configured for horizontal scaling. On Kubernetes, Openshift, etc, use the ReadWriteOnce access mode.
@@ -42,6 +53,10 @@ docker run --pull=always \
            juxhouse/bela
 ```
 
+## Health Checks (Optional)
+
+If you are using a container orchestration platform such as Kubernetes, you can configure startup, readiness and liveness probes [like this](/reference/Container-Health-Checks.md).
+
 ## Configure DNS and SSL
 
 Configure DNS to point to the host of the BELA container. BELA is tested with IPv4.
@@ -57,10 +72,10 @@ BELA should now be accessible by HTTPS on the domain you configured.
 
 When you run BELA for the first time, this file will be created in your host directory, mentioned above:
 ```bash
-   $HOST_DIRECTORY\config\bela.properties
+   $HOST_DIRECTORY/config/bela.properties
 ```
 
-Edit it to configure access control and API integrations using this [template](/reference/bela.properties.md).
+Edit that file to configure your BELA instance using this [template](/reference/bela.properties.md).
 
 Restart the BELA container.
 

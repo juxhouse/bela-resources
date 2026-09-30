@@ -8,22 +8,36 @@ When you first run the BELA container, it will create this file:
 
 Edit that file to provide settings for BELA, such as external API URLs and secrets.
 
-## Example
+## Anonymous Access (Optional)
 
-A sample bela.properties file with configuration details:
+If you are just trying out BELA, you only need this single line in the file:
+```
+anonymous=true
+```
+Anyone will be able access BELA without needing to log in. That's the simplest configuration.
+
+## Configuration Template
+
+This is sample bela.properties file with more configuration options:
 
 ```properties
+# Only enable this (instead of the authentication methods below) if you want to allow anonymous read and WRITE access.
+# anonymous=true
+
 # The email of the owner of the BELA installation within your organization.
 owner.email=person@your-company.com
 
-# URL for your SSO provider's OpenID configuration. It must follow this pattern:
+# URL Prefix for this BELA instance (optional). See below.
+# url.prefix={your-url-prefix}
+
+# URL for your SSO provider's OpenID configuration. It must follow this pattern: https://{host}/.well-known/openid-configuration
 openid.configuration.url=https://{host}/.well-known/openid-configuration
 # Client ID for BELA, as provided by your SSO provider.
 openid.client.id=your-client-id
 # Client secret for BELA, as provided by your SSO provider.
 openid.client.secret=your-client-secret
 
-# Enable this instead of the openid configs above if you want to use user+password authentication:
+# Enable this instead of the openid configs above if you want to use user+password authentication.
 # auth.passwords=true
 
 # Token for accessing BELA's architecture API endpoint. You can set any string of random letters and digits.
@@ -35,11 +49,27 @@ openai.api.url=https://api.openai.com/v1/chat/completions
 openai.api.token=openai-api-token
 ```
 
+## URL Prefix (Optional)
+
+You can run multiple BELA instances to isolate access to different codebases and distribute BELA’s computational load.
+
+You can use a different DNS subdomain for each BELA instance or you can use a single DNS domain with different URL Prefixes.
+
+[Set up URL Prefixes](/reference/URL-Prefix.md)
+
+
 ## Single Sign-On (SSO) (Optional)
 
 You can activate SSO in BELA using OAuth2 OpenID (not SAML).
 
-1. Register BELA as an application with your SSO provider. Use this as the redirect URI: `https://{your-bela-host}/callback`
+1. Register BELA as an application with your SSO provider. Use this as the redirect URI:
+```
+https://{your-bela-host}/callback
+```
+If you have multiple BELA instances using different [URL Prefixes](/reference/URL-Prefix.md), create an app in your SSO for each one, with this redirect URI:
+```
+https://{your-bela-host}/{your-url-prefix}/callback
+```
 
 Examples for some popular providers:
 - [Google](/reference/SSO-Google.md)
@@ -60,5 +90,4 @@ If you do not want to use SSO, you can enable this line in the template above:
 ```
 auth.passwords=true
 ```
-> [!WARNING]
-> Anyone will be able to log in using the `owner.email` set above until the password for that email is reset the first time.
+Anyone will be able to log in using the `owner.email` set above until the password for that email is reset the first time.
