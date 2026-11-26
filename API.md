@@ -19,7 +19,7 @@ Your BELA API host address is provided to you when you sign-up for a BELA accoun
 Obtain you BELA API token from `BELA Menu > Sources > Use API`.
 
 
-## Endpoint: POST `/ecd-architecture`
+## Endpoint: POST `api/ecd-architecture`
 
 This endpoint allows you to update BELA with the architecture from one of your [sources](/Concepts.md#sources).
 
